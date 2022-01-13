@@ -69,12 +69,13 @@ const Home: NextPage = () => {
 
           <Button
             colorScheme="gray"
+            leftIcon={<FaTwitter />}
             mt="10px"
             as={'a'}
-            href="https://twitter.com/sseraphini?ref_src=twsrc%5Etfw" 
+            href="https://twitter.com/intent/user?screen_name=sseraphini" 
             target="_blank"
           >
-            Follow @sseraphini
+            Follow
           </Button>
         </Flex>
       </Flex>
