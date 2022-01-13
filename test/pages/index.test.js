@@ -46,9 +46,9 @@ describe('Home', () => {
     render(<Home />)
     const textarea = screen.getByRole('textbox')
 
-    const badge = screen.getByTestId('counter')
-
     let count = 279 - user.length
+    const badge = screen.getByText(`${count}`)
+
     expect(badge).toHaveTextContent(count)
 
     const newText = 'Which do you prefer X or Y'

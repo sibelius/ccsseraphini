@@ -51,7 +51,7 @@ const Home: NextPage = () => {
             onChange={(e) => setText(e.target.value)}
           />
 
-          <Badge data-testid="counter" maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
+          <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
             {counter}
           </Badge>
           <Box as="span">cc @sseraphini</Box>
