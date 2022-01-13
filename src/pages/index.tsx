@@ -66,6 +66,16 @@ const Home: NextPage = () => {
           >
             Tweet
           </Button>
+
+          <Button
+            colorScheme="gray"
+            mt="10px"
+            as={'a'}
+            href="https://twitter.com/sseraphini?ref_src=twsrc%5Etfw" 
+            target="_blank"
+          >
+            Follow @sseraphini
+          </Button>
         </Flex>
       </Flex>
     </div>
