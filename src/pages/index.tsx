@@ -6,8 +6,7 @@ import { useState } from 'react'
 
 const Home: NextPage = () => {
   const [text, setText] = useState('')
-  const suffix = `
-cc @sseraphini`
+  const suffix = ' cc @sseraphini'
   const counter = 279 - suffix.length - text.length
   const tweet = encodeURIComponent(`${text}${suffix}`)
 
@@ -47,7 +46,7 @@ cc @sseraphini`
             size="sm"
             resize="none"
             minHeight="10.8rem"
-            placeholder="Write your tweet concet in here"
+            placeholder="Write your tweet concept/question here"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
