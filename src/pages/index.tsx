@@ -1,9 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Box, Flex, Button } from "@chakra-ui/react";
+import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react'
 import { FaTwitter } from 'react-icons/fa'
+import { useState } from 'react'
 
 const Home: NextPage = () => {
+  const [text, setText] = useState('')
+  const suffix = ' cc @sseraphini'
+  const counter = 279 - suffix.length - text.length
+  const tweet = encodeURIComponent(`${text}${suffix}`)
+
   return (
     <div>
       <Head>
@@ -16,9 +22,19 @@ const Home: NextPage = () => {
         height="100vh"
         alignItems="center"
         justifyContent="center"
-        flexDirection="row"
+        flexDirection="column"
       >
+        <Image
+          borderRadius="full"
+          boxSize="100px"
+          objectFit="cover"
+          src="https://unavatar.io/twitter/sseraphini"
+          alt="Sibelius Seraphini"
+          m="4"
+        />
+
         <Flex
+          minW="sm"
           maxW="sm"
           borderWidth="1px"
           borderRadius="lg"
@@ -26,8 +42,28 @@ const Home: NextPage = () => {
           p="8"
           flexDirection="column"
         >
-          <Box as='span'>cc @sseraphini</Box>
-          <Button colorScheme='twitter' leftIcon={<FaTwitter />} mt='10px' as={'a'} href='https://twitter.com/intent/tweet?text=cc%20@sseraphini' target='_blank'>
+          <Textarea
+            size="sm"
+            resize="none"
+            minHeight="10.8rem"
+            placeholder="Write your tweet concept/question here"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+
+          <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
+            {counter}
+          </Badge>
+          <Box as="span">cc @sseraphini</Box>
+
+          <Button
+            colorScheme="twitter"
+            leftIcon={<FaTwitter />}
+            mt="10px"
+            as={'a'}
+            href={`https://twitter.com/intent/tweet?text=${tweet}`}
+            target="_blank"
+          >
             Tweet
           </Button>
         </Flex>
