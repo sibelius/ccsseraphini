@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const Home: NextPage = () => {
   const [text, setText] = useState('')
-  const suffix = ' cc @sseraphini'
+  const suffix = '\ncc @sseraphini'
   const counter = 279 - suffix.length - text.length
   const tweet = encodeURIComponent(`${text}${suffix}`)
 
