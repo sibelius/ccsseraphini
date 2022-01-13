@@ -23,6 +23,7 @@ const Home: NextPage = () => {
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
+        bg="gray.400"
       >
         <Image
           borderRadius="full"
@@ -37,10 +38,12 @@ const Home: NextPage = () => {
           minW="sm"
           maxW="sm"
           borderWidth="1px"
+          borderColor="gray.500"
           borderRadius="lg"
           overflow="hidden"
           p="8"
           flexDirection="column"
+          bg="white"
         >
           <Textarea
             size="sm"
@@ -68,11 +71,11 @@ const Home: NextPage = () => {
           </Button>
 
           <Button
-            colorScheme="gray"
+            backgroundColor="gray.300"
             leftIcon={<FaTwitter />}
             mt="10px"
             as={'a'}
-            href="https://twitter.com/intent/user?screen_name=sseraphini" 
+            href="https://twitter.com/intent/user?screen_name=sseraphini"
             target="_blank"
           >
             Follow
