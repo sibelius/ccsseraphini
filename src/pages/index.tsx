@@ -1,6 +1,19 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Button,
+  Textarea,
+  Badge,
+  Image,
+  Container,
+  Text,
+  useColorMode,
+  IconButton,
+  Switch,
+} from '@chakra-ui/react';
+import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import { FaTwitter } from 'react-icons/fa';
 import { useState } from 'react';
 
@@ -9,22 +22,49 @@ const Home: NextPage = () => {
   const suffix = '\ncc @sseraphini';
   const counter = 279 - suffix.length - text.length;
   const tweet = encodeURIComponent(`${text}${suffix}`);
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <div>
-      <Head>
-        <title>cc @sseraphini</title>
-        <meta name="description" content="Make it easy to cc @sseraphini" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <Flex
-        height="100vh"
-        alignItems="center"
-        justifyContent="center"
+    <>
+      <Container
+        my="40px"
+        gap={'5'}
+        display="flex"
         flexDirection="column"
-        bg="gray.400"
+        justifyContent="center"
+        alignItems="center"
       >
+        {/* IconButton */}
+        {colorMode === 'light' ? (
+          <IconButton
+            aria-label="Switcher"
+            my="20px"
+            isRound
+            color="gray.800"
+            icon={<MoonIcon />}
+            variant="outline"
+            onClick={toggleColorMode}
+          />
+        ) : (
+          <IconButton
+            aria-label="Switcher"
+            my="20px"
+            isRound
+            color="yellow.500"
+            icon={<SunIcon />}
+            variant="outline"
+            onClick={toggleColorMode}
+          />
+
+          //seraphini parts
+        )}
+        {/* <Flex
+          height="100vh"
+          alignItems="center"
+          justifyContent="center"
+          flexDirection="column"
+          bg="gray.400"
+        > */}
         <Image
           borderRadius="full"
           boxSize="100px"
@@ -81,8 +121,16 @@ const Home: NextPage = () => {
             Follow
           </Button>
         </Flex>
-      </Flex>
-    </div>
+        {/* </Flex> */}
+      </Container>
+      <div>
+        <Head>
+          <title>cc @sseraphini</title>
+          <meta name="description" content="Make it easy to cc @sseraphini" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+      </div>
+    </>
   );
 };
 
