@@ -8,24 +8,21 @@ import {
   Badge,
   Image,
   Container,
-  Text,
-  useColorMode,
-  IconButton,
-  Switch,
 } from '@chakra-ui/react';
 import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 import { FaTwitter } from 'react-icons/fa';
 import { useState } from 'react';
+import { Header } from '../components/Header';
 
 const Home: NextPage = () => {
   const [text, setText] = useState('');
   const suffix = '\ncc @sseraphini';
   const counter = 279 - suffix.length - text.length;
   const tweet = encodeURIComponent(`${text}${suffix}`);
-  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
+      <Header />
       <Container
         my="40px"
         gap={'5'}
@@ -34,29 +31,6 @@ const Home: NextPage = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {/* IconButton */}
-        {colorMode === 'light' ? (
-          <IconButton
-            aria-label="Switcher"
-            my="20px"
-            isRound
-            color="gray.800"
-            icon={<MoonIcon />}
-            variant="outline"
-            onClick={toggleColorMode}
-          />
-        ) : (
-          <IconButton
-            aria-label="Switcher"
-            my="20px"
-            isRound
-            color="yellow.500"
-            icon={<SunIcon />}
-            variant="outline"
-            onClick={toggleColorMode}
-          />
-        )}
-
         <Image
           borderRadius={'full'}
           boxSize="100px"
@@ -113,13 +87,6 @@ const Home: NextPage = () => {
           </Button>
         </Flex>
       </Container>
-      <div>
-        <Head>
-          <title>cc @sseraphini</title>
-          <meta name="description" content="Make it easy to cc @sseraphini" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-      </div>
     </>
   );
 };
