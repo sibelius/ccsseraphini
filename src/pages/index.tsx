@@ -55,20 +55,12 @@ const Home: NextPage = () => {
             variant="outline"
             onClick={toggleColorMode}
           />
-
-          //seraphini parts
         )}
-        {/* <Flex
-          height="100vh"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="column"
-          bg="gray.400"
-        > */}
+
         <Image
-          borderRadius="full"
+          borderRadius={'full'}
           boxSize="100px"
-          objectFit="cover"
+          objectFit={'cover'}
           src="https://unavatar.io/twitter/sseraphini"
           alt="Sibelius Seraphini"
           m="4"
@@ -83,7 +75,6 @@ const Home: NextPage = () => {
           overflow="hidden"
           p="8"
           flexDirection="column"
-          bg="white"
         >
           <Textarea
             size="sm"
@@ -121,7 +112,6 @@ const Home: NextPage = () => {
             Follow
           </Button>
         </Flex>
-        {/* </Flex> */}
       </Container>
       <div>
         <Head>
