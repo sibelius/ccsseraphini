@@ -7,7 +7,7 @@ import ForkMeCorner from '../components/ForkMeCorner';
 
 const Home: NextPage = () => {
   const [text, setText] = useState('');
-  const suffix = '\ncc @sseraphini';
+  const suffix = '\nby  https://ccsseraphini.vercel.app/ \ncc @sseraphini';
   const counter = 279 - suffix.length - text.length;
   const tweet = encodeURIComponent(`${text}${suffix}`);
 
