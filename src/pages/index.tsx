@@ -35,7 +35,7 @@ const Home: NextPage = () => {
           borderRadius={'full'}
           boxSize="100px"
           objectFit={'cover'}
-          src="https://unavatar.io/twitter/sseraphini"
+          src="https://avatars.githubusercontent.com/u/2005841?v=4"
           alt="Sibelius Seraphini"
           m="4"
         />
