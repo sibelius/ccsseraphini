@@ -12,8 +12,16 @@ const TwitterInfo = ({ tweet }: TwitterInfoProps) => {
       href={`https://twitter.com/${tweet.userInfo.username}/status/${tweet.id}`}
       target="blank"
       _hover={{ textDecoration: 'none' }}
+      w="100%"
+      display="flex"
+      justifyContent="center"
     >
-      <Flex borderBottomWidth={2} p={8} w={700} alignItems="flex-start">
+      <Flex
+        borderBottomWidth={2}
+        p={8}
+        w={['100%', '100%', 700]}
+        alignItems="flex-start"
+      >
         <Image
           borderRadius="full"
           objectFit="cover"
