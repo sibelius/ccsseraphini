@@ -1,25 +1,13 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-
-interface TweetInfo {
-  author_id: string;
-  id: string;
-  text: string;
-  userInfo: UserInfo;
-}
-
-interface UserInfo {
-  id: string;
-  name: string;
-  profile_image_url: string;
-  username: string;
-}
+import { TweetData } from 'types/Tweet';
+import TweetInfo from 'components/TweetInfo';
 
 const LatestTweets: NextPage = () => {
-  const [data, setData] = useState<TweetInfo[]>([]);
+  const [data, setData] = useState<TweetData[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -29,7 +17,7 @@ const LatestTweets: NextPage = () => {
         const response = await axios.get('api/latest_tweets');
         setData(response.data);
       } catch (error) {
-        console.error('error: ', error);
+        // TODO: add error handler
       }
       setLoading(false);
     };
@@ -57,38 +45,8 @@ const LatestTweets: NextPage = () => {
         <Text fontWeight="medium" fontSize={24}>
           Latest tweets
         </Text>
-        {data.map((tweet, idx) => (
-          <Link
-            key={idx}
-            href={`https://twitter.com/${tweet.userInfo.username}/status/${tweet.id}`}
-            target="blank"
-            _hover={{ textDecoration: 'none' }}
-          >
-            <Flex borderBottomWidth={2} p={8} w={700} alignItems="flex-start">
-              <Image
-                borderRadius="full"
-                objectFit="cover"
-                boxSize="50px"
-                src={tweet.userInfo.profile_image_url}
-                alt={tweet.userInfo.name}
-                marginX={4}
-              />
-              <Box>
-                <Link
-                  href={`https://twitter.com/${tweet.userInfo.username}`}
-                  target="blank"
-                >
-                  <Flex>
-                    <Text fontWeight="bold">{tweet.userInfo.name}</Text>
-                    <Text fontWeight="light" ml={2}>
-                      {`@${tweet.userInfo.username}`}
-                    </Text>
-                  </Flex>
-                </Link>
-                <p>{tweet.text}</p>
-              </Box>
-            </Flex>
-          </Link>
+        {data?.map((tweet) => (
+          <TweetInfo key={tweet.id} tweet={tweet} />
         ))}
       </Flex>
     </div>
