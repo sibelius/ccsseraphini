@@ -1,14 +1,14 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react'
-import { FaTwitter } from 'react-icons/fa'
-import { useState } from 'react'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react';
+import { FaTwitter } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Home: NextPage = () => {
-  const [text, setText] = useState('')
-  const suffix = '\ncc @sseraphini'
-  const counter = 279 - suffix.length - text.length
-  const tweet = encodeURIComponent(`${text}${suffix}`)
+  const [text, setText] = useState('');
+  const suffix = '\ncc @sseraphini';
+  const counter = 279 - suffix.length - text.length;
+  const tweet = encodeURIComponent(`${text}${suffix}`);
 
   return (
     <div>
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
         </Flex>
       </Flex>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
