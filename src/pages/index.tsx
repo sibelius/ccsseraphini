@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react';
 import { FaTwitter } from 'react-icons/fa';
 import { useState } from 'react';
+import ForkMeCorner from '../components/ForkMeCorner';
 
 const Home: NextPage = () => {
   const [text, setText] = useState('');
@@ -17,6 +18,8 @@ const Home: NextPage = () => {
         <meta name="description" content="Make it easy to cc @sseraphini" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <ForkMeCorner repo="https://github.com/sibelius/ccsseraphini" />
 
       <Flex
         height="100vh"
