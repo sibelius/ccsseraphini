@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react';
-import { FaTwitter } from 'react-icons/fa';
+import { FaTwitter, FaPatreon } from 'react-icons/fa';
 import { useState } from 'react';
 import ForkMeCorner from '../components/ForkMeCorner';
 
@@ -82,6 +82,18 @@ const Home: NextPage = () => {
             target="_blank"
           >
             Follow
+          </Button>
+
+          <Button
+            colorScheme="orange"
+            leftIcon={<FaPatreon />}
+            mt="10px"
+            as={'a'}
+            border="none"
+            href="https://www.patreon.com/sibelius"
+            target="_blank"
+          >
+            Sponsor
           </Button>
         </Flex>
       </Flex>
