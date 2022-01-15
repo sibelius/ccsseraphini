@@ -88,4 +88,15 @@ describe('Home', () => {
       `https://www.patreon.com/${user}`,
     );
   });
+
+  it('should have a link with the articles url', () => {
+    const user = `sibelius`;
+
+    render(<Home />);
+
+    expect(screen.getByText('Articles').closest('a')).toHaveAttribute(
+      'href',
+      `https://${user}.substack.com/`,
+    );
+  });
 });

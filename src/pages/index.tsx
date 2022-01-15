@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react';
 import { FaTwitter, FaPatreon } from 'react-icons/fa';
+import { SiSubstack } from 'react-icons/si';
 import { useState } from 'react';
 import ForkMeCorner from '@components/ForkMeCorner';
 
@@ -94,6 +95,18 @@ const Home: NextPage = () => {
             target="_blank"
           >
             Sponsor
+          </Button>
+
+          <Button
+            colorScheme="purple"
+            leftIcon={<SiSubstack />}
+            mt="10px"
+            as={'a'}
+            border="none"
+            href="https://sibelius.substack.com/"
+            target="_blank"
+          >
+            Articles
           </Button>
         </Flex>
       </Flex>
