@@ -15,6 +15,7 @@ const TwitterInfo = ({ tweet }: TwitterInfoProps) => {
       w="100%"
       display="flex"
       justifyContent="center"
+      _focus={{ boxShadow: 'none' }}
     >
       <Flex
         borderBottomWidth={2}
@@ -34,15 +35,23 @@ const TwitterInfo = ({ tweet }: TwitterInfoProps) => {
           <Link
             href={`https://twitter.com/${tweet.userInfo.username}`}
             target="blank"
+            _focus={{ boxShadow: 'none' }}
           >
-            <Flex>
-              <Text fontWeight="bold">{tweet.userInfo.name}</Text>
-              <Text fontWeight="light" ml={2}>
+            <Flex flexDir={['column', 'row']}>
+              <Text fontSize={14} fontWeight="bold">
+                {tweet.userInfo.name}
+              </Text>
+              <Text
+                fontSize={14}
+                color="gray.500"
+                fontWeight="light"
+                ml={[0, 2]}
+              >
                 {`@${tweet.userInfo.username}`}
               </Text>
             </Flex>
           </Link>
-          <p>{tweet.text}</p>
+          <Text mt={2}>{tweet.text}</Text>
         </Box>
       </Flex>
     </Link>
