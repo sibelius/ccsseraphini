@@ -6,7 +6,7 @@
 
 Before running the project it is needed to create a .env file in the root of the project similar as is in .env.example, but replacing the variables to the correct ones.
 
-### NEXT_PUBLIC_API_URL
+### API_URL
 This is the API URL. If it is running locally it should be http://localhost:3000/api or if it is in production should be https://ccsseraphini.vercel.app/api
 
 ### TWITTER_BEARER_TOKEN

@@ -40,9 +40,7 @@ const LatestTweets: NextPage<Props> = ({ data }: Props) => {
 export default LatestTweets;
 
 export async function getServerSideProps() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/latest_tweets`,
-  );
+  const response = await fetch(`${process.env.API_URL}/latest_tweets`);
   const data = await response.json();
   return {
     props: {
