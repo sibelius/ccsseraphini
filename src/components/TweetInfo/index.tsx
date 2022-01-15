@@ -32,25 +32,14 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
           marginX={4}
         />
         <Box>
-          <Link
-            href={`https://twitter.com/${tweet.userInfo.username}`}
-            target="blank"
-            _focus={{ boxShadow: 'none' }}
-          >
-            <Flex flexDir={['column', 'row']}>
-              <Text fontSize={14} fontWeight="bold">
-                {tweet.userInfo.name}
-              </Text>
-              <Text
-                fontSize={14}
-                color="gray.500"
-                fontWeight="light"
-                ml={[0, 2]}
-              >
-                {`@${tweet.userInfo.username}`}
-              </Text>
-            </Flex>
-          </Link>
+          <Flex flexDir={['column', 'row']}>
+            <Text fontSize={14} fontWeight="bold">
+              {tweet.userInfo.name}
+            </Text>
+            <Text fontSize={14} color="gray.500" fontWeight="light" ml={[0, 2]}>
+              {`@${tweet.userInfo.username}`}
+            </Text>
+          </Flex>
           <Text mt={2}>{tweet.text}</Text>
         </Box>
       </Flex>
