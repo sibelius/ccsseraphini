@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import axios from 'axios';
 import { TwitterResponseTweetInfo, TwitterResponseUserInfo } from 'types/Tweet';
 
 interface TwitterResponse {
@@ -24,14 +23,15 @@ export default async function handler(
   const url =
     `${BASE_URL}/${RECENT_TWEETS_URL}?query=${QUERY}&tweet.fields=${TWEET_FIELDS}` +
     `&user.fields=${USER_FIELDS}&expansions=${EXPANSIONS}&max_results=${MAX_RESULTS}`;
-  const { data } = await axios.get<TwitterResponse>(url, {
+  const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
     },
   });
+  const tweetsData: TwitterResponse = await response.json();
 
-  const tweets = data.data.map((tweet) => {
-    const userInfo = data.includes.users.find(
+  const tweets = tweetsData.data.map((tweet) => {
+    const userInfo = tweetsData.includes.users.find(
       (user) => user.id === tweet.author_id,
     );
     return {

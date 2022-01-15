@@ -2,20 +2,20 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Flex, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { TweetData } from 'types/Tweet';
 import TweetInfo from 'components/TweetInfo';
 
 const LatestTweets: NextPage = () => {
-  const [data, setData] = useState<TweetData[]>([]);
+  const [tweets, setTweets] = useState<TweetData[]>([]);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchTweetsData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('api/latest_tweets');
-        setData(response.data);
+        const response = await fetch('api/latest_tweets');
+        const data = await response.json();
+        setTweets(data);
       } catch (error) {
         // TODO: add error handler
       }
@@ -26,7 +26,7 @@ const LatestTweets: NextPage = () => {
   }, []);
 
   if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No data</p>;
+  if (!tweets) return <p>No tweets found!</p>;
 
   return (
     <div>
@@ -46,7 +46,7 @@ const LatestTweets: NextPage = () => {
         <Text fontWeight="medium" fontSize={24}>
           Latest tweets
         </Text>
-        {data?.map((tweet) => (
+        {tweets?.map((tweet) => (
           <TweetInfo key={tweet.id} tweet={tweet} />
         ))}
       </Flex>
