@@ -1,32 +1,15 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Flex, Text } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
 import { TweetData } from 'types/Tweet';
 import TweetInfo from 'components/TweetInfo';
 
-const LatestTweets: NextPage = () => {
-  const [tweets, setTweets] = useState<TweetData[]>([]);
-  const [isLoading, setLoading] = useState(false);
+interface Props {
+  data: TweetData[];
+}
 
-  useEffect(() => {
-    const fetchTweetsData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch('api/latest_tweets');
-        const data = await response.json();
-        setTweets(data);
-      } catch (error) {
-        // TODO: add error handler
-      }
-      setLoading(false);
-    };
-
-    fetchTweetsData();
-  }, []);
-
-  if (isLoading) return <p>Loading...</p>;
-  if (!tweets) return <p>No tweets found!</p>;
+const LatestTweets: NextPage<Props> = ({ data }: Props) => {
+  if (!data) return <p>No tweets found!</p>;
 
   return (
     <div>
@@ -46,7 +29,7 @@ const LatestTweets: NextPage = () => {
         <Text fontWeight="medium" fontSize={24}>
           Latest tweets
         </Text>
-        {tweets?.map((tweet) => (
+        {data?.map((tweet) => (
           <TweetInfo key={tweet.id} tweet={tweet} />
         ))}
       </Flex>
@@ -55,3 +38,15 @@ const LatestTweets: NextPage = () => {
 };
 
 export default LatestTweets;
+
+export async function getServerSideProps() {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/latest_tweets`,
+  );
+  const data = await response.json();
+  return {
+    props: {
+      data,
+    },
+  };
+}
