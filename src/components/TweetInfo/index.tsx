@@ -1,12 +1,12 @@
 import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
 import { TweetData } from 'types/Tweet';
 
-interface TwitterInfoProps {
+interface TweetInfoProps {
   tweet: TweetData;
   key?: string;
 }
 
-const TwitterInfo = ({ tweet }: TwitterInfoProps) => {
+const TweetInfo = ({ tweet }: TweetInfoProps) => {
   return (
     <Link
       href={`https://twitter.com/${tweet.userInfo.username}/status/${tweet.id}`}
@@ -58,4 +58,4 @@ const TwitterInfo = ({ tweet }: TwitterInfoProps) => {
   );
 };
 
-export default TwitterInfo;
+export default TweetInfo;
