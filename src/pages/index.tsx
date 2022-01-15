@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react';
 import { FaTwitter, FaPatreon } from 'react-icons/fa';
 import { useState } from 'react';
-import ForkMeCorner from '../components/ForkMeCorner';
+import ForkMeCorner from '@components/ForkMeCorner';
 
 const Home: NextPage = () => {
   const [text, setText] = useState('');
