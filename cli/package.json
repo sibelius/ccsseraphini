@@ -1,0 +1,25 @@
+{
+  "name": "ccsseraphini",
+  "version": "0.0.1",
+  "description": "ccsseraphini is a CLI to solve all your doubts about everything.",
+  "main": "index.js",
+  "bin": {
+    "ccsseraphini": "./bin/cli.js"
+  },
+  "scripts": {
+    "ccsseraphini": "node ./bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sibelius/ccsseraphini.git"
+  },
+  "author": "victordantasdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sibelius/ccsseraphini/issues"
+  },
+  "homepage": "https://github.com/sibelius/ccsseraphini#readme",
+  "dependencies": {
+    "open": "^8.4.0"
+  }
+}
