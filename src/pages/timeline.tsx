@@ -1,15 +1,16 @@
 import type { NextPage } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { Flex, Text } from '@chakra-ui/react';
-import { TweetData } from 'types/Tweet';
-import TweetInfo from 'components/TweetInfo';
+import { TweetData } from '../types/Tweet';
+import TweetInfo from '../components/TweetInfo';
 
 interface Props {
   data?: TweetData[];
   error?: boolean;
 }
 
-const LatestTweets: NextPage<Props> = ({ data, error }: Props) => {
+const Timeline: NextPage<Props> = ({ data, error }: Props) => {
   if (error) {
     return (
       <Flex
@@ -49,10 +50,17 @@ const LatestTweets: NextPage<Props> = ({ data, error }: Props) => {
   );
 };
 
-export default LatestTweets;
+export default Timeline;
 
-export async function getServerSideProps() {
-  const response = await fetch(`${process.env.API_URL}/latest_tweets`);
+export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+  // @ts-ignore
+  const httpProtocol = ctx.req.headers.host.includes('localhost')
+    ? 'http'
+    : 'https';
+
+  const url = `${httpProtocol}://${ctx.req.headers.host}/api/latest_tweets`;
+
+  const response = await fetch(url);
   if (response.status !== 200) {
     return {
       props: {
@@ -67,4 +75,4 @@ export async function getServerSideProps() {
       data,
     },
   };
-}
+};
