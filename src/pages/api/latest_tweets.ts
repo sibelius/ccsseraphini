@@ -20,6 +20,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
+  if (!process.env.TWITTER_BEARER_TOKEN) {
+    return res.status(401).json({
+      error: 'No Bearer Token found found',
+    });
+  }
+
   const url =
     `${BASE_URL}/${RECENT_TWEETS_URL}?query=${QUERY}&tweet.fields=${TWEET_FIELDS}` +
     `&user.fields=${USER_FIELDS}&expansions=${EXPANSIONS}&max_results=${MAX_RESULTS}`;
