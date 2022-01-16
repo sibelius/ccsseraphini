@@ -1,9 +1,5 @@
-import React from 'react';
-
-// Using render and screen from test-utils.js instead of
-// @testing-library/react
-import { render, screen, fireEvent } from '../test-utils';
-import Home from '@pages/index';
+import { render, screen, fireEvent } from '@testing-library/react';
+import Home from '../index';
 
 describe('Home', () => {
   it('should render the page properly', () => {

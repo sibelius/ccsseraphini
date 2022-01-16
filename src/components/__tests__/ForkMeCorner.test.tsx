@@ -1,8 +1,5 @@
-import React from 'react';
-
-import { render, screen } from '../../test-utils';
-import Home from '@pages/index';
-import ForkMeCorner from '@components/ForkMeCorner';
+import { render, screen } from '@testing-library/react';
+import ForkMeCorner from '../ForkMeCorner';
 
 describe('ForkMeCorner', () => {
   it('should render the component properly', () => {
