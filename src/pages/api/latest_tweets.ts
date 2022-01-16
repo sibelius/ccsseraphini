@@ -1,5 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { TwitterResponseTweetInfo, TwitterResponseUserInfo } from 'types/Tweet';
+import {
+  TwitterResponseTweetInfo,
+  TwitterResponseUserInfo,
+} from '../../types/Tweet';
 
 interface TwitterResponse {
   data: TwitterResponseTweetInfo[];
