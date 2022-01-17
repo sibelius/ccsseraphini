@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "16"
-      - run: yarn
-      - run: yarn jest
-      - run: yarn tsc
+      - run: yarn set version berry
+      - run: yarn plugin import workspace-tools
+      - run: yarn workspaces foreach run lint
+      - run: yarn workspaces foreach run test
