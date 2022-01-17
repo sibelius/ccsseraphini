@@ -7,7 +7,8 @@
     "ccsseraphini": "./bin/cli.js"
   },
   "scripts": {
-    "ccsseraphini": "node ./bin/cli.js"
+    "dev": "node ./bin/cli.js",
+    "lint": "eslint '**/*.js'"
   },
   "repository": {
     "type": "git",
