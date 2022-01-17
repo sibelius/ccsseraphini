@@ -7,6 +7,7 @@ import { Timeline } from '../components/Timeline';
 
 interface Props {
   tweets?: TweetData[];
+  nextToken?: string;
   error?: boolean;
 }
 
@@ -19,7 +20,10 @@ const HomePage: NextPage<Props> = (props: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Home />
-      <Timeline tweets={props.tweets} />
+      <Timeline
+        initialTweets={props.tweets}
+        initialNextToken={props.nextToken}
+      />
     </div>
   );
 };
@@ -46,7 +50,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   return {
     props: {
-      tweets: data,
+      tweets: data?.tweets,
+      nextToken: data?.nextToken,
     },
   };
 };
