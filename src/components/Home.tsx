@@ -24,8 +24,8 @@ export const Home = () => {
         />
 
         <Flex
-          minW="sm"
-          maxW="sm"
+          minW={{ base: '98%', md: 'sm' }}
+          maxW="98%"
           borderWidth="1px"
           borderColor="gray.500"
           borderRadius="lg"
