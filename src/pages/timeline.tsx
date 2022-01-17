@@ -43,7 +43,7 @@ const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
   );
 };
 
-export default TimelinePage;
+export default Timeline;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   // @ts-ignore
