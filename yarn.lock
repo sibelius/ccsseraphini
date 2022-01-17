@@ -455,6 +455,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ccsseraphini/cli@workspace:apps/cli"
   dependencies:
+    eslint: 8.7.0
     open: 8.4.0
   bin:
     ccsseraphini: ./bin/cli.js

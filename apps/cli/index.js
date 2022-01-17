@@ -1,21 +1,21 @@
 const pkg = require('./package.json');
 
-function color(str, color) {
+function color(str, colorParam) {
   const reset = '\x1b[0m';
 
-  if (color === 'red') {
-    return `${'\x1b[31m' + str + reset}`;
+  if (colorParam === 'red') {
+    return `\x1b[31m${str}${reset}`;
   }
 
-  if (color === 'yellow') {
-    return `${'\x1b[33m' + str + reset}`;
+  if (colorParam === 'yellow') {
+    return `\x1b[33m${str}${reset}`;
   }
 
-  if (color === 'green') {
-    return `${'\x1b[32m' + str + reset}`;
+  if (colorParam === 'green') {
+    return `\x1b[32m${str}${reset}`;
   }
 
-  return `${str + reset}`;
+  return `${str}${reset}`;
 }
 
 function showHelp() {

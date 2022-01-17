@@ -22,5 +22,10 @@
   "homepage": "https://github.com/sibelius/ccsseraphini#readme",
   "dependencies": {
     "open": "8.4.0"
+  },
+  "devDependencies": {
+    "eslint": "8.7.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.25.4"
   }
 }
