@@ -21,3 +21,4 @@ jobs:
       - run: yarn workspaces foreach install
       - run: yarn workspaces foreach run lint
       - run: yarn workspaces foreach run test
+      - run: yarn workspace @ccsseraphini/web run tsc
