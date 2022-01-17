@@ -1,25 +1,27 @@
 #!/usr/bin/env node
 
 const open = require('open');
-const { showHelp, showVersion, showErrorMsg } = require('../index');
+const { showHelp, showVersion, showErrorMessage } = require('../index');
 
 async function main() {
-  const validFlags = ['-v', '--version', '-h', ' --help'];
   const message = process.argv[2];
 
+  const validOptions = ['-v', '--version', '-h', ' --help'];
+  const options = {
+    help: ['-h', '--help', undefined],
+    version: ['-v', '--version'],
+  }
+
   if (
-    message === undefined ||
-    message.toLowerCase() === '-h' ||
-    message.toLowerCase() === '--help'
+    options.help.includes(message?.toLowerCase())
   ) {
     showHelp();
   } else if (
-    message.toLowerCase() === '-v' ||
-    message.toLowerCase() === '--version'
+    options.version.includes(message?.toLowerCase())
   ) {
     showVersion();
-  } else if (message.charAt(0) === '-' && !validFlags.includes(message)) {
-    showErrorMsg(message);
+  } else if (message.charAt(0) === '-' && !validOptions.includes(message)) {
+    showErrorMessage(message);
   } else {
     return await open(
       `https://twitter.com/intent/tweet?text=${message}%0Acc%20%40sseraphini`,

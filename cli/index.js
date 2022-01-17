@@ -8,8 +8,8 @@ function color(str, color) {
     green: '\x1b[32m',
   };
 
-  const resetedStr = `${str + reset}`;
-  return (colors[color] || '') + resetedStr;
+  const resetedStr = `${str}${reset}`;
+  return `${colors[color]}${resetedStr}`;
 }
 
 function showHelp() {
@@ -39,7 +39,7 @@ function showVersion() {
   console.log(color(`${pkg.name} ${pkg.version}`, 'green'));
 }
 
-function showErrorMsg(arg) {
+function showErrorMessage(arg) {
   console.log(
     `${color('Error', 'red')}: Found argument '${color(
       arg,
@@ -59,5 +59,5 @@ For more information try ${color('--help', 'green')} or ${color(
 module.exports = {
   showHelp,
   showVersion,
-  showErrorMsg,
+  showErrorMessage,
 };
