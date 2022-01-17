@@ -20,5 +20,6 @@ jobs:
           node-version: "16"
       - run: yarn set version berry
       - run: yarn plugin import workspace-tools
+      - run: yarn workspaces foreach install
       - run: yarn workspaces foreach run lint
       - run: yarn workspaces foreach run test
