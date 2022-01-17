@@ -6,11 +6,14 @@ import { TweetData } from '../types/Tweet';
 import { Timeline } from '../components/Timeline';
 
 interface Props {
-  tweets?: TweetData[];
+  data?: {
+    tweets?: TweetData[];
+    nextToken?: string;
+  };
   error?: boolean;
 }
 
-const TimelinePage: NextPage<Props> = ({ tweets, error }: Props) => {
+const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
   if (error) {
     return (
       <Flex
@@ -32,7 +35,10 @@ const TimelinePage: NextPage<Props> = ({ tweets, error }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Timeline tweets={tweets} />
+      <Timeline
+        initialTweets={data?.tweets}
+        initialNextToken={data?.nextToken}
+      />
     </div>
   );
 };
@@ -55,11 +61,14 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
       },
     };
   }
-  const data = await response.json();
 
+  const data = await response.json();
   return {
     props: {
-      tweets: data,
+      data: {
+        tweets: data?.tweets,
+        nextToken: data?.nextToken,
+      },
     },
   };
 };
