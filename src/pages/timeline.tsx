@@ -3,14 +3,14 @@ import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { Flex, Text } from '@chakra-ui/react';
 import { TweetData } from '../types/Tweet';
-import TweetInfo from '../components/TweetInfo';
+import { Timeline } from '../components/Timeline';
 
 interface Props {
-  data?: TweetData[];
+  tweets?: TweetData[];
   error?: boolean;
 }
 
-const Timeline: NextPage<Props> = ({ data, error }: Props) => {
+const TimelinePage: NextPage<Props> = ({ tweets, error }: Props) => {
   if (error) {
     return (
       <Flex
@@ -32,25 +32,12 @@ const Timeline: NextPage<Props> = ({ data, error }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Flex
-        alignItems="center"
-        justifyContent="center"
-        flexDirection="column"
-        px={4}
-        py={8}
-      >
-        <Text fontWeight="medium" fontSize={24}>
-          Latest tweets
-        </Text>
-        {data?.map((tweet) => (
-          <TweetInfo key={tweet.id} tweet={tweet} />
-        ))}
-      </Flex>
+      <Timeline tweets={tweets} />
     </div>
   );
 };
 
-export default Timeline;
+export default TimelinePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   // @ts-ignore
@@ -72,7 +59,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   return {
     props: {
-      data,
+      tweets: data,
     },
   };
 };
