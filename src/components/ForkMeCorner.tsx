@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 interface Props {
@@ -48,7 +47,6 @@ const ForkMeCorner = ({
 }: Props) => (
   <Corner
     href={repo}
-    className="github-corner"
     aria-label="View source on GitHub"
     bgColor={bgColor}
     octoColor={octoColor}
