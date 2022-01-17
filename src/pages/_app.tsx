@@ -3,7 +3,6 @@ import { ChakraProvider, useColorMode } from '@chakra-ui/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { colorMode, toggleColorMode } = useColorMode();
-  console.log('Default color mode: ', colorMode);
 
   return (
     <ChakraProvider resetCSS>
