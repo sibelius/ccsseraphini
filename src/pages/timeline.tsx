@@ -1,11 +1,10 @@
-import { useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { Flex, Text } from '@chakra-ui/react';
 import { TweetData } from '../types/Tweet';
-import TweetInfo from '../components/TweetInfo';
+import { Timeline } from '../components/Timeline';
+
 interface Props {
   data?: {
     tweets: TweetData[];
@@ -14,17 +13,7 @@ interface Props {
   error?: boolean;
 }
 
-const Timeline: NextPage<Props> = ({ data, error }: Props) => {
-  const [tweets, setTweets] = useState(data?.tweets);
-  const [nextToken, setNextToken] = useState(data?.nextToken);
-
-  const fetchData = async () => {
-    const response = await fetch(`/api/latest_tweets?nextToken=${nextToken}`);
-    const json = await response.json();
-    setNextToken(json.nextToken);
-    setTweets([...(tweets || []), ...json.tweets]);
-  };
-
+const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
   if (error) {
     return (
       <Flex
@@ -46,32 +35,15 @@ const Timeline: NextPage<Props> = ({ data, error }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Flex
-        alignItems="center"
-        justifyContent="center"
-        flexDirection="column"
-        px={4}
-        py={8}
-      >
-        <Text fontWeight="medium" fontSize={24}>
-          Latest tweets
-        </Text>
-        <InfiniteScroll
-          dataLength={tweets?.length || 0}
-          next={fetchData}
-          hasMore={true}
-          loader={<Text>Loading...</Text>}
-        >
-          {tweets?.map((tweet) => (
-            <TweetInfo key={tweet.id} tweet={tweet} />
-          ))}
-        </InfiniteScroll>
-      </Flex>
+      <Timeline
+        initialTweets={data?.tweets}
+        initialNextToken={data?.nextToken}
+      />
     </div>
   );
 };
 
-export default Timeline;
+export default TimelinePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   // @ts-ignore
@@ -93,7 +65,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   return {
     props: {
-      data,
+      data: {
+        tweets: data.tweets,
+        nextToken: data.nextToken,
+      },
     },
   };
 };
