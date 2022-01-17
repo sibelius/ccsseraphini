@@ -1,9 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Home from '../../../src/pages';
 
-it('should render the page properly', () => {
+beforeEach(() => {
   render(<Home />);
+});
 
+it('should render the page properly', () => {
   // @ts-ignore
   const image = screen.getByRole('img', { alt: 'Sibelius Seraphini' });
   expect(image).toBeInTheDocument();
@@ -17,8 +19,6 @@ it('should render the page properly', () => {
 it('should have a link with the correct value', () => {
   const user = `\ncc @sseraphini`;
   const encode = (str: string) => encodeURIComponent(str);
-
-  render(<Home />);
 
   const textarea = screen.getByRole('textbox');
 
@@ -44,7 +44,6 @@ it('should display a correct counter when the value changes', () => {
   const user = `\ncc @sseraphini`;
   const encode = (str: string) => encodeURIComponent(str);
 
-  render(<Home />);
   const textarea = screen.getByRole('textbox');
 
   let count = 279 - user.length;
@@ -66,8 +65,6 @@ it('should display a correct counter when the value changes', () => {
 it('should have a link with the twitter follow url', () => {
   const user = `sseraphini`;
 
-  render(<Home />);
-
   expect(screen.getByText('Follow').closest('a')).toHaveAttribute(
     'href',
     `https://twitter.com/intent/user?screen_name=${user}`,
@@ -77,8 +74,6 @@ it('should have a link with the twitter follow url', () => {
 it('should have a link with the patreon url', () => {
   const user = `sibelius`;
 
-  render(<Home />);
-
   expect(screen.getByText('Sponsor').closest('a')).toHaveAttribute(
     'href',
     `https://www.patreon.com/${user}`,
@@ -87,8 +82,6 @@ it('should have a link with the patreon url', () => {
 
 it('should have a link with the articles url', () => {
   const user = `sibelius`;
-
-  render(<Home />);
 
   expect(screen.getByText('Articles').closest('a')).toHaveAttribute(
     'href',
