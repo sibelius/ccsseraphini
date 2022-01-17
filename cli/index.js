@@ -2,20 +2,14 @@ const pkg = require('./package.json');
 
 function color(str, color) {
   const reset = '\x1b[0m';
+  const colors = {
+    red: '\x1b[31m',
+    yellow: '\x1b[33m',
+    green: '\x1b[32m',
+  };
 
-  if (color === 'red') {
-    return `${'\x1b[31m' + str + reset}`;
-  }
-
-  if (color === 'yellow') {
-    return `${'\x1b[33m' + str + reset}`;
-  }
-
-  if (color === 'green') {
-    return `${'\x1b[32m' + str + reset}`;
-  }
-
-  return `${str + reset}`;
+  const resetedStr = `${str + reset}`;
+  return (colors[color] || '') + resetedStr;
 }
 
 function showHelp() {
@@ -23,33 +17,42 @@ function showHelp() {
     `${color(pkg.name, 'green')} ${color(pkg.version, 'green')}
 ${pkg.description}
 
-${color('USAGE', 'yellow')}:
+${color('USAGE:', 'yellow')}
   npx ccsseraphini [QUESTION]
 
-${color('EXAMPLE', 'yellow')}:
+${color('EXAMPLE:', 'yellow')}
   npx ccsseraphini "How can I learn Relay?"
 
-${color('OPTIONS', 'yellow')}:
-  -h, --help                           Print this help message.
-  -V, --version                        Show version information.`,
+${color('OPTIONS:', 'yellow')}
+  ${color('-h', 'green')}, ${color(
+      '--help',
+      'green',
+    )}      Print this help message.
+  ${color('-v', 'green')}, ${color(
+      '--version',
+      'green',
+    )}   Show version information.`,
   );
 }
 
 function showVersion() {
-  console.log(pkg.name, pkg.version);
+  console.log(color(`${pkg.name} ${pkg.version}`, 'green'));
 }
 
-function showErrorMsg(msg) {
+function showErrorMsg(arg) {
   console.log(
-    `${color(
-      'Error',
+    `${color('Error', 'red')}: Found argument '${color(
+      arg,
       'red',
-    )}: Found argument '${msg}' which wasn't expected, or isn't valid in this context!
+    )}' which wasn't expected, or isn't valid in this context!
 
 ${color('USAGE', 'yellow')}:
   npx ccsseraphini [QUESTION]
 
-For more information try --help or -h`,
+For more information try ${color('--help', 'green')} or ${color(
+      '--h',
+      'green',
+    )}`,
   );
 }
 
