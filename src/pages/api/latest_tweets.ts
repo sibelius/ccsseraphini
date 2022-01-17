@@ -9,6 +9,9 @@ interface TwitterResponse {
   includes: {
     users: TwitterResponseUserInfo[];
   };
+  meta: {
+    next_token: string;
+  };
 }
 
 const BASE_URL = 'https://api.twitter.com/2';
@@ -29,9 +32,14 @@ export default async function handler(
     });
   }
 
-  const url =
+  let url =
     `${BASE_URL}/${RECENT_TWEETS_URL}?query=${QUERY}&tweet.fields=${TWEET_FIELDS}` +
     `&user.fields=${USER_FIELDS}&expansions=${EXPANSIONS}&max_results=${MAX_RESULTS}`;
+
+  if (req.query.nextToken) {
+    url += `&next_token=${req.query.nextToken}`;
+  }
+
   const response = await fetch(url, {
     headers: {
       Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
@@ -49,5 +57,8 @@ export default async function handler(
     };
   });
 
-  return res.status(200).json(tweets);
+  return res.status(200).json({
+    tweets,
+    nextToken: tweetsData.meta.next_token,
+  });
 }

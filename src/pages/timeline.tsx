@@ -1,16 +1,30 @@
+import { useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { Flex, Text } from '@chakra-ui/react';
 import { TweetData } from '../types/Tweet';
 import TweetInfo from '../components/TweetInfo';
-
 interface Props {
-  data?: TweetData[];
+  data?: {
+    tweets: TweetData[];
+    nextToken: string;
+  };
   error?: boolean;
 }
 
 const Timeline: NextPage<Props> = ({ data, error }: Props) => {
+  const [tweets, setTweets] = useState(data?.tweets);
+  const [nextToken, setNextToken] = useState(data?.nextToken);
+
+  const fetchData = async () => {
+    const response = await fetch(`/api/latest_tweets?nextToken=${nextToken}`);
+    const json = await response.json();
+    setNextToken(json.nextToken);
+    setTweets([...(tweets || []), ...json.tweets]);
+  };
+
   if (error) {
     return (
       <Flex
@@ -42,9 +56,16 @@ const Timeline: NextPage<Props> = ({ data, error }: Props) => {
         <Text fontWeight="medium" fontSize={24}>
           Latest tweets
         </Text>
-        {data?.map((tweet) => (
-          <TweetInfo key={tweet.id} tweet={tweet} />
-        ))}
+        <InfiniteScroll
+          dataLength={tweets?.length || 0}
+          next={fetchData}
+          hasMore={true}
+          loader={<Text>Loading...</Text>}
+        >
+          {tweets?.map((tweet) => (
+            <TweetInfo key={tweet.id} tweet={tweet} />
+          ))}
+        </InfiniteScroll>
       </Flex>
     </div>
   );
