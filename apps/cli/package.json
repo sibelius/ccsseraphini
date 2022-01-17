@@ -1,5 +1,5 @@
 {
-  "name": "ccsseraphini",
+  "name": "@ccsseraphini/cli",
   "version": "0.0.1",
   "description": "ccsseraphini is a CLI to solve all your doubts about everything.",
   "main": "index.js",
@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/sibelius/ccsseraphini#readme",
   "dependencies": {
-    "open": "^8.4.0"
+    "open": "8.4.0"
   }
 }
