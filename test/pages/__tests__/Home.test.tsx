@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Home from '../index';
+import Home from '../../../src/pages';
 
 it('should render the page properly', () => {
   render(<Home />);
