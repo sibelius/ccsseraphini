@@ -4,9 +4,9 @@ const open = require('open');
 const { showHelp, showVersion, showErrorMessage } = require('../index');
 
 async function main() {
-  const validFlags = ['-v', '--version', '-h', ' --help'];
   const message = process.argv[2];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const validOptions = ['-v', '--version', '-h', ' --help'];
 
@@ -31,19 +31,24 @@ async function main() {
       );
       break;
 =======
+=======
+  const validOptions = ['-v', '--version', '-h', ' --help'];
+  const options = {
+    help: ['-h', '--help', undefined],
+    version: ['-v', '--version'],
+  }
+
+>>>>>>> 0b21f2f (refactor: updating general code parts to improve consistency)
   if (
-    message === undefined ||
-    message.toLowerCase() === '-h' ||
-    message.toLowerCase() === '--help'
+    options.help.includes(message?.toLowerCase())
   ) {
     showHelp();
   } else if (
-    message.toLowerCase() === '-v' ||
-    message.toLowerCase() === '--version'
+    options.version.includes(message?.toLowerCase())
   ) {
     showVersion();
-  } else if (message.charAt(0) === '-' && !validFlags.includes(message)) {
-    showErrorMsg(message);
+  } else if (message.charAt(0) === '-' && !validOptions.includes(message)) {
+    showErrorMessage(message);
   } else {
     return await open(
       `https://twitter.com/intent/tweet?text=${message}%0Acc%20%40sseraphini`,

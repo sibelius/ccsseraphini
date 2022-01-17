@@ -39,11 +39,7 @@ function showVersion() {
   console.log(color(`${pkg.name} ${pkg.version}`, 'green'));
 }
 
-<<<<<<< HEAD
 function showErrorMessage(arg) {
-=======
-function showErrorMsg(arg) {
->>>>>>> 84b0960 (refactor: suggestions for improvements to the cli code done)
   console.log(
     `${color('Error', 'red')}: Found argument '${color(
       arg,
