@@ -57,6 +57,7 @@ For more information try ${color('--help', 'green')} or ${color(
 }
 
 module.exports = {
+  color,
   showHelp,
   showVersion,
   showErrorMessage,

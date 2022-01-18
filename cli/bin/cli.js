@@ -7,25 +7,27 @@ async function main() {
   const message = process.argv[2];
 
   const validOptions = ['-v', '--version', '-h', ' --help'];
-  const options = {
-    help: ['-h', '--help', undefined],
-    version: ['-v', '--version'],
+
+  if (message.charAt(0) === '-' && !validOptions.includes(message)) {
+    return showErrorMessage(message);
   }
 
-  if (
-    options.help.includes(message?.toLowerCase())
-  ) {
-    showHelp();
-  } else if (
-    options.version.includes(message?.toLowerCase())
-  ) {
-    showVersion();
-  } else if (message.charAt(0) === '-' && !validOptions.includes(message)) {
-    showErrorMessage(message);
-  } else {
-    return await open(
-      `https://twitter.com/intent/tweet?text=${message}%0Acc%20%40sseraphini`,
-    );
+  switch (message.toLowerCase()) {
+    case '-v':
+    case '--version':
+      showVersion();
+      break;
+
+    case '-h':
+    case '--help':
+      showHelp();
+      break;
+
+    default:
+      await open(
+        `https://twitter.com/intent/tweet?text=${message}%0Acc%20%40sseraphini`,
+      );
+      break;
   }
 }
 
