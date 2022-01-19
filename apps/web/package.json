@@ -14,6 +14,7 @@
     "@chakra-ui/react": "1.7.4",
     "@emotion/react": "11",
     "@emotion/styled": "11",
+    "@solana/web3.js": "false1.31.0",
     "babel-preset-next": "1.4.0",
     "ethers": "false5.5.3",
     "framer-motion": "5",
