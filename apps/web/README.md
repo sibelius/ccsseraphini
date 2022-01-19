@@ -1,4 +1,4 @@
-# cc @sseraphini
+# cc @sseraphini / web
 
 [cc @sseraphini article](https://sibelius.substack.com/p/cc-sseraphini)
 
@@ -15,9 +15,3 @@ This is the Twitter API Bearer Token. You can get a new one with the following s
 - Create a new project
 - Create an app inside the project
 - After that you will have the API Key, the Bearer Token and the Access Token. In this case we will only need the Bearer Token. After this just add it to the .env file and you are all set.
-
-## How to run locally
-
-```
-yarn dev
-```

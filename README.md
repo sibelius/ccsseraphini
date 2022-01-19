@@ -1,31 +1,23 @@
-# cc @sseraphini
+# cc @sseraphini / monorepo
 
 [cc @sseraphini article](https://sibelius.substack.com/p/cc-sseraphini)
 
-## packages/web
+## Getting Started
 
-[sseraphini.cc](http://sseraphini.cc/)
+This project uses [classic Yarn 1.x Workspaces](https://classic.yarnpkg.com/en/docs/workspaces)
 
-## Setting up the environment variables
+To setup a local development, you can clone and run Yarn in the root of the project:
 
-Before running the project it is needed to create a .env file in the root of the project similar as is in .env.example, but replacing the variables to the correct ones.
-
-### TWITTER_BEARER_TOKEN
-
-This is the Twitter API Bearer Token. You can get a new one with the following steps:
-
-- Access https://developer.twitter.com/en/portal/dashboard
-- Setup a new developer account. It can be a twitter account that you already have
-- Create a new project
-- Create an app inside the project
-- After that you will have the API Key, the Bearer Token and the Access Token. In this case we will only need the Bearer Token. After this just add it to the .env file and you are all set.
-
-## How to run locally
-
-```
-yarn dev
+```bash
+git clone https://github.com/sibelius/ccsseraphini
+cd ccsseraphini
+yarn install
 ```
 
-## packages/cli
+This will install all dependencies for projects inside `apps/`
 
-npx ccseraphini
+Now you can use `yarn workspace` API to start a project:
+
+```bash
+yarn workspace web dev # this will run 'apps/web/package.json' script called 'dev'
+```
