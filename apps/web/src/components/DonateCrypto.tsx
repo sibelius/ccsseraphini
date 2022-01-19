@@ -110,34 +110,7 @@ export const DonateCrypto = () => {
       onDonate(true);
     }
   }, []);
-  async function donateSol(Lamports: 0.04) {
-    // Phantom provider
-    await window.solana.connect();
-    const buyerWallet = await window.solana;
-    console.log(buyerWallet);
-    let connection = new Connection('https://api.mainnet-beta.solana.com');
-    let sibeliusWallet = new PublicKey(
-      '24gVn4dinDmqHeCmXHhySet3swxMc3Jup7iYSFTbgztm',
-    );
-    let transferSolIx = web3.SystemProgram.transfer({
-      fromPubkey: buyerWallet.publicKey,
-      lamports: LAMPORTS_PER_SOL * Lamports,
-      toPubkey: sibeliusWallet,
-    });
 
-    let transferSolTx = new Transaction();
-    transferSolTx.add(transferSolIx);
-
-    let recentBlockhash = await connection.getRecentBlockhash();
-    transferSolTx.recentBlockhash = recentBlockhash.blockhash;
-
-    transferSolTx.feePayer = buyerWallet.publicKey;
-
-    let signedTx = await buyerWallet.signTransaction(transferSolTx);
-    console.log('signedTx: ', signedTx);
-    let idTx = await connection.sendRawTransaction(signedTx.serialize());
-    await connection.confirmTransaction(idTx);
-  }
   return (
     <>
       <Stack
@@ -158,19 +131,6 @@ export const DonateCrypto = () => {
           isLoading={isLoading}
         >
           Donate Crypto {donateAmount} ETH (~5,00USD)
-        </Button>
-        <Button
-          backgroundColor="white"
-          borderWidth="1px"
-          borderColor="gray.500"
-          borderRadius="lg"
-          /* leftIcon={} */
-          mt={{ base: '0', md: '10px' }}
-          size="sm"
-          onClick={() => donateSol(0.04)}
-          isLoading={isLoading}
-        >
-          Donate Crypto {'0.04'} SOL (~5,00USD)
         </Button>
       </Stack>
     </>
