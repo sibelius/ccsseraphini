@@ -2,6 +2,7 @@ import ForkMeCorner from './ForkMeCorner';
 import { Flex, Image } from '@chakra-ui/react';
 import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
+import { DonateCrypto } from './DonateCrypto';
 
 export const Home = () => {
   return (
@@ -36,6 +37,7 @@ export const Home = () => {
         >
           <TweetComposer />
           <ActionButtons />
+          <DonateCrypto />
         </Flex>
       </Flex>
     </>
