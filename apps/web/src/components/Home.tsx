@@ -1,13 +1,13 @@
-import ForkMeCorner from './ForkMeCorner';
 import { Flex, Image } from '@chakra-ui/react';
 import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
 import { DonateCrypto } from './DonateCrypto';
+import { ForkMe } from 'fork-me-corner';
 
 export const Home = () => {
   return (
     <>
-      <ForkMeCorner repo="https://github.com/sibelius/ccsseraphini" />
+      <ForkMe repo="https://github.com/sibelius/ccsseraphini" />
       <Flex
         height="100vh"
         alignItems="center"
