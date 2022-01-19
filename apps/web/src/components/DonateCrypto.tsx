@@ -5,6 +5,8 @@ import { ethers } from 'ethers';
 import { ccsseraphiniAddressEthereum } from './cryptoAddress';
 import { useToast } from '@chakra-ui/react';
 
+declare let window: any;
+
 export const donateAmount = '0.002';
 
 export const delay = (ms = 1000) => {
