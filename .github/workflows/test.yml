@@ -19,5 +19,6 @@ jobs:
         with:
           node-version: "16"
       - run: yarn
-      - run: yarn jest
-      - run: yarn tsc
+      - run: yarn lint
+      - run: yarn test
+      - run: yarn check-types

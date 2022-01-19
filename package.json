@@ -1,18 +1,16 @@
 {
-  "name": "ccsseraphini",
-  "dependencies": {
-    "@chakra-ui/react": "^1.7.4",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "babel-preset-next": "^1.4.0",
-    "framer-motion": "^5",
-    "next": "12.0.8",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-icons": "^4.3.1",
-    "react-infinite-scroll-component": "^6.1.0",
-    "styled-components": "^5.3.3"
+  "private": true,
+  "scripts": {
+    "build": "turbo run build --parallel",
+    "check-types": "turbo run check-types --parallel",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint --parallel",
+    "prepare": "husky install",
+    "test": "turbo run test --parallel"
   },
+  "workspaces": [
+    "apps/*"
+  ],
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -30,15 +28,35 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
-    "*.{js,ts,tsx,css,md}": "prettier --write"
+    "*.{js,ts,tsx,css,md}": "prettier --write",
+    "package.json": "prettier-package-json --write"
   },
-  "private": true,
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "lint": "next lint",
-    "prepare": "husky install",
-    "start": "next start",
-    "test": "jest"
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true
+  },
+  "turbo": {
+    "baseBranch": "origin/main",
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build"
+        ]
+      },
+      "test": {
+        "dependsOn": [
+          "^build"
+        ]
+      },
+      "lint": {
+        "outputs": []
+      },
+      "check-types": {
+        "cache": false
+      },
+      "dev": {
+        "cache": false
+      }
+    }
   }
 }
