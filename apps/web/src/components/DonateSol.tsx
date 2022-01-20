@@ -1,4 +1,4 @@
-import { Button, Stack } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 
 import {
   Connection,
@@ -7,31 +7,63 @@ import {
   Transaction,
 } from '@solana/web3.js';
 import { ccsseraphiniAddressSolana } from './cryptoAddress';
+import * as web3 from '@solana/web3.js';
+import { useCallback, useState } from 'react';
+import { useToast } from '@chakra-ui/react';
+import { PhantomLogo } from './PhantomLogo';
+
 declare const window: any;
-const web3 = require('@solana/web3.js');
+
+export const donateAmount = 0.04;
 
 export const DonateSol = () => {
-  async function onDonate(Lamports: 0.04) {
-    // Phantom provider
-    await window.solana.connect();
-    const buyerWallet = await window.solana;
-    const connection = new Connection('https://api.mainnet-beta.solana.com');
-    const sibeliusWallet = new PublicKey(ccsseraphiniAddressSolana);
-    const transferSolIx = web3.SystemProgram.transfer({
-      fromPubkey: buyerWallet.publicKey,
-      lamports: LAMPORTS_PER_SOL * Lamports,
-      toPubkey: sibeliusWallet,
-    });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const transferSolTx = new Transaction();
-    transferSolTx.add(transferSolIx);
-    const recentBlockhash = await connection.getRecentBlockhash();
-    transferSolTx.recentBlockhash = recentBlockhash.blockhash;
-    transferSolTx.feePayer = buyerWallet.publicKey;
-    const signedTx = await buyerWallet.signTransaction(transferSolTx);
-    const idTx = await connection.sendRawTransaction(signedTx.serialize());
-    await connection.confirmTransaction(idTx);
-  }
+  const toast = useToast();
+
+  const onDonate = useCallback(async (lamports: number) => {
+    try {
+      setIsLoading(true);
+      // Phantom provider
+      await window.solana.connect();
+      const buyerWallet = await window.solana;
+      const connection = new Connection('https://api.mainnet-beta.solana.com');
+      const sibeliusWallet = new PublicKey(ccsseraphiniAddressSolana);
+      const transferSolIx = web3.SystemProgram.transfer({
+        fromPubkey: buyerWallet.publicKey,
+        lamports: LAMPORTS_PER_SOL * lamports,
+        toPubkey: sibeliusWallet,
+      });
+
+      const transferSolTx = new Transaction();
+      transferSolTx.add(transferSolIx);
+      const recentBlockhash = await connection.getRecentBlockhash();
+      transferSolTx.recentBlockhash = recentBlockhash.blockhash;
+      transferSolTx.feePayer = buyerWallet.publicKey;
+      const signedTx = await buyerWallet.signTransaction(transferSolTx);
+      const idTx = await connection.sendRawTransaction(signedTx.serialize());
+      await connection.confirmTransaction(idTx);
+
+      toast({
+        title: 'Successfull Donation',
+        description: 'Thanks for the donation',
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      });
+    } catch (err) {
+      console.log(err);
+      toast({
+        title: 'Error',
+        description: JSON.stringify(err),
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+
+    setIsLoading(false);
+  }, []);
 
   return (
     <Button
@@ -39,10 +71,11 @@ export const DonateSol = () => {
       borderWidth="1px"
       borderColor="gray.500"
       borderRadius="lg"
-      // leftIcon={}
+      leftIcon={<PhantomLogo width={100} height={100} />}
       mt={{ base: '0', md: '10px' }}
       size="sm"
-      onClick={() => onDonate(0.04)}
+      onClick={() => onDonate(donateAmount)}
+      isLoading={isLoading}
     >
       Donate Crypto 0.04 SOL (~5,00USD)
     </Button>
