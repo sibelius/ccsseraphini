@@ -19,6 +19,17 @@ export const DonateEth = () => {
   const toast = useToast();
 
   const onDonate = useCallback(async (retry = false) => {
+    if (window.ethereum === undefined) {
+      toast({
+        title: 'Error',
+        description: 'Check if MetaMask is installed.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
