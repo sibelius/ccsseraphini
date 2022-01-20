@@ -1,13 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`cc @sseraphini / cli show error 1`] = `
-"[31mError[0m: Found argument '-bla' which wasn't expected, or isn't valid in this context!
+Array [
+  "[31mError[0m: Found argument '-blah' which wasn't expected, or isn't valid in this context!
 
 [33mUSAGE[0m:
   npx ccsseraphini [QUESTION]
 
-For more information try --help or -h
-"
+For more information try --help or -h",
+]
 `;
 
 exports[`cc @sseraphini / cli show help 1`] = `
@@ -22,8 +23,7 @@ ccsseraphini is a CLI to solve all your doubts about everything.
 
 [33mOPTIONS[0m:
   -h, --help                           Print this help message.
-  -V, --version                        Show version information.
-"
+  -V, --version                        Show version information."
 `;
 
 exports[`cc @sseraphini / cli show help 2`] = `
@@ -38,8 +38,7 @@ ccsseraphini is a CLI to solve all your doubts about everything.
 
 [33mOPTIONS[0m:
   -h, --help                           Print this help message.
-  -V, --version                        Show version information.
-"
+  -V, --version                        Show version information."
 `;
 
 exports[`cc @sseraphini / cli show help 3`] = `
@@ -54,16 +53,19 @@ ccsseraphini is a CLI to solve all your doubts about everything.
 
 [33mOPTIONS[0m:
   -h, --help                           Print this help message.
-  -V, --version                        Show version information.
-"
+  -V, --version                        Show version information."
 `;
 
 exports[`cc @sseraphini / cli show version 1`] = `
-"cli 0.0.1
-"
+Array [
+  "cli",
+  "0.0.1",
+]
 `;
 
 exports[`cc @sseraphini / cli show version 2`] = `
-"cli 0.0.1
-"
+Array [
+  "cli",
+  "0.0.1",
+]
 `;
