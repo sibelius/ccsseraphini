@@ -12,9 +12,6 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "5.10.0",
-    "@typescript-eslint/parser": "5.10.0",
-    "eslint": "8.7.0",
     "husky": "7.0.4",
     "lint-staged": "12.2.2",
     "prettier": "2.5.1",
