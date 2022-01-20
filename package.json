@@ -12,13 +12,15 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "false5.10.0",
-    "@typescript-eslint/parser": "false5.10.0",
+    "@typescript-eslint/eslint-plugin": "5.10.0",
+    "@typescript-eslint/parser": "5.10.0",
+    "eslint": "8.7.0",
     "husky": "7.0.4",
     "lint-staged": "12.2.2",
     "prettier": "2.5.1",
     "prettier-package-json": "2.6.0",
-    "turbo": "1.0.28"
+    "turbo": "1.0.28",
+    "typescript": "4.5.4"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
