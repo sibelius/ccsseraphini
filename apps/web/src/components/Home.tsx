@@ -1,7 +1,7 @@
 import { Flex, Image } from '@chakra-ui/react';
 import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
-import { DonateCrypto } from './DonateCrypto';
+import { DonateEth } from './DonateEth';
 import { DonateSol } from './DonateSol';
 import { ForkMe } from 'fork-me-corner';
 
@@ -38,7 +38,7 @@ export const Home = () => {
         >
           <TweetComposer />
           <ActionButtons />
-          <DonateCrypto />
+          <DonateEth />
           <DonateSol />
         </Flex>
       </Flex>

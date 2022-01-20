@@ -2,17 +2,10 @@ import { Button, Stack } from '@chakra-ui/react';
 import { MetaMaskLogo } from './MetaMaskLogo';
 import { useCallback, useState } from 'react';
 import { ethers } from 'ethers';
-import {
-  Connection,
-  LAMPORTS_PER_SOL,
-  PublicKey,
-  Transaction,
-} from '@solana/web3.js';
 import { ccsseraphiniAddressEthereum } from './cryptoAddress';
 import { useToast } from '@chakra-ui/react';
 
 declare let window: any;
-const web3 = require('@solana/web3.js');
 
 export const donateAmount = '0.002';
 
@@ -20,7 +13,7 @@ export const delay = (ms = 1000) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-export const DonateCrypto = () => {
+export const DonateEth = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const toast = useToast();
