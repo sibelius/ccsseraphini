@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "ccsseraphini is a CLI to solve all your doubts about everything.",
   "license": "ISC",
-  "author": "victordantasdev",
+  "author": "victordantasdev <victordantasdeveloper@gmail.com>",
   "homepage": "https://github.com/sibelius/ccsseraphini#readme",
   "repository": {
     "type": "git",
@@ -21,7 +21,8 @@
     "lint": "eslint '**/*.js'"
   },
   "dependencies": {
-    "open": "8.4.0"
+    "open": "8.4.0",
+    "yargs": "false17.3.1"
   },
   "devDependencies": {
     "eslint": "8.7.0"
