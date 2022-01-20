@@ -1,34 +1,29 @@
 #!/usr/bin/env node
-
 const open = require('open');
-const { showHelp, showVersion, showErrorMessage } = require('../index');
+const yargs = require('yargs/yargs');
+const chalk = require('chalk');
 
-async function main() {
-  const message = process.argv[2];
+const name = chalk.green('ccsseraphini');
+const title = `${name} is a CLI to solve all your doubts about everything.`;
+const subtitle = `${chalk.yellow('Usage  :')} npx ccsseraphini [options]
+${chalk.yellow('Example:')} npx ccsseraphini -t "How can I learn Relay?"`;
 
-  const validOptions = ['-v', '--version', '-h', ' --help'];
+const argv = yargs(process.argv.slice(2))
+  .usage(`${title}\n\n${subtitle}`)
+  .help('help')
+  .alias('help', 'h')
+  .version()
+  .alias('version', 'V')
+  .options({
+    tweet: {
+      alias: 't',
+      description: 'Write your tweet concept/question',
+      required: true,
+    },
+  }).argv;
 
-  if (message.charAt(0) === '-' && !validOptions.includes(message)) {
-    return showErrorMessage(message);
-  }
-
-  switch (message.toLowerCase()) {
-    case '-v':
-    case '--version':
-      showVersion();
-      break;
-
-    case '-h':
-    case '--help':
-      showHelp();
-      break;
-
-    default:
-      await open(
-        `https://twitter.com/intent/tweet?text=${message}%0Acc%20%40sseraphini`,
-      );
-      break;
-  }
+if (argv.tweet) {
+  open(
+    `https://twitter.com/intent/tweet?text=${argv.tweet}%0Acc%20%40sseraphini`,
+  );
 }
-
-main();
