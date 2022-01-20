@@ -13,12 +13,23 @@ export const delay = (ms = 1000) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
-export const DonateCrypto = () => {
+export const DonateEth = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const toast = useToast();
 
   const onDonate = useCallback(async (retry = false) => {
+    if (window.ethereum === undefined) {
+      toast({
+        title: 'Error',
+        description: 'Check if MetaMask is installed.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
