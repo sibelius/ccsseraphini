@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const pkg = require('../package.json');
 const { showErrorMessage, color } = require('../index');
 const open = require('open');

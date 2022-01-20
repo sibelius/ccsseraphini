@@ -2,12 +2,12 @@
 
 exports[`cc @sseraphini / cli show error 1`] = `
 Array [
-  "[31mError[0m: Found argument '-blah' which wasn't expected, or isn't valid in this context!
+  "[31mError[0m: Found argument '[31m-blah[0m' which wasn't expected, or isn't valid in this context!
 
 [33mUSAGE[0m:
   npx ccsseraphini [QUESTION]
 
-For more information try --help or -h",
+For more information try [32m--help[0m or [32m--h[0m",
 ]
 `;
 
@@ -15,57 +15,55 @@ exports[`cc @sseraphini / cli show help 1`] = `
 "[32mcli[0m [32m0.0.1[0m
 ccsseraphini is a CLI to solve all your doubts about everything.
 
-[33mUSAGE[0m:
+[33mUSAGE:[0m
   npx ccsseraphini [QUESTION]
 
-[33mEXAMPLE[0m:
+[33mEXAMPLE:[0m
   npx ccsseraphini \\"How can I learn Relay?\\"
 
-[33mOPTIONS[0m:
-  -h, --help                           Print this help message.
-  -V, --version                        Show version information."
+[33mOPTIONS:[0m
+  [32m-h[0m, [32m--help[0m      Print this help message.
+  [32m-v[0m, [32m--version[0m   Show version information."
 `;
 
 exports[`cc @sseraphini / cli show help 2`] = `
 "[32mcli[0m [32m0.0.1[0m
 ccsseraphini is a CLI to solve all your doubts about everything.
 
-[33mUSAGE[0m:
+[33mUSAGE:[0m
   npx ccsseraphini [QUESTION]
 
-[33mEXAMPLE[0m:
+[33mEXAMPLE:[0m
   npx ccsseraphini \\"How can I learn Relay?\\"
 
-[33mOPTIONS[0m:
-  -h, --help                           Print this help message.
-  -V, --version                        Show version information."
+[33mOPTIONS:[0m
+  [32m-h[0m, [32m--help[0m      Print this help message.
+  [32m-v[0m, [32m--version[0m   Show version information."
 `;
 
 exports[`cc @sseraphini / cli show help 3`] = `
 "[32mcli[0m [32m0.0.1[0m
 ccsseraphini is a CLI to solve all your doubts about everything.
 
-[33mUSAGE[0m:
+[33mUSAGE:[0m
   npx ccsseraphini [QUESTION]
 
-[33mEXAMPLE[0m:
+[33mEXAMPLE:[0m
   npx ccsseraphini \\"How can I learn Relay?\\"
 
-[33mOPTIONS[0m:
-  -h, --help                           Print this help message.
-  -V, --version                        Show version information."
+[33mOPTIONS:[0m
+  [32m-h[0m, [32m--help[0m      Print this help message.
+  [32m-v[0m, [32m--version[0m   Show version information."
 `;
 
 exports[`cc @sseraphini / cli show version 1`] = `
 Array [
-  "cli",
-  "0.0.1",
+  "[32mcli 0.0.1[0m",
 ]
 `;
 
 exports[`cc @sseraphini / cli show version 2`] = `
 Array [
-  "cli",
-  "0.0.1",
+  "[32mcli 0.0.1[0m",
 ]
 `;
