@@ -19,5 +19,7 @@ module.exports = {
         ignoreRestSiblings: true,
       },
     ],
+    '@typescript-eslint/ban-ts-comment': 1,
+    '@typescript-eslint/no-var-requires': 1,
   },
 };
