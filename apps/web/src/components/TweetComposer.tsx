@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Box, Flex, Button, Textarea, Badge, Image } from '@chakra-ui/react';
-import { FaTwitter, FaPatreon } from 'react-icons/fa';
+import { Box, Button, Textarea, Badge } from '@chakra-ui/react';
+import { FaTwitter } from 'react-icons/fa';
 
 export const TweetComposer = () => {
   const [text, setText] = useState('');
