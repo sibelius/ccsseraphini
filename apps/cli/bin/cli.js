@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const pkg = require('../package.json');
-const { showErrorMessage } = require('../index');
+const { showErrorMessage, color } = require('../index');
 const open = require('open');
 const yargs = require('yargs')(process.argv.slice(2))
   .usage(`Usage: ${pkg.name} [question]`)
@@ -9,7 +9,7 @@ const yargs = require('yargs')(process.argv.slice(2))
     `npx ${pkg.name} "How can I learn Relay?"`,
     'Open a tab in your default browser with your doubt tagging the sseraphini',
   )
-  .version(pkg.version)
+  .version(color(`${pkg.name} ${pkg.version}`, 'green'))
   .alias('v', 'version')
   .help('h')
   .alias('h', 'help');
