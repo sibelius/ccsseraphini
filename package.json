@@ -15,7 +15,7 @@
     "@typescript-eslint/eslint-plugin": "false5.10.0",
     "@typescript-eslint/parser": "false5.10.0",
     "husky": "7.0.4",
-    "lint-staged": "12.2.1",
+    "lint-staged": "12.2.2",
     "prettier": "2.5.1",
     "prettier-package-json": "2.6.0",
     "turbo": "1.0.28"
