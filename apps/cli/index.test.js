@@ -3,54 +3,73 @@ jest.mock('open', () => (input) => input);
 let { main } = require('./index');
 
 describe('cc @sseraphini / cli', () => {
-  let logOriginal;
-  let logStub = jest.fn();
+  let stub = {
+    consoleError: jest.fn(),
+    consoleLog: jest.fn(),
+    processExit: jest.fn(),
+  };
+  let original = {
+    consoleError: console.error,
+    consoleLog: console.log,
+    processExit: process.exit,
+  };
+
   beforeEach(() => {
-    logOriginal = console.log;
-    console.log = logStub;
+    console.error = stub.consoleError;
+    console.log = stub.consoleLog;
+    process.exit = stub.processExit;
   });
 
   afterEach(() => {
-    console.log = logOriginal;
-    process.argv = [];
-    logStub.mockClear();
+    console.error = original.consoleError;
+    console.log = original.consoleLog;
+    process.exit = original.processExit;
+    jest.resetAllMocks();
   });
 
-  it('show help', async () => {
-    process.argv = [null, null];
+  it('show help with no args', async () => {
     await main();
-    expect(logStub.mock.calls[0][0]).toMatchSnapshot();
-
-    process.argv = [null, null, '-h'];
-    await main();
-    expect(logStub.mock.calls[0][0]).toMatchSnapshot();
-
-    process.argv = [null, null, '--help'];
-    await main();
-    expect(logStub.mock.calls[0][0]).toMatchSnapshot();
+    expect(stub.consoleError.mock.calls[0][0]).toContain('Usage:');
   });
 
-  it('show version', async () => {
-    process.argv = [null, null, '-v'];
-    await main();
-    expect(logStub.mock.calls[0]).toMatchSnapshot();
-
-    process.argv = [null, null, '--version'];
-    await main();
-    expect(logStub.mock.calls[0]).toMatchSnapshot();
+  it('show help with -h', async () => {
+    await main(['-h']);
+    expect(stub.consoleLog.mock.calls[0][0]).toContain('Usage:');
   });
 
-  it('show error', async () => {
-    process.argv = [null, null, '-blah'];
-    await main();
-    expect(logStub.mock.calls[0]).toMatchSnapshot();
+  it('show help with --help', async () => {
+    await main(['--help']);
+    expect(stub.consoleLog.mock.calls[0][0]).toContain('Usage:');
+  });
+
+  it('show version with -v', async () => {
+    await main(['-v']);
+    expect(stub.consoleLog.mock.calls[0][0]).toContain('0.0.1');
+  });
+
+  it('show version with --version', async () => {
+    await main(['--version']);
+    expect(stub.consoleLog.mock.calls[0][0]).toContain('0.0.1');
+  });
+
+  it('show error when wrong alias flag passed', async () => {
+    await main(['-b']);
+    expect(stub.consoleLog.mock.calls[0][0]).toContain(
+      `which wasn't expected, or isn't valid in this context!`,
+    );
+  });
+
+  it('show error when wrong full flag passed', async () => {
+    await main(['--blah']);
+    expect(stub.consoleLog.mock.calls[0][0]).toContain(
+      `which wasn't expected, or isn't valid in this context!`,
+    );
   });
 
   it('opens url with text', async () => {
-    process.argv = [null, null, 'how do i tweet'];
-    let url = await main();
+    let url = await main('how do i tweet');
     expect(url).toMatchInlineSnapshot(
-      `"https://twitter.com/intent/tweet?text=how do i tweet%0Acc%20%40sseraphini"`,
+      `"https://twitter.com/intent/tweet?text=how%2Cdo%2Ci%2Ctweet%20cc%20%40sseraphini"`,
     );
   });
 });
