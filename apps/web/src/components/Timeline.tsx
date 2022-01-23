@@ -31,7 +31,7 @@ export const Timeline = ({ initialTweets, initialNextToken }: Props) => {
       px={4}
       py={8}
     >
-      <Text fontWeight="medium" fontSize={24}>
+      <Text fontWeight="medium" fontSize={24} mb={4}>
         Latest tweets
       </Text>
       <InfiniteScroll
