@@ -1,0 +1,29 @@
+{
+  "name": "ccsseraphini-chrome-extension",
+  "description": "cc @sseraphini chrome extension",
+  "version": "1.0.0",
+  "dependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.12",
+    "@babel/preset-env": "7.16.11",
+    "@babel/preset-typescript": "7.16.7",
+    "babel-loader": "8.2.3",
+    "css-loader": "6.5.1",
+    "style-loader": "3.3.1",
+    "ts-loader": "9.2.6",
+    "webextension-polyfill-ts": "0.26.0",
+    "webpack": "5.67.0",
+    "webpack-cli": "4.9.1",
+    "webpack-merge": "5.8.0"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack -w --config webpack.dev.js",
+    "lint": "cross-env NODE_ENV=development eslint --cache --format=pretty --ext .js --ext .jsx --ext .ts --ext .tsx .",
+    "prettier": "prettier --write --single-quote true --trailing-comma all --print-width 120",
+    "test": "jest --config=jest.config.js"
+  }
+}
