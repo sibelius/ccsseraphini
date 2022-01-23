@@ -17,7 +17,7 @@ interface TwitterResponse {
 const BASE_URL = 'https://api.twitter.com/2';
 const RECENT_TWEETS_URL = 'tweets/search/recent';
 const QUERY = '-RT cc%20%40sseraphini';
-const TWEET_FIELDS = 'attachments,author_id,id,text,created_at';
+const TWEET_FIELDS = 'attachments,author_id,id,text,created_at,public_metrics';
 const USER_FIELDS = 'profile_image_url,url,username';
 const EXPANSIONS = 'author_id';
 const MAX_RESULTS = 10;
