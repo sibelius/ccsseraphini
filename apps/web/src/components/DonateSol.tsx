@@ -71,7 +71,7 @@ export const DonateSol = () => {
       borderWidth="1px"
       borderColor="gray.500"
       borderRadius="lg"
-      leftIcon={<PhantomLogo width={100} height={100} />}
+      leftIcon={<PhantomLogo width={100} height={24} />}
       mt={{ base: '0', md: '10px' }}
       size="sm"
       onClick={() => onDonate(donateAmount)}
