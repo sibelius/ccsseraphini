@@ -14,7 +14,7 @@
     "@chakra-ui/react": "1.7.4",
     "@emotion/react": "11",
     "@emotion/styled": "11",
-    "@solana/web3.js": "1.31.0",
+    "@solana/web3.js": "1.32.0",
     "babel-preset-next": "1.4.0",
     "ethers": "5.5.3",
     "fork-me-corner": "0.1.2",
