@@ -28,6 +28,7 @@ export const Timeline = ({ initialTweets, initialNextToken }: Props) => {
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
+      flex={1}
       px={4}
       py={8}
     >
