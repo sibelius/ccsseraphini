@@ -4,6 +4,8 @@ import { Home } from '../components/Home';
 import { GetServerSideProps } from 'next';
 import { TweetData } from '../types/Tweet';
 import { Timeline } from '../components/Timeline';
+import { ForkMe } from 'fork-me-corner';
+import { Flex } from '@chakra-ui/react';
 
 interface Props {
   tweets?: TweetData[];
@@ -19,11 +21,14 @@ const HomePage: NextPage<Props> = (props: Props) => {
         <meta name="description" content="Make it easy to cc @sseraphini" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Home />
-      <Timeline
-        initialTweets={props.tweets}
-        initialNextToken={props.nextToken}
-      />
+      <ForkMe repo="https://github.com/sibelius/ccsseraphini" />
+      <Flex flexWrap="wrap">
+        <Home />
+        <Timeline
+          initialTweets={props.tweets}
+          initialNextToken={props.nextToken}
+        />
+      </Flex>
     </div>
   );
 };
