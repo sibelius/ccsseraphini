@@ -3,6 +3,7 @@ import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
 import { DonateSol } from './DonateSol';
+import { DonatePix } from './pix/DonatePix';
 
 export const Home = () => {
   return (
@@ -46,6 +47,7 @@ export const Home = () => {
         <ActionButtons />
         <DonateEth />
         <DonateSol />
+        <DonatePix />
       </Flex>
     </Flex>
   );
