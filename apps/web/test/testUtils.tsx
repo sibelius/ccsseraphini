@@ -1,14 +1,17 @@
-import { render } from '@testing-library/react';
+import { render, RenderOptions } from '@testing-library/react';
+import { ReactElement } from 'react';
+
+type ProvidersOptions = {
+  children: ReactElement;
+};
 
 // Add in any providers here if necessary:
 // (ReduxProvider, ThemeProvider, etc)
-// @ts-ignore
-const Providers = ({ children }) => {
+const Providers = ({ children }: ProvidersOptions) => {
   return children;
 };
 
-// @ts-ignore
-const customRender = (ui, options = {}) =>
+const customRender = (ui: ReactElement, options: RenderOptions = {}) =>
   render(ui, { wrapper: Providers, ...options });
 
 // re-export everything

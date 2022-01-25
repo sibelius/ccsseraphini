@@ -9,7 +9,6 @@ describe('ForkMeCorner', () => {
     expect(
       screen.getByRole('link', { name: 'View source on GitHub' }),
     ).toBeInTheDocument();
-    // @ts-ignore
-    expect(screen.getByRole('link').href).toBe(repo);
+    expect(screen.getByRole<HTMLAnchorElement>('link').href).toBe(repo);
   });
 });
