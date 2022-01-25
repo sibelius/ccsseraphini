@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["es6", "es2015", "dom"],
+    "declaration": true,
+    "outDir": "lib",
+    "rootDir": "src",
+    "strict": true,
+    "types": [
+      "node",
+      "jest"
+    ],
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": true
+  },
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["../src/**/*.tsx", "./src/**/*.ts"]
+}
