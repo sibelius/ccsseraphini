@@ -36,8 +36,7 @@ const HomePage: NextPage<Props> = (props: Props) => {
 export default HomePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-  // @ts-ignore
-  const httpProtocol = ctx.req.headers.host.includes('localhost')
+  const httpProtocol = ctx.req.headers.host?.includes('localhost')
     ? 'http'
     : 'https';
 

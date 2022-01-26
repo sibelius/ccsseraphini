@@ -46,8 +46,7 @@ const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
 export default TimelinePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-  // @ts-ignore
-  const httpProtocol = ctx.req.headers.host.includes('localhost')
+  const httpProtocol = ctx.req.headers.host?.includes('localhost')
     ? 'http'
     : 'https';
 
