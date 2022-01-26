@@ -1,5 +1,7 @@
 const path = require('path');
 
+const cwd = process.cwd();
+
 module.exports = {
   entry: {
     backgroundPage: path.join(__dirname, 'src/backgroundPage.ts'),
@@ -12,23 +14,35 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.(js|jsx|ts|tsx)?$/,
-      //   exclude: [/node_modules/],
-      //   use: [
-      //     {
-      //       loader: 'babel-loader?cacheDirectory',
-      //     },
-      //   ],
-      // },
       {
-        exclude: /node_modules/,
-        test: /\.tsx?$/,
-        loader: 'ts-loader',
-        options: {
-          transpileOnly: true
-        }
-      }
+        test: /\.(js|jsx|ts|tsx)?$/,
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: 'babel-loader?cacheDirectory',
+          },
+        ],
+        include: [
+          path.join(cwd, 'src'),
+          path.join(cwd, '../'),
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg|pdf|csv|xlsx|ttf|woff(2)?)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'img/',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ]
   },
   resolve: {

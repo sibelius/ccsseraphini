@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "@ccsseraphini/ui",
+  "version": "0.0.1",
+  "main": "./src/index.tsx",
+  "module": "./src/index.tsx"
+}
