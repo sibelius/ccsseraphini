@@ -7,7 +7,12 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  Flex,
+  Stack,
 } from '@chakra-ui/react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { FaCopy } from 'react-icons/fa';
+import { emv } from './emv';
 import { PixQrCode } from './PixQrCode';
 
 interface Props {
@@ -24,10 +29,20 @@ export const PixModal = ({ isOpen, closeModal }: Props) => {
           <ModalHeader>Scan the QR Code below</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <PixQrCode />
+            <Stack>
+              <Flex justifyContent="center">
+                <PixQrCode />
+              </Flex>
+
+              <CopyToClipboard text={emv}>
+                <Button colorScheme="green" leftIcon={<FaCopy />}>
+                  Copy QR code
+                </Button>
+              </CopyToClipboard>
+            </Stack>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={closeModal}>
+            <Button colorScheme="blue" onClick={closeModal}>
               Close
             </Button>
           </ModalFooter>
