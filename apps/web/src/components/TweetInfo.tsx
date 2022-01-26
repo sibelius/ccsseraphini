@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
 import { TweetData } from 'types/Tweet';
 
@@ -89,4 +90,4 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
   );
 };
 
-export default TweetInfo;
+export default memo(TweetInfo);
