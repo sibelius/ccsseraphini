@@ -1821,6 +1821,12 @@
   version "16.0.0"
   resolved "https://registry.yarnpkg.com/@commitlint/rules/-/rules-16.0.0.tgz#79d28c3678d2d1f7f1cdbedaedb30b01a86ee75b"
   integrity sha512-AOl0y2SBTdJ1bvIv8nwHvQKRT/jC1xb09C5VZwzHoT8sE8F54KDeEzPCwHQFgUcWdGLyS10kkOTAH2MyA8EIlg==
+  dependencies:
+    "@commitlint/ensure" "^16.0.0"
+    "@commitlint/message" "^16.0.0"
+    "@commitlint/to-lines" "^16.0.0"
+    "@commitlint/types" "^16.0.0"
+    execa "^5.0.0"
 
 "@commitlint/top-level@^16.0.0":
   version "16.0.0"
@@ -4560,6 +4566,11 @@ enhanced-resolve@^5.0.0, enhanced-resolve@^5.8.3:
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
+
+entities@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-3.0.1.tgz#2b887ca62585e96db3903482d336c1006c3001d4"
+  integrity sha512-WiyBqoomrwMdFG1e0kqvASYfnlb0lp8M5o5Fw2OFq1hNZxxcNk8Ik0Xm7LxzBhuidnZB/UtBqVCgUz3kBOP51Q==
 
 envinfo@^7.7.3:
   version "7.8.1"

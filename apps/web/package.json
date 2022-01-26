@@ -18,6 +18,7 @@
     "@solana/web3.js": "1.32.0",
     "@types/qrcode.react": "1.0.2",
     "babel-preset-next": "1.4.0",
+    "entities": "3.0.1",
     "ethers": "5.5.3",
     "fork-me-corner": "0.1.2",
     "framer-motion": "6.2.3",
