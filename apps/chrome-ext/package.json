@@ -8,13 +8,21 @@
     "prettier": "prettier --write --single-quote true --trailing-comma all --print-width 120"
   },
   "dependencies": {
+    "@ccsseraphini/ui": "0.0.1",
+    "@chakra-ui/react": "1.8.0",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "core-js": "3.20.3",
+    "framer-motion": "^5",
     "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react-dom": "16.14.0",
+    "regenerator-runtime": "0.13.9"
   },
   "devDependencies": {
     "@babel/core": "7.16.12",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-typescript": "7.16.7",
+    "@types/react-dom": "17.0.11",
     "babel-loader": "8.2.3",
     "css-loader": "6.5.1",
     "style-loader": "3.3.1",

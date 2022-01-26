@@ -1,8 +1,54 @@
 import React from 'react';
+import {ChakraProvider, Flex, Image} from '@chakra-ui/react';
+import {TweetComposer} from './TweetComposer';
+
+// fix monorepo shared packages
+// import {TweetComposer} from '@ccsseraphini/ui';
 
 const App = () => {
   return (
-    <span>cc @sseraphini</span>
+    <ChakraProvider>
+      <Flex
+        flex={1}
+        // height="100vh"
+        alignItems="center"
+        // justifyContent="center"
+        flexDirection="column"
+        // bg="gray.400"
+        p="20px"
+        style={{
+          backgroundColor: '#e5e5f7',
+          opacity: '0.8',
+          backgroundImage:
+            'linear-gradient(#444cf7 1px, transparent 1px), linear-gradient(to right, #444cf7 1px, #e5e5f7 1px)',
+          backgroundSize: '20px 20px',
+        }}
+        minWidth="500px"
+      >
+        <Image
+          borderRadius="full"
+          boxSize="100px"
+          objectFit="cover"
+          src="https://unavatar.io/twitter/sseraphini"
+          alt="Sibelius Seraphini"
+          m="4"
+        />
+
+        <Flex
+          minW={{ base: '98%', md: 'sm' }}
+          maxW="98%"
+          borderWidth="1px"
+          borderColor="gray.500"
+          borderRadius="lg"
+          overflow="hidden"
+          p="8"
+          flexDirection="column"
+          bg="white"
+        >
+          <TweetComposer />
+        </Flex>
+      </Flex>
+    </ChakraProvider>
   );
 };
 
