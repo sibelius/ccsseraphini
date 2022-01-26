@@ -72,7 +72,7 @@ export const DonateSol = () => {
       borderColor="gray.500"
       borderRadius="lg"
       leftIcon={<PhantomLogo width={100} height={24} />}
-      mt={{ base: '0', md: '10px' }}
+      mt="10px"
       size="sm"
       onClick={() => onDonate(donateAmount)}
       isLoading={isLoading}
