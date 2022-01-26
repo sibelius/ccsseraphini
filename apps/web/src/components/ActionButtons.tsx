@@ -9,12 +9,12 @@ export const ActionButtons = () => {
         spacing={2}
         direction={{ base: 'row', md: 'column' }}
         mt={{ base: '10px', md: '0' }}
-        justify="center"
       >
         <Button
           backgroundColor="gray.300"
           leftIcon={<FaTwitter />}
           mt={{ base: '0', md: '10px' }}
+          width="100%"
           as={'a'}
           href="https://twitter.com/intent/user?screen_name=sseraphini"
           target="_blank"
@@ -27,6 +27,7 @@ export const ActionButtons = () => {
           colorScheme="orange"
           leftIcon={<FaPatreon />}
           mt={{ base: '0', md: '10px' }}
+          width="100%"
           as={'a'}
           border="none"
           href="https://www.patreon.com/sibelius"
@@ -40,6 +41,7 @@ export const ActionButtons = () => {
           colorScheme="purple"
           leftIcon={<SiSubstack />}
           mt={{ base: '0', md: '10px' }}
+          width="100%"
           as={'a'}
           border="none"
           href="https://sibelius.substack.com/"

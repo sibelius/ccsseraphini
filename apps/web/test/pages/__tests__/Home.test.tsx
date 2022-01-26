@@ -6,8 +6,8 @@ beforeEach(() => {
 });
 
 it('should render the page properly', () => {
-  // @ts-ignore
-  const image = screen.getByRole('img', { alt: 'Sibelius Seraphini' });
+  const image = screen.getByAltText('Sibelius Seraphini');
+  expect(image).toBeInstanceOf(HTMLImageElement);
   expect(image).toBeInTheDocument();
 
   const ForkMeCornerComponent = screen.getByRole('link', {

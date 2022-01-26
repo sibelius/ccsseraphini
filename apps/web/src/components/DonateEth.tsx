@@ -1,4 +1,4 @@
-import { Button, Stack } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
 import { MetaMaskLogo } from './MetaMaskLogo';
 import { useCallback, useState } from 'react';
 import { ethers } from 'ethers';
@@ -117,26 +117,19 @@ export const DonateEth = () => {
 
   return (
     <>
-      <Stack
-        spacing={2}
-        direction={{ base: 'row', md: 'column' }}
-        mt={{ base: '10px', md: '0' }}
-        justify="center"
+      <Button
+        backgroundColor="white"
+        borderWidth="1px"
+        borderColor="gray.500"
+        borderRadius="lg"
+        leftIcon={<MetaMaskLogo width={20} height={20} />}
+        mt="10px"
+        size="sm"
+        onClick={() => onDonate(false)}
+        isLoading={isLoading}
       >
-        <Button
-          backgroundColor="white"
-          borderWidth="1px"
-          borderColor="gray.500"
-          borderRadius="lg"
-          leftIcon={<MetaMaskLogo width={20} height={20} />}
-          mt={{ base: '0', md: '10px' }}
-          size="sm"
-          onClick={() => onDonate(false)}
-          isLoading={isLoading}
-        >
-          Donate Crypto {donateAmount} ETH (~5,00USD)
-        </Button>
-      </Stack>
+        Donate Crypto {donateAmount} ETH (~5,00USD)
+      </Button>
     </>
   );
 };

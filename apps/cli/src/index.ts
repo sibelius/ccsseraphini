@@ -1,8 +1,8 @@
-const open = require('open');
+const opn = require('open');
 const yargs = require('yargs');
-const pkg = require('./package.json');
+const pkg = require('../package.json');
 
-function color(str, color) {
+function color(str: string, color: 'red' | 'yellow' | 'green') {
   const reset = '\x1b[0m';
   const colors = {
     red: '\x1b[31m',
@@ -14,7 +14,7 @@ function color(str, color) {
   return `${colors[color]}${resetedStr}`;
 }
 
-function showErrorMessage(arg) {
+function showErrorMessage(arg: any) {
   console.log(
     `${color('Error', 'red')}: Found argument '${color(
       arg,
@@ -30,7 +30,7 @@ For more information try ${color('--help', 'green')} or ${color(
   );
 }
 
-async function main(args = []) {
+async function main(args: string[] | never[]) {
   const cli = yargs(args)
     .usage(`Usage: ${pkg.name} [question]`)
     .example(
@@ -53,7 +53,7 @@ async function main(args = []) {
   // If the user types a message opens the default browser with the
   // message ready to tweet.
   const text = `${cli.argv._} cc @sseraphini`;
-  return await open(
+  return await opn(
     `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
   );
 }
