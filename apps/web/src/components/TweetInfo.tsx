@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
 import { decodeHTML } from 'entities';
 import { TweetData } from 'types/Tweet';
+import { parseContent } from './tweetContent';
 
 interface TweetInfoProps {
   tweet: TweetData;
@@ -40,16 +41,18 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
 
   return (
     <Box mb={6}>
-      <Link
-        href={`https://twitter.com/${tweet.userInfo.username}/status/${tweet.id}`}
-        target="blank"
-        _hover={{ textDecoration: 'none' }}
-        w="100%"
-        display="flex"
-        _focus={{ boxShadow: 'none' }}
+      <Flex
+        flexDirection="column"
+        w={['100%', '100%', 700]}
+        position="relative"
       >
-        <Flex flexDirection="column" w={['100%', '100%', 700]}>
-          <Flex w={['100%', '100%', 700]}>
+        <Flex w={['100%', '100%', 700]} zIndex={1} pointerEvents="none">
+          <Link
+            href={`https://twitter.com/${tweet.userInfo.username}`}
+            target="blank"
+            pointerEvents="all"
+            _focus={{ boxShadow: 'none' }}
+          >
             <Image
               borderRadius="full"
               objectFit="cover"
@@ -58,6 +61,17 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
               alt={tweet.userInfo.name}
               marginRight={4}
             />
+          </Link>
+          <Link
+            href={`https://twitter.com/${tweet.userInfo.username}`}
+            target="blank"
+            pointerEvents="all"
+            _focus={{ boxShadow: 'none' }}
+            _hover={{
+              textDecoration: 'none',
+              '& p:first-child': { textDecoration: 'underline' },
+            }}
+          >
             <Box mt={[0, 1]}>
               <Text fontSize={14} fontWeight="bold">
                 {tweet.userInfo.name}
@@ -66,13 +80,58 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
                 {`@${tweet.userInfo.username}`}
               </Text>
             </Box>
-          </Flex>
-          <Text mt={2}>{decodeHTML(tweet.text)}</Text>
-          <Text color="gray.500" marginTop={2}>
-            {tweetTimeInfo()}
-          </Text>
+          </Link>
         </Flex>
-      </Link>
+        <Box zIndex={1} pointerEvents="none">
+          <Text mt={2}>
+            {parseContent(decodeHTML(tweet.text)).map((chunk) => {
+              if (chunk.type === 'text') return chunk.value;
+
+              if (chunk.type === 'url') {
+                return (
+                  <Link
+                    pointerEvents="all"
+                    target="blank"
+                    color="#444cf7"
+                    href={chunk.value}
+                    key={chunk.index}
+                  >
+                    {chunk.value}
+                  </Link>
+                );
+              }
+
+              if (chunk.type === 'mention') {
+                return (
+                  <Link
+                    pointerEvents="all"
+                    target="blank"
+                    color="#444cf7"
+                    href={`https://twitter.com/${chunk.value}`}
+                    key={chunk.index}
+                  >
+                    @{chunk.value}
+                  </Link>
+                );
+              }
+            })}
+          </Text>
+        </Box>
+        <Text color="gray.500" marginTop={2}>
+          {tweetTimeInfo()}
+        </Text>
+        <Link
+          href={`https://twitter.com/${tweet.userInfo.username}/status/${tweet.id}`}
+          target="blank"
+          w="100%"
+          display="flex"
+          _focus={{ boxShadow: 'none' }}
+          position="absolute"
+          width="100%"
+          height="100%"
+          zIndex={0}
+        />
+      </Flex>
       <Flex paddingY={3} borderY="1px solid" mt={4} borderColor="gray.300">
         <Text color="gray.500" fontWeight="bold" marginRight={1}>
           {tweet.public_metrics.retweet_count}
