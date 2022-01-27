@@ -13,7 +13,7 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "core-js": "3.20.3",
-    "framer-motion": "^5",
+    "framer-motion": "^6",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "regenerator-runtime": "0.13.9"
