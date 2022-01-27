@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@ccsseraphini/ui": "0.0.1",
-    "@chakra-ui/react": "1.8.0",
+    "@chakra-ui/react": "1.8.1",
     "@emotion/react": "11",
     "@emotion/styled": "11",
     "@solana/web3.js": "1.32.0",
