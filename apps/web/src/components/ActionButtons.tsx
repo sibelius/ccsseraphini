@@ -1,6 +1,7 @@
 import { Button, Stack } from '@chakra-ui/react';
 import { FaTwitter, FaPatreon } from 'react-icons/fa';
 import { SiGooglechrome, SiSubstack } from 'react-icons/si';
+import { SibLogo } from './SibLogo';
 
 export const ActionButtons = () => {
   return (
@@ -63,6 +64,20 @@ export const ActionButtons = () => {
           size="sm"
         >
           Install cc @sseraphini
+        </Button>
+
+        <Button
+          colorScheme="blue"
+          leftIcon={<SibLogo width={20} height={20} />}
+          mt={{ base: '0', md: '10px' }}
+          width="100%"
+          as={'a'}
+          border="none"
+          href="https://gist.github.com/sibelius/a2b333fa006bdd932e5a3c0c0de914b4"
+          target="_blank"
+          size="sm"
+        >
+          Get mentorship
         </Button>
       </Stack>
     </>
