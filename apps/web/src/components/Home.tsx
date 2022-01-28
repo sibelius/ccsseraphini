@@ -23,31 +23,40 @@ export const Home = () => {
         backgroundSize: '20px 20px',
       }}
     >
-      <Image
-        borderRadius="full"
-        boxSize="100px"
-        objectFit="cover"
-        src="https://unavatar.io/twitter/sseraphini"
-        alt="Sibelius Seraphini"
-        m="4"
-      />
-
       <Flex
-        minW={{ base: '98%', md: 'sm' }}
-        maxW="98%"
-        borderWidth="1px"
-        borderColor="gray.500"
-        borderRadius="lg"
-        overflow="hidden"
-        p="8"
+        alignItems="center"
         flexDirection="column"
-        bg="white"
+        style={{
+          position: 'sticky',
+          top: '0',
+        }}
       >
-        <TweetComposer />
-        <ActionButtons />
-        <DonateEth />
-        <DonateSol />
-        <DonatePix />
+        <Image
+          borderRadius="full"
+          boxSize="100px"
+          objectFit="cover"
+          src="https://unavatar.io/twitter/sseraphini"
+          alt="Sibelius Seraphini"
+          m="4"
+        />
+
+        <Flex
+          minW={{ base: '98%', md: 'sm' }}
+          maxW="98%"
+          borderWidth="1px"
+          borderColor="gray.500"
+          borderRadius="lg"
+          overflow="hidden"
+          p="8"
+          flexDirection="column"
+          bg="white"
+        >
+          <TweetComposer />
+          <ActionButtons />
+          <DonateEth />
+          <DonateSol />
+          <DonatePix />
+        </Flex>
       </Flex>
     </Flex>
   );
