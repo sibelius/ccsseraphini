@@ -6,7 +6,7 @@ import { SibLogo } from './SibLogo';
 export const ActionButtons = () => {
   return (
     <>
-      <Stack spacing={2} direction="row" mt="10px">
+      <Stack spacing={2} direction={{ base: 'column', md: 'row' }} mt="10px">
         <Button
           backgroundColor="gray.300"
           leftIcon={<FaTwitter />}
@@ -45,7 +45,7 @@ export const ActionButtons = () => {
           Articles
         </Button>
       </Stack>
-      <Stack spacing={2} direction="row" mt="10px">
+      <Stack spacing={2} direction={{ base: 'column', md: 'row' }} mt="10px">
         <Button
           colorScheme="red"
           leftIcon={<SiGooglechrome />}
