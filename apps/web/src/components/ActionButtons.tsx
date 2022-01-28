@@ -1,6 +1,6 @@
 import { Button, Stack } from '@chakra-ui/react';
 import { FaTwitter, FaPatreon } from 'react-icons/fa';
-import { SiSubstack } from 'react-icons/si';
+import { SiGooglechrome, SiSubstack } from 'react-icons/si';
 
 export const ActionButtons = () => {
   return (
@@ -49,6 +49,20 @@ export const ActionButtons = () => {
           size="sm"
         >
           Articles
+        </Button>
+
+        <Button
+          colorScheme="red"
+          leftIcon={<SiGooglechrome />}
+          mt={{ base: '0', md: '10px' }}
+          width="100%"
+          as={'a'}
+          border="none"
+          href="https://chrome.google.com/webstore/detail/ccsseraphini/jbdolkjfpfgpbdeeebkhnmfnbkplgalm"
+          target="_blank"
+          size="sm"
+        >
+          Google Chrome extension
         </Button>
       </Stack>
     </>
