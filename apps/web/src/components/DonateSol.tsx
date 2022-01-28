@@ -22,6 +22,17 @@ export const DonateSol = () => {
   const toast = useToast();
 
   const onDonate = useCallback(async (lamports: number) => {
+    if (window.solana === undefined) {
+      toast({
+        title: 'Error',
+        description: 'Check if Phantom is installed.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
     try {
       setIsLoading(true);
       // Phantom provider
