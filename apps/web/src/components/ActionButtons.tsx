@@ -51,7 +51,12 @@ export const ActionButtons = () => {
         >
           Articles
         </Button>
-
+      </Stack>
+      <Stack
+        spacing={2}
+        direction={{ base: 'row', md: 'column' }}
+        mt={{ base: '10px', md: '0' }}
+      >
         <Button
           colorScheme="red"
           leftIcon={<SiGooglechrome />}
