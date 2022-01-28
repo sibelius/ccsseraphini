@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import { Button, Flex } from '@chakra-ui/react';
 import { MetaMaskLogo } from './MetaMaskLogo';
 import { useCallback, useState } from 'react';
 import { ethers } from 'ethers';
@@ -128,7 +128,10 @@ export const DonateEth = () => {
         onClick={() => onDonate(false)}
         isLoading={isLoading}
       >
-        Donate Crypto {donateAmount} ETH (~5,00USD)
+        Donate Crypto {donateAmount} ETH
+        <Flex display={{ base: 'none', sm: 'flex' }} ml="4px">
+          (~5,00USD)
+        </Flex>
       </Button>
     </>
   );

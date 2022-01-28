@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import { Button, Flex } from '@chakra-ui/react';
 
 import {
   Connection,
@@ -88,7 +88,10 @@ export const DonateSol = () => {
       onClick={() => onDonate(donateAmount)}
       isLoading={isLoading}
     >
-      Donate Crypto 0.04 SOL (~5,00USD)
+      Donate Crypto
+      <Flex display={{ base: 'none', sm: 'flex' }} ml="4px">
+        0.04 SOL (~5,00USD)
+      </Flex>
     </Button>
   );
 };

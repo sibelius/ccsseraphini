@@ -9,6 +9,7 @@ export const Home = () => {
   return (
     <Flex
       flex={1}
+      maxW={'100%'}
       // height="100vh"
       alignItems="center"
       // justifyContent="center"
@@ -23,31 +24,43 @@ export const Home = () => {
         backgroundSize: '20px 20px',
       }}
     >
-      <Image
-        borderRadius="full"
-        boxSize="100px"
-        objectFit="cover"
-        src="https://unavatar.io/twitter/sseraphini"
-        alt="Sibelius Seraphini"
-        m="4"
-      />
-
       <Flex
-        minW={{ base: '98%', md: 'sm' }}
-        maxW="98%"
-        borderWidth="1px"
-        borderColor="gray.500"
-        borderRadius="lg"
-        overflow="hidden"
-        p="8"
+        alignItems="center"
         flexDirection="column"
-        bg="white"
+        px={'12px'}
+        style={{
+          width: '100%',
+          position: 'sticky',
+          top: '0',
+        }}
       >
-        <TweetComposer />
-        <ActionButtons />
-        <DonateEth />
-        <DonateSol />
-        <DonatePix />
+        <Image
+          borderRadius="full"
+          boxSize="100px"
+          objectFit="cover"
+          src="https://unavatar.io/twitter/sseraphini"
+          alt="Sibelius Seraphini"
+          m="4"
+        />
+
+        <Flex
+          borderWidth="1px"
+          borderColor="gray.500"
+          borderRadius="lg"
+          overflow="hidden"
+          p="8"
+          flexDirection="column"
+          bg="white"
+          width={'100%'}
+          maxW={'fit-content'}
+          minW={{ md: 'unset', base: 'calc(100vw - 24px)' }}
+        >
+          <TweetComposer />
+          <ActionButtons />
+          <DonateEth />
+          <DonateSol />
+          <DonatePix />
+        </Flex>
       </Flex>
     </Flex>
   );
