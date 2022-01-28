@@ -67,7 +67,9 @@ export const ActionButtons = () => {
         </Button>
 
         <Button
-          colorScheme="blue"
+          backgroundColor="#171923"
+          textColor="white"
+          _hover={{ bg: '#2D3748' }}
           leftIcon={<SibLogo width={20} height={20} />}
           mt={{ base: '0', md: '10px' }}
           width="100%"
