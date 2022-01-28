@@ -9,6 +9,7 @@ export const Home = () => {
   return (
     <Flex
       flex={1}
+      maxW={'100%'}
       // height="100vh"
       alignItems="center"
       // justifyContent="center"
@@ -26,7 +27,9 @@ export const Home = () => {
       <Flex
         alignItems="center"
         flexDirection="column"
+        px={'12px'}
         style={{
+          width: '100%',
           position: 'sticky',
           top: '0',
         }}
@@ -41,8 +44,6 @@ export const Home = () => {
         />
 
         <Flex
-          minW={{ base: '98%', md: 'sm' }}
-          maxW="98%"
           borderWidth="1px"
           borderColor="gray.500"
           borderRadius="lg"
@@ -50,6 +51,9 @@ export const Home = () => {
           p="8"
           flexDirection="column"
           bg="white"
+          width={'100%'}
+          maxW={'fit-content'}
+          minW={{ md: 'unset', base: 'calc(100vw - 24px)' }}
         >
           <TweetComposer />
           <ActionButtons />

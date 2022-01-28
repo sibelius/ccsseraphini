@@ -22,7 +22,11 @@ const HomePage: NextPage<Props> = (props: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ForkMe repo="https://github.com/sibelius/ccsseraphini" />
-      <Flex flexWrap="wrap">
+      <Flex
+        direction={{ base: 'column', lg: 'row' }}
+        gap="12px"
+        flexWrap="wrap"
+      >
         <Home />
         <Timeline
           initialTweets={props.tweets}
