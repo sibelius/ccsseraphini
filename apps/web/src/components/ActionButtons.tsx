@@ -62,7 +62,7 @@ export const ActionButtons = () => {
           target="_blank"
           size="sm"
         >
-          Google Chrome extension
+          Install cc @sseraphini
         </Button>
       </Stack>
     </>
