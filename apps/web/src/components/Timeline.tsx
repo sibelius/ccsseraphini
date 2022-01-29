@@ -13,10 +13,12 @@ export const Timeline = ({ initialTweets, initialNextToken }: Props) => {
   const [nextToken, setNextToken] = useState(initialNextToken);
 
   const fetchData = async () => {
-    const response = await fetch(`/api/latest_tweets?nextToken=${nextToken}`);
-    const json = await response.json();
-    setNextToken(json.nextToken);
-    setTweets([...(tweets || []), ...json.tweets]);
+    if (nextToken) {
+      const response = await fetch(`/api/latest_tweets?nextToken=${nextToken}`);
+      const json = await response.json();
+      setTweets([...(tweets || []), ...json.tweets]);
+      setNextToken(json?.nextToken);
+    }
   };
 
   if (!tweets) {
@@ -38,7 +40,7 @@ export const Timeline = ({ initialTweets, initialNextToken }: Props) => {
       <InfiniteScroll
         dataLength={tweets?.length || 0}
         next={fetchData}
-        hasMore={true}
+        hasMore={!!nextToken}
         loader={<Text>Loading...</Text>}
       >
         {tweets?.map((tweet) => (

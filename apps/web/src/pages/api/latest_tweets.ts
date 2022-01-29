@@ -24,7 +24,7 @@ const USER_FIELDS = 'profile_image_url,url,username';
 const EXPANSIONS = 'author_id,attachments.media_keys';
 const MEDIA_FIELDS = 'height,media_key,public_metrics,type,url,width';
 const MAX_RESULTS = 10;
-const IMAGE_URL_REGEX = /https:\/\/t.co\/[a-zA-Z0-9\-\.]{10}/gm;
+const IMAGE_URL_REGEX = /https:\/\/t.co\/[a-zA-Z0-9\-\.]{10}$/g;
 
 export default async function handler(
   req: NextApiRequest,
@@ -74,6 +74,6 @@ export default async function handler(
 
   return res.status(200).json({
     tweets,
-    nextToken: tweetsData.meta.next_token,
+    nextToken: tweetsData.meta?.next_token,
   });
 }
