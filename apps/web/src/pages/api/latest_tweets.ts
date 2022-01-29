@@ -61,10 +61,7 @@ export default async function handler(
         (photo) => photo.media_key === tweet.attachments?.media_keys[0],
       );
 
-      tweet.text = tweet.text.replace(
-        IMAGE_URL_REGEX,
-        `<img src='${mediaInfo?.url}' />`,
-      );
+      tweet.text = tweet.text.replace(IMAGE_URL_REGEX, mediaInfo?.url || '');
     }
 
     return {
