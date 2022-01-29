@@ -29,8 +29,8 @@ const HomePage: NextPage<Props> = (props: Props) => {
       >
         <Home />
         <Timeline
-          initialTweets={props.tweets}
-          initialNextToken={props.nextToken}
+          initialTweets={props?.tweets}
+          initialNextToken={props?.nextToken}
         />
       </Flex>
     </div>
@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   return {
     props: {
       tweets: data?.tweets,
-      nextToken: data?.nextToken,
+      nextToken: data?.nextToken || null,
     },
   };
 };
