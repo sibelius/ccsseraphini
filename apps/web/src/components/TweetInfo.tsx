@@ -24,6 +24,8 @@ const monthNames = [
   'Dec',
 ];
 
+const imageUrlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+
 const TweetInfo = ({ tweet }: TweetInfoProps) => {
   const tweetTimeInfo = () => {
     const parsedDate = new Date(tweet.created_at);
@@ -88,6 +90,9 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
               if (chunk.type === 'text') return chunk.value;
 
               if (chunk.type === 'url') {
+                if (imageUrlRegex.test(chunk.value)) {
+                  return <Image src={chunk.value} alt={tweet.userInfo.name} />;
+                }
                 return (
                   <Link
                     pointerEvents="all"
