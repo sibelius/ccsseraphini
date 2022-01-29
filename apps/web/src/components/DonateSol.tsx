@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react';
+import { Button, Flex } from '@chakra-ui/react';
 
 import {
   Connection,
@@ -22,6 +22,17 @@ export const DonateSol = () => {
   const toast = useToast();
 
   const onDonate = useCallback(async (lamports: number) => {
+    if (window.solana === undefined) {
+      toast({
+        title: 'Error',
+        description: 'Check if Phantom is installed.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+      return;
+    }
+
     try {
       setIsLoading(true);
       // Phantom provider
@@ -77,7 +88,10 @@ export const DonateSol = () => {
       onClick={() => onDonate(donateAmount)}
       isLoading={isLoading}
     >
-      Donate Crypto 0.04 SOL (~5,00USD)
+      Donate Crypto
+      <Flex display={{ base: 'none', sm: 'flex' }} ml="4px">
+        0.04 SOL (~5,00USD)
+      </Flex>
     </Button>
   );
 };
