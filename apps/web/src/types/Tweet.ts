@@ -9,6 +9,9 @@ export interface TwitterResponseTweetInfo {
     like_count: number;
     quote_count: number;
   };
+  attachments: {
+    media_keys: string[];
+  };
 }
 
 export interface TwitterResponseUserInfo {
@@ -16,6 +19,14 @@ export interface TwitterResponseUserInfo {
   name: string;
   profile_image_url: string;
   username: string;
+}
+
+export interface TwitterResponseMediaInfo {
+  width: number;
+  type: string;
+  media_key: string;
+  url: string;
+  height: number;
 }
 
 export interface TweetData extends TwitterResponseTweetInfo {

@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
 import { decodeHTML } from 'entities';
+import ReactHtmlParser from 'react-html-parser';
 import { TweetData } from 'types/Tweet';
 
 interface TweetInfoProps {
@@ -67,7 +68,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
               </Text>
             </Box>
           </Flex>
-          <Text mt={2}>{decodeHTML(tweet.text)}</Text>
+          <Text mt={2}>{ReactHtmlParser(decodeHTML(tweet.text))}</Text>
           <Text color="gray.500" marginTop={2}>
             {tweetTimeInfo()}
           </Text>
