@@ -57,9 +57,11 @@ export default async function handler(
     );
 
     if (tweet.attachments) {
-      const mediaInfo = tweetsData.includes.media.find(
-        (photo) => photo.media_key === tweet.attachments?.media_keys[0],
-      );
+      const mediaInfo = tweetsData.includes.media.find((photo) => {
+        if (tweet.attachments?.media_keys?.length > 0) {
+          return photo.media_key === tweet.attachments?.media_keys[0];
+        }
+      });
 
       tweet.text = tweet.text.replace(IMAGE_URL_REGEX, mediaInfo?.url || '');
     }
