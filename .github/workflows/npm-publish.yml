@@ -2,37 +2,38 @@ name: Node.js Package
 
 on:
   workflow_dispatch:
-    branches: [master]
+    branches: [main]
   release:
     types: [created]
+  push:
+    paths:
+      - 'apps/cli/**'
 
+defaults:
+  run:
+    working-directory: apps/cli/apps/cli
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-            path: apps/cli
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-      - run: npm ci
-      - run: npm test
-
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
-            path: apps/cli
+          path: apps/cli
       - uses: actions/setup-node@v2
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      
+      
+      - name: Dependency install
+        run: yarn
+      - name: Compile
+        run: yarn build
+      - name: Test
+        run: yarn test
+      - name: Publish 
+        run: npm publish --access public
+
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

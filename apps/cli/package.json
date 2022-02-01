@@ -12,9 +12,9 @@
   "bugs": {
     "url": "https://github.com/sibelius/ccsseraphini/issues"
   },
-  "main": "index.js",
+  "main": "./lib/index.js",
   "bin": {
-    "ccsseraphini": "./bin/cli.js"
+    "ccsseraphini": "./lib/bin/cli.js"
   },
   "scripts": {
     "build": "tsc -p .",
