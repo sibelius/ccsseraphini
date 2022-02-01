@@ -1,6 +1,7 @@
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
 import { decodeHTML } from 'entities';
+import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { TweetData } from 'types/Tweet';
 import { parseContent } from './tweetContent';
 
@@ -40,6 +41,19 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
       tweet.created_at,
     ).getDate()}, ${parsedDate.getFullYear()}`;
   };
+
+  const tweetChunks = useMemo(
+    () => parseContent(decodeHTML(tweet.text)),
+    [tweet.text],
+  );
+
+  const nonImageUrlChunk = useMemo(
+    () =>
+      tweetChunks.find(
+        (chunk) => chunk.type === 'url' && !imageUrlRegex.test(chunk.value),
+      ),
+    [tweetChunks],
+  );
 
   return (
     <Box mb={6}>
@@ -86,7 +100,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
         </Flex>
         <Box zIndex={1} pointerEvents="none">
           <Text mt={2}>
-            {parseContent(decodeHTML(tweet.text)).map((chunk) => {
+            {tweetChunks.map((chunk) => {
               if (chunk.type === 'text') return chunk.value;
 
               if (chunk.type === 'url') {
@@ -122,6 +136,11 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
             })}
           </Text>
         </Box>
+        {nonImageUrlChunk ? (
+          <Box marginTop={2} data-testid="link-preview-wrapper">
+            <LinkPreview url={nonImageUrlChunk.value} />
+          </Box>
+        ) : null}
         <Text color="gray.500" marginTop={2}>
           {tweetTimeInfo()}
         </Text>
