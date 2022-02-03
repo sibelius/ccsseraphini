@@ -56,3 +56,5 @@ dist/**
 .next/**
 
 apps/cli/lib
+
+package-lock.json
