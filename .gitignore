@@ -54,3 +54,5 @@ tsconfig.tsbuildinfo
 build/**
 dist/**
 .next/**
+
+apps/cli/lib

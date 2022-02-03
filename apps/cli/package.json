@@ -20,6 +20,7 @@
     "build": "tsc -p .",
     "cli": "node ./lib/bin/cli.js",
     "lint": "eslint '**/*.js'",
+    "prepare": "yarn build",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
     "test": "jest",
     "watch": "tsc -w"
