@@ -1,5 +1,12 @@
 import { memo, useMemo } from 'react';
-import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+  Link,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import { decodeHTML } from 'entities';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { TweetData } from 'types/Tweet';
@@ -54,6 +61,8 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
       ),
     [tweetChunks],
   );
+
+  const linkColor = useColorModeValue('blue.500', 'blue.300');
 
   return (
     <Box mb={6}>
@@ -131,7 +140,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
                   <Link
                     pointerEvents="all"
                     target="blank"
-                    color="#444cf7"
+                    color={linkColor}
                     href={chunk.value}
                     key={chunk.index}
                   >
@@ -145,7 +154,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
                   <Link
                     pointerEvents="all"
                     target="blank"
-                    color="#444cf7"
+                    color={linkColor}
                     href={`https://twitter.com/${chunk.value}`}
                     key={chunk.index}
                   >
