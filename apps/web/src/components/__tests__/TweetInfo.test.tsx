@@ -74,9 +74,11 @@ const mockTweetWithoutUrl = {
   },
 };
 
+// migrate to jest-fetch-mock
 beforeAll(() => {
   jest.spyOn(window, 'fetch');
 
+  // @ts-ignore
   window.fetch.mockResolvedValueOnce({
     ok: true,
     json: async () => ({ success: true }),
