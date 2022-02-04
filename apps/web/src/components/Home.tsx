@@ -1,4 +1,11 @@
-import { Flex, Image } from '@chakra-ui/react';
+import {
+  Flex,
+  IconButton,
+  Image,
+  useColorMode,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { FiMoon, FiSun } from 'react-icons/fi';
 import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
@@ -6,6 +13,10 @@ import { DonateSol } from './DonateSol';
 import { DonatePix } from './pix/DonatePix';
 
 export const Home = () => {
+  const { toggleColorMode } = useColorMode();
+
+  const Icon = useColorModeValue(FiMoon, FiSun);
+
   return (
     <Flex
       flex={1}
@@ -24,6 +35,20 @@ export const Home = () => {
         backgroundSize: '20px 20px',
       }}
     >
+      {/* TODO: fix button colors */}
+      <IconButton
+        aria-label="Toggle theme"
+        icon={<Icon />}
+        onClick={toggleColorMode}
+        position="fixed"
+        inset="0"
+        left="4"
+        top="4"
+        zIndex="1"
+        isRound
+        variant="outline"
+        colorScheme="twitter"
+      />
       <Flex
         alignItems="center"
         flexDirection="column"
@@ -50,7 +75,7 @@ export const Home = () => {
           overflow="hidden"
           p="8"
           flexDirection="column"
-          bg="white"
+          bg={useColorModeValue('white', 'gray.800')}
           width={'100%'}
           maxW={'fit-content'}
           minW={{ md: 'unset', base: 'calc(100vw - 24px)' }}
