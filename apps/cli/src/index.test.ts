@@ -70,7 +70,7 @@ describe('cc @sseraphini / cli', () => {
   it('opens url with text', async () => {
     let url = await cli('how do i tweet');
     expect(url).toMatchInlineSnapshot(
-      `"https://twitter.com/intent/tweet?text=how%2Cdo%2Ci%2Ctweet%20cc%20%40sseraphini"`,
+      `"https://twitter.com/intent/tweet?text=how%2Cdo%2Ci%2Ctweet%0Acc%20%40sseraphini"`,
     );
   });
 });
