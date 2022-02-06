@@ -52,11 +52,9 @@ async function main(args: string[] | never[]) {
 
   // If the user types a message opens the default browser with the
   // message ready to tweet.
-  const text = cli.argv._;
+  const text = `${cli.argv._} cc @sseraphini`;
   return await opn(
-    `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-      text,
-    )}%0Acc%20%40sseraphini`,
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`,
   );
 }
 
