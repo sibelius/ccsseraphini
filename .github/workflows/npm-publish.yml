@@ -11,7 +11,34 @@ defaults:
     working-directory: apps/cli/apps/cli
 
 jobs:
+  test-on-all-os:
+    name: Test on Node ${{ matrix.node }} on ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node: ['12.x', '14.x', '16.x']
+        os: [ubuntu-latest, windows-2022, macOS-latest]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          path: apps/cli
+
+      - name: Use Node ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Dependency install
+        run: yarn
+
+      - name: Test
+        run: yarn test
+
   publish-npm:
+    needs: test-on-all-os
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,10 +52,10 @@ jobs:
       
       - name: Dependency install
         run: yarn
+      
       - name: Compile
         run: yarn build
-      - name: Test
-        run: yarn test
+      
       - name: Publish 
         run: npm publish --access public
 
