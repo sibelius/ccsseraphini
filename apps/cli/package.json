@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
-    "cli": "node ./lib/bin/cli.js",
+    "cli": "tsc -p . && node ./lib/bin/cli.js",
     "lint": "eslint '**/*.js'",
     "prepare": "yarn build",
     "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
