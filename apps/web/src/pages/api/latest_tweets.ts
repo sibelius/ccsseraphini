@@ -56,7 +56,7 @@ export default async function handler(
       (user) => user.id === tweet.author_id,
     );
 
-    if (tweet.attachments) {
+    if (tweet.attachments && tweetsData.includes.media) {
       const mediaInfo = tweetsData.includes.media.find((photo) => {
         if (tweet.attachments?.media_keys?.length > 0) {
           return photo.media_key === tweet.attachments?.media_keys[0];
