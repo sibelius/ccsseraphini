@@ -16,7 +16,7 @@
     "@dhaiwat10/react-link-preview": "1.12.2",
     "@emotion/react": "11",
     "@emotion/styled": "11",
-    "@solana/web3.js": "1.32.1",
+    "@solana/web3.js": "1.33.0",
     "@types/qrcode.react": "1.0.2",
     "babel-preset-next": "1.4.0",
     "entities": "3.0.1",
