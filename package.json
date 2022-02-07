@@ -28,29 +28,5 @@
   "prettier": {
     "trailingComma": "all",
     "singleQuote": true
-  },
-  "turbo": {
-    "baseBranch": "origin/main",
-    "pipeline": {
-      "build": {
-        "dependsOn": [
-          "^build"
-        ]
-      },
-      "test": {
-        "dependsOn": [
-          "^build"
-        ]
-      },
-      "lint": {
-        "outputs": []
-      },
-      "check-types": {
-        "cache": false
-      },
-      "dev": {
-        "cache": false
-      }
-    }
   }
 }
