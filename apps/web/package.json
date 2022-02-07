@@ -39,7 +39,7 @@
     "@types/node": "17.0.14",
     "@types/react": "17.0.39",
     "@types/react-copy-to-clipboard": "5.0.2",
-    "@types/styled-components": "5.1.21",
+    "@types/styled-components": "5.1.22",
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
     "babel-jest": "27.4.6",
