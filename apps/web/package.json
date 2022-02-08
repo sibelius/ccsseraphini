@@ -36,7 +36,7 @@
     "@babel/core": "7.17.0",
     "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "12.1.2",
-    "@types/node": "17.0.15",
+    "@types/node": "17.0.16",
     "@types/react": "17.0.39",
     "@types/react-copy-to-clipboard": "5.0.2",
     "@types/styled-components": "5.1.22",
