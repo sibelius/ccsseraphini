@@ -4756,10 +4756,10 @@ focus-lock@^0.9.1:
   dependencies:
     tslib "^2.0.3"
 
-fork-me-corner@0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/fork-me-corner/-/fork-me-corner-0.1.4.tgz#0056c252d4a8b892b460dfaf1bdb2b147c62fa23"
-  integrity sha512-cM2VH1nwYiQDPt6AP40TEmvkKPOP9OSQ4qOqSoZE7UjUVhqm+hQ/hq1ct0UfabDm7yjtEU7JcNqqTuNUo0LkDg==
+fork-me-corner@0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/fork-me-corner/-/fork-me-corner-0.1.5.tgz#4203d63ee65a8366b37b2a9a68b16ede0cef7fa1"
+  integrity sha512-NAFKKn3Tofoi8+zV8YQW58FoWAnVXvLPknmPBMlNicUcpGq7ekxfMzU32zuw7vK2JT3pZhP0NMjl4/flV59djw==
   dependencies:
     styled-components "^5.3.3"
 
