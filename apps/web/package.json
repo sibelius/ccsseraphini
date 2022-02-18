@@ -23,7 +23,7 @@
     "ethers": "5.5.4",
     "fork-me-corner": "1.0.1",
     "framer-motion": "6.2.6",
-    "next": "12.0.10",
+    "next": "12.1.0",
     "qrcode.react": "1.0.1",
     "react": "16.14.0",
     "react-copy-to-clipboard": "5.0.4",
