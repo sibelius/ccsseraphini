@@ -2,6 +2,7 @@ import { Button, Stack } from '@chakra-ui/react';
 import { FaTwitter, FaPatreon } from 'react-icons/fa';
 import { SiGooglechrome, SiSubstack } from 'react-icons/si';
 import { SibLogo } from './SibLogo';
+import { BsMailbox } from 'react-icons/bs';
 
 export const ActionButtons = () => {
   return (
@@ -72,6 +73,20 @@ export const ActionButtons = () => {
           size="sm"
         >
           Get mentorship
+        </Button>
+        <Button
+          backgroundColor="#FFFF00"
+          textColor="black"
+          _hover={{ bg: '#FAFAD2' }}
+          leftIcon={<BsMailbox />}
+          width="100%"
+          as={'a'}
+          border="none"
+          href="https://correioanonimo.com.br/sseraphini"
+          target="_blank"
+          size="sm"
+        >
+          Correio anônimo
         </Button>
       </Stack>
     </>
