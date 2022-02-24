@@ -152,6 +152,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const url = `${httpProtocol}://${ctx.req.headers.host}/api/tweets?query=${query}`;
 
   const response = await fetch(url);
+
   if (response.status !== 200) {
     return {
       props: {

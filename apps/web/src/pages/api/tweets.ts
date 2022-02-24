@@ -15,6 +15,7 @@ interface TwitterResponse {
     next_token: string;
     result_count: number;
   };
+  errors: any;
 }
 
 const BASE_URL = 'https://api.twitter.com/2';
@@ -59,8 +60,16 @@ export default async function handler(
   const tweetsData: TwitterResponse = await response.json();
 
   if (!response.ok) {
-    return res.status(400).json({
-      error: tweetsData,
+    return res.status(200).json({
+      tweets: [],
+      nextToken: null,
+    });
+  }
+
+  if (tweetsData.errors) {
+    return res.status(200).json({
+      tweets: [],
+      nextToken: null,
     });
   }
 
