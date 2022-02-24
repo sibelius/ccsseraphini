@@ -13,12 +13,13 @@ interface TwitterResponse {
   };
   meta: {
     next_token: string;
+    result_count: number;
   };
 }
 
 const BASE_URL = 'https://api.twitter.com/2';
 const RECENT_TWEETS_URL = 'tweets/search/recent';
-const QUERY = '-RT cc%20%40sseraphini';
+// const QUERY = '-RT cc%20%40sseraphini';
 const TWEET_FIELDS = 'attachments,author_id,id,text,created_at,public_metrics';
 const USER_FIELDS = 'profile_image_url,url,username';
 const EXPANSIONS = 'author_id,attachments.media_keys';
@@ -36,6 +37,11 @@ export default async function handler(
     });
   }
 
+  const query = req.query.query || '-RT cc @sseraphini';
+
+  // @ts-ignore
+  const QUERY = encodeURI(query);
+
   let url =
     `${BASE_URL}/${RECENT_TWEETS_URL}?query=${QUERY}&tweet.fields=${TWEET_FIELDS}` +
     `&user.fields=${USER_FIELDS}&expansions=${EXPANSIONS}&max_results=${MAX_RESULTS}&media.fields=${MEDIA_FIELDS}`;
@@ -49,7 +55,21 @@ export default async function handler(
       Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
     },
   });
+
   const tweetsData: TwitterResponse = await response.json();
+
+  if (!response.ok) {
+    return res.status(400).json({
+      error: tweetsData,
+    });
+  }
+
+  if (tweetsData.meta.result_count === 0) {
+    return res.status(200).json({
+      tweets: [],
+      nextToken: null,
+    });
+  }
 
   const tweets = tweetsData.data.map((tweet) => {
     const userInfo = tweetsData.includes.users.find(

@@ -2,11 +2,22 @@ import { Button, Stack } from '@chakra-ui/react';
 import { FaTwitter, FaPatreon } from 'react-icons/fa';
 import { SiGooglechrome, SiSubstack } from 'react-icons/si';
 import { SibLogo } from './SibLogo';
-import { BsMailbox } from 'react-icons/bs';
+import { BsMailbox, BsSearch } from 'react-icons/bs';
+import { ChakraNextLinkButton } from './ChakraNextLinkButton';
 
 export const ActionButtons = () => {
   return (
     <>
+      <Stack mt="10px">
+        <ChakraNextLinkButton
+          leftIcon={<BsSearch />}
+          backgroundColor="green.200"
+          as={'a'}
+          href={`/search`}
+        >
+          Search
+        </ChakraNextLinkButton>
+      </Stack>
       <Stack spacing={2} direction={{ base: 'column', md: 'row' }} mt="10px">
         <Button
           backgroundColor="gray.300"
@@ -32,7 +43,8 @@ export const ActionButtons = () => {
         >
           Sponsor
         </Button>
-
+      </Stack>
+      <Stack spacing={2} direction={{ base: 'column', md: 'row' }} mt="10px">
         <Button
           colorScheme="purple"
           leftIcon={<SiSubstack />}
@@ -44,20 +56,6 @@ export const ActionButtons = () => {
           size="sm"
         >
           Articles
-        </Button>
-      </Stack>
-      <Stack spacing={2} direction={{ base: 'column', md: 'row' }} mt="10px">
-        <Button
-          colorScheme="red"
-          leftIcon={<SiGooglechrome />}
-          width="100%"
-          as={'a'}
-          border="none"
-          href="https://chrome.google.com/webstore/detail/ccsseraphini/jbdolkjfpfgpbdeeebkhnmfnbkplgalm"
-          target="_blank"
-          size="sm"
-        >
-          Install cc @sseraphini
         </Button>
 
         <Button
@@ -73,6 +71,20 @@ export const ActionButtons = () => {
           size="sm"
         >
           Get mentorship
+        </Button>
+      </Stack>
+      <Stack spacing={2} direction={{ base: 'column', md: 'row' }} mt="10px">
+        <Button
+          colorScheme="red"
+          leftIcon={<SiGooglechrome />}
+          width="100%"
+          as={'a'}
+          border="none"
+          href="https://chrome.google.com/webstore/detail/ccsseraphini/jbdolkjfpfgpbdeeebkhnmfnbkplgalm"
+          target="_blank"
+          size="sm"
+        >
+          Install cc @sseraphini
         </Button>
         <Button
           backgroundColor="#FFFF00"

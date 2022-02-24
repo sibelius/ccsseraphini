@@ -13,6 +13,8 @@ interface Props {
   error?: boolean;
 }
 
+const query = '-RT cc @sseraphini';
+
 const HomePage: NextPage<Props> = (props: Props) => {
   return (
     <div>
@@ -31,6 +33,7 @@ const HomePage: NextPage<Props> = (props: Props) => {
         <Timeline
           initialTweets={props?.tweets}
           initialNextToken={props?.nextToken}
+          query={query}
         />
       </Flex>
     </div>
@@ -44,7 +47,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     ? 'http'
     : 'https';
 
-  const url = `${httpProtocol}://${ctx.req.headers.host}/api/latest_tweets`;
+  const url = `${httpProtocol}://${ctx.req.headers.host}/api/tweets?query=${query}`;
 
   const response = await fetch(url);
   if (response.status !== 200) {

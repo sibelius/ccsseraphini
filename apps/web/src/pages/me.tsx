@@ -13,7 +13,7 @@ interface Props {
   error?: boolean;
 }
 
-const query = '-RT cc @sseraphini';
+const query = 'from:sseraphini -is:retweet -is:reply';
 
 const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
   if (error) {
