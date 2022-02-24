@@ -6,25 +6,40 @@ import { Flex, Image, Text, Textarea } from '@chakra-ui/react';
 import { TweetData } from '../types/Tweet';
 import { Timeline } from '../components/Timeline';
 import { useDebouncedCallback } from 'use-debounce';
+import Router from 'next/router';
 
 interface Props {
   data?: {
     tweets?: TweetData[];
     nextToken?: string;
+    initialSearch: string;
   };
   error?: boolean;
 }
 
 const debounceDelay = 1000;
 
-const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
-  const rtQuery = '-RT cc @sseraphini';
+const rtQuery = '-RT cc @sseraphini';
 
+const getQuery = (value: string) => {
+  if (value.includes('OR') || value.includes('AND')) {
+    return `(${value}) ${rtQuery}`;
+  }
+
+  return `${value} ${rtQuery}`;
+};
+
+const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
   const [query, setQuery] = useState('-RT cc @sseraphini');
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(data?.initialSearch || '');
 
   const updateQuery = useDebouncedCallback((value) => {
-    setQuery(`${value} ${rtQuery}`);
+    setQuery(getQuery(value));
+
+    Router.push({
+      pathname: '/search',
+      query: { q: encodeURI(value) },
+    });
   }, debounceDelay);
 
   const updateSearch = (value: string) => {
@@ -129,7 +144,10 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     ? 'http'
     : 'https';
 
-  const query = '-RT cc @sseraphini';
+  // @ts-ignore
+  const initialSearch = decodeURI(ctx.query.q || '');
+
+  const query = getQuery(initialSearch);
 
   const url = `${httpProtocol}://${ctx.req.headers.host}/api/tweets?query=${query}`;
 
@@ -143,11 +161,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   }
 
   const data = await response.json();
+
   return {
     props: {
       data: {
+        initialSearch,
         tweets: data?.tweets,
-        nextToken: data?.nextToken,
+        nextToken: data?.nextToken || null,
       },
     },
   };
