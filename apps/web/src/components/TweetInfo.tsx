@@ -103,6 +103,20 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
             {tweetChunks.map((chunk) => {
               if (chunk.type === 'text') return chunk.value;
 
+              if (chunk.type === 'hashtag') {
+                return (
+                  <Link
+                    pointerEvents="all"
+                    target="blank"
+                    color="#444cf7"
+                    href={`https://twitter.com/hashtag/${chunk.value}?src=hashtag_click`}
+                    key={chunk.index}
+                  >
+                    #{chunk.value}
+                  </Link>
+                );
+              }
+
               if (chunk.type === 'url') {
                 if (imageUrlRegex.test(chunk.value)) {
                   return <Image src={chunk.value} alt={tweet.userInfo.name} />;
