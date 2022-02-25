@@ -74,6 +74,33 @@ const mockTweetWithoutUrl = {
   },
 };
 
+const mockTweetWithHashtag = {
+  created_at: new Date('2022-02-25T14:02:41.000Z'),
+  id: '1497210444875972609',
+  author_id: '41742474',
+  public_metrics: {
+    retweet_count: 4,
+    reply_count: 0,
+    like_count: 5,
+    quote_count: 0,
+  },
+  text:
+    'test #react web #javascript everywhere #graphql for api #nodejs backend\n' +
+    '\n' +
+    'cc @sseraphini',
+  userInfo: {
+    id: '41742474',
+    username: 'tgmarinho',
+    profile_image_url:
+      'https://pbs.twimg.com/profile_images/1199361273978327040/6jEpAmdL_normal.jpg',
+    url: 'https://t.co/HChDjNy56x',
+    name: 'Thiago Marinho',
+  },
+  attachments: {
+    media_keys: ['lorem', 'ipsum', 'dolor'],
+  },
+};
+
 // migrate to jest-fetch-mock
 beforeAll(() => {
   jest.spyOn(window, 'fetch');
@@ -101,5 +128,28 @@ describe('TweetInfo', () => {
   it('should not render link preview when there is not an url', async () => {
     render(<TweetInfo tweet={mockTweetWithoutUrl} key="baz" />);
     expect(screen.queryByTestId('link-preview-wrapper')).toBeNull();
+  });
+
+  it('should hashtag word to be a link', async () => {
+    render(
+      <TweetInfo tweet={mockTweetWithHashtag} key={mockTweetWithHashtag.id} />,
+    );
+
+    expect(screen.getByText('#react')).toBeInTheDocument();
+    expect(screen.getByText('#javascript')).toBeInTheDocument();
+    expect(screen.getByText('#graphql')).toBeInTheDocument();
+
+    expect(screen.getByText('#react').closest('a')).toHaveAttribute(
+      'href',
+      'https://twitter.com/hashtag/react?src=hashtag_click',
+    );
+    expect(screen.getByText('#graphql').closest('a')).toHaveAttribute(
+      'href',
+      'https://twitter.com/hashtag/graphql?src=hashtag_click',
+    );
+    expect(screen.getByText('#javascript').closest('a')).toHaveAttribute(
+      'href',
+      'https://twitter.com/hashtag/javascript?src=hashtag_click',
+    );
   });
 });
