@@ -119,7 +119,13 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
 
               if (chunk.type === 'url') {
                 if (imageUrlRegex.test(chunk.value)) {
-                  return <Image src={chunk.value} alt={tweet.userInfo.name} />;
+                  return (
+                    <Image
+                      key={chunk.index}
+                      src={chunk.value}
+                      alt={tweet.userInfo.name}
+                    />
+                  );
                 }
                 return (
                   <Link
