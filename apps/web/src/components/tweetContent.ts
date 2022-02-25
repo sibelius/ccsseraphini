@@ -1,8 +1,9 @@
 const mentionRegex = /@([a-zA-Z0-9_]{4,15})/g;
 const urlRegex = /https?:\/\/[^\s$.?#].[^\s]*/g;
+const hashtagRegex = /#([a-zA-Z0-9_]{1,})/g;
 
 export type InterfaceChunk = {
-  type: 'text' | 'mention' | 'url';
+  type: 'text' | 'mention' | 'url' | 'hashtag';
   index: number;
   value: string;
 };
@@ -15,6 +16,7 @@ export const parseContent = (text: string) => {
   const matches = [
     ...matchAll(text, 'mention', mentionRegex),
     ...matchAll(text, 'url', urlRegex),
+    ...matchAll(text, 'hashtag', hashtagRegex),
   ].sort((m1, m2) => (m1.match.index || 0) - (m2.match.index || 0));
 
   const result: InterfaceChunk[] = [];
