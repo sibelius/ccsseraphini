@@ -4,6 +4,8 @@ import TweetInfo from './TweetInfo';
 import { TweetData } from '../types/Tweet';
 import { useState, useEffect } from 'react';
 import { usePrevious } from '../usePrevious';
+import { Spinner } from '@chakra-ui/spinner';
+import { FaSyncAlt } from 'react-icons/fa';
 
 interface Props {
   initialTweets?: TweetData[];
@@ -19,6 +21,7 @@ export const Timeline = ({
 }: Props) => {
   const [tweets, setTweets] = useState(initialTweets);
   const [nextToken, setNextToken] = useState(initialNextToken);
+  const [refresh, setRefresh] = useState(false);
 
   const fetchData = async () => {
     if (nextToken) {
@@ -34,7 +37,7 @@ export const Timeline = ({
   const prevQuery = usePrevious(query);
 
   useEffect(() => {
-    if (prevQuery && prevQuery !== query) {
+    if ((prevQuery && prevQuery !== query) || refresh) {
       const refetch = async () => {
         const response = await fetch(`/api/tweets?query=${query}`);
         const json = await response.json();
@@ -42,12 +45,13 @@ export const Timeline = ({
         if (response.ok) {
           setTweets([...json.tweets]);
           setNextToken(json?.nextToken);
+          setRefresh(false);
         }
       };
 
       refetch();
     }
-  }, [query]);
+  }, [query, refresh]);
 
   if (!tweets) {
     return null;
@@ -79,13 +83,25 @@ export const Timeline = ({
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
+      opacity={refresh ? 0.4 : 1}
+      position={refresh ? 'relative' : 'unset'}
       flex={1}
       px={4}
       py={8}
     >
       <Text fontWeight="medium" fontSize={24} mb={4}>
         {title}
+
+        <button
+          style={{ fontSize: '.8rem', marginLeft: '.3rem' }}
+          onClick={() => setRefresh(true)}
+        >
+          <FaSyncAlt />
+        </button>
       </Text>
+
+      {refresh ? <Spinner position="absolute" top="15%" right="50%" /> : null}
+
       {renderTweets()}
     </Flex>
   );
