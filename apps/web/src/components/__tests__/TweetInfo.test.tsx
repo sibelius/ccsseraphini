@@ -152,4 +152,25 @@ describe('TweetInfo', () => {
       'https://twitter.com/hashtag/javascript?src=hashtag_click',
     );
   });
+
+  it('should tweet interactions be a link', async () => {
+    render(
+      <TweetInfo tweet={mockTweetWithHashtag} key={mockTweetWithHashtag.id} />,
+    );
+
+    expect(screen.getByText('Retweets').closest('a')).toHaveAttribute(
+      'href',
+      'https://twitter.com/tgmarinho/status/1497210444875972609/retweets',
+    );
+
+    expect(screen.getByText('Quote Tweets').closest('a')).toHaveAttribute(
+      'href',
+      'https://twitter.com/tgmarinho/status/1497210444875972609/retweets/with_comments',
+    );
+
+    expect(screen.getByText('Likes').closest('a')).toHaveAttribute(
+      'href',
+      'https://twitter.com/tgmarinho/status/1497210444875972609/likes',
+    );
+  });
 });
