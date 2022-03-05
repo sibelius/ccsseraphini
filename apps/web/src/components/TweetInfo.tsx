@@ -1,5 +1,13 @@
 import { memo, useMemo } from 'react';
-import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Image,
+  Text,
+  Link,
+  LinkOverlay,
+  LinkBox,
+} from '@chakra-ui/react';
 import { decodeHTML } from 'entities';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { TweetData } from 'types/Tweet';
@@ -26,6 +34,13 @@ const monthNames = [
 ];
 
 const imageUrlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+
+const twitterBaseUrl = 'https://twitter.com/';
+const twitterEndpointSufix = {
+  retweet: '/retweets',
+  quote: '/retweets/with_comments',
+  like: '/likes',
+};
 
 const TweetInfo = ({ tweet }: TweetInfoProps) => {
   const tweetTimeInfo = () => {
@@ -64,7 +79,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
       >
         <Flex w={['100%', '100%', 700]} zIndex={1} pointerEvents="none">
           <Link
-            href={`https://twitter.com/${tweet.userInfo.username}`}
+            href={`${twitterBaseUrl}${tweet.userInfo.username}`}
             target="blank"
             pointerEvents="all"
             _focus={{ boxShadow: 'none' }}
@@ -79,7 +94,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
             />
           </Link>
           <Link
-            href={`https://twitter.com/${tweet.userInfo.username}`}
+            href={`${twitterBaseUrl}${tweet.userInfo.username}`}
             target="blank"
             pointerEvents="all"
             _focus={{ boxShadow: 'none' }}
@@ -109,7 +124,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
                     pointerEvents="all"
                     target="blank"
                     color="#444cf7"
-                    href={`https://twitter.com/hashtag/${chunk.value}?src=hashtag_click`}
+                    href={`${twitterBaseUrl}hashtag/${chunk.value}?src=hashtag_click`}
                     key={chunk.index}
                   >
                     #{chunk.value}
@@ -146,7 +161,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
                     pointerEvents="all"
                     target="blank"
                     color="#444cf7"
-                    href={`https://twitter.com/${chunk.value}`}
+                    href={`${twitterBaseUrl}${chunk.value}`}
                     key={chunk.index}
                   >
                     @{chunk.value}
@@ -165,7 +180,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
           {tweetTimeInfo()}
         </Text>
         <Link
-          href={`https://twitter.com/${tweet.userInfo.username}/status/${tweet.id}`}
+          href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}`}
           target="blank"
           w="100%"
           display="flex"
@@ -177,18 +192,55 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
         />
       </Flex>
       <Flex paddingY={3} borderY="1px solid" mt={4} borderColor="gray.300">
-        <Text color="gray.500" fontWeight="bold" marginRight={1}>
-          {tweet.public_metrics.retweet_count}
-        </Text>
-        <Text color="gray.500" marginRight={2}>
-          {tweet.public_metrics.retweet_count === 1 ? 'Retweet' : 'Retweets'}
-        </Text>
-        <Text color="gray.500" fontWeight="bold" marginRight={1}>
-          {tweet.public_metrics.like_count}
-        </Text>
-        <Text color="gray.500">
-          {tweet.public_metrics.like_count === 1 ? 'Like' : 'Likes'}
-        </Text>
+        <LinkBox>
+          <LinkOverlay
+            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.retweet}`}
+            target="blank"
+            display="flex"
+            _hover={{ textDecor: 'underline' }}
+          >
+            <Text color="gray.500" fontWeight="bold" marginRight={1}>
+              {tweet.public_metrics.retweet_count}
+            </Text>
+            <Text color="gray.500" marginRight={2}>
+              {tweet.public_metrics.retweet_count === 1
+                ? 'Retweet'
+                : 'Retweets'}
+            </Text>
+          </LinkOverlay>
+        </LinkBox>
+        <LinkBox>
+          <LinkOverlay
+            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.quote}`}
+            target="blank"
+            display="flex"
+            _hover={{ textDecor: 'underline' }}
+          >
+            <Text color="gray.500" fontWeight="bold" marginRight={1}>
+              {tweet.public_metrics.quote_count}
+            </Text>
+            <Text color="gray.500" marginRight={2}>
+              {tweet.public_metrics.quote_count === 1
+                ? 'Quote Tweet'
+                : 'Quote Tweets'}
+            </Text>
+          </LinkOverlay>
+        </LinkBox>
+        <LinkBox>
+          <LinkOverlay
+            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.like}`}
+            target="blank"
+            display="flex"
+            _hover={{ textDecor: 'underline' }}
+          >
+            <Text color="gray.500" fontWeight="bold" marginRight={1}>
+              {tweet.public_metrics.like_count}
+            </Text>
+            <Text color="gray.500">
+              {tweet.public_metrics.like_count === 1 ? 'Like' : 'Likes'}
+            </Text>
+          </LinkOverlay>
+        </LinkBox>
       </Flex>
     </Box>
   );
