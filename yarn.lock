@@ -1682,10 +1682,10 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.4.0.tgz#c3c5ae543c897caa9c2a68630bed355be5f9990f"
   integrity sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ==
 
-"@dhaiwat10/react-link-preview@1.12.2":
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/@dhaiwat10/react-link-preview/-/react-link-preview-1.12.2.tgz#426b8496681e9506eaa5ebfec085aecf71725179"
-  integrity sha512-g7mybM7SxLlPsuielwEIr+7hC0uk+x9+/M9PhBXVd/x6zLf3ncHVkzMZrpYrSgx3sNd4G0fH9D6oV1eocO+kTw==
+"@dhaiwat10/react-link-preview@1.13.1":
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/@dhaiwat10/react-link-preview/-/react-link-preview-1.13.1.tgz#89300fd4f15d91df9e58f939ba80b310d4cacea9"
+  integrity sha512-WbZkWPpwCq86Wk/hdy9sWMR8XF1SN21urewDvUQYZTzmL9Z00955d/1qM1x0/yBNQoWajJyhFBPeCl9KI/ZdEQ==
   dependencies:
     react-loading-skeleton "^2.2.0"
 
