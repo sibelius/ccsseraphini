@@ -18,7 +18,7 @@
     "lint-staged": "12.3.5",
     "prettier": "2.5.1",
     "prettier-package-json": "2.6.3",
-    "turbo": "1.1.5"
+    "turbo": "1.1.6"
   },
   "lint-staged": {
     "*.{js,ts,tsx}": "eslint --cache --fix",
