@@ -1,17 +1,21 @@
-import { memo, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import {
   Box,
   Flex,
   Image,
-  Text,
   Link,
-  LinkOverlay,
   LinkBox,
+  LinkOverlay,
+  Text,
 } from '@chakra-ui/react';
 import { decodeHTML } from 'entities';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
-import { TweetData } from 'types/Tweet';
 import { parseContent } from './tweetContent';
+import { useSnapshot } from 'valtio';
+import { searchState } from './TweetComposer';
+import { Highlight } from './Highlight';
+import { TweetData } from './Timeline';
+import { HighlightCustom } from './HighlightCustom';
 
 interface TweetInfoProps {
   tweet: TweetData;
@@ -33,9 +37,8 @@ const monthNames = [
   'Dec',
 ];
 
-const imageUrlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
-
-const twitterBaseUrl = 'https://twitter.com/';
+export const imageUrlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+export const twitterBaseUrl = 'https://twitter.com/';
 const twitterEndpointSufix = {
   retweet: '/retweets',
   quote: '/retweets/with_comments',
@@ -43,6 +46,8 @@ const twitterEndpointSufix = {
 };
 
 const TweetInfo = ({ tweet }: TweetInfoProps) => {
+  const { showSearch } = useSnapshot(searchState);
+
   const tweetTimeInfo = () => {
     const parsedDate = new Date(tweet.created_at);
 
@@ -105,7 +110,11 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
           >
             <Box mt={[0, 1]}>
               <Text fontSize={14} fontWeight="bold">
-                {tweet.userInfo.name}
+                {showSearch ? (
+                  <Highlight hit={tweet} attribute={['userInfo', 'name']} />
+                ) : (
+                  <>{tweet.userInfo.name}</>
+                )}
               </Text>
               <Text fontSize={14} color="gray.500" fontWeight="light">
                 {`@${tweet.userInfo.username}`}
@@ -115,60 +124,66 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
         </Flex>
         <Box zIndex={1} pointerEvents="none">
           <Text mt={2}>
-            {tweetChunks.map((chunk) => {
-              if (chunk.type === 'text') return chunk.value;
+            {showSearch ? (
+              <HighlightCustom hit={tweet} />
+            ) : (
+              <>
+                {tweetChunks.map((chunk) => {
+                  if (chunk.type === 'text') return chunk.value;
 
-              if (chunk.type === 'hashtag') {
-                return (
-                  <Link
-                    pointerEvents="all"
-                    target="blank"
-                    color="#444cf7"
-                    href={`${twitterBaseUrl}hashtag/${chunk.value}?src=hashtag_click`}
-                    key={chunk.index}
-                  >
-                    #{chunk.value}
-                  </Link>
-                );
-              }
+                  if (chunk.type === 'hashtag') {
+                    return (
+                      <Link
+                        pointerEvents="all"
+                        target="blank"
+                        color="#444cf7"
+                        href={`${twitterBaseUrl}hashtag/${chunk.value}?src=hashtag_click`}
+                        key={chunk.index}
+                      >
+                        #{chunk.value}
+                      </Link>
+                    );
+                  }
 
-              if (chunk.type === 'url') {
-                if (imageUrlRegex.test(chunk.value)) {
-                  return (
-                    <Image
-                      key={chunk.index}
-                      src={chunk.value}
-                      alt={tweet.userInfo.name}
-                    />
-                  );
-                }
-                return (
-                  <Link
-                    pointerEvents="all"
-                    target="blank"
-                    color="#444cf7"
-                    href={chunk.value}
-                    key={chunk.index}
-                  >
-                    {chunk.value}
-                  </Link>
-                );
-              }
+                  if (chunk.type === 'url') {
+                    if (imageUrlRegex.test(chunk.value)) {
+                      return (
+                        <Image
+                          key={chunk.index}
+                          src={chunk.value}
+                          alt={tweet.userInfo.name}
+                        />
+                      );
+                    }
+                    return (
+                      <Link
+                        pointerEvents="all"
+                        target="blank"
+                        color="#444cf7"
+                        href={chunk.value}
+                        key={chunk.index}
+                      >
+                        {chunk.value}
+                      </Link>
+                    );
+                  }
 
-              if (chunk.type === 'mention') {
-                return (
-                  <Link
-                    pointerEvents="all"
-                    target="blank"
-                    color="#444cf7"
-                    href={`${twitterBaseUrl}${chunk.value}`}
-                    key={chunk.index}
-                  >
-                    @{chunk.value}
-                  </Link>
-                );
-              }
-            })}
+                  if (chunk.type === 'mention') {
+                    return (
+                      <Link
+                        pointerEvents="all"
+                        target="blank"
+                        color="#444cf7"
+                        href={`${twitterBaseUrl}${chunk.value}`}
+                        key={chunk.index}
+                      >
+                        @{chunk.value}
+                      </Link>
+                    );
+                  }
+                })}
+              </>
+            )}
           </Text>
         </Box>
         {nonImageUrlChunk ? (

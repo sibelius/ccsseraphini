@@ -1,17 +1,50 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Flex, Text } from '@chakra-ui/react';
 import TweetInfo from './TweetInfo';
-import { TweetData } from '../types/Tweet';
 import { useState, useEffect } from 'react';
 import { usePrevious } from '../usePrevious';
 import { Spinner } from '@chakra-ui/spinner';
 import { FaSyncAlt } from 'react-icons/fa';
+import { searchState } from './TweetComposer';
+import { useSnapshot } from 'valtio';
+import { InfiniteHits } from './InfiniteHits';
+import { AlgoliaHit } from 'instantsearch.js';
 
 interface Props {
-  initialTweets?: TweetData[];
+  initialTweets?: HitProps['hit'][];
   initialNextToken?: string;
   query?: string;
   isSearch?: boolean;
+}
+export type TweetData = AlgoliaHit<{
+  author_id: string;
+  id: string;
+  text: string;
+  userName: string;
+  created_at: Date;
+  public_metrics: {
+    retweet_count: number;
+    reply_count: number;
+    like_count: number;
+    quote_count: number;
+  };
+  attachments: {
+    media_keys: string[];
+  };
+  userInfo: {
+    id: string;
+    name: string;
+    profile_image_url: string;
+    username: string;
+  };
+}>;
+
+export type HitProps = {
+  hit: TweetData;
+};
+
+function Hit({ hit }: HitProps) {
+  return <TweetInfo tweet={hit} />;
 }
 export const Timeline = ({
   initialTweets,
@@ -19,6 +52,8 @@ export const Timeline = ({
   query,
   isSearch = false,
 }: Props) => {
+  const { showSearch } = useSnapshot(searchState);
+
   const [tweets, setTweets] = useState(initialTweets);
   const [nextToken, setNextToken] = useState(initialNextToken);
   const [refresh, setRefresh] = useState(false);
@@ -60,10 +95,9 @@ export const Timeline = ({
   const title = isSearch ? 'Search Results' : 'Latest tweets';
 
   const renderTweets = () => {
-    if (tweets.length === 0) {
+    if (tweets?.length === 0) {
       return <Text>No tweets found</Text>;
     }
-
     return (
       <InfiniteScroll
         dataLength={tweets?.length || 0}
@@ -78,11 +112,25 @@ export const Timeline = ({
     );
   };
 
+  const renderMeiliSearch = () => {
+    return (
+      <>
+        <style>
+          {`
+           li {
+            list-style: none;
+          `}
+        </style>
+        <InfiniteHits hitComponent={Hit} />
+      </>
+    );
+  };
+
   return (
     <Flex
       alignItems="center"
-      justifyContent="center"
       flexDirection="column"
+      minHeight="100vh"
       opacity={refresh ? 0.4 : 1}
       position={refresh ? 'relative' : 'unset'}
       flex={1}
@@ -102,7 +150,7 @@ export const Timeline = ({
 
       {refresh ? <Spinner position="absolute" top="15%" right="50%" /> : null}
 
-      {renderTweets()}
+      {showSearch ? renderMeiliSearch() : renderTweets()}
     </Flex>
   );
 };

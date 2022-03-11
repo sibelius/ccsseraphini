@@ -15,3 +15,8 @@ This is the Twitter API Bearer Token. You can get a new one with the following s
 - Create a new project
 - Create an app inside the project
 - After that you will have the API Key, the Bearer Token and the Access Token. In this case we will only need the Bearer Token. After this just add it to the .env file and you are all set.
+
+### MEILI_ACCESS_TOKEN
+
+This is the access token for the MeiliSearch API. You can get it following the quick guide:
+- [Quick start](https://docs.meilisearch.com/learn/getting_started/quick_start.html#step-1-setup-and-installation)

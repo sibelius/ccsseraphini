@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Textarea, Badge } from '@chakra-ui/react';
+import { Box, Button, Textarea, Badge, Switch } from '@chakra-ui/react';
 import { FaTwitter } from 'react-icons/fa';
 
 export const TweetComposer = () => {
@@ -16,13 +16,15 @@ export const TweetComposer = () => {
         minHeight="10.8rem"
         placeholder="Write your tweet concept/question here"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
 
       <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
         {counter}
       </Badge>
-      <Box as="span">cc @sseraphini</Box>
+      <Box as="span">
+        cc @sseraphini <Switch />
+      </Box>
 
       <Button
         colorScheme="twitter"
