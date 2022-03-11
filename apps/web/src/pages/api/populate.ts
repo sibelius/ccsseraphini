@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { MeiliSearch } from 'meilisearch';
+import { TweetData } from '../../components/Timeline';
 
 export default async function handler(
   req: NextApiRequest,
@@ -38,13 +39,24 @@ export default async function handler(
   });
 
   const index = client.index('tweets');
+  await index.addDocuments(
+    data.tweets.map((tweet: TweetData) => ({
+      ...tweet,
+      userName: tweet.userInfo.name,
+    })),
+  );
 
   let nextToken = data.nextToken;
   let times = 0;
-  while (nextToken && times < 150) {
+  while (nextToken && times < 230) {
     const response = await fetch(url2(nextToken));
     const data = await response.json();
-    await index.addDocuments(data.tweets);
+    await index.addDocuments(
+      data.tweets.map((tweet: TweetData) => ({
+        ...tweet,
+        userName: tweet.userInfo.name,
+      })),
+    );
 
     nextToken = data.nextToken;
     times++;

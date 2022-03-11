@@ -38,6 +38,7 @@ export default async function handler(
   });
 
   const index = client.index('tweets');
+  await index.addDocuments(data.tweets);
 
   let nextToken = data.nextToken;
   let times = 0;

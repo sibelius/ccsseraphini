@@ -111,7 +111,7 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
             <Box mt={[0, 1]}>
               <Text fontSize={14} fontWeight="bold">
                 {showSearch ? (
-                  <Highlight hit={tweet} attribute={['userInfo', 'name']} />
+                  <Highlight hit={tweet} attribute="userName" />
                 ) : (
                   <>{tweet.userInfo.name}</>
                 )}
