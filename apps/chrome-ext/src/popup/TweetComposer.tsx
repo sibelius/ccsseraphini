@@ -19,7 +19,6 @@ export const TweetComposer = () => {
         onChange={(e) => setText(e.target.value)}
       />
 
-
       <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
         {counter}
       </Badge>
