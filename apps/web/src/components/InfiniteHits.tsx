@@ -28,7 +28,7 @@ export function InfiniteHits({
         showMore();
       }
     }
-  }, [inViewport, showMore]);
+  }, [inViewport, showMore, isLastPage]);
 
   return (
     <div className={cx('ais-InfiniteHits', props.className)}>
