@@ -22,17 +22,6 @@ export function InfiniteHits({
   const ref = useRef<HTMLButtonElement | null>(null);
   const [inViewport] = useInViewport(ref, {});
 
-  const sortedHits = useMemo(() => hits.sort((a, b) => {
-    //@ts-expect-error missing type
-    return a.created_at < b.created_at ? 1 : -1;
-  }), [hits]);
-
-
-
-
-
-
-
   useEffect(() => {
     if (inViewport && !isLastPage) {
       if (typeof showMore === 'function') {
@@ -45,7 +34,7 @@ export function InfiniteHits({
     <div className={cx('ais-InfiniteHits', props.className)}>
       <ol className="ais-InfiniteHits-list">
         <ol>
-          {sortedHits.map((hit) => (
+          {hits.map((hit) => (
             //Type incompatibility between libs
             <Hit key={hit.objectID} hit={hit as unknown as TweetData} />
           ))}
