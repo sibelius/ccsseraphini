@@ -16,8 +16,9 @@ export const TweetComposer = () => {
         minHeight="10.8rem"
         placeholder="Write your tweet concept/question here"
         value={text}
-        onChange={e => setText(e.target.value)}
+        onChange={(e) => setText(e.target.value)}
       />
+
 
       <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
         {counter}
