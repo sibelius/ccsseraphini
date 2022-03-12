@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
       <InstantSearch
-        indexName="tweets"
+        indexName="tweets:created_at:desc"
         searchClient={searchClient}
         suppressExperimentalWarning
       >
