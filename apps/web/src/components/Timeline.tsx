@@ -9,6 +9,7 @@ import { searchState } from './TweetComposer';
 import { useSnapshot } from 'valtio';
 import { InfiniteHits } from './InfiniteHits';
 import { TweetData } from '../types/Tweet';
+import { Stats } from './Stats';
 
 interface Props {
   initialTweets?: HitProps['hit'][];
@@ -91,7 +92,12 @@ export const Timeline = ({
   };
 
   const renderMeiliSearch = () => {
-    return <InfiniteHits hitComponent={Hit} />;
+    return (
+      <>
+        <Stats />
+        <InfiniteHits hitComponent={Hit} />;
+      </>
+    );
   };
 
   return (
