@@ -8,7 +8,7 @@ import { imageUrlRegex, twitterBaseUrl } from './TweetInfo';
 export const HighlightCustom = ({ hit }: { hit: TweetData }) => {
   // This is a hack to get around the fact that the `_highlightResult`
   // object is not a real object, but a string.
-  // @ts-ignore missing type, but exists
+  // @ts-expect-error missing type, but exists
   const nestedHit = hit['_highlightResult']?.text?.value
     .replace(/ais-highlight-0000000000/gi, 'mark')
     .replace(/\/ais-highlight-0000000000/gi, '/mark');

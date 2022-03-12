@@ -116,22 +116,26 @@ afterEach(() => jest.resetAllMocks());
 
 describe('TweetInfo', () => {
   it('should render link preview when there is a non-image url', async () => {
+    // @ts-expect-error needs to updated the mocks
     render(<TweetInfo tweet={mockTweetWithNonImageUrl} key="foo" />);
     expect(screen.getByTestId('link-preview-wrapper')).toBeInTheDocument();
   });
 
   it('should not render link preview when there is an image url', async () => {
+    // @ts-expect-error needs to updated the mocks
     render(<TweetInfo tweet={mockTweetWithImageUrl} key="bar" />);
     expect(screen.queryByTestId('link-preview-wrapper')).toBeNull();
   });
 
   it('should not render link preview when there is not an url', async () => {
+    // @ts-expect-error needs to updated the mocks
     render(<TweetInfo tweet={mockTweetWithoutUrl} key="baz" />);
     expect(screen.queryByTestId('link-preview-wrapper')).toBeNull();
   });
 
   it('should hashtag word to be a link', async () => {
     render(
+      // @ts-expect-error needs to updated the mocks
       <TweetInfo tweet={mockTweetWithHashtag} key={mockTweetWithHashtag.id} />,
     );
 
@@ -155,6 +159,7 @@ describe('TweetInfo', () => {
 
   it('should tweet interactions be a link', async () => {
     render(
+      // @ts-expect-error needs to updated the mocks
       <TweetInfo tweet={mockTweetWithHashtag} key={mockTweetWithHashtag.id} />,
     );
 
