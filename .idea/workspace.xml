@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c39148-d601-4848-a3db-82c9230159be" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/web/src/components/InfiniteHits.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/InfiniteHits.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/api/cron.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/api/cron.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/api/populate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/api/populate.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

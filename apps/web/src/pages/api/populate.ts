@@ -39,7 +39,7 @@ export default async function handler(
   });
 
   const finalData = new Set<TweetData>();
-  const index = client.index('banana-tweets');
+  const index = client.index('tweets');
   await index.deleteAllDocuments()
 
   for (const tweet of data.tweets) {
