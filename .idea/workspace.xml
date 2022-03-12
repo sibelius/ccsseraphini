@@ -4,18 +4,6 @@
     <list default="true" id="50c39148-d601-4848-a3db-82c9230159be" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/chrome-ext/src/popup/TweetComposer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/chrome-ext/src/popup/TweetComposer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/Highlight.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/Highlight.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/HighlightCustom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/HighlightCustom.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/InfiniteHits.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/InfiniteHits.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/Timeline.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/Timeline.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/components/TweetInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/TweetInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/api/populate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/api/populate.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/me.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/me.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/reply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/reply.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/search.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/timeline.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/timeline.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/types/Tweet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/types/Tweet.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
