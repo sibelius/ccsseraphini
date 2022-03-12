@@ -38,32 +38,36 @@ export default async function handler(
     apiKey: process.env.MEILISEARCH_API_KEY,
   });
 
-  const index = client.index('tweets');
+  const finalData = new Set<TweetData>();
+  const index = client.index('banana-tweets');
+  await index.deleteAllDocuments()
+
+  for (const tweet of data.tweets) {
+    finalData.add(tweet);
+  }
+
+  let nextToken = data.nextToken;
+  let times = 0;
+  while (nextToken && times < 100) {
+    const response = await fetch(url2(nextToken));
+    const data = await response.json();
+    for (const tweet of data.tweets) {
+      finalData.add(tweet);
+    }
+    nextToken = data.nextToken;
+    times++;
+  }
+
   await index.addDocuments(
-    data.tweets.map((tweet: TweetData) => ({
+    Array.from(finalData).map((tweet) => ({
       ...tweet,
       userName: tweet.userInfo.name,
     })),
   );
 
-  let nextToken = data.nextToken;
-  let times = 0;
-  while (nextToken && times < 230) {
-    const response = await fetch(url2(nextToken));
-    const data = await response.json();
-    await index.addDocuments(
-      data.tweets.map((tweet: TweetData) => ({
-        ...tweet,
-        userName: tweet.userInfo.name,
-      })),
-    );
-
-    nextToken = data.nextToken;
-    times++;
-  }
 
   return res.status(200).json({
     success: true,
-    data,
+    data: Array.from(finalData),
   });
 }

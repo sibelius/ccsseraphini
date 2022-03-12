@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { MeiliSearch } from 'meilisearch';
+import { TweetData } from '../../types/Tweet';
 
 export default async function handler(
   req: NextApiRequest,
@@ -37,22 +38,36 @@ export default async function handler(
     apiKey: process.env.MEILISEARCH_API_KEY,
   });
 
-  const index = client.index('tweets');
-  await index.addDocuments(data.tweets);
+  const finalData = new Set<TweetData>();
+  const index = client.index('banana-tweets');
+  await index.deleteAllDocuments()
+
+  for (const tweet of data.tweets) {
+    finalData.add(tweet);
+  }
 
   let nextToken = data.nextToken;
   let times = 0;
   while (nextToken && times < 2) {
     const response = await fetch(url2(nextToken));
     const data = await response.json();
-    await index.addDocuments(data.tweets);
-
+    for (const tweet of data.tweets) {
+      finalData.add(tweet);
+    }
     nextToken = data.nextToken;
     times++;
   }
 
+  await index.addDocuments(
+    Array.from(finalData).map((tweet) => ({
+      ...tweet,
+      userName: tweet.userInfo.name,
+    })),
+  );
+
+
   return res.status(200).json({
     success: true,
-    data,
+    data: Array.from(finalData),
   });
 }
