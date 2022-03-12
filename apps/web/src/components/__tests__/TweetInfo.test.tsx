@@ -101,6 +101,18 @@ const mockTweetWithHashtag = {
   },
 };
 
+jest.mock('react-instantsearch-hooks', () => ({
+  useInstantSearch: () => ({
+    searchState: {},
+    searchClient: {},
+    currentRefinement: '',
+    refine: () => {},
+  }),
+  useSearchBox: () => ({
+    currentRefinement: '',
+    refine: () => {},
+  }),
+}));
 // migrate to jest-fetch-mock
 beforeAll(() => {
   jest.spyOn(window, 'fetch');

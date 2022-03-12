@@ -1,6 +1,18 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Home from '../../../src/pages';
 
+jest.mock('react-instantsearch-hooks', () => ({
+  useInstantSearch: () => ({
+    searchState: {},
+    searchClient: {},
+    currentRefinement: '',
+    refine: () => {},
+  }),
+  useSearchBox: () => ({
+    currentRefinement: '',
+    refine: () => {},
+  }),
+}));
 beforeEach(() => {
   render(<Home />);
 });

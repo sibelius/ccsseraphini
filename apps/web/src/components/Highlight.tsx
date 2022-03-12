@@ -1,11 +1,10 @@
 import { Hit as AlgoliaHit } from '@algolia/client-search';
-import {
-  getHighlightedParts,
-  getPropertyByPath,
-} from 'instantsearch.js/es/lib/utils';
+
 import React from 'react';
 
 import { cx } from './cx';
+import { getHighlightedParts } from '../../utilities/getHighlightedParts';
+import { getPropertyByPath } from '../../utilities/getPropertyByPath';
 
 type HighlightPartProps = {
   children: React.ReactNode;
