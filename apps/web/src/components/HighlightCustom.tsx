@@ -9,15 +9,23 @@ export const HighlightCustom = ({ hit }: { hit: TweetData }) => {
   // This is a hack to get around the fact that the `_highlightResult`
   // object is not a real object, but a string.
   // @ts-expect-error missing type, but exists
-  const nestedHit = hit['_highlightResult']?.text?.value
-    .replace(/ais-highlight-0000000000/gi, 'mark')
-    .replace(/\/ais-highlight-0000000000/gi, '/mark');
-
+  const nestedHit = hit['_highlightResult']?.text?.value;
   const tweetChunks = parseContent(decodeHTML(nestedHit ?? ''));
+
+  const parsedChunks = tweetChunks.map((chunk) => {
+    return {
+      ...chunk,
+      value:
+        chunk.type === 'url'
+          ? // remove marks from url
+            chunk.value.replace(/<mark>/gi, '').replace(/\<\/mark>/gi, '')
+          : chunk.value,
+    };
+  });
 
   return (
     <span>
-      {tweetChunks.map((chunk) => {
+      {parsedChunks.map((chunk) => {
         if (chunk.type === 'text')
           return (
             <div
