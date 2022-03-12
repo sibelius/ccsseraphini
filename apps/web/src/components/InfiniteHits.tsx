@@ -7,7 +7,7 @@ import {
 
 import { cx } from './cx';
 import { useInViewport } from 'ahooks';
-import { TweetData } from './Timeline';
+import { TweetData } from '../types/Tweet';
 
 export type InfiniteHitsProps = React.ComponentProps<'div'> &
   UseInfiniteHitsProps & {

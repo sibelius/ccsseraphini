@@ -53,13 +53,13 @@ export function Highlight<THit extends AlgoliaHit<Record<string, unknown>>>({
 }: HighlightProps<THit>) {
   const { value: attributeValue = '' } =
     getPropertyByPath(hit._highlightResult, attribute as string) || {};
-  const parts = getHighlightedParts(attributeValue);
+  const highlightedParts = getHighlightedParts(attributeValue);
 
   return (
     <span {...rest} className={cx('ais-Highlight', rest.className)}>
-      {parts.map((part, partIndex) => {
+      {highlightedParts.map((part, partIndex) => {
         if (Array.isArray(part)) {
-          const isLastPart = partIndex === parts.length - 1;
+          const isLastPart = partIndex === highlightedParts.length - 1;
 
           return (
             <span key={partIndex}>

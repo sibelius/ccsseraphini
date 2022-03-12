@@ -14,8 +14,8 @@ import { parseContent } from './tweetContent';
 import { useSnapshot } from 'valtio';
 import { searchState } from './TweetComposer';
 import { Highlight } from './Highlight';
-import { TweetData } from './Timeline';
 import { HighlightCustom } from './HighlightCustom';
+import { TweetData } from '../types/Tweet';
 
 interface TweetInfoProps {
   tweet: TweetData;

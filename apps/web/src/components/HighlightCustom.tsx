@@ -1,9 +1,9 @@
-import { TweetData } from './Timeline';
 import { parseContent } from './tweetContent';
 import { decodeHTML } from 'entities';
 import { Image, Link } from '@chakra-ui/react';
 import React from 'react';
 import { imageUrlRegex, twitterBaseUrl } from './TweetInfo';
+import { TweetData } from '../types/Tweet';
 
 export const HighlightCustom = ({ hit }: { hit: TweetData }) => {
   // This is a hack to get around the fact that the `_highlightResult`

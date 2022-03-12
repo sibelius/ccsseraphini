@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { MeiliSearch } from 'meilisearch';
-import { TweetData } from '../../components/Timeline';
+import { TweetData } from '../../types/Tweet';
 
 export default async function handler(
   req: NextApiRequest,

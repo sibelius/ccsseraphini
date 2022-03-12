@@ -2,7 +2,8 @@ import type { NextPage } from 'next';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { Flex, Text } from '@chakra-ui/react';
-import { Timeline, TweetData } from '../components/Timeline';
+import { Timeline } from '../components/Timeline';
+import { TweetData } from '../types/Tweet';
 
 interface Props {
   data?: {

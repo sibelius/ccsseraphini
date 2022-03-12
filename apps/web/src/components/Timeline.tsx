@@ -1,14 +1,14 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Flex, Text } from '@chakra-ui/react';
 import TweetInfo from './TweetInfo';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePrevious } from '../usePrevious';
 import { Spinner } from '@chakra-ui/spinner';
 import { FaSyncAlt } from 'react-icons/fa';
 import { searchState } from './TweetComposer';
 import { useSnapshot } from 'valtio';
 import { InfiniteHits } from './InfiniteHits';
-import { AlgoliaHit } from 'instantsearch.js';
+import { TweetData } from '../types/Tweet';
 
 interface Props {
   initialTweets?: HitProps['hit'][];
@@ -16,28 +16,6 @@ interface Props {
   query?: string;
   isSearch?: boolean;
 }
-export type TweetData = AlgoliaHit<{
-  author_id: string;
-  id: string;
-  text: string;
-  userName: string;
-  created_at: Date;
-  public_metrics: {
-    retweet_count: number;
-    reply_count: number;
-    like_count: number;
-    quote_count: number;
-  };
-  attachments: {
-    media_keys: string[];
-  };
-  userInfo: {
-    id: string;
-    name: string;
-    profile_image_url: string;
-    username: string;
-  };
-}>;
 
 export type HitProps = {
   hit: TweetData;
@@ -113,17 +91,7 @@ export const Timeline = ({
   };
 
   const renderMeiliSearch = () => {
-    return (
-      <>
-        <style>
-          {`
-           li {
-            list-style: none;
-          `}
-        </style>
-        <InfiniteHits hitComponent={Hit} />
-      </>
-    );
+    return <InfiniteHits hitComponent={Hit} />;
   };
 
   return (

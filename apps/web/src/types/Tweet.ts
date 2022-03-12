@@ -1,3 +1,5 @@
+import { AlgoliaHit } from 'instantsearch.js';
+
 export interface TwitterResponseTweetInfo {
   author_id: string;
   id: string;
@@ -29,6 +31,25 @@ export interface TwitterResponseMediaInfo {
   height: number;
 }
 
-export interface TweetData extends TwitterResponseTweetInfo {
-  userInfo: TwitterResponseUserInfo;
-}
+export type TweetData = AlgoliaHit<{
+  author_id: string;
+  id: string;
+  text: string;
+  userName: string;
+  created_at: Date;
+  public_metrics: {
+    retweet_count: number;
+    reply_count: number;
+    like_count: number;
+    quote_count: number;
+  };
+  attachments: {
+    media_keys: string[];
+  };
+  userInfo: {
+    id: string;
+    name: string;
+    profile_image_url: string;
+    username: string;
+  };
+}>;

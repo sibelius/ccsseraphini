@@ -2,9 +2,10 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Home } from '../components/Home';
 import { GetServerSideProps } from 'next';
-import { Timeline, TweetData } from '../components/Timeline';
+import { Timeline } from '../components/Timeline';
 import { ForkMe } from 'fork-me-corner';
 import { Flex } from '@chakra-ui/react';
+import { TweetData } from '../types/Tweet';
 
 interface Props {
   tweets?: TweetData[];
