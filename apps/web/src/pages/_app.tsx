@@ -1,10 +1,23 @@
 import type { AppProps } from 'next/app';
 import { ChakraProvider } from '@chakra-ui/react';
 
+import { InstantSearch } from 'react-instantsearch-hooks';
+import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
+
+const searchClient = instantMeiliSearch(
+  'https://droplet.juliomerisio.com',
+  process.env.NEXT_PUBLIC_MEILISEARCH_API_KEY,
+);
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <InstantSearch
+        indexName="tweets"
+        searchClient={searchClient}
+        suppressExperimentalWarning
+      >
+        <Component {...pageProps} />
+      </InstantSearch>
     </ChakraProvider>
   );
 }

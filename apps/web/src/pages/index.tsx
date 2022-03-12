@@ -5,8 +5,6 @@ import { GetServerSideProps } from 'next';
 import { Timeline, TweetData } from '../components/Timeline';
 import { ForkMe } from 'fork-me-corner';
 import { Flex } from '@chakra-ui/react';
-import { InstantSearch } from 'react-instantsearch-hooks';
-import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
 
 interface Props {
   tweets?: TweetData[];
@@ -15,11 +13,6 @@ interface Props {
 }
 
 const query = '-RT cc @sseraphini';
-
-const searchClient = instantMeiliSearch(
-  'https://droplet.juliomerisio.com',
-  process.env.NEXT_PUBLIC_MEILISEARCH_API_KEY,
-);
 
 const HomePage: NextPage<Props> = (props: Props) => {
   return (
@@ -35,19 +28,13 @@ const HomePage: NextPage<Props> = (props: Props) => {
         gap="12px"
         flexWrap="wrap"
       >
-        <InstantSearch
-          indexName="tweets"
-          searchClient={searchClient}
-          suppressExperimentalWarning
-        >
-          <Home />
+        <Home />
 
-          <Timeline
-            initialTweets={props?.tweets}
-            initialNextToken={props?.nextToken}
-            query={query}
-          />
-        </InstantSearch>
+        <Timeline
+          initialTweets={props?.tweets}
+          initialNextToken={props?.nextToken}
+          query={query}
+        />
       </Flex>
     </div>
   );
