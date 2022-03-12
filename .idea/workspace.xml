@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50c39148-d601-4848-a3db-82c9230159be" name="Changes" comment="" />
+    <list default="true" id="50c39148-d601-4848-a3db-82c9230159be" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/chrome-ext/src/popup/TweetComposer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/chrome-ext/src/popup/TweetComposer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/Highlight.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/Highlight.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/HighlightCustom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/HighlightCustom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/InfiniteHits.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/InfiniteHits.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/Timeline.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/Timeline.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/components/TweetInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/components/TweetInfo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/api/populate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/api/populate.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/me.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/me.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/reply.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/reply.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/search.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/search.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/pages/timeline.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/pages/timeline.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/types/Tweet.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/types/Tweet.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,12 +57,15 @@
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/apps/web/src/components" />
       <recent name="$PROJECT_DIR$/apps/web" />
+    </key>
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/apps/web/src/types/Tweet.ts" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -81,7 +99,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/apps/web/src/pages/me.tsx</url>
           <line>24</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
