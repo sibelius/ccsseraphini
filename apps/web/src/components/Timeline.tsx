@@ -108,12 +108,14 @@ export const Timeline = ({
       <Text fontWeight="medium" fontSize={24} mb={4}>
         {title}
 
-        <button
-          style={{ fontSize: '.8rem', marginLeft: '.3rem' }}
-          onClick={() => setRefresh(true)}
-        >
-          <FaSyncAlt />
-        </button>
+        {showSearch ? null : (
+          <button
+            style={{ fontSize: '.8rem', marginLeft: '.3rem' }}
+            onClick={() => setRefresh(true)}
+          >
+            <FaSyncAlt />
+          </button>
+        )}
       </Text>
 
       {refresh ? <Spinner position="absolute" top="15%" right="50%" /> : null}
