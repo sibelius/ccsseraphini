@@ -19,7 +19,12 @@ export const HighlightCustom = ({ hit }: { hit: TweetData }) => {
     <span>
       {tweetChunks.map((chunk) => {
         if (chunk.type === 'text')
-          return <div dangerouslySetInnerHTML={{ __html: chunk.value }}></div>;
+          return (
+            <div
+              style={{ display: 'inline-block', margin: '0 5px' }}
+              dangerouslySetInnerHTML={{ __html: chunk.value }}
+            ></div>
+          );
 
         if (chunk.type === 'hashtag') {
           return (
