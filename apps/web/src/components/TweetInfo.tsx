@@ -200,6 +200,12 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
             _hover={{ textDecor: 'underline' }}
           >
             <Text color="gray.500" fontWeight="bold" marginRight={1}>
+              {tweet.public_metrics.reply_count}
+            </Text>
+            <Text color="gray.500" marginRight={2}>
+              {tweet.public_metrics.reply_count === 1 ? 'Reply' : 'Replies'}
+            </Text>
+            <Text color="gray.500" fontWeight="bold" marginRight={1}>
               {tweet.public_metrics.retweet_count}
             </Text>
             <Text color="gray.500" marginRight={2}>
