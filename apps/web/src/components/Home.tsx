@@ -40,7 +40,7 @@ export const Home = () => {
           objectFit="cover"
           src="https://unavatar.io/twitter/sseraphini"
           alt="Sibelius Seraphini"
-          m="4"
+          m="3"
         />
 
         <Flex
@@ -48,7 +48,7 @@ export const Home = () => {
           borderColor="gray.500"
           borderRadius="lg"
           overflow="hidden"
-          p="8"
+          p="7"
           flexDirection="column"
           bg="white"
           width={'100%'}

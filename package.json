@@ -25,6 +25,7 @@
     "*.{js,ts,tsx,css,md}": "prettier --write",
     "package.json": "prettier-package-json --write"
   },
+  "packageManager": "yarn@1.22.15",
   "prettier": {
     "trailingComma": "all",
     "singleQuote": true

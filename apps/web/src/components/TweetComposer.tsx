@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Box, Button, Textarea, Badge } from '@chakra-ui/react';
+import { Flex, Box, Button, Textarea, Badge } from '@chakra-ui/react';
 import { FaTwitter } from 'react-icons/fa';
+import { BsSearch } from 'react-icons/bs';
+import { ChakraNextLinkButton } from './ChakraNextLinkButton';
 
 export const TweetComposer = () => {
   const [text, setText] = useState('');
@@ -10,30 +12,49 @@ export const TweetComposer = () => {
 
   return (
     <>
+      {/*{'4.0rem'}{ base: '4rem', md: '10.8rem' }*/}
       <Textarea
         size="sm"
         resize="none"
-        minHeight="10.8rem"
+        minHeight={'9rem'}
         placeholder="Write your tweet concept/question here"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
+      <Flex direction={'row'} justifyContent={'space-between'}>
+        <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
+          {counter}
+        </Badge>
+        <Box as="span">cc @sseraphini</Box>
+      </Flex>
 
-      <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
-        {counter}
-      </Badge>
-      <Box as="span">cc @sseraphini</Box>
-
-      <Button
-        colorScheme="twitter"
-        leftIcon={<FaTwitter />}
-        mt="10px"
-        as={'a'}
-        href={`https://twitter.com/intent/tweet?text=${tweet}`}
-        target="_blank"
+      <Flex
+        direction={'row'}
+        justifyContent={'space-between'}
+        alignItems={'flex-end'}
       >
-        Tweet
-      </Button>
+        <Button
+          colorScheme="twitter"
+          leftIcon={<FaTwitter />}
+          mt="10px"
+          as={'a'}
+          href={`https://twitter.com/intent/tweet?text=${tweet}`}
+          target="_blank"
+          width={'49%'}
+        >
+          Tweet
+        </Button>
+
+        <ChakraNextLinkButton
+          leftIcon={<BsSearch />}
+          backgroundColor="green.200"
+          as={'a'}
+          href={`/search`}
+          width={'49%'}
+        >
+          Search
+        </ChakraNextLinkButton>
+      </Flex>
     </>
   );
 };
