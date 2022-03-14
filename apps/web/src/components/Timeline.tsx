@@ -95,7 +95,7 @@ export const Timeline = ({
     return (
       <>
         <Stats />
-        <InfiniteHits hitComponent={Hit} />;
+        <InfiniteHits hitComponent={Hit} />
       </>
     );
   };
