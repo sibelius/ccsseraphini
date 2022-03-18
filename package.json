@@ -15,7 +15,7 @@
     "@types/jest": "27.4.1",
     "cross-env": "7.0.3",
     "husky": "7.0.4",
-    "lint-staged": "12.3.6",
+    "lint-staged": "12.3.7",
     "prettier": "2.6.0",
     "prettier-package-json": "2.6.3",
     "turbo": "1.1.6"
