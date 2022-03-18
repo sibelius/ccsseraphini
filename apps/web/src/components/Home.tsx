@@ -57,11 +57,11 @@ export const Home = () => {
           minW={{ md: 'unset', base: 'calc(100vw - 24px)' }}
         >
           <TweetComposer />
-          <TwitterLogin />
           <ActionButtons />
           <DonateEth />
           <DonateSol />
           <DonatePix />
+          <TwitterLogin />
         </Flex>
       </Flex>
     </Flex>
