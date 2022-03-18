@@ -2,22 +2,11 @@ import { Button, Stack } from '@chakra-ui/react';
 import { FaTwitter, FaPatreon } from 'react-icons/fa';
 import { SiGooglechrome, SiSubstack } from 'react-icons/si';
 import { SibLogo } from './SibLogo';
-import { BsMailbox, BsSearch } from 'react-icons/bs';
-import { ChakraNextLinkButton } from './ChakraNextLinkButton';
+import { BsMailbox } from 'react-icons/bs';
 
 export const ActionButtons = () => {
   return (
     <>
-      <Stack mt="10px">
-        <ChakraNextLinkButton
-          leftIcon={<BsSearch />}
-          backgroundColor="green.200"
-          as={'a'}
-          href={`/search`}
-        >
-          Search
-        </ChakraNextLinkButton>
-      </Stack>
       <Stack spacing={2} direction={{ base: 'column', md: 'row' }} mt="10px">
         <Button
           backgroundColor="gray.300"
