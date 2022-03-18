@@ -4,6 +4,7 @@ import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
 import { DonateSol } from './DonateSol';
 import { DonatePix } from './pix/DonatePix';
+import { TwitterLogin } from './TwitterLogin';
 
 export const Home = () => {
   return (
@@ -56,6 +57,7 @@ export const Home = () => {
           minW={{ md: 'unset', base: 'calc(100vw - 24px)' }}
         >
           <TweetComposer />
+          <TwitterLogin />
           <ActionButtons />
           <DonateEth />
           <DonateSol />
