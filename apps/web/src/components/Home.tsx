@@ -5,6 +5,7 @@ import { DonateEth } from './DonateEth';
 import { DonateSol } from './DonateSol';
 import { DonatePix } from './pix/DonatePix';
 import { TwitterLogin } from './TwitterLogin';
+import { SessionProvider } from 'next-auth/react';
 
 export const Home = () => {
   return (
@@ -61,7 +62,9 @@ export const Home = () => {
           <DonateEth />
           <DonateSol />
           <DonatePix />
-          <TwitterLogin />
+          <SessionProvider>
+            <TwitterLogin />
+          </SessionProvider>
         </Flex>
       </Flex>
     </Flex>
