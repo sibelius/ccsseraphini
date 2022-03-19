@@ -18,7 +18,7 @@ export const TwitterLogin = ({}) => {
 
   const buttonProps: ButtonProps = {
     login: {
-      onClick: () => signIn(),
+      onClick: () => signIn('twitter'),
       colorScheme: 'twitter',
       text: 'Login with Twitter',
     },
