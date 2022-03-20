@@ -11,11 +11,14 @@ export const userScore = async ({
     `${BASE_URL}/users/${providerAccountId}/tweets?` +
     'tweet.fields=public_metrics,in_reply_to_user_id&max_results=100';
 
-  const { data }: Response = await fetch(USER_TIMELINE_URL, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
+  const { data }: Response & Record<string, any> = await fetch(
+    USER_TIMELINE_URL,
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
     },
-  }).then(async (data) => data.json());
+  ).then(async (data) => data.json());
 
   if (!!data) {
     const currentUser = username;
@@ -28,7 +31,15 @@ export const userScore = async ({
       };
     }
 
-    const score = data
+    const scoreDetail = {
+      retweet_count: 0,
+      reply_count: 0,
+      like_count: 0,
+      quote_count: 0,
+      total: 0,
+    };
+
+    const total = data
       .filter((tweet: { text: string; in_reply_to_user_id: string }) => {
         const { text, in_reply_to_user_id } = tweet;
 
@@ -44,11 +55,17 @@ export const userScore = async ({
         const { retweet_count, reply_count, like_count, quote_count } =
           current.public_metrics;
 
+        scoreDetail.retweet_count += retweet_count;
+        scoreDetail.reply_count += reply_count;
+        scoreDetail.like_count += like_count;
+        scoreDetail.quote_count += quote_count;
+
         return (
           accumulator + retweet_count + reply_count + like_count + quote_count
         );
       }, 0);
 
-    return score;
+    scoreDetail.total = total;
+    return scoreDetail;
   }
 };
