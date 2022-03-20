@@ -1,9 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Home } from '../components/Home';
+import { Home } from '../components/home/Home';
 import { GetServerSideProps } from 'next';
 import { TweetData } from '../types/Tweet';
-import { Timeline } from '../components/Timeline';
+import { Timeline } from '../components/tweet/Timeline';
 import { ForkMe } from 'fork-me-corner';
 import { Flex } from '@chakra-ui/react';
 

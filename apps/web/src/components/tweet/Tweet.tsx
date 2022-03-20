@@ -1,24 +1,17 @@
 import { memo, useMemo } from 'react';
-import {
-  Box,
-  Flex,
-  Image,
-  Text,
-  Link,
-  LinkOverlay,
-  LinkBox,
-} from '@chakra-ui/react';
+import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
 import { decodeHTML } from 'entities';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { TweetData } from 'types/Tweet';
 import { parseContent } from './tweetContent';
+import TweetPublicMetrics from './TweetPublicMetrics';
 
 interface TweetInfoProps {
   tweet: TweetData;
   key?: string;
 }
 
-const monthNames = [
+export const monthNames = [
   'Jan',
   'Feb',
   'Mar',
@@ -33,16 +26,16 @@ const monthNames = [
   'Dec',
 ];
 
-const imageUrlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+export const imageUrlRegex = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
 
-const twitterBaseUrl = 'https://twitter.com/';
-const twitterEndpointSufix = {
+export const twitterBaseUrl = 'https://twitter.com/';
+export const twitterEndpointSufix = {
   retweet: '/retweets',
   quote: '/retweets/with_comments',
   like: '/likes',
 };
 
-const TweetInfo = ({ tweet }: TweetInfoProps) => {
+const Tweet = ({ tweet }: TweetInfoProps) => {
   const tweetTimeInfo = () => {
     const parsedDate = new Date(tweet.created_at);
 
@@ -191,74 +184,9 @@ const TweetInfo = ({ tweet }: TweetInfoProps) => {
           zIndex={0}
         />
       </Flex>
-      <Flex paddingY={3} borderY="1px solid" mt={4} borderColor="gray.300">
-        <LinkBox>
-          <LinkOverlay
-            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}`}
-            target="blank"
-            display="flex"
-            _hover={{ textDecor: 'underline' }}
-          >
-            <Text color="gray.500" fontWeight="bold" marginRight={1}>
-              {tweet.public_metrics.reply_count}
-            </Text>
-            <Text color="gray.500" marginRight={2}>
-              {tweet.public_metrics.reply_count === 1 ? 'Reply' : 'Replies'}
-            </Text>
-          </LinkOverlay>
-        </LinkBox>
-        <LinkBox>
-          <LinkOverlay
-            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.retweet}`}
-            target="blank"
-            display="flex"
-            _hover={{ textDecor: 'underline' }}
-          >
-            <Text color="gray.500" fontWeight="bold" marginRight={1}>
-              {tweet.public_metrics.retweet_count}
-            </Text>
-            <Text color="gray.500" marginRight={2}>
-              {tweet.public_metrics.retweet_count === 1
-                ? 'Retweet'
-                : 'Retweets'}
-            </Text>
-          </LinkOverlay>
-        </LinkBox>
-        <LinkBox>
-          <LinkOverlay
-            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.quote}`}
-            target="blank"
-            display="flex"
-            _hover={{ textDecor: 'underline' }}
-          >
-            <Text color="gray.500" fontWeight="bold" marginRight={1}>
-              {tweet.public_metrics.quote_count}
-            </Text>
-            <Text color="gray.500" marginRight={2}>
-              {tweet.public_metrics.quote_count === 1
-                ? 'Quote Tweet'
-                : 'Quote Tweets'}
-            </Text>
-          </LinkOverlay>
-        </LinkBox>
-        <LinkBox>
-          <LinkOverlay
-            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.like}`}
-            target="blank"
-            display="flex"
-            _hover={{ textDecor: 'underline' }}
-          >
-            <Text color="gray.500" fontWeight="bold" marginRight={1}>
-              {tweet.public_metrics.like_count}
-            </Text>
-            <Text color="gray.500">
-              {tweet.public_metrics.like_count === 1 ? 'Like' : 'Likes'}
-            </Text>
-          </LinkOverlay>
-        </LinkBox>
-      </Flex>
+      <TweetPublicMetrics tweet={tweet} />
     </Box>
   );
 };
 
-export default memo(TweetInfo);
+export default memo(Tweet);
