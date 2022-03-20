@@ -3,13 +3,9 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 
 export const TwitterLogin = ({}) => {
   const { data: session } = useSession();
+
   type ButtonProps = {
-    login: {
-      onClick: () => Promise<undefined>;
-      colorScheme: string;
-      text: string;
-    };
-    logout: {
+    [index: string]: {
       onClick: () => Promise<undefined>;
       colorScheme: string;
       text: string;
