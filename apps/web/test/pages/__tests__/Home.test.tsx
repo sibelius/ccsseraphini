@@ -1,6 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Home from '../../../src/pages';
 
+beforeAll(() => {
+  fetchMock.doMock();
+});
+
+afterEach(() => fetchMock.resetMocks());
+
 beforeEach(() => {
   render(<Home />);
 });
