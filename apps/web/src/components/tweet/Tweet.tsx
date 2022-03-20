@@ -1,13 +1,5 @@
 import { memo, useMemo } from 'react';
-import {
-  Box,
-  Flex,
-  Image,
-  Text,
-  Link,
-  LinkOverlay,
-  LinkBox,
-} from '@chakra-ui/react';
+import { Box, Flex, Image, Text, Link } from '@chakra-ui/react';
 import { decodeHTML } from 'entities';
 import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { TweetData } from 'types/Tweet';
