@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import 'whatwg-fetch';
-import TweetInfo from '../TweetInfo';
+import TweetInfo from '../tweet/Tweet';
 import fetchMock from 'jest-fetch-mock';
 
 const mockTweetWithNonImageUrl = {

@@ -3,8 +3,8 @@ import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
 import { DonateSol } from './DonateSol';
-import { DonatePix } from './pix/DonatePix';
-import { TwitterLogin } from './TwitterLogin';
+import { DonatePix } from '../pix/DonatePix';
+import { TwitterLogin } from '../TwitterLogin';
 import { SessionProvider } from 'next-auth/react';
 
 export const Home = () => {

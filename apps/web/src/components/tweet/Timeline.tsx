@@ -1,9 +1,9 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Flex, Text } from '@chakra-ui/react';
-import TweetInfo from './TweetInfo';
-import { TweetData } from '../types/Tweet';
+import TweetInfo from './Tweet';
+import { TweetData } from '../../types/Tweet';
 import { useState, useEffect } from 'react';
-import { usePrevious } from '../usePrevious';
+import { usePrevious } from '../../usePrevious';
 import { Spinner } from '@chakra-ui/spinner';
 import { FaSyncAlt } from 'react-icons/fa';
 
