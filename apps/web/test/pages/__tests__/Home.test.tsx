@@ -42,7 +42,6 @@ it('should have a link with the correct value', () => {
 
 it('should display a correct counter when the value changes', () => {
   const user = `\ncc @sseraphini`;
-  const encode = (str: string) => encodeURIComponent(str);
 
   const textarea = screen.getByRole('textbox');
 
@@ -55,8 +54,6 @@ it('should display a correct counter when the value changes', () => {
 
   // trigger onChange event and check if the tweet text is updated
   fireEvent.change(textarea, { target: { value: newText } });
-
-  const tweet = `${newText}${user}`;
 
   count = count - newText.length;
   expect(badge).toHaveTextContent(count.toString());

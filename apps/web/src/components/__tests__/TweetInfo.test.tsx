@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import 'whatwg-fetch';
 import TweetInfo from '../TweetInfo';
+import fetchMock from 'jest-fetch-mock';
 
 const mockTweetWithNonImageUrl = {
   author_id: '2313873457',
@@ -101,18 +102,11 @@ const mockTweetWithHashtag = {
   },
 };
 
-// migrate to jest-fetch-mock
 beforeAll(() => {
-  jest.spyOn(window, 'fetch');
-
-  // @ts-ignore
-  window.fetch.mockResolvedValueOnce({
-    ok: true,
-    json: async () => ({ success: true }),
-  });
+  fetchMock.doMock();
 });
 
-afterEach(() => jest.resetAllMocks());
+afterEach(() => fetchMock.resetMocks());
 
 describe('TweetInfo', () => {
   it('should render link preview when there is a non-image url', async () => {
