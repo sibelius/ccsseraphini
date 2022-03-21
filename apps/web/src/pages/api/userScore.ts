@@ -29,6 +29,14 @@ export const userScore = async ({
     };
   }
 
+  const scoreDetail = {
+    retweet_count: 0,
+    reply_count: 0,
+    like_count: 0,
+    quote_count: 0,
+    total: 0,
+  };
+
   const score = data
     .filter((tweet: { text: string; in_reply_to_user_id: string }) => {
       const { text, in_reply_to_user_id } = tweet;
@@ -45,10 +53,17 @@ export const userScore = async ({
       const { retweet_count, reply_count, like_count, quote_count } =
         current.public_metrics;
 
+      scoreDetail.retweet_count += retweet_count;
+      scoreDetail.reply_count += reply_count;
+      scoreDetail.like_count += like_count;
+      scoreDetail.quote_count += quote_count;
+
       return (
         accumulator + retweet_count + reply_count + like_count + quote_count
       );
     }, 0);
 
-  return score;
+  scoreDetail.total = score;
+
+  return scoreDetail;
 };
