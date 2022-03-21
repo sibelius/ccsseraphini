@@ -4,6 +4,7 @@ import {
   TwitterResponseTweetInfo,
   TwitterResponseUserInfo,
 } from '../../types/Tweet';
+import { config } from '../../config';
 
 interface TwitterResponse {
   data: TwitterResponseTweetInfo[];
@@ -32,7 +33,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  if (!process.env.TWITTER_BEARER_TOKEN) {
+  if (!config.TWITTER_BEARER_TOKEN) {
     return res.status(401).json({
       error: 'No Bearer Token found found',
     });
@@ -53,7 +54,7 @@ export default async function handler(
 
   const response = await fetch(url, {
     headers: {
-      Authorization: `Bearer ${process.env.TWITTER_BEARER_TOKEN}`,
+      Authorization: `Bearer ${config.TWITTER_BEARER_TOKEN}`,
     },
   });
 
