@@ -81,8 +81,6 @@ export default async function handler(
     emptyScore,
   );
 
-  console.log(userScore);
-
   return res.status(200).json({
     userScore,
   });
