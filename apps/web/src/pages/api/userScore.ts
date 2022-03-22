@@ -66,20 +66,22 @@ export default async function handler(
       const replies = reply_count + accumulator.reply_count;
       const likes = like_count + accumulator.like_count;
       const quotes = quote_count + accumulator.quote_count;
-      const total = accumulator.total + retweets + replies + likes + quotes;
+      const total = retweets + replies + likes + quotes;
 
       const currentUserScore = {
         retweet_count: retweets,
         reply_count: replies,
         like_count: likes,
         quote_count: quotes,
-        total,
+        total: total,
       };
 
       return currentUserScore;
     },
     emptyScore,
   );
+
+  console.log(userScore);
 
   return res.status(200).json({
     userScore,
