@@ -7,10 +7,16 @@ export default NextAuth({
     session({ session, token }) {
       session.id = token.sub;
       session.access_token = token.access_token;
+      session.username = token.username;
 
       return session;
     },
-    async jwt({ token, account }) {
+    async jwt({ token, account, profile }) {
+      if (profile != undefined) {
+        const { data }: any = profile;
+        const { username } = data;
+        token.username = username as string;
+      }
       if (account) {
         token.access_token = account.access_token;
       }
@@ -22,19 +28,6 @@ export default NextAuth({
       clientId: config.TWITTER_CLIENT_ID,
       clientSecret: config.TWITTER_CLIENT_SECRET,
       version: '2.0',
-      userinfo: {
-        params: {
-          'user.fields': ['id'],
-          'tweet.fields': ['text'],
-        },
-      },
-      profile({ data }) {
-        return {
-          id: data.id,
-          name: data.name,
-          image: data.profile_image_url,
-        };
-      },
     }),
   ],
 });

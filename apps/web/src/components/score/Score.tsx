@@ -23,7 +23,7 @@ export const Score = () => {
         const body = new URLSearchParams({
           providerAccountId: session?.id,
           access_token: session?.access_token as string,
-          username: 'pjonatansr', //TO-DO GET USERNAME FROM PROFILE
+          username: session.username,
         }).toString();
         setLoading(true);
 
