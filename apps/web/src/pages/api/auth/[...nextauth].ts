@@ -1,22 +1,23 @@
 import NextAuth from 'next-auth';
 import TwitterProvider from 'next-auth/providers/twitter';
 import { config } from '../../../config';
-import { AccountProfile } from 'types/Score';
-import { userScore } from '../userScore';
 
 export default NextAuth({
   callbacks: {
-    async signIn({ account, profile }: AccountProfile) {
-      if (account.provider === 'twitter') {
-        const score = await userScore({ account, profile });
-        console.log(score);
-      }
-
+    async signIn() {
       return true;
     },
     session({ session, token }) {
       session.id = token.sub;
+      session.access_token = token.access_token;
+
       return session;
+    },
+    async jwt({ token, account }) {
+      if (account) {
+        token.access_token = account.access_token;
+      }
+      return token;
     },
   },
   providers: [
@@ -30,8 +31,7 @@ export default NextAuth({
           'tweet.fields': ['text'],
         },
       },
-      profile(props) {
-        const { data } = props;
+      profile({ data }) {
         return {
           id: data.id,
           name: data.name,
