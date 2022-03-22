@@ -14,3 +14,5 @@ export interface PublicMetrics {
 export interface Total {
   total: number;
 }
+
+export type UserScore = PublicMetrics & Total;
