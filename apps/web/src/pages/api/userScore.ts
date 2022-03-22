@@ -45,7 +45,7 @@ export default async function handler(
       const isReplyingProfileId =
         in_reply_to_user_id === config.TWITTER_PROFILE_ID;
       const isProfileUserMentioned = text.match(
-        new RegExp(`cc(:?\s*)@${config.TWITTER_PROFILE_USER}`, 'gi'),
+        new RegExp(`cc(:?\\s*)@${config.TWITTER_PROFILE_USER}`, 'gi'),
       );
       const isUserReplied = text.match(
         new RegExp(`@${username} @${config.TWITTER_PROFILE_USER}`, 'gi'),
