@@ -4,6 +4,8 @@ export const config = {
   TWITTER_BEARER_TOKEN: process.env.TWITTER_BEARER_TOKEN as string,
   TWITTER_CLIENT_ID: process.env.TWITTER_CLIENT_ID as string,
   TWITTER_CLIENT_SECRET: process.env.TWITTER_CLIENT_SECRET as string,
+  TWITTER_PROFILE_ID: process.env.TWITTER_PROFILE_ID as string,
+  TWITTER_PROFILE_USER: process.env.TWITTER_PROFILE_USER as string,
 
   DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID as string,
   DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET as string,
