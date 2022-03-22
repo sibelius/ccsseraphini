@@ -5,8 +5,10 @@ import { UserScore } from 'types/Score';
 
 export const Score = () => {
   const { data: session } = useSession();
-  const [errors, setErrors] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [errors, setErrors] = useState<Record<string, unknown> | boolean>(
+    false,
+  );
+  const [loading, setLoading] = useState<boolean>(true);
   const [score, setScore] = useState<UserScore>({
     retweet_count: 0,
     reply_count: 0,
@@ -30,7 +32,10 @@ export const Score = () => {
           method: 'POST',
           body,
         })
-          .then(async (response) => await response.json())
+          .then(async (response) => {
+            setErrors(false);
+            return await response.json();
+          })
           .catch((error: any) => {
             setErrors(error);
           });
@@ -43,7 +48,7 @@ export const Score = () => {
     }
   }, [session]);
 
-  if (!!errors) {
+  if (errors) {
     return <Heading>Oops! Something is wrong!</Heading>;
   }
 
