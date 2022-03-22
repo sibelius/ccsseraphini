@@ -4,9 +4,6 @@ import { config } from '../../../config';
 
 export default NextAuth({
   callbacks: {
-    async signIn() {
-      return true;
-    },
     session({ session, token }) {
       session.id = token.sub;
       session.access_token = token.access_token;
