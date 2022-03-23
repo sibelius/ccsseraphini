@@ -4,6 +4,7 @@
   "description": "cc @sseraphini chrome extension",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
+    "check-types": "tsc --noEmit",
     "start": "webpack -w --config webpack.dev.js",
     "prettier": "prettier --write --single-quote true --trailing-comma all --print-width 120"
   },
