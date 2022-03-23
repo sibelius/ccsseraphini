@@ -23,7 +23,7 @@
     "@babel/preset-env": "7.16.11",
     "@babel/preset-typescript": "7.16.7",
     "@types/react-dom": "17.0.14",
-    "babel-loader": "8.2.3",
+    "babel-loader": "8.2.4",
     "css-loader": "6.7.1",
     "style-loader": "3.3.1",
     "ts-loader": "9.2.8",
