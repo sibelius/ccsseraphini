@@ -84,7 +84,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
 
   if (response.status !== 200) {
     const { message } = await response.json();
-    console.log({ response });
     return {
       props: {
         hasError: true,
