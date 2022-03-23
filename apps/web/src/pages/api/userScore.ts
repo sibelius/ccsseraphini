@@ -33,8 +33,9 @@ export default async function userScoreHandler(
     providerAccountId as string,
     access_token as string,
   );
+
   if (!result.data) {
-    return res.status(204).json({
+    return res.status(200).json({
       scoreDetail: emptyScore,
     });
   }
