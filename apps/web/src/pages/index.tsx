@@ -1,5 +1,4 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { Home } from '../components/home/Home';
 import { GetServerSideProps } from 'next';
 import { TweetData } from '../types/Tweet';
@@ -18,11 +17,6 @@ const query = '-RT cc @sseraphini';
 const HomePage: NextPage<Props> = (props: Props) => {
   return (
     <div>
-      <Head>
-        <title>cc @sseraphini</title>
-        <meta name="description" content="Make it easy to cc @sseraphini" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <ForkMe repo="https://github.com/sibelius/ccsseraphini" />
       <Flex
         direction={{ base: 'column', lg: 'row' }}

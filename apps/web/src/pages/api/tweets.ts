@@ -29,7 +29,7 @@ const MEDIA_FIELDS = 'height,media_key,public_metrics,type,url,width';
 const MAX_RESULTS = 10;
 const IMAGE_URL_REGEX = /https:\/\/t.co\/[a-zA-Z0-9\-\.]{10}$/g;
 
-export default async function handler(
+export default async function tweetsHandler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {

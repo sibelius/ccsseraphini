@@ -3,7 +3,7 @@ import { UserScore, Tweet } from 'types/Score';
 import { config } from '../../config';
 import { userTweets } from '../../modules/twitter/twitterFollowersGet';
 
-export default async function handler(
+export default async function userScoreHandler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
@@ -19,13 +19,13 @@ export default async function handler(
 
   if (!access_token) {
     return res.status(401).json({
-      scoreDetail: emptyScore,
+      message: 'Authorization required',
     });
   }
 
   if (!config.TWITTER_PROFILE_ID || !config.TWITTER_PROFILE_USER) {
     return res.status(500).json({
-      scoreDetail: emptyScore,
+      message: 'Something is wrong',
     });
   }
 
@@ -33,8 +33,9 @@ export default async function handler(
     providerAccountId as string,
     access_token as string,
   );
+
   if (!result.data) {
-    return res.status(204).json({
+    return res.status(200).json({
       scoreDetail: emptyScore,
     });
   }
