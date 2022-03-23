@@ -1,3 +1,5 @@
+import { Session as NextAuthSession } from 'next-auth/core/types';
+
 export type Tweet = {
   text: string;
   in_reply_to_user_id: string;
@@ -16,3 +18,5 @@ export interface Total {
 }
 
 export type UserScore = PublicMetrics & Total;
+
+export type Session = NextAuthSession & Record<string, string>;

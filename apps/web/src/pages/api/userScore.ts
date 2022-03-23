@@ -19,13 +19,13 @@ export default async function userScoreHandler(
 
   if (!access_token) {
     return res.status(401).json({
-      scoreDetail: emptyScore,
+      message: 'Authorization required',
     });
   }
 
   if (!config.TWITTER_PROFILE_ID || !config.TWITTER_PROFILE_USER) {
     return res.status(500).json({
-      scoreDetail: emptyScore,
+      message: 'Something is wrong',
     });
   }
 
