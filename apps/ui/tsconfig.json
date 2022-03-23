@@ -15,8 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": "src",
-    "downlevelIteration": true,
-    "types": ["chrome"]
+    "downlevelIteration": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

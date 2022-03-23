@@ -1,6 +1,6 @@
 import { Button, Stack } from '@chakra-ui/react';
 import { FaTwitter, FaPatreon } from 'react-icons/fa';
-import { SiGooglechrome, SiSubstack } from 'react-icons/si';
+import { SiGooglechrome, SiSubstack, SiVisualstudiocode } from 'react-icons/si';
 import { SibLogo } from './SibLogo';
 import { BsMailbox } from 'react-icons/bs';
 
@@ -75,6 +75,20 @@ export const ActionButtons = () => {
         >
           Install cc @sseraphini
         </Button>
+        <Button
+          colorScheme="blue"
+          leftIcon={<SiVisualstudiocode />}
+          width="100%"
+          as={'a'}
+          border="none"
+          href="https://marketplace.visualstudio.com/items?itemName=adsonatural.ccsseraphini"
+          target="_blank"
+          size="sm"
+        >
+          Install cc @sseraphini
+        </Button>
+      </Stack>
+      <Stack spacing={2} direction={{ base: 'column', md: 'row' }} mt="10px">
         <Button
           backgroundColor="#FFFF00"
           textColor="black"

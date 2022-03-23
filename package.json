@@ -2,9 +2,9 @@
   "private": true,
   "scripts": {
     "build": "turbo run build --parallel",
-    "check-types": "turbo run check-types --parallel",
+    "check-types": "turbo run check-types --parallel --continue",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint --parallel",
+    "lint": "turbo run lint --parallel --continue",
     "prepare": "husky install",
     "test": "turbo run test --parallel"
   },
