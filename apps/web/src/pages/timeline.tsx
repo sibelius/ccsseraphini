@@ -31,12 +31,6 @@ const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
 
   return (
     <div>
-      <Head>
-        <title>cc @sseraphini - Latest tweets</title>
-        <meta name="description" content="Make it easy to cc @sseraphini" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <Timeline
         initialTweets={data?.tweets}
         initialNextToken={data?.nextToken}
