@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "tsc -p .",
+    "check-types": "tsc --noEmit",
     "cli": "tsc -p . && node ./lib/bin/cli.js",
     "lint": "eslint '**/*.js'",
     "prepare": "yarn build",

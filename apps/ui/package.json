@@ -3,5 +3,8 @@
   "name": "@ccsseraphini/ui",
   "version": "0.0.1",
   "main": "./src/index.tsx",
-  "module": "./src/index.tsx"
+  "module": "./src/index.tsx",
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  }
 }
