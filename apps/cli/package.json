@@ -27,11 +27,11 @@
   },
   "dependencies": {
     "open": "8.4.0",
-    "yargs": "17.3.1"
+    "yargs": "17.4.0"
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.21",
+    "@types/node": "^17.0.22",
     "babel-jest": "27.5.1",
     "eslint": "8.11.0",
     "jest": "27.5.1",
