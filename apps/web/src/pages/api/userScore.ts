@@ -3,7 +3,7 @@ import { UserScore, Tweet } from 'types/Score';
 import { config } from '../../config';
 import { userTweets } from '../../modules/twitter/twitterFollowersGet';
 
-export default async function handler(
+export default async function userScoreHandler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
