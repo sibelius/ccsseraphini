@@ -3,7 +3,7 @@ import { Flex, Heading, VStack } from '@chakra-ui/react';
 import { getSession, useSession } from 'next-auth/react';
 import { Score } from 'components/score/Score';
 import { Session, UserScore } from 'types/Score';
-import { TwitterLogin } from 'components/TwitterLogin';
+import { TwitterLogin } from 'components/home/TwitterLogin';
 
 interface Props {
   session?: Session;
