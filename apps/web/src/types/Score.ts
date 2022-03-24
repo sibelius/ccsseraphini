@@ -4,7 +4,6 @@ export type Tweet = {
   text: string;
   in_reply_to_user_id: string;
   public_metrics: PublicMetrics;
-  author_id?: string;
 };
 
 export interface PublicMetrics {

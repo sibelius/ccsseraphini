@@ -23,7 +23,7 @@ export const userTweets = async (
   userId: string,
   accessToken: string,
 ): Promise<Result> => {
-  const url = `https://api.twitter.com/2/users/${userId}/tweets?tweet.fields=public_metrics,in_reply_to_user_id,author_id&max_results=100`;
+  const url = `https://api.twitter.com/2/users/${userId}/tweets?tweet.fields=public_metrics,in_reply_to_user_id&max_results=100`;
   const options = {
     headers: {
       Accept: 'application/json',
