@@ -1,4 +1,4 @@
-import { Heading, Flex, VStack } from '@chakra-ui/react';
+import { Heading, Flex, VStack, Text, Image } from '@chakra-ui/react';
 import { UserScore } from 'types/Score';
 
 export const Score = ({
@@ -8,20 +8,39 @@ export const Score = ({
   userScore: UserScore;
   username: string;
 }) => {
-  if (!!userScore) {
-    return (
-      <Flex>
-        <VStack>
-          <Heading>{username}, your score is</Heading>
-          <Heading>
-            Replies: {userScore.reply_count} Likes: {userScore.like_count}{' '}
-            Retweets: {userScore.retweet_count} Quotes: {userScore.quote_count}
-          </Heading>
-          <Heading>Total: {userScore.total}</Heading>
-        </VStack>
-      </Flex>
-    );
+  if (!userScore) {
+    return <Heading> Error loading score, try again...</Heading>;
   }
 
-  return <Heading> Loading...</Heading>;
+  return (
+    <Flex
+      borderWidth="1px"
+      borderColor="gray.500"
+      borderRadius="lg"
+      overflow="hidden"
+      p="7"
+      flexDirection="column"
+      bg="white"
+      width={'100%'}
+      maxW={'fit-content'}
+      minW={{ md: 'unset', base: 'calc(100vw - 24px)' }}
+    >
+      <VStack>
+        <Image
+          borderRadius="full"
+          boxSize="100px"
+          objectFit="cover"
+          src="https://unavatar.io/twitter/sseraphini"
+          alt="Sibelius Seraphini"
+          m="3"
+        />
+        <Heading>{username}</Heading>
+        <Text fontSize="2xl">Replies: {userScore.reply_count}</Text>
+        <Text fontSize="2xl">Likes: {userScore.like_count}</Text>
+        Retweets: {userScore.retweet_count}
+        <Text fontSize="2xl">Quotes: {userScore.quote_count}</Text>
+        <Heading>Total: {userScore.total}</Heading>
+      </VStack>
+    </Flex>
+  );
 };
