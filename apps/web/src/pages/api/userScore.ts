@@ -42,12 +42,13 @@ export default async function userScoreHandler(
 
   const { data } = result;
   const elegibleTweets: Tweet[] = data.filter(
-    ({ text, in_reply_to_user_id }: Tweet): boolean => {
+    ({ text, in_reply_to_user_id, author_id }: Tweet): boolean => {
       const isReplyingProfileId =
         in_reply_to_user_id === config.TWITTER_PROFILE_ID;
-      const isProfileUserMentioned = !!text.match(
-        new RegExp(`cc(:?\\s*)@${config.TWITTER_PROFILE_USER}`, 'gi'),
-      );
+      const isProfileUserMentioned =
+        !!text.match(
+          new RegExp(`cc(:?\\s*)@${config.TWITTER_PROFILE_USER}`, 'gi'),
+        ) && author_id === providerAccountId;
       const isUserReplied = !!text.match(
         new RegExp(`@${username} @${config.TWITTER_PROFILE_USER}`, 'gi'),
       );
