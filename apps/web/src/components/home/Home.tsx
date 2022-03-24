@@ -4,8 +4,8 @@ import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
 import { DonateSol } from './DonateSol';
 import { DonatePix } from '../pix/DonatePix';
-import { TwitterLogin } from '../TwitterLogin';
 import { SessionProvider } from 'next-auth/react';
+import { TwitterLogin } from './TwitterLogin';
 
 export const Home = () => {
   return (
