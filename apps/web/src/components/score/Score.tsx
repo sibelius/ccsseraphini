@@ -16,7 +16,7 @@ export const Score = ({
         <ChakraNextLinkButton
           backgroundColor="green.200"
           as={'a'}
-          href={`/home`}
+          href={'/'}
           width={'49%'}
         >
           Home
