@@ -132,6 +132,7 @@ const Tweet = ({ tweet }: TweetInfoProps) => {
                       key={chunk.index}
                       src={chunk.value}
                       alt={tweet.userInfo.name}
+                      maxH={350}
                     />
                   );
                 }
