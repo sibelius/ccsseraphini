@@ -42,13 +42,12 @@ export default async function userScoreHandler(
 
   const { data } = result;
   const elegibleTweets: Tweet[] = data.filter(
-    ({ text, in_reply_to_user_id, author_id }: Tweet): boolean => {
+    ({ text, in_reply_to_user_id }: Tweet): boolean => {
       const isReplyingProfileId =
         in_reply_to_user_id === config.TWITTER_PROFILE_ID;
-      const isProfileUserMentioned =
-        !!text.match(
-          new RegExp(`cc(:?\\s*)@${config.TWITTER_PROFILE_USER}`, 'gi'),
-        ) && author_id === providerAccountId;
+      const isProfileUserMentioned = !!text.match(
+        new RegExp(`cc(:?\\s*)@${config.TWITTER_PROFILE_USER}`, 'gi'),
+      );
       const isUserReplied = !!text.match(
         new RegExp(`@${username} @${config.TWITTER_PROFILE_USER}`, 'gi'),
       );
@@ -57,31 +56,41 @@ export default async function userScoreHandler(
     },
   );
 
-  const userScore: UserScore = elegibleTweets.reduce(
-    (
-      accumulator: UserScore,
-      {
-        public_metrics: { retweet_count, reply_count, like_count, quote_count },
-      }: Tweet,
-    ): UserScore => {
-      const retweets = retweet_count + accumulator.retweet_count;
-      const replies = reply_count + accumulator.reply_count;
-      const likes = like_count + accumulator.like_count;
-      const quotes = quote_count + accumulator.quote_count;
-      const total = retweets + replies + likes + quotes;
+  const tweets = elegibleTweets.length;
 
-      const currentUserScore = {
-        retweet_count: retweets,
-        reply_count: replies,
-        like_count: likes,
-        quote_count: quotes,
-        total: total,
-      };
+  const userScore: UserScore = elegibleTweets
+    .filter((tweet: Tweet) => !tweet.text.match(/^RT\s@/g))
+    .reduce(
+      (
+        accumulator: UserScore,
+        {
+          public_metrics: {
+            retweet_count,
+            reply_count,
+            like_count,
+            quote_count,
+          },
+        }: Tweet,
+      ): UserScore => {
+        const retweets = retweet_count + accumulator.retweet_count;
+        const replies = reply_count + accumulator.reply_count;
+        const likes = like_count + accumulator.like_count;
+        const quotes = quote_count + accumulator.quote_count;
+        const total = retweets + replies + likes + quotes;
 
-      return currentUserScore;
-    },
-    emptyScore,
-  );
+        const currentUserScore = {
+          tweet_count: tweets,
+          retweet_count: retweets,
+          reply_count: replies,
+          like_count: likes,
+          quote_count: quotes,
+          total: total + tweets,
+        };
+
+        return currentUserScore;
+      },
+      emptyScore,
+    );
 
   return res.status(200).json({
     userScore,
