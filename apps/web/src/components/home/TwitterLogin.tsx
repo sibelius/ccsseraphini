@@ -1,7 +1,7 @@
 import { Button } from '@chakra-ui/react';
 import { signIn, signOut, useSession } from 'next-auth/react';
 
-export const TwitterLogin = ({}) => {
+export const TwitterLogin = () => {
   const { data: session } = useSession();
 
   type ButtonProps = {
