@@ -8,7 +8,7 @@ export default async function userScoreHandler(
   res: NextApiResponse,
 ) {
   const { body } = req;
-  const { providerAccountId, access_token, username } = body;
+  const { providerAccountId, username } = body;
   const emptyScore: UserScore = {
     retweet_count: 0,
     reply_count: 0,
@@ -17,6 +17,7 @@ export default async function userScoreHandler(
     total: 0,
   };
 
+  const access_token = config.TWITTER_BEARER_TOKEN;
   if (!access_token) {
     return res.status(401).json({
       message: 'Authorization required',
