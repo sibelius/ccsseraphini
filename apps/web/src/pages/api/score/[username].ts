@@ -1,7 +1,6 @@
 import { userProfile } from 'modules/twitter/twitterUserGet';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { UserScore, Tweet } from 'types/Score';
-import { User } from 'types/User';
 import { config } from '../../../config';
 import { userTweets } from '../../../modules/twitter/twitterFollowersGet';
 
