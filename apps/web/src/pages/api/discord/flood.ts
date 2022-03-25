@@ -1,16 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { TweetData } from 'types/Tweet';
+import { config } from '../../../config';
 
 // Learn Discord Webhook: https://discord.com/developers/docs/resources/webhook#execute-webhook
 
+// cron-job.org will trigger this function every 1 minute
 const floodDiscordChannelWithTweets = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
   // TODO add auth method, only cron job can access this endpoint
-  // TODO handle with discord rate limit
-  // cron will trigger the API every 1 minute
-  // get the lastest tweets
 
   const query = '-RT cc @sseraphini';
 
@@ -28,28 +27,32 @@ const floodDiscordChannelWithTweets = async (
 
   const data = await response.json();
 
-  const WEB_HOOK = process.env.WEB_HOOK_DISCORD as string;
+  const WEBHOOK_DISCORD = config.WEBHOOK_DISCORD;
 
-  if (!WEB_HOOK) res.status(500).send('WEB_HOOK_DISCORD .env is not defined');
+  if (!WEBHOOK_DISCORD)
+    res.status(500).send('WEBHOOK_DISCORD .env is not defined');
 
-  const promises = data.tweets.map((tweet: TweetData) => {
-    return fetch(WEB_HOOK, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        content: `https://twitter.com/${tweet.userInfo.username}/status/${tweet.id}`,
-      }),
-    });
+  const promisesPostTweetOnDiscord = data.tweets.map((tweet: TweetData) => {
+    return () =>
+      fetch(WEBHOOK_DISCORD, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          content: `https://twitter.com/${tweet.userInfo.username}/status/${tweet.id}`,
+        }),
+      });
   });
 
   try {
     // TODO handle with discord rate limit
-    await Promise.all(promises);
-    res.status(204).send({ success: true });
-  } catch (error) {
-    res.status(500).send({ error });
+    for await (const runPromise of promisesPostTweetOnDiscord) {
+      await runPromise();
+    }
+    res.status(200).send('Tweets posted on Discord');
+  } catch (error: any) {
+    res.status(500).send(error.message);
   }
 };
 
