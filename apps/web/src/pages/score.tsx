@@ -1,31 +1,27 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { Flex, Heading, VStack } from '@chakra-ui/react';
-import { getSession, useSession } from 'next-auth/react';
-import { Score } from 'components/score/Score';
-import { Session, UserScore } from 'types/Score';
+import { Flex, VStack } from '@chakra-ui/react';
+import { Session } from 'types/Score';
 import { TwitterLogin } from 'components/home/TwitterLogin';
+import { useRouter } from 'next/router';
+import { getSession } from 'next-auth/react';
 
 interface Props {
   session?: Session;
-  userScore?: UserScore;
-  hasError?: boolean;
-  error?: Record<string, any>;
 }
 
 const ScorePage: NextPage<Props> = (props: Props) => {
-  const { userScore, hasError, error } = props;
-  const { data: session } = useSession();
+  const router = useRouter();
+  const { session } = props;
 
-  if (hasError) {
+  if (!session) {
     return (
       <VStack h={'100vh'} justifyContent={'center'}>
-        <Heading>{error?.message}</Heading>
-        {error?.isUnauthorized && <TwitterLogin />}
+        <TwitterLogin />
       </VStack>
     );
   }
 
-  const { user } = session as Session;
+  router.push(`/${session.username}`);
 
   return (
     <div>
@@ -38,10 +34,7 @@ const ScorePage: NextPage<Props> = (props: Props) => {
         flexDirection="column"
         pb="10px"
       >
-        <Score
-          userScore={userScore as UserScore}
-          username={user?.name as string}
-        />
+        Redirecting...
       </Flex>
     </div>
   );
@@ -55,55 +48,16 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   if (!session) {
     return {
       props: {
-        hasError: true,
-        error: {
-          message: 'Authorization required',
-          isUnauthorized: true,
-        },
+        session,
       },
     };
   }
-
-  const httpProtocol = ctx.req.headers.host?.includes('localhost')
-    ? 'http'
-    : 'https';
-
-  const url = `${httpProtocol}://${ctx.req.headers.host}/api/userScore`;
-
-  const { id, access_token, username } = session;
-  const body = new URLSearchParams({
-    providerAccountId: id as string,
-    access_token: access_token as string,
-    username: username as string,
-  }).toString();
-  const response = await fetch(url, {
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    method: 'POST',
-    body,
-  });
-
-  if (response.status !== 200) {
-    const { message } = await response.json();
-    return {
-      props: {
-        hasError: true,
-        error: {
-          message,
-          isUnauthorized: response.status === 401,
-        },
-      },
-    };
-  }
-  const data = await response.json();
-  console.log({
-    data,
-  });
-  const { userScore }: { userScore: UserScore } = data;
 
   return {
-    props: {
-      session: session,
-      userScore: userScore || null,
+    redirect: {
+      destination: `/score/${session.username}`,
+      permanent: false,
+      // statusCode: 301
     },
   };
 };

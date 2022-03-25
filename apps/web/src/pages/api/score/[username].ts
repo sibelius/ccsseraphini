@@ -1,14 +1,15 @@
+import { userProfile } from 'modules/twitter/twitterUserGet';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { UserScore, Tweet } from 'types/Score';
-import { config } from '../../config';
-import { userTweets } from '../../modules/twitter/twitterFollowersGet';
+import { config } from '../../../config';
+import { userTweets } from '../../../modules/twitter/twitterFollowersGet';
 
 export default async function userScoreHandler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { body } = req;
-  const { providerAccountId, username } = body;
+  const { username } = req.query;
+
   const emptyScore: UserScore = {
     tweet_count: 0,
     retweet_count: 0,
@@ -31,10 +32,17 @@ export default async function userScoreHandler(
     });
   }
 
-  const result = await userTweets(
-    providerAccountId as string,
-    access_token as string,
-  );
+  const userResult = await userProfile(username as string, access_token);
+
+  if (!userResult.data) {
+    return res.status(404).json({
+      message: 'User not found',
+    });
+  }
+
+  const { data: user } = userResult;
+
+  const result = await userTweets(user.id as string, access_token as string);
 
   if (!result.data) {
     return res.status(200).json({
@@ -48,22 +56,16 @@ export default async function userScoreHandler(
 
     const isReplyingProfileId =
       in_reply_to_user_id === config.TWITTER_PROFILE_ID;
-    const isProfileUserMentioned = !!text.match(
-      new RegExp(`cc(:?\\s*)@${config.TWITTER_PROFILE_USER}`, 'gi'),
-    );
-    const isUserReplied = !!text.match(
-      new RegExp(`@${username} @${config.TWITTER_PROFILE_USER}`, 'gi'),
-    );
 
+    const isProfileUserMentioned = !!text.match(
+      new RegExp(`(cc(:?\\s*))?@${config.TWITTER_PROFILE_USER}`, 'gi'),
+    );
     const isRT = !!text.match(/^RT\s@/g);
 
-    return (
-      (isProfileUserMentioned || isReplyingProfileId || isUserReplied) && !isRT
-    );
+    return (isProfileUserMentioned || isReplyingProfileId) && !isRT;
   });
 
   const tweets = elegibleTweets.length;
-
   const userScore: UserScore = elegibleTweets.reduce(
     (
       accumulator: UserScore,
@@ -100,5 +102,6 @@ export default async function userScoreHandler(
 
   return res.status(200).json({
     userScore,
+    user,
   });
 }
