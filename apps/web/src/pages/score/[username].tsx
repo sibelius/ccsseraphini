@@ -1,20 +1,20 @@
 import type { GetServerSideProps, NextPage } from 'next';
 import { Flex, Heading, VStack } from '@chakra-ui/react';
-import { getSession, useSession } from 'next-auth/react';
 import { Score } from 'components/score/Score';
 import { Session, UserScore } from 'types/Score';
 import { TwitterLogin } from 'components/home/TwitterLogin';
+import { User } from 'types/User';
 
 interface Props {
   session?: Session;
   userScore?: UserScore;
   hasError?: boolean;
   error?: Record<string, any>;
+  user?: User;
 }
 
 const ScorePage: NextPage<Props> = (props: Props) => {
-  const { userScore, hasError, error } = props;
-  const { data: session } = useSession();
+  const { userScore, hasError, error, user } = props;
 
   if (hasError) {
     return (
@@ -24,8 +24,6 @@ const ScorePage: NextPage<Props> = (props: Props) => {
       </VStack>
     );
   }
-
-  const { user } = session as Session;
 
   return (
     <div>
@@ -50,15 +48,14 @@ const ScorePage: NextPage<Props> = (props: Props) => {
 export default ScorePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-  const session = (await getSession(ctx)) as Session;
+  const { username } = ctx.query;
 
-  if (!session) {
+  if (!username) {
     return {
       props: {
         hasError: true,
         error: {
-          message: 'Authorization required',
-          isUnauthorized: true,
+          message: 'Bad Request',
         },
       },
     };
@@ -68,12 +65,30 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     ? 'http'
     : 'https';
 
-  const url = `${httpProtocol}://${ctx.req.headers.host}/api/userScore`;
+  const urlUser = `${httpProtocol}://${ctx.req.headers.host}/api/user/${username}`;
+  const userResponse = (await fetch(urlUser)) as Response &
+    Record<string, string>;
+  console.log(userResponse);
 
-  const { id, access_token, username } = session;
+  if (userResponse.status !== 200 || userResponse.errors) {
+    const { message } = await userResponse.json();
+    return {
+      props: {
+        hasError: true,
+        error: {
+          message,
+          isUnauthorized: userResponse.status === 401,
+        },
+      },
+    };
+  }
+
+  const dataResponse = await userResponse.json();
+  const { user }: { user: User } = dataResponse;
+  const url = `${httpProtocol}://${ctx.req.headers.host}/api/score/${username}`;
+
   const body = new URLSearchParams({
-    providerAccountId: id as string,
-    access_token: access_token as string,
+    providerAccountId: user.id as string,
     username: username as string,
   }).toString();
   const response = await fetch(url, {
@@ -95,15 +110,13 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     };
   }
   const data = await response.json();
-  console.log({
-    data,
-  });
+
   const { userScore }: { userScore: UserScore } = data;
 
   return {
     props: {
-      session: session,
       userScore: userScore || null,
+      user: user || null,
     },
   };
 };
