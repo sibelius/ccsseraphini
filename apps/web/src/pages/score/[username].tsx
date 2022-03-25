@@ -68,7 +68,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const urlUser = `${httpProtocol}://${ctx.req.headers.host}/api/user/${username}`;
   const userResponse = (await fetch(urlUser)) as Response &
     Record<string, string>;
-  console.log(userResponse);
 
   if (userResponse.status !== 200 || userResponse.errors) {
     const { message } = await userResponse.json();
