@@ -25,7 +25,6 @@ export default async function userHandler(
 
   const { data: user } = result;
 
-  console.table(result);
   return res.status(200).json({
     user,
   });

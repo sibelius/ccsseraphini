@@ -1,14 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { UserScore, Tweet } from 'types/Score';
-import { config } from '../../config';
-import { userTweets } from '../../modules/twitter/twitterFollowersGet';
+import { config } from '../../../config';
+import { userTweets } from '../../../modules/twitter/twitterFollowersGet';
 
 export default async function userScoreHandler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
   const { body } = req;
-  const { providerAccountId, username } = body;
+  const { providerAccountId } = body;
   const emptyScore: UserScore = {
     tweet_count: 0,
     retweet_count: 0,
@@ -48,22 +48,16 @@ export default async function userScoreHandler(
 
     const isReplyingProfileId =
       in_reply_to_user_id === config.TWITTER_PROFILE_ID;
-    const isProfileUserMentioned = !!text.match(
-      new RegExp(`cc(:?\\s*)@${config.TWITTER_PROFILE_USER}`, 'gi'),
-    );
-    const isUserReplied = !!text.match(
-      new RegExp(`@${username} @${config.TWITTER_PROFILE_USER}`, 'gi'),
-    );
 
+    const isProfileUserMentioned = !!text.match(
+      new RegExp(`(cc(:?\\s*))?@${config.TWITTER_PROFILE_USER}`, 'gi'),
+    );
     const isRT = !!text.match(/^RT\s@/g);
 
-    return (
-      (isProfileUserMentioned || isReplyingProfileId || isUserReplied) && !isRT
-    );
+    return (isProfileUserMentioned || isReplyingProfileId) && !isRT;
   });
 
   const tweets = elegibleTweets.length;
-
   const userScore: UserScore = elegibleTweets.reduce(
     (
       accumulator: UserScore,
