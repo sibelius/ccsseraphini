@@ -95,6 +95,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     };
   }
   const data = await response.json();
+  console.log({
+    data,
+  });
   const { userScore }: { userScore: UserScore } = data;
 
   return {
