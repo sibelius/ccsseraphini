@@ -65,36 +65,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     ? 'http'
     : 'https';
 
-  const urlUser = `${httpProtocol}://${ctx.req.headers.host}/api/user/${username}`;
-  const userResponse = (await fetch(urlUser)) as Response &
-    Record<string, string>;
-
-  if (userResponse.status !== 200 || userResponse.errors) {
-    const { message } = await userResponse.json();
-    return {
-      props: {
-        hasError: true,
-        error: {
-          message,
-          isUnauthorized: userResponse.status === 401,
-        },
-      },
-    };
-  }
-
-  const dataResponse = await userResponse.json();
-  const { user }: { user: User } = dataResponse;
   const url = `${httpProtocol}://${ctx.req.headers.host}/api/score/${username}`;
 
-  const body = new URLSearchParams({
-    providerAccountId: user.id as string,
-    username: username as string,
-  }).toString();
-  const response = await fetch(url, {
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    method: 'POST',
-    body,
-  });
+  const response = await fetch(url);
 
   if (response.status !== 200) {
     const { message } = await response.json();
@@ -110,7 +83,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   }
   const data = await response.json();
 
-  const { userScore }: { userScore: UserScore } = data;
+  const { userScore, user }: { userScore: UserScore; user: User } = data;
 
   return {
     props: {
