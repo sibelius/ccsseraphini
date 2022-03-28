@@ -1,9 +1,12 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { Flex, Heading, VStack } from '@chakra-ui/react';
-import { Score } from 'components/score/Score';
+import { Box, Button, Flex, Heading, Spacer, VStack } from '@chakra-ui/react';
 import { Session, UserScore } from 'types/Score';
 import { TwitterLogin } from 'components/home/TwitterLogin';
 import { User } from 'types/User';
+import { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import { FaTwitter } from 'react-icons/fa';
+import ScoreVisual from 'components/score/ScoreVisual';
 
 interface Props {
   session?: Session;
@@ -14,7 +17,16 @@ interface Props {
 }
 
 const ScorePage: NextPage<Props> = (props: Props) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const { userScore, hasError, error, user } = props;
+  const handleClick = () => {
+    const current = ref.current as HTMLDivElement;
+    if (current) {
+      html2canvas(current, { allowTaint: true }).then(function (canvas) {
+        document.body.appendChild(canvas);
+      });
+    }
+  };
 
   if (hasError) {
     return (
@@ -36,10 +48,22 @@ const ScorePage: NextPage<Props> = (props: Props) => {
         flexDirection="column"
         pb="10px"
       >
-        <Score
-          userScore={userScore as UserScore}
-          username={user?.name as string}
-        />
+        <Flex w={'100%'} color={'white'} bgColor="white">
+          <Spacer />
+          <Box ref={ref} w={['80%', '50%']}>
+            <ScoreVisual userScore={userScore as UserScore} user={user} />
+          </Box>
+          <Spacer />
+        </Flex>
+
+        <Button
+          mt={3}
+          leftIcon={<FaTwitter />}
+          colorScheme={'twitter'}
+          onClick={handleClick}
+        >
+          Share
+        </Button>
       </Flex>
     </div>
   );
