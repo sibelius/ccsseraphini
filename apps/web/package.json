@@ -20,7 +20,7 @@
     "@types/qrcode.react": "1.0.2",
     "babel-preset-next": "1.4.0",
     "entities": "3.0.1",
-    "ethers": "5.6.1",
+    "ethers": "5.6.2",
     "fork-me-corner": "1.0.1",
     "framer-motion": "6.2.8",
     "next": "12.1.0",
