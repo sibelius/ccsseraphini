@@ -35,12 +35,7 @@ export default function ScoreInfo({ userScore }: Props) {
     <Grid templateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)']} gap={2}>
       {Object.entries(userScore).map((val, i) => {
         return (
-          <GridItem
-            // background={'red'}
-
-            key={val[0] + i}
-            pl={2}
-          >
+          <GridItem key={val[0] + i} pl={2}>
             <Text fontWeight={'bold'} fontSize={['2xl', 'xl']}>
               {metricName.get(val[0])}
             </Text>
