@@ -11,4 +11,5 @@ export const config = {
   DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET as string,
   DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN as string,
   GUILD_ID: process.env.GUILD_ID as string,
+  WEBHOOK_DISCORD: process.env.WEBHOOK_DISCORD as string,
 } as const;
