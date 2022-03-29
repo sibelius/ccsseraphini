@@ -57,7 +57,7 @@ const ScorePage: NextPage<Props> = (props: Props) => {
           mt={16}
           leftIcon={<FaTwitter />}
           colorScheme={'twitter'}
-          onClick={handleClick}
+          // onClick={handleClick}
         >
           Share
         </Button>
