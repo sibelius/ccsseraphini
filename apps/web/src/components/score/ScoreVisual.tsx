@@ -2,14 +2,7 @@ import ScoreProfile from './ScoreProfile';
 import ScoreInfo from './ScoreInfo';
 import { UserScore } from 'types/Score';
 import { User } from 'types/User';
-import {
-  Text,
-  Image,
-  HStack,
-  Box,
-  useMediaQuery,
-  Flex,
-} from '@chakra-ui/react';
+import { Text, Image, Box, useMediaQuery, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { mobileData, defaultData } from './ScoreConfig';
 import ScoreColored from './ScoreColored';

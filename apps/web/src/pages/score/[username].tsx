@@ -1,10 +1,9 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { Box, Button, Flex, Heading, Spacer, VStack } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, VStack } from '@chakra-ui/react';
 import { Session, UserScore } from 'types/Score';
 import { TwitterLogin } from 'components/home/TwitterLogin';
 import { User } from 'types/User';
 import { useRef } from 'react';
-import html2canvas from 'html2canvas';
 import { FaTwitter } from 'react-icons/fa';
 import ScoreVisual from 'components/score/ScoreVisual';
 
@@ -19,14 +18,6 @@ interface Props {
 const ScorePage: NextPage<Props> = (props: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const { userScore, hasError, error, user } = props;
-  const handleClick = () => {
-    const current = ref.current as HTMLDivElement;
-    if (current) {
-      html2canvas(current, { allowTaint: true }).then(function (canvas) {
-        document.body.appendChild(canvas);
-      });
-    }
-  };
 
   if (hasError) {
     return (
@@ -53,12 +44,7 @@ const ScorePage: NextPage<Props> = (props: Props) => {
           </Box>
         </Flex>
 
-        <Button
-          mt={16}
-          leftIcon={<FaTwitter />}
-          colorScheme={'twitter'}
-          // onClick={handleClick}
-        >
+        <Button mt={16} leftIcon={<FaTwitter />} colorScheme={'twitter'}>
           Share
         </Button>
       </Flex>
