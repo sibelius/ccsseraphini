@@ -12,4 +12,6 @@ export const config = {
   DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN as string,
   GUILD_ID: process.env.GUILD_ID as string,
   WEBHOOK_DISCORD: process.env.WEBHOOK_DISCORD as string,
+  CRONJOB_HEADER_KEY: process.env.CRONJOB_HEADER_KEY as string,
+  CRONJOB_HEADER_VALUE: process.env.CRONJOB_HEADER_VALUE as string,
 } as const;

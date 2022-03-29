@@ -1,16 +1,16 @@
+import withErrorHandler from 'middlewares/error-handler';
+import withValidation from 'middlewares/validations';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { TweetData } from 'types/Tweet';
 import { config } from '../../../config';
 
 // Learn Discord Webhook: https://discord.com/developers/docs/resources/webhook#execute-webhook
 
-// cron-job.org will trigger this function every 1 minute
+// cron-job.org will trigger this function every x minutes
 const floodDiscordChannelWithTweets = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ) => {
-  // TODO add auth method, only cron job can access this endpoint
-
   const query = '-RT cc @sseraphini';
 
   // TODO Dry this code, we have the same code: ccsseraphini/apps/web/src/pages/index.tsx
@@ -28,9 +28,6 @@ const floodDiscordChannelWithTweets = async (
   const data = await response.json();
 
   const WEBHOOK_DISCORD = config.WEBHOOK_DISCORD;
-
-  if (!WEBHOOK_DISCORD)
-    res.status(500).send('WEBHOOK_DISCORD .env is not defined');
 
   const promisesPostTweetOnDiscord = data.tweets.map((tweet: TweetData) => {
     return () =>
@@ -52,8 +49,10 @@ const floodDiscordChannelWithTweets = async (
     }
     res.status(200).send('Tweets posted on Discord');
   } catch (error: any) {
-    res.status(500).send(error.message);
+    throw new Error(
+      "I can't post the tweets, try again later, reason -> " + error.message,
+    );
   }
 };
 
-export default floodDiscordChannelWithTweets;
+export default withErrorHandler(withValidation(floodDiscordChannelWithTweets));
