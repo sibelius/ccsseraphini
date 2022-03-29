@@ -40,24 +40,21 @@ const ScorePage: NextPage<Props> = (props: Props) => {
   return (
     <div>
       <Flex
-        flex={1}
         h={'100vh'}
         w={'100%'}
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
-        pb="10px"
+        bgColor="#cbc9d5"
       >
-        <Flex w={'100%'} color={'white'} bgColor="white">
-          <Spacer />
-          <Box ref={ref} w={['80%', '50%']}>
+        <Flex w={'100%'} color={'white'} justifyContent="center" h="70%">
+          <Box ref={ref} w="80%" h="100%">
             <ScoreVisual userScore={userScore as UserScore} user={user} />
           </Box>
-          <Spacer />
         </Flex>
 
         <Button
-          mt={3}
+          mt={16}
           leftIcon={<FaTwitter />}
           colorScheme={'twitter'}
           onClick={handleClick}

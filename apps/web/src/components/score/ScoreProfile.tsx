@@ -15,34 +15,57 @@
  * limitations under the License.
  */
 
-import { Image, Text, GridItem, Grid } from '@chakra-ui/react';
 import { User } from 'types/User';
+import { Text, Image, Box, Flex } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { mobileData, defaultData } from './ScoreConfig';
 
 type Props = {
   user?: User;
-  size?: number;
+  isDesktop: boolean;
 };
 
-export default function ScoreProfile({ user }: Props) {
+export default function ScoreProfile({ user, isDesktop }: Props) {
   const { name, username, profile_image_url } = user as User;
   const avatarUrl = profile_image_url.replace('_normal', '');
+  const [cssProps, setCssProps] = useState<Record<string, any>>(defaultData);
+
+  useEffect(() => {
+    if (isDesktop) {
+      setCssProps(defaultData);
+    } else {
+      setCssProps(mobileData);
+    }
+  }, [isDesktop]);
 
   return (
-    <Grid templateColumns="repeat(2, 1fr)" gap={3}>
-      <GridItem>
-        <Image
-          w="80px"
-          border={'2px solid white'}
-          rounded={'full'}
-          src={avatarUrl || `https://unavatar.io/twitter/${username}`}
-          crossOrigin={'anonymous'}
-          alt={username}
-        />
-      </GridItem>
-      <GridItem alignSelf={'center'}>
-        <Text>{name}</Text>
-        <Text>{'@' + username}</Text>
-      </GridItem>
-    </Grid>
+    <Flex
+      alignItems="center"
+      justifyContent={cssProps.profile.justifyContent}
+      margin={cssProps.profile.margin}
+    >
+      <Image
+        w="70px"
+        boxShadow="0 0 0 3px black, 0 0 0 5px white"
+        rounded={'full'}
+        src={avatarUrl || `https://unavatar.io/twitter/${username}`}
+        crossOrigin={'anonymous'}
+        alt={username}
+        ml="10px"
+      />
+      <Box
+        textAlign={cssProps.profile.textAlign}
+        fontSize={cssProps.profile.fontSize}
+        ml={cssProps.profile.textMarginLeft}
+      >
+        <Text
+          maxW={cssProps.profile.maxWidth}
+          fontWeight={cssProps.profile.fontWeight}
+        >
+          {name}
+        </Text>
+        <Text color="gray">{'@' + username}</Text>
+      </Box>
+    </Flex>
   );
 }
