@@ -27,33 +27,48 @@ export const Score = ({
 
   return (
     <Flex
-      borderWidth="1px"
-      borderColor="gray.500"
+      borderWidth="5px"
+      borderColor="red"
       borderRadius="lg"
       overflow="hidden"
       p="7"
       flexDirection="column"
-      bg="white"
+      bg="black"
       width={'100%'}
       maxW={'fit-content'}
       minW={{ md: 'unset', base: 'calc(100vw - 24px)' }}
     >
       <VStack>
-        <Image
-          borderRadius="full"
-          boxSize="100px"
-          objectFit="cover"
-          src="https://unavatar.io/twitter/sseraphini"
-          alt="Sibelius Seraphini"
-          m="3"
-        />
-        <Heading>{username}</Heading>
-        <Text fontSize="2xl">Tweets: {userScore.tweet_count}</Text>
-        <Text fontSize="2xl">Replies: {userScore.reply_count}</Text>
-        <Text fontSize="2xl">Likes: {userScore.like_count}</Text>
-        <Text fontSize="2xl">Retweets: {userScore.retweet_count}</Text>
-        <Text fontSize="2xl">Quotes: {userScore.quote_count}</Text>
-        <Heading>Total: {userScore.total}</Heading>
+        <Flex justifyContent="center" alignItems="center">
+          <Image
+            boxSize="100px"
+            objectFit="cover"
+            src="https://unavatar.io/twitter/sseraphini"
+            alt="Sibelius Seraphini"
+            borderWidth="3px"
+            borderRadius="full"
+            borderColor="white"
+            borderStyle="solid"
+            m="3"
+          />
+          <Heading color="white">{username}</Heading>
+        </Flex>
+        <Text fontSize="2xl" color="white">
+          Tweets: {userScore.tweet_count}
+        </Text>
+        <Text fontSize="2xl" color="white">
+          Replies: {userScore.reply_count}
+        </Text>
+        <Text fontSize="2xl" color="white">
+          Likes: {userScore.like_count}
+        </Text>
+        <Text fontSize="2xl" color="white">
+          Retweets: {userScore.retweet_count}
+        </Text>
+        <Text fontSize="2xl" color="white">
+          Quotes: {userScore.quote_count}
+        </Text>
+        <Heading color="white">Total: {userScore.total}</Heading>
       </VStack>
     </Flex>
   );
