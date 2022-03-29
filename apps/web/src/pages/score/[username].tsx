@@ -1,9 +1,11 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { Flex, Heading, VStack } from '@chakra-ui/react';
-import { Score } from 'components/score/Score';
+import { Box, Button, Flex, Heading, VStack } from '@chakra-ui/react';
 import { Session, UserScore } from 'types/Score';
 import { TwitterLogin } from 'components/home/TwitterLogin';
 import { User } from 'types/User';
+import { useRef } from 'react';
+import { FaTwitter } from 'react-icons/fa';
+import ScoreVisual from 'components/score/ScoreVisual';
 
 interface Props {
   session?: Session;
@@ -14,6 +16,7 @@ interface Props {
 }
 
 const ScorePage: NextPage<Props> = (props: Props) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const { userScore, hasError, error, user } = props;
 
   if (hasError) {
@@ -28,18 +31,22 @@ const ScorePage: NextPage<Props> = (props: Props) => {
   return (
     <div>
       <Flex
-        flex={1}
         h={'100vh'}
         w={'100%'}
         alignItems="center"
         justifyContent="center"
         flexDirection="column"
-        pb="10px"
+        bgColor="#cbc9d5"
       >
-        <Score
-          userScore={userScore as UserScore}
-          username={user?.name as string}
-        />
+        <Flex w={'100%'} color={'white'} justifyContent="center" h="70%">
+          <Box ref={ref} w="80%" h="100%">
+            <ScoreVisual userScore={userScore as UserScore} user={user} />
+          </Box>
+        </Flex>
+
+        <Button mt={16} leftIcon={<FaTwitter />} colorScheme={'twitter'}>
+          Share
+        </Button>
       </Flex>
     </div>
   );

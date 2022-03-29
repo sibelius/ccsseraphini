@@ -9,7 +9,7 @@ export const userProfile = async (
   username: string,
   accessToken: string,
 ): Promise<Result> => {
-  const url = `https://api.twitter.com/2/users/by/username/${username}`;
+  const url = `https://api.twitter.com/2/users/by/username/${username}?user.fields=profile_image_url`;
   const options = {
     headers: {
       Accept: 'application/json',

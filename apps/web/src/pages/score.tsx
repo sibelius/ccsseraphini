@@ -57,7 +57,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     redirect: {
       destination: `/score/${session.username}`,
       permanent: false,
-      // statusCode: 301
     },
   };
 };
