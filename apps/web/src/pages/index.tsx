@@ -12,7 +12,7 @@ interface Props {
   error?: boolean;
 }
 
-const query = '-RT cc @sseraphini';
+const query = '-RT cc @sseraphini -from:sseraphini_bot';
 
 const HomePage: NextPage<Props> = (props: Props) => {
   return (
