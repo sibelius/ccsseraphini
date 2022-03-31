@@ -54,8 +54,8 @@ export const Home = () => {
           flexDirection="column"
           bg="white"
           width={'100%'}
-          maxW={'fit-content'}
-          minW={{ md: 'unset', base: 'calc(100vw - 24px)' }}
+          minW={'300px'}
+          maxW={'430px'}
         >
           <TweetComposer />
           <ActionButtons />
