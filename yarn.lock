@@ -7168,10 +7168,10 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-qrcode.react@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/qrcode.react/-/qrcode.react-3.0.0.tgz#b1f2ce499e2a3ef3fce6a959248a98d5a8c9963b"
-  integrity sha512-c9wHOCtmFxDkybKAYRdqe4+M7O6mJ6AbsWGkRt+XFxpsR16pJbpZT22Lf28LwBIi6UcYPsbJ0AnqaT5qGX5Frg==
+qrcode.react@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/qrcode.react/-/qrcode.react-3.0.1.tgz#0cb1d7cfdf3955737fbd3509c193985795ca0612"
+  integrity sha512-uCNm16ClMCrdM2R20c/zqmdwHcbMQf3K7ey39EiK/UgEKbqWeM0iH2QxW3iDVFzjQKFzH23ICgOyG4gNsJ0/gw==
 
 queue-microtask@^1.2.2:
   version "1.2.3"
