@@ -1,4 +1,5 @@
-import { Flex, Image, Button, Heading, Text } from '@chakra-ui/react';
+import { ChakraNextLinkButton } from '../components/ChakraNextLinkButton';
+import { Flex, Image, Heading, Text } from '@chakra-ui/react';
 import { FaHome } from 'react-icons/fa';
 
 export default function Custom404() {
@@ -66,19 +67,17 @@ export default function Custom404() {
           <Text fontSize="xl" marginBottom="5px">
             Page not found!
           </Text>
-          <Button
+          <ChakraNextLinkButton
+            href="/"
             backgroundColor="#3940CC"
             textColor="white"
             _hover={{ bg: '#2B3099' }}
             leftIcon={<FaHome />}
             width="100%"
-            as={'a'}
-            href="/"
-            target="_blank"
             size="sm"
           >
             Back to Home
-          </Button>
+          </ChakraNextLinkButton>
         </Flex>
       </Flex>
     </Flex>
