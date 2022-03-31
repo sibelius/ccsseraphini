@@ -18,7 +18,7 @@ interface Props {
 
 const debounceDelay = 1000;
 
-const rtQuery = '-RT cc @sseraphini';
+const rtQuery = '-RT cc @sseraphini -from:sseraphini_bot';
 
 const getQuery = (value: string) => {
   if (value.includes('OR') || value.includes('AND')) {
@@ -29,7 +29,7 @@ const getQuery = (value: string) => {
 };
 
 const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
-  const [query, setQuery] = useState('-RT cc @sseraphini');
+  const [query, setQuery] = useState('-RT cc @sseraphini -from:sseraphini_bot');
   const [search, setSearch] = useState(data?.initialSearch || '');
 
   const updateQuery = useDebouncedCallback((value) => {

@@ -39,7 +39,7 @@ export default async function tweetsHandler(
     });
   }
 
-  const query = req.query.query || '-RT cc @sseraphini';
+  const query = req.query.query || '-RT cc @sseraphini -from:sseraphini_bot';
 
   // @ts-ignore
   const QUERY = encodeURI(query);
