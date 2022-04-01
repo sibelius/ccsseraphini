@@ -157,7 +157,7 @@ describe('TweetInfo', () => {
       'https://twitter.com/tgmarinho/status/1497210444875972609/retweets',
     );
 
-    expect(screen.getByText('Quote Tweets').closest('a')).toHaveAttribute(
+    expect(screen.getByText('Quote Tweet').closest('a')).toHaveAttribute(
       'href',
       'https://twitter.com/tgmarinho/status/1497210444875972609/retweets/with_comments',
     );

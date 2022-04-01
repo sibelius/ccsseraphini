@@ -9,9 +9,35 @@ interface TweetInfoProps {
   tweet: TweetData;
   key?: string;
 }
+
+interface TweetMetricProps {
+  href: string;
+  count: number;
+  labels: string[];
+}
+
+const TweetMetric = ({ href, count, labels }: TweetMetricProps) => {
+  return (
+    <LinkBox cursor="pointer">
+      <LinkOverlay
+        href={href}
+        target="blank"
+        display="flex"
+        _hover={{ textDecor: 'underline' }}
+      >
+        <Text color="gray.500" fontWeight="bold" marginRight={1}>
+          {count}
+        </Text>
+        <Text color="gray.500" marginRight={2}>
+          {count < 2 ? labels[0] : labels[1]}
+        </Text>
+      </LinkOverlay>
+    </LinkBox>
+  );
+};
+
 const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   return (
@@ -35,70 +61,26 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
           </Button>
         </Flex>
         <Flex>
-          <LinkBox cursor="pointer">
-            <LinkOverlay
-              href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}`}
-              target="blank"
-              display="flex"
-              _hover={{ textDecor: 'underline' }}
-            >
-              <Text color="gray.500" fontWeight="bold" marginRight={1}>
-                {tweet.public_metrics.reply_count}
-              </Text>
-              <Text color="gray.500" marginRight={2}>
-                {tweet.public_metrics.reply_count === 1 ? 'Reply' : 'Replies'}
-              </Text>
-            </LinkOverlay>
-          </LinkBox>
-          <LinkBox cursor="pointer">
-            <LinkOverlay
-              href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.retweet}`}
-              target="blank"
-              display="flex"
-              _hover={{ textDecor: 'underline' }}
-            >
-              <Text color="gray.500" fontWeight="bold" marginRight={1}>
-                {tweet.public_metrics.retweet_count}
-              </Text>
-              <Text color="gray.500" marginRight={2}>
-                {tweet.public_metrics.retweet_count === 1
-                  ? 'Retweet'
-                  : 'Retweets'}
-              </Text>
-            </LinkOverlay>
-          </LinkBox>
-          <LinkBox cursor="pointer">
-            <LinkOverlay
-              href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.quote}`}
-              target="blank"
-              display="flex"
-              _hover={{ textDecor: 'underline' }}
-            >
-              <Text color="gray.500" fontWeight="bold" marginRight={1}>
-                {tweet.public_metrics.quote_count}
-              </Text>
-              <Text color="gray.500" marginRight={2}>
-                {tweet.public_metrics.quote_count === 1
-                  ? 'Quote Tweet'
-                  : 'Quote Tweets'}
-              </Text>
-            </LinkOverlay>
-          </LinkBox>
-          <LinkBox cursor="pointer">
-            <LinkOverlay
-              href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.like}`}
-              target="blank"
-              display="flex"
-              _hover={{ textDecor: 'underline' }}
-            >
-              <Text color="gray.500" fontWeight="bold" marginRight={1}>
-                {tweet.public_metrics.like_count}
-              </Text>
-              <Text color="gray.500" marginRight={2}>
-                {tweet.public_metrics.like_count === 1 ? 'Like' : 'Likes'}
-              </Text>
-            </LinkOverlay>
-          </LinkBox>
+          <TweetMetric
+            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}`}
+            count={tweet.public_metrics.reply_count}
+            labels={['Reply', 'Replies']}
+          />
+          <TweetMetric
+            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.retweet}`}
+            count={tweet.public_metrics.retweet_count}
+            labels={['Retweet', 'Retweets']}
+          />
+          <TweetMetric
+            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.quote}`}
+            count={tweet.public_metrics.quote_count}
+            labels={['Quote Tweet', 'Quote Tweets']}
+          />
+          <TweetMetric
+            href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.like}`}
+            count={tweet.public_metrics.like_count}
+            labels={['Like', 'Likes']}
+          />
         </Flex>
       </Flex>
       <TweetReplyModal
