@@ -35,7 +35,7 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
           </Button>
         </Flex>
         <Flex>
-          <LinkBox>
+          <LinkBox cursor="pointer">
             <LinkOverlay
               href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}`}
               target="blank"
@@ -50,7 +50,7 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
               </Text>
             </LinkOverlay>
           </LinkBox>
-          <LinkBox>
+          <LinkBox cursor="pointer">
             <LinkOverlay
               href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.retweet}`}
               target="blank"
@@ -67,7 +67,7 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
               </Text>
             </LinkOverlay>
           </LinkBox>
-          <LinkBox>
+          <LinkBox cursor="pointer">
             <LinkOverlay
               href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.quote}`}
               target="blank"
@@ -84,7 +84,7 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
               </Text>
             </LinkOverlay>
           </LinkBox>
-          <LinkBox>
+          <LinkBox cursor="pointer">
             <LinkOverlay
               href={`${twitterBaseUrl}${tweet.userInfo.username}/status/${tweet.id}${twitterEndpointSufix.like}`}
               target="blank"
