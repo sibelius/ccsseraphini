@@ -6,6 +6,7 @@ import { DonateSol } from './DonateSol';
 import { DonatePix } from '../pix/DonatePix';
 import { SessionProvider } from 'next-auth/react';
 import { TwitterLogin } from './TwitterLogin';
+import { bgPalette } from '../ColorPalette';
 
 export const Home = () => {
   return (
@@ -19,10 +20,8 @@ export const Home = () => {
       // bg="gray.400"
       pb="10px"
       style={{
-        backgroundColor: '#e5e5f7',
-        opacity: '0.8',
-        backgroundImage:
-          'linear-gradient(#444cf7 1px, transparent 1px), linear-gradient(to right, #444cf7 1px, #e5e5f7 1px)',
+        backgroundColor: `${bgPalette.secondaryVar}`,
+        backgroundImage: `linear-gradient(${bgPalette.details} 1px, transparent 1px), linear-gradient(to right, ${bgPalette.details} 1px, ${bgPalette.secondaryVar} 1px)`,
         backgroundSize: '20px 20px',
       }}
     >
@@ -46,13 +45,13 @@ export const Home = () => {
         />
 
         <Flex
-          borderWidth="1px"
-          borderColor="gray.500"
+          borderWidth="2px"
+          borderColor="#000"
           borderRadius="lg"
           overflow="hidden"
           p="7"
           flexDirection="column"
-          bg="white"
+          bg={bgPalette.secondary}
           width={'100%'}
           minW={'300px'}
           maxW={'430px'}

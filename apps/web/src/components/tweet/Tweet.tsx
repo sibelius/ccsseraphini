@@ -5,6 +5,7 @@ import { LinkPreview } from '@dhaiwat10/react-link-preview';
 import { TweetData } from 'types/Tweet';
 import { parseContent } from './tweetContent';
 import TweetPublicMetrics from './TweetPublicMetrics';
+import { txtPalette } from '../ColorPalette';
 
 interface TweetInfoProps {
   tweet: TweetData;
@@ -100,7 +101,11 @@ const Tweet = ({ tweet }: TweetInfoProps) => {
               <Text fontSize={14} fontWeight="bold">
                 {tweet.userInfo.name}
               </Text>
-              <Text fontSize={14} color="gray.500" fontWeight="light">
+              <Text
+                fontSize={14}
+                color={txtPalette.secondary}
+                fontWeight="light"
+              >
                 {`@${tweet.userInfo.username}`}
               </Text>
             </Box>
@@ -116,7 +121,7 @@ const Tweet = ({ tweet }: TweetInfoProps) => {
                   <Link
                     pointerEvents="all"
                     target="blank"
-                    color="#444cf7"
+                    color={txtPalette.primary}
                     href={`${twitterBaseUrl}hashtag/${chunk.value}?src=hashtag_click`}
                     key={chunk.index}
                   >
@@ -140,7 +145,7 @@ const Tweet = ({ tweet }: TweetInfoProps) => {
                   <Link
                     pointerEvents="all"
                     target="blank"
-                    color="#444cf7"
+                    color={txtPalette.primary}
                     href={chunk.value}
                     key={chunk.index}
                   >
@@ -154,7 +159,7 @@ const Tweet = ({ tweet }: TweetInfoProps) => {
                   <Link
                     pointerEvents="all"
                     target="blank"
-                    color="#444cf7"
+                    color={txtPalette.primary}
                     href={`${twitterBaseUrl}${chunk.value}`}
                     key={chunk.index}
                   >
@@ -170,7 +175,7 @@ const Tweet = ({ tweet }: TweetInfoProps) => {
             <LinkPreview url={nonImageUrlChunk.value} />
           </Box>
         ) : null}
-        <Text color="gray.500" marginTop={2}>
+        <Text color={txtPalette.secondary} marginTop={2}>
           {tweetTimeInfo()}
         </Text>
         <Link

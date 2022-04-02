@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { usePrevious } from '../../usePrevious';
 import { Spinner } from '@chakra-ui/spinner';
 import { FaSyncAlt } from 'react-icons/fa';
+import { bgPalette, txtPalette } from '../ColorPalette';
 
 interface Props {
   initialTweets?: TweetData[];
@@ -88,6 +89,8 @@ export const Timeline = ({
       flex={1}
       px={4}
       py={8}
+      bgColor={bgPalette.secondary}
+      color={txtPalette.base}
     >
       <Text fontWeight="medium" fontSize={24} mb={4}>
         {title}
