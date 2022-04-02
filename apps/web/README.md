@@ -15,3 +15,19 @@ This is the Twitter API Bearer Token. You can get a new one with the following s
 - Create a new project
 - Create an app inside the project
 - After that you will have the API Key, the Bearer Token and the Access Token. In this case we will only need the Bearer Token. After this just add it to the .env file and you are all set.
+
+### TWITTER_CLIENT_ID & TWITTER_CLIENT_SECRET
+
+- Access https://developer.twitter.com/en/portal/dashboard
+- Access settings from the project that you are already using to obtain the TWITTER_BEARER_TOKEN
+- Go to Edit in "User authentication settings" section
+- Turn on OAuth 2.0 and set the "type of app" to "Single page App"
+- Add the Redirect URL (e.g.: http://localhost:3000/api/auth/callback/twitter) and all other required fields
+- Access the "Key and Tokens" section
+- Copy OAuth 2.0 Client ID and Client Secret
+- Add to .env (TWITTER_CLIENT_ID and TWITTER_CLIENT_SECRET)
+
+### NEXTAUTH_SECRET
+
+- Generate a NEXTAUTH_SECRET (You could use `openssl rand -hex 32` on Linux; Or go to https://generate-secret.now.sh/32)
+- Add the new generated NEXTAUTH_SECRET to .env
