@@ -16,9 +16,13 @@ export const TweetComposer = () => {
       <Textarea
         size="sm"
         resize="none"
-        minHeight={'9rem'}
+        minHeight="2.5rem"
+        _focus={{ minHeight: '9rem' }}
         placeholder="Write your tweet concept/question here"
         value={text}
+        transitionProperty="min-height"
+        transitionDuration=".3s"
+        transitionTimingFunction="ease"
         onChange={(e) => setText(e.target.value)}
       />
       <Flex direction={'row'} justifyContent={'space-between'}>
