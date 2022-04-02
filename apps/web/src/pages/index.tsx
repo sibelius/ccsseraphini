@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import { Home } from '../components/home/Home';
 import { GetServerSideProps } from 'next';
 import { TweetData } from '../types/Tweet';
 import { Timeline } from '../components/tweet/Timeline';
 import { ForkMe } from 'fork-me-corner';
 import { Flex } from '@chakra-ui/react';
+import { Home2 } from 'components/home/Home2';
 
 interface Props {
   tweets?: TweetData[];
@@ -23,7 +23,7 @@ const HomePage: NextPage<Props> = (props: Props) => {
         gap="12px"
         flexWrap="wrap"
       >
-        <Home />
+        <Home2 />
         <Timeline
           initialTweets={props?.tweets}
           initialNextToken={props?.nextToken}
