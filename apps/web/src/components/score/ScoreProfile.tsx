@@ -36,6 +36,7 @@ export default function ScoreProfile({ user }: Props) {
         src={avatarUrl || `https://unavatar.io/twitter/${username}`}
         crossOrigin={'anonymous'}
         alt={username}
+        m="5px"
         mr="16px"
       />
       <div className="content">

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box, Button, Grid } from '@chakra-ui/react';
+import { Button, Grid } from '@chakra-ui/react';
 
 const MOBILE_BREAKPOINT = '768px';
 
@@ -25,6 +25,12 @@ export const ScorePageStyled = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+    justify-content: flex-start;
+    height: unset;
+    min-height: 100vh;
+  }
 `;
 
 export const ButtonStyled = styled(Button)`
@@ -32,6 +38,14 @@ export const ButtonStyled = styled(Button)`
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
+
+  @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    transform: none;
+    margin: 5% auto;
+  }
 `;
 
 export const TicketStyled = styled.div`
@@ -40,33 +54,54 @@ export const TicketStyled = styled.div`
   width: 90%;
   max-width: 625px;
   padding: 38px;
-`;
 
-export const TicketBoxStyled = styled(Box)`
-  position: absolute;
-  width: 100%;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  max-width: 625px;
-
-  &::before {
-    content: '';
-    width: 100%;
-    display: block;
-    padding-bottom: ${(330 / 650) * 100}%; /* keep original proportion */
-  }
-
-  svg {
-    width: 100%;
+  .ticketBox {
     position: absolute;
+    width: 100%;
+    z-index: 0;
     top: 0;
     left: 0;
-    object-fit: contain;
-    object-position: center;
+    &::before {
+      content: '';
+      width: 100%;
+      display: block;
+      padding-bottom: ${(330 / 650) * 100}%; /* keep original proportion */
+    }
+
+    svg {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: contain;
+      object-position: center;
+    }
   }
 
   @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+    margin-top: 10%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+
+    max-width: 330px;
+
+    .ticketBox {
+      position: relative;
+      &::before {
+        padding-bottom: ${(560 / 330) * 100}%; /* keep original proportion */
+      }
+    }
+
+    .content-wrapper {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: 38px 10%;
+    }
   }
 `;
 
@@ -96,7 +131,10 @@ export const ScoreInfoGridStyled = styled(Grid)`
   position: relative;
 
   @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
-    gap: 12px 0;
+    gap: 12px 6px;
+    grid-template-columns: 1fr 1fr;
+    margin: 17.5% 0 0;
+    width: 100%;
   }
 `;
 
@@ -110,4 +148,12 @@ export const SSeraphiniStyled = styled.div`
   width: 192px;
   transform-origin: top left;
   transform: rotate(90deg);
+
+  @media only screen and (max-width: ${MOBILE_BREAKPOINT}) {
+    top: unset;
+    right: unset;
+    transform: none;
+    margin: auto auto 0;
+    position: relative;
+  }
 `;
