@@ -16,34 +16,19 @@
  */
 
 import { User } from 'types/User';
-import { Text, Image, Box, Flex } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import { mobileData, defaultData } from './ScoreConfig';
+import { Image, Text } from '@chakra-ui/react';
+import { ScoreProfileStyled } from './ScoreStyle';
 
 type Props = {
   user?: User;
-  isDesktop: boolean;
 };
 
-export default function ScoreProfile({ user, isDesktop }: Props) {
+export default function ScoreProfile({ user }: Props) {
   const { name, username, profile_image_url } = user as User;
   const avatarUrl = profile_image_url.replace('_normal', '');
-  const [cssProps, setCssProps] = useState<Record<string, any>>(defaultData);
-
-  useEffect(() => {
-    if (isDesktop) {
-      setCssProps(defaultData);
-    } else {
-      setCssProps(mobileData);
-    }
-  }, [isDesktop]);
 
   return (
-    <Flex
-      alignItems="center"
-      justifyContent={cssProps.profile.justifyContent}
-      margin={cssProps.profile.margin}
-    >
+    <ScoreProfileStyled>
       <Image
         w="70px"
         boxShadow="0 0 0 3px black, 0 0 0 5px white"
@@ -51,21 +36,14 @@ export default function ScoreProfile({ user, isDesktop }: Props) {
         src={avatarUrl || `https://unavatar.io/twitter/${username}`}
         crossOrigin={'anonymous'}
         alt={username}
-        ml="10px"
+        mr="16px"
       />
-      <Box
-        textAlign={cssProps.profile.textAlign}
-        fontSize={cssProps.profile.fontSize}
-        ml={cssProps.profile.textMarginLeft}
-      >
-        <Text
-          maxW={cssProps.profile.maxWidth}
-          fontWeight={cssProps.profile.fontWeight}
-        >
+      <div className="content">
+        <Text fontWeight="bold" className="name">
           {name}
         </Text>
-        <Text color="gray">{'@' + username}</Text>
-      </Box>
-    </Flex>
+        <Text color="gray">@{username}</Text>
+      </div>
+    </ScoreProfileStyled>
   );
 }
