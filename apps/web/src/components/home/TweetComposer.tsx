@@ -6,7 +6,6 @@ import { ChakraNextLinkButton } from '../ChakraNextLinkButton';
 
 export const TweetComposer = () => {
   const [text, setText] = useState('');
-  const [isTyping, setIsTyping] = useState<boolean>(false);
   const suffix = '\ncc @sseraphini';
   const counter = 279 - suffix.length - text.length;
   const tweet = encodeURIComponent(`${text}${suffix}`);
@@ -17,9 +16,8 @@ export const TweetComposer = () => {
       <Textarea
         size="sm"
         resize="none"
-        minHeight={isTyping ? '9rem' : '2.5rem'}
-        onFocus={() => setIsTyping(true)}
-        onBlur={() => setIsTyping(false)}
+        minHeight="2.5rem"
+        _focus={{ minHeight: '9rem' }}
         placeholder="Write your tweet concept/question here"
         value={text}
         transitionProperty="min-height"
