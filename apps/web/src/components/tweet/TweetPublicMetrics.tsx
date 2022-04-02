@@ -4,6 +4,7 @@ import { FaReply } from 'react-icons/fa';
 import { TweetData } from 'types/Tweet';
 import { twitterBaseUrl, twitterEndpointSufix } from './Tweet';
 import { TweetReplyModal } from './TweetReplyModal';
+import { bgPalette, txtPalette } from '../ColorPalette';
 
 interface TweetInfoProps {
   tweet: TweetData;
@@ -25,10 +26,10 @@ const TweetMetric = ({ href, count, labels }: TweetMetricProps) => {
         display="flex"
         _hover={{ textDecor: 'underline' }}
       >
-        <Text color="gray.500" fontWeight="bold" marginRight={1}>
+        <Text color={txtPalette.secondary} fontWeight="bold" marginRight={1}>
           {count}
         </Text>
-        <Text color="gray.500" marginRight={2}>
+        <Text color={txtPalette.secondary} marginRight={2}>
           {count < 2 ? labels[0] : labels[1]}
         </Text>
       </LinkOverlay>
@@ -46,7 +47,7 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
         paddingY={3}
         borderY="1px solid"
         mt={4}
-        borderColor="gray.300"
+        borderColor={bgPalette.base}
         alignItems="center"
         justifyContent="space-between"
         flexWrap="wrap"
@@ -56,7 +57,8 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
             size={'sm'}
             leftIcon={<FaReply />}
             onClick={openModal}
-            color="gray.600"
+            color={txtPalette.baseVar}
+            bgColor={bgPalette.primary}
           >
             Reply Here
           </Button>

@@ -4,7 +4,8 @@ import { TweetData } from '../types/Tweet';
 import { Timeline } from '../components/tweet/Timeline';
 import { ForkMe } from 'fork-me-corner';
 import { Flex } from '@chakra-ui/react';
-import { Home2 } from 'components/home/Home2';
+import { bgPalette } from '../components/ColorPalette';
+import { Home } from 'components/home/Home';
 
 interface Props {
   tweets?: TweetData[];
@@ -22,8 +23,9 @@ const HomePage: NextPage<Props> = (props: Props) => {
         direction={{ base: 'column', lg: 'row' }}
         gap="12px"
         flexWrap="wrap"
+        bgColor={bgPalette.base}
       >
-        <Home2 />
+        <Home />
         <Timeline
           initialTweets={props?.tweets}
           initialNextToken={props?.nextToken}
