@@ -49,6 +49,7 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
         borderColor="gray.300"
         alignItems="center"
         justifyContent="space-between"
+        flexWrap="wrap"
       >
         <Flex>
           <Button
