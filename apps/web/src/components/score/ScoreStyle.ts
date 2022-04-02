@@ -53,7 +53,7 @@ export const TicketStyled = styled.div`
   color: white;
   width: 90%;
   max-width: 625px;
-  padding: 38px;
+  padding: 33px 38px;
 
   .ticketBox {
     position: absolute;
@@ -126,7 +126,7 @@ export const ScoreInfoGridStyled = styled(Grid)`
   gap: 10px 50px;
   width: 375px;
   max-width: 100%;
-  margin: 30px 20% 0 30px;
+  margin: 28px 20% 0 28px;
   grid-template-columns: repeat(3, 1fr);
   position: relative;
 
