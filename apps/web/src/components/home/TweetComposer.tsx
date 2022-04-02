@@ -3,6 +3,7 @@ import { Flex, Box, Button, Textarea, Badge } from '@chakra-ui/react';
 import { FaTwitter } from 'react-icons/fa';
 import { BsSearch } from 'react-icons/bs';
 import { ChakraNextLinkButton } from '../ChakraNextLinkButton';
+import { bgPalette, txtPalette } from '../ColorPalette';
 
 export const TweetComposer = () => {
   const [text, setText] = useState('');
@@ -17,15 +18,21 @@ export const TweetComposer = () => {
         size="sm"
         resize="none"
         minHeight="2.5rem"
+        color={txtPalette.base}
         _focus={{ minHeight: '9rem' }}
         placeholder="Write your tweet concept/question here"
         value={text}
         transitionProperty="min-height"
         transitionDuration=".3s"
         transitionTimingFunction="ease"
+        bgColor={bgPalette.secondaryVar}
         onChange={(e) => setText(e.target.value)}
       />
-      <Flex direction={'row'} justifyContent={'space-between'}>
+      <Flex
+        direction={'row'}
+        justifyContent={'space-between'}
+        color={txtPalette.primary}
+      >
         <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
           {counter}
         </Badge>
