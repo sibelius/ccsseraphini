@@ -14,17 +14,15 @@
  * limitations under the License.
  */
 
-import { Text, Grid, GridItem, Flex } from '@chakra-ui/react';
+import { Text, GridItem, Flex } from '@chakra-ui/react';
 import { UserScore } from 'types/Score';
-import { useEffect, useState } from 'react';
-import { mobileData, defaultData } from './ScoreConfig';
+import { ScoreInfoGridStyled } from './ScoreStyle';
 
 type Props = {
   userScore: UserScore;
-  isDesktop: boolean;
 };
 
-export default function ScoreInfo({ userScore, isDesktop }: Props) {
+export default function ScoreInfo({ userScore }: Props) {
   const metricName: Map<string, string> = new Map([
     ['tweet_count', 'Tweets'],
     ['retweet_count', 'Retweets'],
@@ -33,21 +31,10 @@ export default function ScoreInfo({ userScore, isDesktop }: Props) {
     ['quote_count', 'Quotes'],
     ['total', 'Total'],
   ]);
-  const [cssProps, setCssProps] = useState<Record<string, any>>(defaultData);
-
-  useEffect(() => {
-    if (isDesktop) {
-      setCssProps(defaultData);
-    } else {
-      setCssProps(mobileData);
-    }
-  }, [isDesktop]);
 
   return (
-    <Grid
-      templateColumns={cssProps.info.columns}
-      gap={cssProps.info.gap}
-      width={cssProps.info.width}
+    <ScoreInfoGridStyled
+      templateColumns={'repeat(auto-fit, minmax(150px, 1fr))'}
       alignItems="center"
     >
       {Object.entries(userScore).map((val, i) => {
@@ -88,6 +75,6 @@ export default function ScoreInfo({ userScore, isDesktop }: Props) {
           </Text>
         </Flex>
       </GridItem>
-    </Grid>
+    </ScoreInfoGridStyled>
   );
 }
