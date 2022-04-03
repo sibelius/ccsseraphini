@@ -5,11 +5,10 @@ import ParticleImage, {
   ParticleOptions,
   Vector,
 } from 'react-particle-image';
+import { useRandom } from './useRandom';
 
 const LOGOS = ['/sib1.png', '/sib2.png', '/sib3.png'];
 
-const RANDOM_LOGO = LOGOS[Math.floor(Math.random() * LOGOS.length)];
-const RANDOM_COLOR = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 // const BACKGROUND_COLOR = `#${Math.floor(Math.random() * 16777215).toString(
 //   16,
 // )}`;
@@ -20,29 +19,37 @@ interface ParticleOptionParams {
   image: Array2D<RGBA>;
 }
 
-type ParticleOptionsMap = {
-  [key: string]: ParticleOptions;
-};
-
-const particleOptionsMap: ParticleOptionsMap = {
-  [RANDOM_LOGO]: {
-    mass: () => 40,
-    filter: ({ x, y, image }: ParticleOptionParams) => {
-      const pixel = image.get(x, y);
-      return pixel.b > 50;
-    },
-    color: () => RANDOM_COLOR,
-    friction: () => 0.1,
-    initialPosition: ({ canvasDimensions }) => {
-      return new Vector(
-        canvasDimensions.width / 2,
-        canvasDimensions.height / 2,
-      );
-    },
-  },
-};
-
 export const ParticleSibAvatar = () => {
+  const randomNumber = useRandom();
+
+  const getRandomLogo = (rand: number) => {
+    const randomLogo = LOGOS[Math.floor(rand * LOGOS.length)];
+    const randomColor = `#${Math.floor(rand * 16777215).toString(16)}`;
+
+    const particleOptions: ParticleOptions = {
+      mass: () => 40,
+      filter: ({ x, y, image }: ParticleOptionParams) => {
+        const pixel = image.get(x, y);
+        return pixel.b > 50;
+      },
+      color: () => randomColor,
+      friction: () => 0.1,
+      initialPosition: ({ canvasDimensions }) => {
+        return new Vector(
+          canvasDimensions.width / 2,
+          canvasDimensions.height / 2,
+        );
+      },
+    };
+
+    return {
+      randomLogo,
+      particleOptions,
+    };
+  };
+
+  const { randomLogo, particleOptions } = getRandomLogo(randomNumber);
+
   return (
     <ParticleImage
       style={{
@@ -52,8 +59,8 @@ export const ParticleSibAvatar = () => {
       }}
       maxParticles={8000}
       backgroundColor="transparent" // or other color BACKGROUND_COLOR
-      src={RANDOM_LOGO}
-      particleOptions={particleOptionsMap[RANDOM_LOGO]}
+      src={randomLogo}
+      particleOptions={particleOptions}
       entropy={10}
       scale={1}
       mouseMoveForce={(x: number, y: number) => forces.disturbance(x, y, 6)}

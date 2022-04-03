@@ -91,6 +91,7 @@ export const Timeline = ({
       py={8}
       zIndex={1}
       color={txtPalette.base}
+      bgColor={bgPalette.secondary}
     >
       <Text fontWeight="medium" fontSize={24} mb={4}>
         {title}
