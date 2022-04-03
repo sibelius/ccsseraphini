@@ -1,4 +1,4 @@
-import { Flex, HStack, Image, Stack } from '@chakra-ui/react';
+import { Flex, Image } from '@chakra-ui/react';
 import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
