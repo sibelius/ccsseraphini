@@ -45,14 +45,12 @@ const ScorePage: NextPage<Props> = (props: Props) => {
   }
 
   return (
-    <div>
-      <ScorePageStyled>
-        <ScoreVisual
-          useRef={ref}
-          userScore={userScore as UserScore}
-          user={user}
-        />
-      </ScorePageStyled>
+    <ScorePageStyled>
+      <ScoreVisual
+        scoreRef={ref}
+        userScore={userScore as UserScore}
+        user={user}
+      />
       <ButtonStyled
         onClick={async () => await clickHandler(ref, username)}
         leftIcon={<FaTwitter />}
@@ -60,7 +58,7 @@ const ScorePage: NextPage<Props> = (props: Props) => {
       >
         Share
       </ButtonStyled>
-    </div>
+    </ScorePageStyled>
   );
 };
 

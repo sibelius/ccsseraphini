@@ -11,10 +11,10 @@ import { SSeraphiniStyled, TicketStyled } from './ScoreStyle';
 type Props = {
   user?: User;
   userScore: UserScore;
-  useRef: MutableRefObject<HTMLDivElement | null>;
+  scoreRef: MutableRefObject<HTMLDivElement | null>;
 };
 
-export default function ScoreVisual({ user, userScore, useRef }: Props) {
+export default function ScoreVisual({ user, userScore, scoreRef }: Props) {
   const [isDesktop] = useMediaQuery('(min-width: 769px)');
   const [ticketElement, setTicketElement] = useState(<ScoreColored />);
 
@@ -27,7 +27,7 @@ export default function ScoreVisual({ user, userScore, useRef }: Props) {
   }, [isDesktop]);
 
   return (
-    <TicketStyled ref={useRef}>
+    <TicketStyled ref={scoreRef}>
       <Box className="ticketBox">{ticketElement}</Box>
       <div className="content-wrapper">
         <ScoreProfile user={user} />
