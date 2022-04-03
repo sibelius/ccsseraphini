@@ -6,17 +6,34 @@ import { User } from 'types/User';
 import { FaTwitter } from 'react-icons/fa';
 import ScoreVisual from 'components/score/ScoreVisual';
 import { ButtonStyled, ScorePageStyled } from 'components/score/ScoreStyle';
+import { MutableRefObject, useRef } from 'react';
+import { downloadCanvas, parseDivToCanvas } from '../../canvasUtil';
 
 interface Props {
   session?: Session;
   userScore?: UserScore;
   hasError?: boolean;
-  error?: Record<string, any>;
+  error?: Record<string, string | boolean | undefined>;
   user?: User;
 }
 
+const clickHandler = async (
+  ref: MutableRefObject<HTMLDivElement | null>,
+  username: string,
+) => {
+  const current = ref.current as HTMLDivElement;
+
+  if (current) {
+    const canvas = await parseDivToCanvas(current);
+    const time = new Date().getTime();
+    downloadCanvas(canvas, `score_${username}_${time}`);
+  }
+};
+
 const ScorePage: NextPage<Props> = (props: Props) => {
   const { userScore, hasError, error, user } = props;
+  const ref = useRef<HTMLDivElement | null>(null);
+  const username = user?.username as string;
 
   if (hasError) {
     return (
@@ -28,16 +45,22 @@ const ScorePage: NextPage<Props> = (props: Props) => {
   }
 
   return (
-    <ScorePageStyled>
-      <ScoreVisual userScore={userScore as UserScore} user={user} />
+    <div>
+      <ScorePageStyled>
+        <ScoreVisual
+          useRef={ref}
+          userScore={userScore as UserScore}
+          user={user}
+        />
+      </ScorePageStyled>
       <ButtonStyled
-        onClick={() => console.log('todo: implement')}
+        onClick={async () => await clickHandler(ref, username)}
         leftIcon={<FaTwitter />}
         colorScheme={'twitter'}
       >
         Share
       </ButtonStyled>
-    </ScorePageStyled>
+    </div>
   );
 };
 
@@ -66,7 +89,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
   const response = await fetch(url);
 
   if (response.status !== 200) {
-    const { message } = await response.json();
+    const { message }: { message: string } = await response.json();
     return {
       props: {
         hasError: true,

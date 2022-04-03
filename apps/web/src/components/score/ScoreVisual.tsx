@@ -3,18 +3,18 @@ import ScoreInfo from './ScoreInfo';
 import { UserScore } from 'types/Score';
 import { User } from 'types/User';
 import { Text, Image, useMediaQuery, Box } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { MutableRefObject, useEffect, useState } from 'react';
 import ScoreColored from './ScoreColored';
 import ScoreColoredMobile from './ScoreColoredMobile';
 import { SSeraphiniStyled, TicketStyled } from './ScoreStyle';
 
 type Props = {
-  size?: number;
   user?: User;
   userScore: UserScore;
+  useRef: MutableRefObject<HTMLDivElement | null>;
 };
 
-export default function ScoreVisual({ user, userScore }: Props) {
+export default function ScoreVisual({ user, userScore, useRef }: Props) {
   const [isDesktop] = useMediaQuery('(min-width: 769px)');
   const [ticketElement, setTicketElement] = useState(<ScoreColored />);
 
@@ -27,7 +27,7 @@ export default function ScoreVisual({ user, userScore }: Props) {
   }, [isDesktop]);
 
   return (
-    <TicketStyled>
+    <TicketStyled ref={useRef}>
       <Box className="ticketBox">{ticketElement}</Box>
       <div className="content-wrapper">
         <ScoreProfile user={user} />
