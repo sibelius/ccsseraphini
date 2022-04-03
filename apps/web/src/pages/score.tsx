@@ -61,9 +61,7 @@ const ScorePage: NextPage<Props> = (props: Props) => {
             bg={bgPalette.primary}
             color={txtPalette.baseVar}
             size="sm"
-            onClick={() => {
-              handleClick(username, router, setDisableButton);
-            }}
+            onClick={() => handleClick(username, router, setDisableButton)}
           >
             Go
           </Button>
