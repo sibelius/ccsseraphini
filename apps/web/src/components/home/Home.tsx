@@ -1,4 +1,4 @@
-import { Flex, Image } from '@chakra-ui/react';
+import { Flex, HStack, Image } from '@chakra-ui/react';
 import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
@@ -8,10 +8,12 @@ import { SessionProvider } from 'next-auth/react';
 import { TwitterLogin } from './TwitterLogin';
 import { bgPalette } from '../ColorPalette';
 import { ParticleSibAvatar } from './ParticleSibAvatar';
+import { ScoreButton } from './ScoreButton';
 
 type Props = {
   particles?: boolean;
 };
+
 export const Home = ({ particles = false }: Props) => {
   const getStyleProps = () => {
     if (particles) {
@@ -86,9 +88,16 @@ export const Home = ({ particles = false }: Props) => {
           <DonateEth />
           <DonateSol />
           <DonatePix />
-          <SessionProvider>
-            <TwitterLogin />
-          </SessionProvider>
+          <HStack
+            spacing={2}
+            direction={{ base: 'column', md: 'row' }}
+            mt="10px"
+          >
+            <ScoreButton />
+            <SessionProvider>
+              <TwitterLogin />
+            </SessionProvider>
+          </HStack>
         </Flex>
       </Flex>
     </Flex>
