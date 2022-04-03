@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import { TweetData } from '../types/Tweet';
 import { Timeline } from '../components/tweet/Timeline';
 import { ForkMe } from 'fork-me-corner';
-import { Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { bgPalette } from '../components/ColorPalette';
 
 interface Props {
@@ -18,7 +18,9 @@ const query = '-RT cc @sseraphini -from:sseraphini_bot';
 const HomePage: NextPage<Props> = (props: Props) => {
   return (
     <div>
-      <ForkMe repo="https://github.com/sibelius/ccsseraphini" />
+      <Box position="absolute" zIndex="2" top="0" right="0">
+        <ForkMe repo="https://github.com/sibelius/ccsseraphini" />
+      </Box>
       <Flex
         direction={{ base: 'column', lg: 'row' }}
         gap="12px"
