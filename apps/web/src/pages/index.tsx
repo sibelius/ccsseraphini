@@ -5,7 +5,7 @@ import { Timeline } from '../components/tweet/Timeline';
 import { ForkMe } from 'fork-me-corner';
 import { Box, Flex } from '@chakra-ui/react';
 import { bgPalette } from '../components/ColorPalette';
-import { Home } from 'components/home/Home';
+import { Home } from '../components/home/Home';
 
 interface Props {
   tweets?: TweetData[];

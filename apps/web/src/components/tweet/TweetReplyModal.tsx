@@ -16,6 +16,7 @@ import {
 import { useState } from 'react';
 import { FaTwitter } from 'react-icons/fa';
 import { TweetData } from 'types/Tweet';
+import { bgPalette, txtPalette } from '../ColorPalette';
 
 interface Props {
   isOpen: boolean;
@@ -33,8 +34,8 @@ export const TweetReplyModal = ({ isOpen, closeModal, tweet }: Props) => {
     <>
       <Modal isOpen={isOpen} onClose={closeModal}>
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Reply tweet</ModalHeader>
+        <ModalContent bgColor={bgPalette.secondary}>
+          <ModalHeader color={txtPalette.base}>Reply tweet</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stack>
@@ -45,11 +46,14 @@ export const TweetReplyModal = ({ isOpen, closeModal, tweet }: Props) => {
                 placeholder={`Write your reply for @${tweet.userInfo.username} tweet`}
                 value={text}
                 onChange={(e) => setText(e.target.value)}
+                color={txtPalette.base}
               />
               <Badge maxW="fit-content" colorScheme={counter < 0 ? 'red' : ''}>
                 {counter}
               </Badge>
-              <Box as="span">cc @sseraphini</Box>
+              <Box as="span" color={txtPalette.primary}>
+                cc @sseraphini
+              </Box>
             </Stack>
           </ModalBody>
           <ModalFooter>
@@ -62,7 +66,7 @@ export const TweetReplyModal = ({ isOpen, closeModal, tweet }: Props) => {
                 target="_blank"
                 onClick={closeModal}
               >
-                Tweet
+                Reply
               </Button>
             </Flex>
           </ModalFooter>
