@@ -1,16 +1,30 @@
 import html2canvas from 'html2canvas';
 
-export const parseDivToCanvas = (element: HTMLDivElement) =>
-  html2canvas(element, { allowTaint: true }).then((canvas) => canvas);
-
-export const downloadCanvas = (
-  canvas: HTMLCanvasElement,
-  imageName: string,
+export const exportAsImage = async (
+  element: HTMLDivElement,
+  imageFileName: string,
 ) => {
-  const link = document.createElement('a');
-  link.href = canvas.toDataURL('image/png');
-  link.download = `${imageName}.png`;
-  link.click();
-  link.remove();
-  canvas.remove();
+  const canvas = await html2canvas(element, {
+    allowTaint: true,
+    useCORS: true,
+  });
+  const image = canvas.toDataURL('image/png', 1.0);
+
+  downloadImage(image, imageFileName);
 };
+
+const downloadImage = (blob: string, fileName: string) => {
+  const fakeLink = window.document.createElement('a');
+  fakeLink.setAttribute('style', 'display:none;');
+  fakeLink.download = fileName;
+
+  fakeLink.href = blob;
+
+  document.body.appendChild(fakeLink);
+  fakeLink.click();
+  document.body.removeChild(fakeLink);
+
+  fakeLink.remove();
+};
+
+export default exportAsImage;
