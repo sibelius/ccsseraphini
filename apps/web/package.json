@@ -33,6 +33,7 @@
     "react-infinite-scroll-component": "6.1.0",
     "react-is": "17.0.2",
     "react-particle-image": "1.0.2",
+    "react-tsparticles": "1.42.4",
     "use-debounce": "7.0.1"
   },
   "devDependencies": {

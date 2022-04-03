@@ -17,11 +17,6 @@ export const Home = () => {
       alignItems="center"
       flexDirection="column"
       pb="10px"
-      style={{
-        backgroundColor: `${bgPalette.secondaryVar}`,
-        backgroundImage: `linear-gradient(${bgPalette.details} 1px, transparent 1px), linear-gradient(to right, ${bgPalette.details} 1px, ${bgPalette.secondaryVar} 1px)`,
-        backgroundSize: '20px 20px',
-      }}
     >
       <Flex
         alignItems="center"
@@ -38,6 +33,7 @@ export const Home = () => {
         </Flex>
 
         <Flex
+          boxShadow={'1px 1px 6px 4px rgba(156,255,92,0.91);'}
           borderWidth="2px"
           borderColor="#000"
           borderRadius="lg"

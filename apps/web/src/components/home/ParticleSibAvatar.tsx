@@ -45,7 +45,11 @@ const particleOptionsMap: ParticleOptionsMap = {
 export const ParticleSibAvatar = () => {
   return (
     <ParticleImage
-      style={{ borderRadius: '50%', width: '200px', height: '200px' }}
+      style={{
+        borderRadius: '50%',
+        width: '200px',
+        height: '200px',
+      }}
       maxParticles={8000}
       backgroundColor="transparent" // or other color BACKGROUND_COLOR
       src={RANDOM_LOGO}

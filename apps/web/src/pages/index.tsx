@@ -6,6 +6,8 @@ import { ForkMe } from 'fork-me-corner';
 import { Flex } from '@chakra-ui/react';
 import { bgPalette } from '../components/ColorPalette';
 import { Home } from 'components/home/Home';
+import { particlesOptions } from 'components/home/particlesOptions';
+import Particles from 'react-tsparticles';
 
 interface Props {
   tweets?: TweetData[];
@@ -19,6 +21,7 @@ const HomePage: NextPage<Props> = (props: Props) => {
   return (
     <div>
       <ForkMe repo="https://github.com/sibelius/ccsseraphini" />
+      <Particles id="tsparticles" options={particlesOptions} />
       <Flex
         direction={{ base: 'column', lg: 'row' }}
         gap="12px"
