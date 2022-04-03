@@ -89,8 +89,9 @@ export const Timeline = ({
       flex={1}
       px={4}
       py={8}
-      bgColor={bgPalette.secondary}
+      zIndex={1}
       color={txtPalette.base}
+      bgColor={bgPalette.secondary}
     >
       <Text fontWeight="medium" fontSize={24} mb={4}>
         {title}
