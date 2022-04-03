@@ -1,4 +1,4 @@
-import { Flex, HStack, Image } from '@chakra-ui/react';
+import { Flex, HStack, Image, Stack } from '@chakra-ui/react';
 import { TweetComposer } from './TweetComposer';
 import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
@@ -88,16 +88,12 @@ export const Home = ({ particles = false }: Props) => {
           <DonateEth />
           <DonateSol />
           <DonatePix />
-          <HStack
-            spacing={2}
-            direction={{ base: 'column', md: 'row' }}
-            mt="10px"
-          >
+          <Flex mt="10px" gap={2}>
             <ScoreButton />
             <SessionProvider>
               <TwitterLogin />
             </SessionProvider>
-          </HStack>
+          </Flex>
         </Flex>
       </Flex>
     </Flex>
