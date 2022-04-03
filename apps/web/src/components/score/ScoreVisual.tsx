@@ -15,16 +15,16 @@ type Props = {
 };
 
 export default function ScoreVisual({ user, userScore }: Props) {
-  const [isLargerThan768] = useMediaQuery('(min-width: 769px)');
+  const [isDesktop] = useMediaQuery('(min-width: 769px)');
   const [ticketElement, setTicketElement] = useState(<ScoreColored />);
 
   useEffect(() => {
-    if (isLargerThan768) {
+    if (isDesktop) {
       setTicketElement(<ScoreColored />);
     } else {
       setTicketElement(<ScoreColoredMobile />);
     }
-  }, [isLargerThan768]);
+  }, [isDesktop]);
 
   return (
     <TicketStyled>
