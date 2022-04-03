@@ -1,6 +1,7 @@
 import withErrorHandler from 'middlewares/error-handler';
 import withValidation from 'middlewares/validations';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { getHttpProtocol } from 'getHttpProtocol';
 import { TweetData } from 'types/Tweet';
 import { config } from '../../../config';
 
@@ -13,12 +14,10 @@ const floodDiscordChannelWithTweets = async (
 ) => {
   const query = '-RT cc @sseraphini';
 
-  // TODO Dry this code, we have the same code: ccsseraphini/apps/web/src/pages/index.tsx
-  const httpProtocol = req.headers.host?.includes('localhost')
-    ? 'http'
-    : 'https';
+  const host = req.headers.host as string;
+  const httpProtocol = getHttpProtocol(host);
 
-  const url = `${httpProtocol}://${req.headers.host}/api/tweets?query=${query}`;
+  const url = `${httpProtocol}://${host}/api/tweets?query=${query}`;
 
   const response = await fetch(url);
 

@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next';
 import { Flex, Text } from '@chakra-ui/react';
 import { TweetData } from '../types/Tweet';
 import { Timeline } from '../components/tweet/Timeline';
+import { getHttpProtocol } from '../getHttpProtocol';
 
 interface Props {
   data?: {
@@ -42,11 +43,10 @@ const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
 export default TimelinePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-  const httpProtocol = ctx.req.headers.host?.includes('localhost')
-    ? 'http'
-    : 'https';
+  const host = ctx.req.headers.host as string;
+  const httpProtocol = getHttpProtocol(host);
 
-  const url = `${httpProtocol}://${ctx.req.headers.host}/api/tweets?query=${query}`;
+  const url = `${httpProtocol}://${host}/api/tweets?query=${query}`;
 
   const response = await fetch(url);
   if (response.status !== 200) {

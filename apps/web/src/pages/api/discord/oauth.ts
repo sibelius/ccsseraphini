@@ -2,6 +2,7 @@ import { config } from '../../../config';
 import { NextApiRequest, NextApiResponse } from 'next';
 // eslint-disable-next-line
 import { discordGuildJoinPut } from '../../../modules/discord/discordGuildJoinPut';
+import { getHttpProtocol } from 'getHttpProtocol';
 
 export interface DiscordUser {
   id: string;
@@ -24,11 +25,10 @@ export const oauthDiscord = async (
   req: NextApiRequest,
   res: NextApiResponse,
 ): Promise<void> => {
-  const httpProtocol = req.headers.host?.includes('localhost')
-    ? 'http'
-    : 'https';
+  const host = req.headers.host as string;
+  const httpProtocol = getHttpProtocol(host);
 
-  const DISCORD_REDIRECT_URI = `${httpProtocol}://${req.headers.host}/api/discord/oauth`;
+  const DISCORD_REDIRECT_URI = `${httpProtocol}://${host}/api/discord/oauth`;
 
   const OAUTH_QS = new URLSearchParams({
     client_id: config.DISCORD_CLIENT_ID,

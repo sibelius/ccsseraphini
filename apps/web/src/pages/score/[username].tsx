@@ -8,6 +8,7 @@ import ScoreVisual from 'components/score/ScoreVisual';
 import { ButtonStyled, ScorePageStyled } from 'components/score/ScoreStyle';
 import { MutableRefObject, useRef } from 'react';
 import { downloadCanvas, parseDivToCanvas } from '../../canvasUtil';
+import { getHttpProtocol } from 'getHttpProtocol';
 
 interface Props {
   session?: Session;
@@ -78,10 +79,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     };
   }
 
-  const httpProtocol = ctx.req.headers.host?.includes('localhost')
-    ? 'http'
-    : 'https';
-
+  const host = ctx.req.headers.host as string;
+  const httpProtocol = getHttpProtocol(host);
   const url = `${httpProtocol}://${ctx.req.headers.host}/api/score/${username}`;
 
   const response = await fetch(url);
