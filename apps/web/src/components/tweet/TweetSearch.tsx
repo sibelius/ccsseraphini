@@ -31,6 +31,7 @@ const getQuery = (value: string) => {
 const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
   const [query, setQuery] = useState('-RT cc @sseraphini -from:sseraphini_bot');
   const [search, setSearch] = useState(data?.initialSearch || '');
+  console.log(search);
 
   const updateQuery = useDebouncedCallback((value) => {
     setQuery(getQuery(value));
