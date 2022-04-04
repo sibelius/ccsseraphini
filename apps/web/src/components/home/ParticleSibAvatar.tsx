@@ -20,7 +20,7 @@ interface ParticleOptionParams {
 }
 
 export const ParticleSibAvatar = () => {
-  const randomNumber = useRandom();
+  const { randomNumber } = useRandom();
 
   const getRandomLogo = (rand: number) => {
     const randomLogo = LOGOS[Math.floor(rand * LOGOS.length)];
@@ -45,6 +45,7 @@ export const ParticleSibAvatar = () => {
     return {
       randomLogo,
       particleOptions,
+      randomColor,
     };
   };
 

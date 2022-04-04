@@ -7,7 +7,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import { bgPalette } from '../components/ColorPalette';
 import { Home } from '../components/home/Home';
 import { getHttpProtocol } from '../getHttpProtocol';
-
+import { RandomProvider } from '../components/home/useRandom';
 interface Props {
   tweets?: TweetData[];
   nextToken?: string;
@@ -28,7 +28,10 @@ const HomePage: NextPage<Props> = (props: Props) => {
         flexWrap="wrap"
         bgColor={bgPalette.base}
       >
-        <Home particles={true} />
+        <RandomProvider>
+          <Home particles={true} />
+        </RandomProvider>
+
         <Timeline
           initialTweets={props?.tweets}
           initialNextToken={props?.nextToken}

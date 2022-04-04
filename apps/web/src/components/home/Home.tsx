@@ -9,12 +9,15 @@ import { TwitterLogin } from './TwitterLogin';
 import { bgPalette } from '../ColorPalette';
 import { ParticleSibAvatar } from './ParticleSibAvatar';
 import { ScoreButton } from './ScoreButton';
+import { useRandom } from './useRandom';
 
 type Props = {
   particles?: boolean;
 };
 
 export const Home = ({ particles = false }: Props) => {
+  const { randomNumber } = useRandom();
+  const randomColor = `#${Math.floor(randomNumber * 16777215).toString(16)}`;
   const getStyleProps = () => {
     if (particles) {
       return {};
@@ -71,7 +74,7 @@ export const Home = ({ particles = false }: Props) => {
       >
         {getLogo()}
         <Flex
-          boxShadow={'1px 1px 6px 4px rgba(156,255,92,0.91);'}
+          boxShadow={`1px 1px 6px 4px ${randomColor};`}
           borderWidth="2px"
           borderColor="#000"
           borderRadius="lg"
