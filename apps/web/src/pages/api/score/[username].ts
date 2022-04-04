@@ -46,7 +46,8 @@ export default async function userScoreHandler(
 
   if (!result.data) {
     return res.status(200).json({
-      scoreDetail: emptyScore,
+      user,
+      userScore: emptyScore,
     });
   }
 

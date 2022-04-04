@@ -3,7 +3,6 @@ import { FaMedal } from 'react-icons/fa';
 
 export const ScoreButton = () => (
   <Button
-    display={'none'}
     bgColor={'rgba(156,255,92,0.91)'}
     as={'a'}
     href="/score"
