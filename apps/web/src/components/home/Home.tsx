@@ -8,10 +8,12 @@ import { SessionProvider } from 'next-auth/react';
 import { TwitterLogin } from './TwitterLogin';
 import { bgPalette } from '../ColorPalette';
 import { ParticleSibAvatar } from './ParticleSibAvatar';
+import { ScoreButton } from './ScoreButton';
 
 type Props = {
   particles?: boolean;
 };
+
 export const Home = ({ particles = false }: Props) => {
   const getStyleProps = () => {
     if (particles) {
@@ -86,9 +88,12 @@ export const Home = ({ particles = false }: Props) => {
           <DonateEth />
           <DonateSol />
           <DonatePix />
-          <SessionProvider>
-            <TwitterLogin />
-          </SessionProvider>
+          <Flex mt="10px" gap={2}>
+            <ScoreButton />
+            <SessionProvider>
+              <TwitterLogin />
+            </SessionProvider>
+          </Flex>
         </Flex>
       </Flex>
     </Flex>

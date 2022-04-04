@@ -29,7 +29,7 @@ export const TwitterLogin = () => {
   const props = buttonProps[sessionMode];
 
   return (
-    <Button mt="2" {...props}>
+    <Button size="sm" {...props} minW={'50%'} w={'100%'}>
       {props.text}
     </Button>
   );

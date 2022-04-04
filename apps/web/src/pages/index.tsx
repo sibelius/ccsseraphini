@@ -6,6 +6,7 @@ import { ForkMe } from 'fork-me-corner';
 import { Box, Flex } from '@chakra-ui/react';
 import { bgPalette } from '../components/ColorPalette';
 import { Home } from '../components/home/Home';
+import { getHttpProtocol } from '../getHttpProtocol';
 
 interface Props {
   tweets?: TweetData[];
@@ -41,11 +42,9 @@ const HomePage: NextPage<Props> = (props: Props) => {
 export default HomePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-  const httpProtocol = ctx.req.headers.host?.includes('localhost')
-    ? 'http'
-    : 'https';
-
-  const url = `${httpProtocol}://${ctx.req.headers.host}/api/tweets?query=${query}`;
+  const host = ctx.req.headers.host as string;
+  const httpProtocol = getHttpProtocol(host);
+  const url = `${httpProtocol}://${host}/api/tweets?query=${query}`;
 
   const response = await fetch(url);
   if (response.status !== 200) {

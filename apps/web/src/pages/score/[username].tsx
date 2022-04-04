@@ -7,7 +7,8 @@ import { FaTwitter } from 'react-icons/fa';
 import ScoreVisual from 'components/score/ScoreVisual';
 import { ButtonStyled, ScorePageStyled } from 'components/score/ScoreStyle';
 import { MutableRefObject, useRef } from 'react';
-import { downloadCanvas, parseDivToCanvas } from '../../canvasUtil';
+import exportAsImage from '../../canvasUtil';
+import { getHttpProtocol } from 'getHttpProtocol';
 
 interface Props {
   session?: Session;
@@ -24,9 +25,10 @@ const clickHandler = async (
   const current = ref.current as HTMLDivElement;
 
   if (current) {
-    const canvas = await parseDivToCanvas(current);
     const time = new Date().getTime();
-    downloadCanvas(canvas, `score_${username}_${time}`);
+    const imageName = `score_${username}_${time}`;
+
+    await exportAsImage(current, imageName);
   }
 };
 
@@ -78,10 +80,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
     };
   }
 
-  const httpProtocol = ctx.req.headers.host?.includes('localhost')
-    ? 'http'
-    : 'https';
-
+  const host = ctx.req.headers.host as string;
+  const httpProtocol = getHttpProtocol(host);
   const url = `${httpProtocol}://${ctx.req.headers.host}/api/score/${username}`;
 
   const response = await fetch(url);

@@ -6,6 +6,7 @@ import { TweetData } from '../types/Tweet';
 import { Timeline } from '../components/tweet/Timeline';
 import { useDebouncedCallback } from 'use-debounce';
 import Router from 'next/router';
+import { getHttpProtocol } from '../getHttpProtocol';
 
 interface Props {
   data?: {
@@ -133,16 +134,15 @@ const TimelinePage: NextPage<Props> = ({ data, error }: Props) => {
 export default TimelinePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
-  const httpProtocol = ctx.req.headers.host?.includes('localhost')
-    ? 'http'
-    : 'https';
+  const host = ctx.req.headers.host as string;
+  const httpProtocol = getHttpProtocol(host);
 
   // @ts-ignore
   const initialSearch = decodeURI(ctx.query.q || '');
 
   const query = getQuery(initialSearch);
 
-  const url = `${httpProtocol}://${ctx.req.headers.host}/api/tweets?query=${query}`;
+  const url = `${httpProtocol}://${host}/api/tweets?query=${query}`;
 
   const response = await fetch(url);
 
