@@ -9,6 +9,7 @@ import { ButtonStyled, ScorePageStyled } from 'components/score/ScoreStyle';
 import { MutableRefObject, useRef } from 'react';
 import exportAsImage from '../../canvasUtil';
 import { getHttpProtocol } from 'getHttpProtocol';
+import html2canvas from 'html2canvas';
 
 interface Props {
   session?: Session;
@@ -17,20 +18,6 @@ interface Props {
   error?: Record<string, string | boolean | undefined>;
   user?: User;
 }
-
-const clickHandler = async (
-  ref: MutableRefObject<HTMLDivElement | null>,
-  username: string,
-) => {
-  const current = ref.current as HTMLDivElement;
-
-  if (current) {
-    const time = new Date().getTime();
-    const imageName = `score_${username}_${time}`;
-
-    await exportAsImage(current, imageName);
-  }
-};
 
 const ScorePage: NextPage<Props> = (props: Props) => {
   const { userScore, hasError, error, user } = props;
@@ -45,6 +32,48 @@ const ScorePage: NextPage<Props> = (props: Props) => {
       </VStack>
     );
   }
+
+  const clickHandler = async (
+    ref: MutableRefObject<HTMLDivElement | null>,
+    username: string,
+  ) => {
+    const current = ref.current as HTMLDivElement;
+
+    if (current) {
+      const time = new Date().getTime();
+      const imageName = `score_${username}_${time}`;
+
+      const canvas = await html2canvas(current, {
+        allowTaint: true,
+        useCORS: true,
+      });
+      const dataUrl = canvas.toDataURL('image/png', 1.0);
+
+      const blob = await (await fetch(dataUrl)).blob();
+      const filesArray: File[] = [
+        new File([blob], `${imageName}.png`, {
+          type: blob.type,
+          lastModified: new Date().getTime(),
+        }),
+      ];
+      const shareData = {
+        files: filesArray,
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(shareData as any);
+        } else {
+          await exportAsImage(current, imageName);
+        }
+      } catch (err) {
+        // eslint-disable-next-line
+        console.log('err: ', err);
+
+        await exportAsImage(current, imageName);
+      }
+    }
+  };
 
   return (
     <ScorePageStyled>
