@@ -12,9 +12,10 @@ beforeEach(() => {
 });
 
 it('should render the page properly', () => {
-  const image = screen.getByAltText('Sibelius Seraphini');
-  expect(image).toBeInstanceOf(HTMLImageElement);
-  expect(image).toBeInTheDocument();
+  // not valid anymore
+  // const image = screen.getByAltText('Sibelius Seraphini');
+  // expect(image).toBeInstanceOf(HTMLImageElement);
+  // expect(image).toBeInTheDocument();
 
   const ForkMeCornerComponent = screen.getByRole('link', {
     name: 'View source on GitHub',
