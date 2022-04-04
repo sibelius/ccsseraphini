@@ -28,7 +28,7 @@ const HomePage: NextPage<Props> = (props: Props) => {
         flexWrap="wrap"
         bgColor={bgPalette.base}
       >
-        <Home />
+        <Home particles={true} />
         <Timeline
           initialTweets={props?.tweets}
           initialNextToken={props?.nextToken}
