@@ -38,7 +38,7 @@
     "use-debounce": "7.0.1"
   },
   "devDependencies": {
-    "@babel/core": "7.17.8",
+    "@babel/core": "7.17.9",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.0.0",
     "@types/node": "17.0.23",
