@@ -1,13 +1,11 @@
+import { withSentry } from '@sentry/nextjs';
 import { userProfile } from 'modules/twitter/twitterUserGet';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { UserScore, Tweet } from 'types/Score';
 import { config } from '../../../config';
 import { userTweets } from '../../../modules/twitter/twitterFollowersGet';
 
-export default async function userScoreHandler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+const userScoreHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { username } = req.query;
 
   const emptyScore: UserScore = {
@@ -105,4 +103,6 @@ export default async function userScoreHandler(
     userScore,
     user,
   });
-}
+};
+
+export default withSentry(userScoreHandler);

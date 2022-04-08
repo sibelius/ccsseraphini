@@ -3,7 +3,7 @@ import { Flex, Image, Heading, Text } from '@chakra-ui/react';
 import { FaHome } from 'react-icons/fa';
 
 type Props = {
-  errorCode: string;
+  errorCode: string | number;
   message: string;
 };
 export const Error = ({ errorCode, message }: Props) => {

@@ -5,6 +5,7 @@ import {
   TwitterResponseUserInfo,
 } from '../../types/Tweet';
 import { config } from '../../config';
+import { withSentry } from '@sentry/nextjs';
 
 interface TwitterResponse {
   data: TwitterResponseTweetInfo[];
@@ -29,10 +30,7 @@ const MEDIA_FIELDS = 'height,media_key,public_metrics,type,url,width';
 const MAX_RESULTS = 10;
 const IMAGE_URL_REGEX = /https:\/\/t.co\/[a-zA-Z0-9\-\.]{10}$/g;
 
-export default async function tweetsHandler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+const tweetsHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!config.TWITTER_BEARER_TOKEN) {
     return res.status(401).json({
       error: 'No Bearer Token found found',
@@ -106,4 +104,6 @@ export default async function tweetsHandler(
     tweets,
     nextToken: tweetsData.meta?.next_token,
   });
-}
+};
+
+export default withSentry(tweetsHandler);

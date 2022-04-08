@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { getHttpProtocol } from 'getHttpProtocol';
 import { TweetData } from 'types/Tweet';
 import { config } from '../../../config';
+import { withSentry } from '@sentry/nextjs';
 
 // Learn Discord Webhook: https://discord.com/developers/docs/resources/webhook#execute-webhook
 
@@ -54,4 +55,6 @@ const floodDiscordChannelWithTweets = async (
   }
 };
 
-export default withErrorHandler(withValidation(floodDiscordChannelWithTweets));
+export default withSentry(
+  withErrorHandler(withValidation(floodDiscordChannelWithTweets)),
+);
