@@ -31,3 +31,11 @@ This is the Twitter API Bearer Token. You can get a new one with the following s
 
 - Generate a NEXTAUTH_SECRET (You could use `openssl rand -hex 32` on Linux; Or go to https://generate-secret.now.sh/32)
 - Add the new generated NEXTAUTH_SECRET to .env
+
+### Sentry
+
+- Create an account and a project: https://sentry.io/
+- Go to the https://sentry.io/settings/YOUR_ORG/projects/YOUR_PROJECT/keys/ to get the SENTRY_DSN
+- Add the .env, look .env.example
+- You can see in the sentry dashboard the logs by category: 'development' and 'production'
+- [Link utils](https://github.com/sibelius/ccsseraphini/issues/345#issuecomment-1089593688)
