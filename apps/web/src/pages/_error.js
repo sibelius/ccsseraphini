@@ -1,4 +1,5 @@
 import NextErrorComponent from 'next/error';
+import { Error } from 'components/Error';
 
 import * as Sentry from '@sentry/nextjs';
 
@@ -11,7 +12,12 @@ const CustomErrorPage = ({ statusCode, hasGetInitialPropsRun, err }) => {
     // Flushing is not required in this case as it only happens on the client
   }
 
-  return <NextErrorComponent statusCode={statusCode} />;
+  return (
+    <Error
+      errorCode={statusCode}
+      message={err?.message || 'Ops! Internal error 🙉'}
+    />
+  );
 };
 
 CustomErrorPage.getInitialProps = async ({ res, err, asPath }) => {
