@@ -5,8 +5,9 @@ import { FaHome } from 'react-icons/fa';
 type Props = {
   errorCode: string | number;
   message: string;
+  children: JSX.Element | never[];
 };
-export const Error = ({ errorCode, message }: Props) => {
+export const Error = ({ errorCode, message, children }: Props) => {
   return (
     <Flex
       flex={1}
@@ -71,17 +72,20 @@ export const Error = ({ errorCode, message }: Props) => {
           <Text fontSize="xl" marginBottom="5px">
             {message}
           </Text>
-          <ChakraNextLinkButton
-            href="/"
-            backgroundColor="#3940CC"
-            textColor="white"
-            _hover={{ bg: '#2B3099' }}
-            leftIcon={<FaHome />}
-            width="100%"
-            size="sm"
-          >
-            Back to Home
-          </ChakraNextLinkButton>
+
+          {children ?? (
+            <ChakraNextLinkButton
+              href="/"
+              backgroundColor="#3940CC"
+              textColor="white"
+              _hover={{ bg: '#2B3099' }}
+              leftIcon={<FaHome />}
+              width="100%"
+              size="sm"
+            >
+              Back to Home
+            </ChakraNextLinkButton>
+          )}
         </Flex>
       </Flex>
     </Flex>
