@@ -3,6 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 // eslint-disable-next-line
 import { discordGuildJoinPut } from '../../../modules/discord/discordGuildJoinPut';
 import { getHttpProtocol } from 'getHttpProtocol';
+import { getSession } from 'next-auth/react';
+import { getUserScore } from 'modules/score/getUserScore';
 
 export interface DiscordUser {
   id: string;
@@ -99,12 +101,48 @@ export const oauthDiscord = async (
     return;
   }
 
-  // TODO - check score > threshold
+  const session = await getSession({ req });
+  if (!session) {
+    res.redirect('/?error=twitter-session-required&status=401');
+    return;
+  }
+
+  const { username: twitterUsername } = session;
+
+  if (!twitterUsername) {
+    res.redirect('/?error=twitter-username-not-found&status=404');
+    return;
+  }
+
+  const DISCORD_SCORE_THRESHOLD = config.DISCORD_SCORE_THRESHOLD;
+  if (!DISCORD_SCORE_THRESHOLD) {
+    res.redirect('/?error=no-discord-score-threshold');
+    return;
+  }
+
+  const { userScore } = await getUserScore(twitterUsername as string);
+
+  if (!userScore) {
+    res.redirect('/?error=unsuccesful-attempt-to-retrieve-user-score');
+    return;
+  }
+
+  if (userScore.total < DISCORD_SCORE_THRESHOLD) {
+    res.redirect(
+      `/?error=score-must-be-at-least-${DISCORD_SCORE_THRESHOLD}&status=400`,
+    );
+    return;
+  }
+
   // join discord
-  // const responseGuildJoin = await discordGuildJoinPut(config.GUILD_ID, me.id, access_token);
+  const responseGuildJoin = await discordGuildJoinPut(
+    config.GUILD_ID,
+    me.id,
+    access_token,
+  );
 
   // eslint-disable-next-line
-  // console.log('join guild statatus: ', responseGuildJoin.status);
+  console.log('join guild status: ', responseGuildJoin);
 
   res.redirect('/');
 };

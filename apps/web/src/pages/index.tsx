@@ -8,15 +8,22 @@ import { bgPalette } from '../components/ColorPalette';
 import { Home } from '../components/home/Home';
 import { getHttpProtocol } from '../getHttpProtocol';
 import { RandomProvider } from '../components/home/useRandom';
+import { Error } from '../components/Error';
 interface Props {
   tweets?: TweetData[];
   nextToken?: string;
   error?: boolean;
+  errorMessage?: string;
+  status?: string;
 }
 
 const query = '-RT cc @sseraphini -from:sseraphini_bot';
 
 const HomePage: NextPage<Props> = (props: Props) => {
+  const { errorMessage, status } = props;
+  if (errorMessage) {
+    return <Error errorCode={status as string} message={errorMessage} />;
+  }
   return (
     <div>
       <Box position="absolute" zIndex="2" top="0" right="0">
@@ -45,6 +52,20 @@ const HomePage: NextPage<Props> = (props: Props) => {
 export default HomePage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
+  const {
+    query: { error, status },
+  } = ctx;
+  if (error) {
+    const errorMessage = (error as string)?.replaceAll('-', ' ');
+    return {
+      props: {
+        error: true,
+        errorMessage,
+        status: (status as string) || '500',
+      },
+    };
+  }
+
   const host = ctx.req.headers.host as string;
   const httpProtocol = getHttpProtocol(host);
   const url = `${httpProtocol}://${host}/api/tweets?query=${query}`;
