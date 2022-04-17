@@ -22,7 +22,7 @@ const query = '-RT cc @sseraphini -from:sseraphini_bot';
 const HomePage: NextPage<Props> = (props: Props) => {
   const { errorMessage, status } = props;
   if (errorMessage) {
-    return <Error errorCode={status as string} message={errorMessage}></Error>;
+    return <Error errorCode={status as string} message={errorMessage} />;
   }
   return (
     <div>

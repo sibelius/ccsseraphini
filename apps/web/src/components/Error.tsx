@@ -5,7 +5,7 @@ import { FaHome } from 'react-icons/fa';
 type Props = {
   errorCode: string | number;
   message: string;
-  children: JSX.Element | never[];
+  children?: JSX.Element | never[];
 };
 export const Error = ({ errorCode, message, children }: Props) => {
   return (
