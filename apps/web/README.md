@@ -39,3 +39,16 @@ This is the Twitter API Bearer Token. You can get a new one with the following s
 - Add the .env, look .env.example
 - You can see in the sentry dashboard the logs by category: 'development' and 'production'
 - [Link utils](https://github.com/sibelius/ccsseraphini/issues/345#issuecomment-1089593688)
+
+### Discord Guild
+
+- Create a Discord Guild
+- Get the ID of the Guild
+- Add the ID to the config .env (GUILD_ID)
+
+### Discord Application
+
+- Access https://discordapp.com/developers/applications/
+- Create a Discord Application
+- Get the Client ID and Client Secret
+- Add the Client ID and Client Secret to the .env (DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET)
