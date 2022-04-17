@@ -8,7 +8,7 @@ import { bgPalette } from '../components/ColorPalette';
 import { Home } from '../components/home/Home';
 import { getHttpProtocol } from '../getHttpProtocol';
 import { RandomProvider } from '../components/home/useRandom';
-import { Error } from 'components/Error';
+import { Error } from '../components/Error';
 interface Props {
   tweets?: TweetData[];
   nextToken?: string;

@@ -142,7 +142,7 @@ export const oauthDiscord = async (
   );
 
   // eslint-disable-next-line
-  //console.log('join guild status: ', responseGuildJoin);
+  console.log('join guild status: ', responseGuildJoin);
 
   res.redirect('/');
 };
