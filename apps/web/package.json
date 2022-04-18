@@ -27,7 +27,7 @@
     "html2canvas": "1.4.1",
     "next": "12.1.5",
     "next-auth": "4.3.2",
-    "next-pwa": "5.5.0",
+    "next-pwa": "5.5.2",
     "qrcode.react": "3.0.1",
     "react": "18.0.0",
     "react-copy-to-clipboard": "5.1.0",
