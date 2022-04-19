@@ -141,8 +141,12 @@ export const oauthDiscord = async (
     access_token,
   );
 
-  // eslint-disable-next-line
-  console.log('join guild status: ', responseGuildJoin);
+  if (responseGuildJoin.status !== 200) {
+    res.redirect(
+      `/?error=unsuccesful-attempt-to-join-discord-guild&status=${responseGuildJoin.status}`,
+    );
+    return;
+  }
 
   res.redirect('/');
 };

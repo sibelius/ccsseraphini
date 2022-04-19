@@ -10,7 +10,6 @@ import { bgPalette } from '../ColorPalette';
 import { ParticleSibAvatar } from './ParticleSibAvatar';
 import { ScoreButton } from './ScoreButton';
 import { useRandom } from './useRandom';
-import { DiscordClaimButton } from './DiscordClaimButton';
 
 type Props = {
   particles?: boolean;
@@ -98,7 +97,6 @@ export const Home = ({ particles = false }: Props) => {
               <TwitterLogin />
             </SessionProvider>
           </Flex>
-          <DiscordClaimButton />
         </Flex>
       </Flex>
     </Flex>
