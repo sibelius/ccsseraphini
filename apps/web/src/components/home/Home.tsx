@@ -10,7 +10,6 @@ import { bgPalette } from '../ColorPalette';
 import { ParticleSibAvatar } from './ParticleSibAvatar';
 import { ScoreButton } from './ScoreButton';
 import { useRandom } from './useRandom';
-import { DiscordClaimButton } from '../score/DiscordClaimButton';
 
 type Props = {
   particles?: boolean;
