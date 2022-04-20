@@ -141,7 +141,7 @@ export const oauthDiscord = async (
     access_token,
   );
 
-  if (responseGuildJoin.status !== 200) {
+  if (responseGuildJoin.status >= 400) {
     res.redirect(
       `/?error=unsuccesful-attempt-to-join-discord-guild&status=${responseGuildJoin.status}`,
     );
