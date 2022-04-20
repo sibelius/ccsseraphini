@@ -41,6 +41,23 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const retweet = async () => {
+    const options = {
+      method: 'POST',
+    };
+    const url = `/api/tweet/${tweet.id}`;
+
+    const response = await fetch(url, options);
+    const json = await response.json();
+
+    // TODO - handle error
+    // eslint-disable-next-line
+    console.log({
+      json,
+    });
+  };
+
   return (
     <>
       <Flex
@@ -61,6 +78,15 @@ const TweetPublicMetrics = ({ tweet }: TweetInfoProps) => {
             bgColor={bgPalette.primary}
           >
             Reply Here
+          </Button>
+          <Button
+            size={'sm'}
+            ml="10px"
+            onClick={retweet}
+            color={txtPalette.baseVar}
+            bgColor={bgPalette.primary}
+          >
+            Retweet
           </Button>
         </Flex>
         <Flex>
