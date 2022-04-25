@@ -44,7 +44,7 @@
     "@babel/core": "7.17.9",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.1.1",
-    "@types/node": "17.0.25",
+    "@types/node": "17.0.26",
     "@types/react": "18.0.6",
     "@types/react-copy-to-clipboard": "5.0.2",
     "@types/styled-components": "5.1.25",
