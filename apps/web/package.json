@@ -51,7 +51,7 @@
     "@typescript-eslint/eslint-plugin": "5.20.0",
     "@typescript-eslint/parser": "5.20.0",
     "babel-jest": "27.5.1",
-    "eslint": "8.13.0",
+    "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
     "jest": "27.5.1",
     "jest-fetch-mock": "3.0.3",
