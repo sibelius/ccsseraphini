@@ -37,7 +37,7 @@
     "react-is": "17.0.2",
     "react-particle-image": "1.0.2",
     "react-tsparticles": "1.43.1",
-    "twitter-api-sdk": "1.0.3",
+    "twitter-api-sdk": "1.0.4",
     "use-debounce": "7.0.1"
   },
   "devDependencies": {
