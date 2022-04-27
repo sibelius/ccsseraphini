@@ -29,7 +29,7 @@
     "next-auth": "4.3.3",
     "next-pwa": "5.5.2",
     "qrcode.react": "3.0.1",
-    "react": "18.0.0",
+    "react": "18.1.0",
     "react-copy-to-clipboard": "5.1.0",
     "react-dom": "18.0.0",
     "react-icons": "4.3.1",
