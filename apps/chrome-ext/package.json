@@ -16,7 +16,7 @@
     "core-js": "3.22.2",
     "framer-motion": "^6",
     "react": "18.1.0",
-    "react-dom": "18.0.0",
+    "react-dom": "18.1.0",
     "regenerator-runtime": "0.13.9"
   },
   "devDependencies": {
