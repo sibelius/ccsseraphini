@@ -26,7 +26,7 @@
     "framer-motion": "6.3.2",
     "html2canvas": "1.4.1",
     "next": "12.1.5",
-    "next-auth": "4.3.3",
+    "next-auth": "4.3.4",
     "next-pwa": "5.5.2",
     "qrcode.react": "3.0.1",
     "react": "18.1.0",
