@@ -9,6 +9,7 @@ import { Home } from '../components/home/Home';
 import { getHttpProtocol } from '../getHttpProtocol';
 import { RandomProvider } from '../components/home/useRandom';
 import { Error } from '../components/Error';
+import { SessionProvider } from 'next-auth/react';
 interface Props {
   tweets?: TweetData[];
   nextToken?: string;
@@ -35,9 +36,11 @@ const HomePage: NextPage<Props> = (props: Props) => {
         flexWrap="wrap"
         bgColor={bgPalette.base}
       >
-        <RandomProvider>
-          <Home particles={true} />
-        </RandomProvider>
+        <SessionProvider>
+          <RandomProvider>
+            <Home particles={true} />
+          </RandomProvider>
+        </SessionProvider>
 
         <Timeline
           initialTweets={props?.tweets}

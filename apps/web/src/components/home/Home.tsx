@@ -4,20 +4,29 @@ import { ActionButtons } from './ActionButtons';
 import { DonateEth } from './DonateEth';
 import { DonateSol } from './DonateSol';
 import { DonatePix } from '../pix/DonatePix';
-import { SessionProvider } from 'next-auth/react';
+import { SessionProvider, signIn, useSession } from 'next-auth/react';
 import { TwitterLogin } from './TwitterLogin';
 import { bgPalette } from '../ColorPalette';
 import { ParticleSibAvatar } from './ParticleSibAvatar';
 import { ScoreButton } from './ScoreButton';
 import { useRandom } from './useRandom';
+import { useEffect } from 'react';
 
 type Props = {
   particles?: boolean;
 };
 
 export const Home = ({ particles = false }: Props) => {
+  const { data: session } = useSession();
   const { randomNumber } = useRandom();
   const randomColor = `#${Math.floor(randomNumber * 16777215).toString(16)}`;
+
+  useEffect(() => {
+    if (session?.error === 'RefreshAccessTokenError') {
+      signIn('twitter');
+    }
+  }, [session]);
+
   const getStyleProps = () => {
     if (particles) {
       return {};
