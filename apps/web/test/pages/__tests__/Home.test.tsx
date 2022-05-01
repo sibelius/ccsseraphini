@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { SessionProvider } from 'next-auth/react';
 import Home from '../../../src/pages';
 
 beforeAll(() => {
@@ -8,7 +9,11 @@ beforeAll(() => {
 afterEach(() => fetchMock.resetMocks());
 
 beforeEach(() => {
-  render(<Home />);
+  render(
+    <SessionProvider>
+      <Home />
+    </SessionProvider>,
+  );
 });
 
 it('should render the page properly', () => {
