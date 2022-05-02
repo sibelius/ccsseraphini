@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.17.10",
-    "@babel/preset-env": "7.16.11",
+    "@babel/preset-env": "7.17.10",
     "@babel/preset-typescript": "7.16.7",
     "@types/chrome": "0.0.183",
     "@types/react-dom": "18.0.3",
