@@ -9206,10 +9206,10 @@ tweetnacl@^1.0.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.3.tgz#ac0af71680458d8a6378d0d0d050ab1407d35596"
   integrity sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==
 
-twitter-api-sdk@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/twitter-api-sdk/-/twitter-api-sdk-1.0.4.tgz#c89916a02a18fdaf2e895a5acf66a91e56a0e569"
-  integrity sha512-LDOm0LH36U9hGXZ1V0a4o4HhxB9PQaJccav3o3hpHng0WdOFrcbPVGIAmaAlH1caqDrXFWw7fk4zUxbwT/3Rrg==
+twitter-api-sdk@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/twitter-api-sdk/-/twitter-api-sdk-1.0.5.tgz#8a36fcce6b6fdba75d89259f746782fadf5ec50c"
+  integrity sha512-TpvtXB0JCpaHPbOpCHRlXdMHxWzaGzu3ON5iD47rOPzkpafEQ9ycCCxznxKfqtB2Vs0UOd1viJHBif/pFyVhNQ==
   dependencies:
     node-fetch "^2.6.1"
 
