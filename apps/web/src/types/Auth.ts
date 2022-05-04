@@ -9,7 +9,7 @@ export type JWTToken = JWT & {
 export interface JWTParams {
   token: JWTToken;
   user?: User | undefined;
-  account?: Account | undefined;
+  account?: Account | Record<string, unknown> | undefined;
   profile?: Profile | undefined;
   isNewUser?: boolean | undefined;
 }

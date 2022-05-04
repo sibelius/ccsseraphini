@@ -22,7 +22,6 @@ async function refreshAccessToken(token: JWTToken) {
         grant_type: 'refresh_token',
         refresh_token,
         client_id: config.TWITTER_CLIENT_ID,
-        client_secret: config.TWITTER_CLIENT_SECRET,
       }),
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -38,9 +37,9 @@ async function refreshAccessToken(token: JWTToken) {
 
     return {
       ...token,
-      accessToken: refreshedTokens.access_token,
-      accessTokenExpires: Date.now() + refreshedTokens.expires_in * 1000,
-      refreshToken: refreshedTokens.refresh_token ?? token.refresh_token,
+      access_token: refreshedTokens.access_token,
+      refresh_token: refreshedTokens.refresh_token ?? token.refresh_token,
+      accessTokenExpires: Date.now() + (refreshedTokens.expires_in ?? 0) * 1000,
     };
   } catch (error) {
     console.error({ error });
@@ -55,26 +54,25 @@ async function refreshAccessToken(token: JWTToken) {
 export default NextAuth({
   callbacks: {
     session({ session, token }) {
-      session = { ...session, ...token };
-
-      return session;
+      return { ...session, ...token };
     },
-    async jwt({ token, account, profile, user }: JWTParams) {
+    async jwt({ token, account = {}, profile, user }: JWTParams) {
       if (account && user) {
         const { username } = profile?.data as { username?: string };
-        const { refresh_token, access_token } = account as {
-          refresh_token?: string;
-          access_token?: string;
+        const { refresh_token, access_token, expires_at } = account as {
+          refresh_token: string;
+          access_token: string;
+          expires_at: number;
         };
-        const accessTokenExpires =
-          Date.now() + (account.expires_at as number) / 10;
+
+        const accessTokenExpires = expires_at * 1000;
 
         return {
-          accessTokenExpires,
+          ...token,
+          username,
           access_token,
           refresh_token,
-          user,
-          username,
+          accessTokenExpires,
         };
       }
 
@@ -82,7 +80,7 @@ export default NextAuth({
         return token;
       }
 
-      return refreshAccessToken(token);
+      return await refreshAccessToken(token);
     },
   },
   providers: [
