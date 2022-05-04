@@ -21,7 +21,7 @@
     "@types/qrcode.react": "1.0.2",
     "babel-preset-next": "1.4.0",
     "entities": "4.3.0",
-    "ethers": "5.6.4",
+    "ethers": "5.6.5",
     "fork-me-corner": "1.0.1",
     "framer-motion": "6.3.3",
     "html2canvas": "1.4.1",
