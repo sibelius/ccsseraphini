@@ -18,7 +18,7 @@ client.on('messageCreate', async (message) => {
   /**
    * Add all emojis to the message to make easy the voting.
    */
-  if (isMeme(message)) {
+  if (await isMeme(message)) {
     await Promise.all(
       Object.keys(emojisPoints).map((emoji) => message.react(emoji)),
     );

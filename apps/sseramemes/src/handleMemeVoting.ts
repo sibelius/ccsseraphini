@@ -1,39 +1,61 @@
-import { MessageReaction, PartialMessageReaction, Message } from 'discord.js';
+import {
+  MessageReaction,
+  PartialMessageReaction,
+  Message,
+  PartialMessage,
+} from 'discord.js';
 import { tweetMeme } from './tweetMeme';
+import { MIN_POINTS_TO_TWEET } from './config';
 
 export const emojisPoints = {
-  '🚀': 1,
+  '💯': 1,
   '👎': -3,
 };
 
-const MIN_POINTS_TO_TWEET = 3;
-
-/**
- * TODO
- */
 const isMessageFromChannelMemes = (
-  message: MessageReaction | PartialMessageReaction,
+  message: Message | PartialMessage,
 ): boolean => {
-  return true;
+  return message.channelId === process.env.DISCORD_MEMES_CHANNEL_ID;
 };
 
 /**
- * TODO
+ * Conditions to be a meme:
+ *
+ * - Check if the message is from the memes channel.
+ * - Check if message has 1 attachment.
  */
 export const isMeme = async (
-  message: MessageReaction | PartialMessageReaction | Message,
+  msg: MessageReaction | PartialMessageReaction | Message,
 ): Promise<boolean> => {
+  let message: Message | PartialMessage;
+
+  if ('message' in msg) {
+    /**
+     * Message from reactions event.
+     */
+    message = msg.message;
+  } else {
+    /**
+     * Message from messageCreate event.
+     */
+    message = msg;
+  }
+
+  if (!isMessageFromChannelMemes(message)) {
+    return false;
+  }
+
+  if (message.attachments.size !== 1) {
+    return false;
+  }
+
   return true;
 };
 
 export const handleMemeVoting = async (
   message: MessageReaction | PartialMessageReaction,
 ) => {
-  if (!isMessageFromChannelMemes(message)) {
-    return;
-  }
-
-  if (!isMeme(message)) {
+  if (!(await isMeme(message))) {
     return;
   }
 
@@ -58,7 +80,7 @@ export const handleMemeVoting = async (
     return;
   }
 
-  const { tweetUrl } = await tweetMeme(message);
+  const { tweetUrl } = await tweetMeme(message.message);
 
-  await message.message.channel.send(tweetUrl);
+  await message.message.channel.send(`${tweetUrl} 🚀`);
 };
