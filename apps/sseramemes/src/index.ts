@@ -1,6 +1,8 @@
 import 'dotenv/config';
-import { Client, Intents } from 'discord.js';
-import { handleMemeVoting, emojisPoints, isMeme } from './handleMemeVoting';
+import { Client, Intents, TextChannel } from 'discord.js';
+import { handleMemeVoting, isMeme } from './handleMemeVoting';
+import { readyMessage } from './readyMessage';
+import { EMOJIS_POINTS } from './config';
 
 export const client = new Client({
   intents: [
@@ -10,8 +12,14 @@ export const client = new Client({
   ],
 });
 
-client.once('ready', () => {
+client.once('ready', async () => {
   console.log('Ready!');
+
+  const memeChannel = client.channels.cache.get(
+    process.env.DISCORD_MEMES_CHANNEL_ID,
+  ) as TextChannel;
+
+  await memeChannel.send(readyMessage);
 });
 
 client.on('messageCreate', async (message) => {
@@ -20,7 +28,7 @@ client.on('messageCreate', async (message) => {
    */
   if (await isMeme(message)) {
     await Promise.all(
-      Object.keys(emojisPoints).map((emoji) => message.react(emoji)),
+      Object.keys(EMOJIS_POINTS).map((emoji) => message.react(emoji)),
     );
   }
 });
