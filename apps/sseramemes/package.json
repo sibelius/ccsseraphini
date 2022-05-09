@@ -1,0 +1,21 @@
+{
+  "name": "sseramemes",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "esrun src/index.ts"
+  },
+  "contributors": [
+    {
+      "email": "pedro@arantespp.com",
+      "name": "Pedro Arantes",
+      "url": "https://arantespp.com/contact"
+    }
+  ],
+  "dependencies": {
+    "@digitak/esrun": "3.2.2",
+    "discord.js": "13.6.0",
+    "dotenv": "16.0.0",
+    "node-fetch": "3.2.4",
+    "twitter-api-v2": "1.12.0"
+  }
+}
