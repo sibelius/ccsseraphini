@@ -6,11 +6,7 @@ import {
 } from 'discord.js';
 import { tweetMeme } from './tweetMeme';
 import { MIN_POINTS_TO_TWEET } from './config';
-
-export const emojisPoints = {
-  '💯': 1,
-  '👎': -3,
-};
+import { EMOJIS_POINTS } from './config';
 
 const isMessageFromChannelMemes = (
   message: Message | PartialMessage,
@@ -52,6 +48,12 @@ export const isMeme = async (
   return true;
 };
 
+/**
+ * Messages that already have been tweeted since the last time the bot was
+ * restarted.
+ */
+const messagesAlreadyTweeted = [];
+
 export const handleMemeVoting = async (
   message: MessageReaction | PartialMessageReaction,
 ) => {
@@ -66,11 +68,11 @@ export const handleMemeVoting = async (
     const emoji = reaction.emoji.name;
     const count = reaction.count;
 
-    if (emojisPoints[emoji]) {
+    if (EMOJIS_POINTS[emoji]) {
       /**
        * `count - 1` to ignore bot's reaction.
        */
-      return counter + emojisPoints[emoji] * (count - 1);
+      return counter + EMOJIS_POINTS[emoji] * (count - 1);
     }
 
     return counter;
@@ -80,7 +82,16 @@ export const handleMemeVoting = async (
     return;
   }
 
+  if (messagesAlreadyTweeted.includes(message.message.id)) {
+    /**
+     * Message has already been tweeted.
+     */
+    return;
+  }
+
   const { tweetUrl } = await tweetMeme(message.message);
+
+  messagesAlreadyTweeted.push(message.message.id);
 
   await message.message.channel.send(`${tweetUrl} 🚀`);
 };
