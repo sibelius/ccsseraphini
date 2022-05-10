@@ -13,7 +13,7 @@ export const client = new Client({
 });
 
 client.once('ready', async () => {
-  console.log('Ready!');
+  console.log(readyMessage);
 
   const memeChannel = client.channels.cache.get(
     process.env.DISCORD_MEMES_CHANNEL_ID,
