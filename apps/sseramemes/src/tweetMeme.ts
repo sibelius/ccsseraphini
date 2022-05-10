@@ -1,6 +1,7 @@
 import { Message, PartialMessage } from 'discord.js';
 import { TwitterApi, TweetV1 } from 'twitter-api-v2';
 import fetch from 'node-fetch';
+import Jimp from 'jimp';
 import { RETWEET_MEME_TIMEOUT } from './config';
 
 const client = new TwitterApi({
@@ -16,9 +17,10 @@ const uploadMeme = async (message: Message | PartialMessage) => {
   const image = await fetch(attachment.attachment.toString());
 
   const buffer = Buffer.from(await image.arrayBuffer());
+  const bufferWithWatermark = await addWatermark(buffer);
 
   try {
-    const mediaId = await client.v1.uploadMedia(buffer, {
+    const mediaId = await client.v1.uploadMedia(bufferWithWatermark, {
       mimeType: attachment.contentType,
     });
 
@@ -26,6 +28,28 @@ const uploadMeme = async (message: Message | PartialMessage) => {
   } catch {
     return undefined;
   }
+};
+
+const addWatermark = async (buffer: Buffer): Promise<Buffer> => {
+  const watermark: Jimp = await new Promise<Jimp>((resolve) =>
+    Jimp.read('../static/watermark.png').then((image: Jimp) =>
+      resolve(image.resize(30, 30)),
+    ),
+  );
+
+  return new Promise((resolve, reject) => {
+    Jimp.read(buffer)
+      .then(async (image: Jimp) => {
+        image.mask(
+          watermark,
+          Jimp.HORIZONTAL_ALIGN_LEFT,
+          Jimp.VERTICAL_ALIGN_BOTTOM,
+        );
+        const buffer = await image.getBufferAsync(image.getMIME());
+        resolve(buffer);
+      })
+      .catch((err) => reject(err));
+  });
 };
 
 /**
