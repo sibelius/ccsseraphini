@@ -31,25 +31,11 @@ const uploadMeme = async (message: Message | PartialMessage) => {
 };
 
 const addWatermark = async (buffer: Buffer): Promise<Buffer> => {
-  const watermark: Jimp = await new Promise<Jimp>((resolve) =>
-    Jimp.read('../static/watermark.png').then((image: Jimp) =>
-      resolve(image.resize(30, 30)),
-    ),
-  );
-
-  return new Promise((resolve, reject) => {
-    Jimp.read(buffer)
-      .then(async (image: Jimp) => {
-        image.mask(
-          watermark,
-          Jimp.HORIZONTAL_ALIGN_LEFT,
-          Jimp.VERTICAL_ALIGN_BOTTOM,
-        );
-        const buffer = await image.getBufferAsync(image.getMIME());
-        resolve(buffer);
-      })
-      .catch((err) => reject(err));
-  });
+  const watermark: Jimp = await Jimp.read('../static/watermark.png');
+  watermark.resize(30, 30);
+  const meme: Jimp = await Jimp.read(buffer);
+  meme.mask(watermark, Jimp.HORIZONTAL_ALIGN_LEFT, Jimp.VERTICAL_ALIGN_BOTTOM);
+  return await meme.getBufferAsync(meme.getMIME());
 };
 
 /**
