@@ -31,7 +31,7 @@ const uploadMeme = async (message: Message | PartialMessage) => {
   }
 };
 
-const addWatermark = async (buffer: Buffer): Promise<Buffer> => {
+export const addWatermark = async (buffer: Buffer): Promise<Buffer> => {
   const watermark: Jimp = await Jimp.read(
     path.join(process.cwd(), './static/watermark.png'),
   );
