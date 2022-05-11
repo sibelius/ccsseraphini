@@ -3,6 +3,7 @@ import { TwitterApi, TweetV1 } from 'twitter-api-v2';
 import fetch from 'node-fetch';
 import Jimp from 'jimp';
 import { RETWEET_MEME_TIMEOUT } from './config';
+import * as path from 'path';
 
 const client = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
@@ -31,10 +32,12 @@ const uploadMeme = async (message: Message | PartialMessage) => {
 };
 
 const addWatermark = async (buffer: Buffer): Promise<Buffer> => {
-  const watermark: Jimp = await Jimp.read('../static/watermark.png');
-  watermark.resize(30, 30);
+  const watermark: Jimp = await Jimp.read(
+    path.join(process.cwd(), './static/watermark.png'),
+  );
+  watermark.resize(40, 40);
   const meme: Jimp = await Jimp.read(buffer);
-  meme.mask(watermark, Jimp.HORIZONTAL_ALIGN_LEFT, Jimp.VERTICAL_ALIGN_BOTTOM);
+  meme.composite(watermark, meme.getWidth() - 50, meme.getHeight() - 50);
   return await meme.getBufferAsync(meme.getMIME());
 };
 
