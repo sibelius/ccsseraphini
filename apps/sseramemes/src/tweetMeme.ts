@@ -47,7 +47,7 @@ export const addWatermark = async (buffer: Buffer): Promise<Buffer> => {
 const scheduleRetweet = (tweet: TweetV1) => {
   setTimeout(async () => {
     try {
-      await client.v1.post(`statuses/retweet/${tweet.id}.json`);
+      await client.v1.post(`statuses/retweet/${tweet.id_str}.json`);
     } catch (err) {
       console.error(err);
     }
