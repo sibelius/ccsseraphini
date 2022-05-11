@@ -1,17 +1,6 @@
 import fetch from 'node-fetch';
-import Jimp from 'jimp';
-import * as path from 'path';
 import * as fs from 'fs';
-
-const addWatermark = async (buffer: Buffer): Promise<Buffer> => {
-  const watermark: Jimp = await Jimp.read(
-    path.join(process.cwd(), './static/watermark.png'),
-  );
-  watermark.resize(40, 40);
-  const meme: Jimp = await Jimp.read(buffer);
-  meme.composite(watermark, meme.getWidth() - 50, meme.getHeight() - 50);
-  return await meme.getBufferAsync(meme.getMIME());
-};
+import { addWatermark } from '../src/tweetMeme';
 
 const testMeme = async () => {
   const image = await fetch(
