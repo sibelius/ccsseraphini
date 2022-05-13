@@ -3154,10 +3154,10 @@
   dependencies:
     buffer "~6.0.3"
 
-"@solana/web3.js@1.41.4", "@solana/web3.js@^1.32.0":
-  version "1.41.4"
-  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.41.4.tgz#595aa29a4a61c181b8c8f5cf0bbef80b4739cfab"
-  integrity sha512-2/mjqUcGsBkLEvKxA+rWFE1vODBycAMa62r3wm3Uzb6nmsXQQNTotB+6YoeLQmF0mxVoy8ZA+/QENzBkGkPzSg==
+"@solana/web3.js@1.41.8", "@solana/web3.js@^1.32.0":
+  version "1.41.8"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.41.8.tgz#10459c02ac3d919e33c8d5c27cb9a8fbae0fe9d2"
+  integrity sha512-IJUUvwToVFaUOLFr6+E8HXGmd53h6Z9OtywX0q/UM+q+0/nuDcaEq+/eE3yYuopZN00v6M442fFS5ONgUBBmDQ==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@ethersproject/sha2" "^5.5.0"
@@ -3173,7 +3173,6 @@
     js-sha3 "^0.8.0"
     rpc-websockets "^7.4.2"
     secp256k1 "^4.0.2"
-    sinon-chai "^3.7.0"
     superstruct "^0.14.2"
     tweetnacl "^1.0.0"
 
@@ -9066,11 +9065,6 @@ signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.6.tgz#24e630c4b0f03fea446a2bd299e62b4a6ca8d0af"
   integrity sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==
-
-sinon-chai@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/sinon-chai/-/sinon-chai-3.7.0.tgz#cfb7dec1c50990ed18c153f1840721cf13139783"
-  integrity sha512-mf5NURdUaSdnatJx3uhoBOrY9dtL19fiOtAdT1Azxg3+lNJFiuN0uzaU3xX1LeAfL17kHQhTAJgpsfhbMJMY2g==
 
 sisteransi@^1.0.5:
   version "1.0.5"
