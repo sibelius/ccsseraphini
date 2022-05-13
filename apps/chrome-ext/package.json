@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ccsseraphini/ui": "0.0.1",
-    "@chakra-ui/react": "1.8.8",
+    "@chakra-ui/react": "2.0.0",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "core-js": "3.22.5",
