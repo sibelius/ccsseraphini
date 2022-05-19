@@ -37,15 +37,12 @@ export const isMeme = async (
     message = msg;
   }
 
-  if (!isMessageFromChannelMemes(message)) {
-    return false;
-  }
-
-  if (message.attachments.size !== 1) {
-    return false;
-  }
-
-  return true;
+  const conditionsToBeAMeme = [
+    isMessageFromChannelMemes(message),
+    message.attachments.size == 1
+  ]
+  
+  return !conditionsToBeAMeme.includes(false)
 };
 
 /**
