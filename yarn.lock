@@ -1647,14 +1647,20 @@
   dependencies:
     react-loading-skeleton "^2.2.0"
 
-"@digitak/esrun@3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.2.tgz#3e25d9dd61529f0fa22da985941fcbfc0dd0dc2e"
-  integrity sha512-A79xtbVB4F1NXZOzhJGNEbp+MsuwA0XbZ3FlsWvvsZz5/9GWeTb02jI0axJzf7C1cB49GEeRzVagp4p8PxywSQ==
+"@digitak/esrun@3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.4.tgz#c16cc6e3eb7ed35d71470bf18a45b423c7e4b197"
+  integrity sha512-2FdygQcf47waTwEzmCKChI0qy4kCnWmw6ua93yiIl9m9fHKOSasvzbee5FjxkPaAeLpX94ZI9gz8WD/tNkSHEg==
   dependencies:
+    "@digitak/grubber" "^3.1.1"
     anymatch "^3.1.2"
     chokidar "^3.5.1"
     esbuild "^0.12.4"
+
+"@digitak/grubber@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@digitak/grubber/-/grubber-3.1.1.tgz#13c02833f5ed0c342cb1f9cfec1fd104fb9f943e"
+  integrity sha512-xHpmj3Erk5AA/nKpOJzap23TJSV0MFRTgtciG8XZg0GP0CUwms0g02SQQaKEPCe2mvKVlqfzad3xV4DiHlq2jA==
 
 "@discordjs/builders@^0.13.0":
   version "0.13.0"
