@@ -7,6 +7,7 @@ import {
 import { tweetMeme } from './tweetMeme';
 import { MIN_POINTS_TO_TWEET } from './config';
 import { EMOJIS_POINTS } from './config';
+import { memeConditions } from './types';
 
 const isMessageFromChannelMemes = (
   message: Message | PartialMessage,
@@ -37,7 +38,7 @@ export const isMeme = async (
     message = msg;
   }
 
-  const conditionsToBeAMeme = [
+  const conditionsToBeAMeme: memeConditions = [
     isMessageFromChannelMemes(message),
     message.attachments.size == 1
   ]
