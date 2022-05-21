@@ -12,7 +12,7 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@types/jest": "27.5.0",
+    "@types/jest": "27.5.1",
     "cross-env": "7.0.3",
     "husky": "8.0.1",
     "lint-staged": "12.4.1",
