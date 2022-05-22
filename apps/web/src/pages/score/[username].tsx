@@ -1,15 +1,16 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { Heading, VStack } from '@chakra-ui/react';
+import { Button, Heading, Stack, VStack } from '@chakra-ui/react';
 import { Session, UserScore } from 'types/Score';
 import { TwitterLogin } from 'components/home/TwitterLogin';
 import { User } from 'types/User';
 import { FaTwitter } from 'react-icons/fa';
 import ScoreVisual from 'components/score/ScoreVisual';
-import { ButtonStyled, ScorePageStyled } from 'components/score/ScoreStyle';
+import { ScorePageStyled } from 'components/score/ScoreStyle';
 import { MutableRefObject, useRef } from 'react';
 import exportAsImage from '../../canvasUtil';
 import { getHttpProtocol } from 'getHttpProtocol';
 import html2canvas from 'html2canvas';
+import { DiscordClaimButton } from 'components/score/DiscordClaimButton';
 
 interface Props {
   session?: Session;
@@ -82,13 +83,16 @@ const ScorePage: NextPage<Props> = (props: Props) => {
         userScore={userScore as UserScore}
         user={user}
       />
-      <ButtonStyled
-        onClick={async () => await clickHandler(ref, username)}
-        leftIcon={<FaTwitter />}
-        colorScheme={'twitter'}
-      >
-        Share
-      </ButtonStyled>
+      <Stack mt={'5%'} direction={'row'}>
+        <Button
+          onClick={async () => await clickHandler(ref, username)}
+          leftIcon={<FaTwitter />}
+          colorScheme={'twitter'}
+        >
+          Share
+        </Button>
+        <DiscordClaimButton totalScore={userScore?.total ?? 0} />
+      </Stack>
     </ScorePageStyled>
   );
 };

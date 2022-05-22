@@ -1,11 +1,9 @@
+import { withSentry } from '@sentry/nextjs';
 import { userProfile } from 'modules/twitter/twitterUserGet';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { config } from '../../../config';
 
-export default async function userHandler(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
+const userHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { username } = req.query;
 
   const access_token = config.TWITTER_BEARER_TOKEN;
@@ -28,4 +26,6 @@ export default async function userHandler(
   return res.status(200).json({
     user,
   });
-}
+};
+
+export default withSentry(userHandler);

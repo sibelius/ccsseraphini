@@ -1,12 +1,10 @@
 export const config = {
   NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET as string,
-
   TWITTER_BEARER_TOKEN: process.env.TWITTER_BEARER_TOKEN as string,
   TWITTER_CLIENT_ID: process.env.TWITTER_CLIENT_ID as string,
   TWITTER_CLIENT_SECRET: process.env.TWITTER_CLIENT_SECRET as string,
   TWITTER_PROFILE_ID: process.env.TWITTER_PROFILE_ID as string,
   TWITTER_PROFILE_USER: process.env.TWITTER_PROFILE_USER as string,
-
   DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID as string,
   DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET as string,
   DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN as string,
@@ -14,4 +12,5 @@ export const config = {
   WEBHOOK_DISCORD: process.env.WEBHOOK_DISCORD as string,
   CRONJOB_HEADER_KEY: process.env.CRONJOB_HEADER_KEY as string,
   CRONJOB_HEADER_VALUE: process.env.CRONJOB_HEADER_VALUE as string,
+  DISCORD_SCORE_THRESHOLD: 100,
 } as const;

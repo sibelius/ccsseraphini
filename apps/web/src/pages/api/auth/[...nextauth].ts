@@ -28,6 +28,13 @@ export default NextAuth({
       clientId: config.TWITTER_CLIENT_ID,
       clientSecret: config.TWITTER_CLIENT_SECRET,
       version: '2.0',
+      authorization: {
+        url: 'https://twitter.com/i/oauth2/authorize',
+        params: {
+          // scope: "users.read tweet.read offline.access like.read list.read",
+          scope: 'users.read tweet.read offline.access tweet.write',
+        },
+      },
     }),
   ],
 });
