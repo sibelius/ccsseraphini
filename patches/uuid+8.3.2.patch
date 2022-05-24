@@ -1,0 +1,15 @@
+diff --git a/node_modules/uuid/package.json b/node_modules/uuid/package.json
+index 4a3cd3c..d1a37ad 100644
+--- a/node_modules/uuid/package.json
++++ b/node_modules/uuid/package.json
+@@ -25,6 +25,10 @@
+         "require": "./dist/index.js",
+         "import": "./wrapper.mjs"
+       },
++      "browser": {
++        "import": "./dist/esm-browser/index.js",
++        "require": "./dist/index.js"
++      },
+       "default": "./dist/esm-browser/index.js"
+     },
+     "./package.json": "./package.json"
