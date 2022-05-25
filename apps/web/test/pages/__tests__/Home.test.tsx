@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Home from '../../../src/pages';
+import { ChakraProvider } from '@chakra-ui/react';
 
 beforeAll(() => {
   fetchMock.doMock();
@@ -8,7 +9,11 @@ beforeAll(() => {
 afterEach(() => fetchMock.resetMocks());
 
 beforeEach(() => {
-  render(<Home />);
+  render(
+    <ChakraProvider>
+      <Home />
+    </ChakraProvider>,
+  );
 });
 
 it('should render the page properly', () => {
