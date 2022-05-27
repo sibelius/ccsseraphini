@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import * as fs from 'fs';
-import { addWatermark } from '../src/tweetMeme';
+import { addLogoToImage } from '../src/addLogoToImage';
 
 const testMeme = async () => {
   const image = await fetch(
@@ -8,7 +8,7 @@ const testMeme = async () => {
   );
 
   const buffer = Buffer.from(await image.arrayBuffer());
-  const bufferWithWatermark = await addWatermark(buffer);
+  const bufferWithWatermark = await addLogoToImage(buffer);
 
   /**
    * Save bufferWithWatermark to file.

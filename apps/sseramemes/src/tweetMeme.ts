@@ -1,9 +1,8 @@
 import { Message, PartialMessage } from 'discord.js';
 import { TwitterApi, TweetV1 } from 'twitter-api-v2';
 import fetch from 'node-fetch';
-import Jimp from 'jimp';
 import { RETWEET_MEME_TIMEOUT } from './config';
-import * as path from 'path';
+import { addLogoToImage } from './addLogoToImage';
 
 const client = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
@@ -12,33 +11,36 @@ const client = new TwitterApi({
   accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
 });
 
-const uploadMeme = async (message: Message | PartialMessage) => {
+export const ALLOWED_MEME_TYPES_TO_ADD_LOGO = [
+  'image/jpg',
+  'image/jpeg',
+  'image/png',
+];
+
+export const uploadMeme = async (message: Message | PartialMessage) => {
   const attachment = message.attachments.first();
 
   const image = await fetch(attachment.attachment.toString());
 
-  const buffer = Buffer.from(await image.arrayBuffer());
-  const bufferWithWatermark = await addWatermark(buffer);
+  let buffer = Buffer.from(await image.arrayBuffer());
+
+  let newBuffer = buffer;
+
+  const mimeType = attachment.contentType;
+
+  /**
+   * If the buffer is a image, we add logo.
+   */
+  if (ALLOWED_MEME_TYPES_TO_ADD_LOGO.includes(mimeType)) {
+    newBuffer = await addLogoToImage(buffer);
+  }
 
   try {
-    const mediaId = await client.v1.uploadMedia(bufferWithWatermark, {
-      mimeType: attachment.contentType,
-    });
-
+    const mediaId = await client.v1.uploadMedia(newBuffer, { mimeType });
     return mediaId;
   } catch {
     return undefined;
   }
-};
-
-export const addWatermark = async (buffer: Buffer): Promise<Buffer> => {
-  const watermark: Jimp = await Jimp.read(
-    path.join(process.cwd(), './static/watermark.png'),
-  );
-  watermark.resize(40, 40);
-  const meme: Jimp = await Jimp.read(buffer);
-  meme.composite(watermark, meme.getWidth() - 50, meme.getHeight() - 50);
-  return await meme.getBufferAsync(meme.getMIME());
 };
 
 /**
