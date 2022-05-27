@@ -5,6 +5,7 @@
     "Pedro Arantes <pedro@arantespp.com> (https://arantespp.com/contact)"
   ],
   "scripts": {
+    "test": "jest",
     "start": "esrun src/index.ts",
     "test:watermark": "esrun scripts/testWatermark.ts"
   },
@@ -16,5 +17,12 @@
     "jimp": "0.16.1",
     "node-fetch": "3.2.4",
     "twitter-api-v2": "1.12.2"
+  },
+  "devDependencies": {
+    "@babel/core": "7.18.2",
+    "@babel/preset-env": "7.18.2",
+    "@babel/preset-typescript": "7.17.12",
+    "babel-jest": "28.1.0",
+    "jest": "28.1.0"
   }
 }
