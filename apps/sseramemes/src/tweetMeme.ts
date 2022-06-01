@@ -61,10 +61,9 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
 
   const mediaIds = mediaId ? [mediaId] : undefined;
   
-  message=message.replace(/@\\/mg,'');
-  message=message.replace(/(@[\w]{1,})#[\d]{1,}/mg,'$1');
+  const messageContent = message.content=message.content.replace(/@\\/mg,'').replace(/(@[\w]{1,})#[\d]{1,}/mg,'$1');
 
-  const tweet = await client.v1.tweet(message.content, {
+  const tweet = await client.v1.tweet(messageContent, {
     media_ids: mediaIds,
   });
 
