@@ -1,5 +1,5 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex, Text, Divider } from '@chakra-ui/react';
 import TweetInfo from './Tweet';
 import { TweetData } from '../../types/Tweet';
 import { useState, useEffect } from 'react';
@@ -7,6 +7,7 @@ import { usePrevious } from '../../usePrevious';
 import { Spinner } from '@chakra-ui/spinner';
 import { FaSyncAlt } from 'react-icons/fa';
 import { bgPalette, txtPalette } from '../ColorPalette';
+import TweetSearch from './TweetSearch';
 
 interface Props {
   initialTweets?: TweetData[];
@@ -58,8 +59,6 @@ export const Timeline = ({
     return null;
   }
 
-  const title = isSearch ? 'Search Results' : 'Latest tweets';
-
   const renderTweets = () => {
     if (tweets.length === 0) {
       return <Text>No tweets found</Text>;
@@ -75,9 +74,16 @@ export const Timeline = ({
         {tweets?.map((tweet) => (
           <TweetInfo key={tweet.id} tweet={tweet} />
         ))}
+        <Divider />
+        <Text fontWeight="medium" fontSize={24} m="10px" color="#908e8e">
+          No more Tweets
+        </Text>
+        <Divider mb="20px" />
       </InfiniteScroll>
     );
   };
+
+  if (isSearch) return renderTweets();
 
   return (
     <Flex
@@ -93,9 +99,8 @@ export const Timeline = ({
       color={txtPalette.base}
       bgColor={bgPalette.secondary}
     >
-      <Text fontWeight="medium" fontSize={24} mb={4}>
-        {title}
-
+      <Text fontWeight="medium" fontSize={24} mb="5px">
+        Latest tweets
         <button
           style={{ fontSize: '.8rem', marginLeft: '.3rem' }}
           onClick={() => setRefresh(true)}
@@ -105,8 +110,8 @@ export const Timeline = ({
       </Text>
 
       {refresh ? <Spinner position="absolute" top="15%" right="50%" /> : null}
-
-      {renderTweets()}
+      <TweetSearch />
+      {/* {renderTweets()} */}
     </Flex>
   );
 };
