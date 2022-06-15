@@ -1,7 +1,5 @@
 import { Box, Heading, Flex, Spacer } from '@chakra-ui/react';
-import { ForkMe } from 'fork-me-corner';
 import { ChakraNextLinkButton } from '../components/ChakraNextLinkButton';
-import { FaHome } from 'react-icons/fa';
 import { SibLogo } from '../components/home/SibLogo';
 
 type Inset = 'top' | 'left' | 'right' | 'bottom';
@@ -13,6 +11,7 @@ const Blob = ({
   width,
   inset,
 }: // TODO: Resolve inset stuff with ChakraUI
+// @eslint-disable-next-line @typescript-eslint/no-explicit-any
 Record<string, string> & any) => (
   <Box
     position="absolute"
