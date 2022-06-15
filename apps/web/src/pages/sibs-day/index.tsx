@@ -25,6 +25,8 @@ export default function SibsDay() {
             SIBS
             <br />
             DAY
+            <br />
+            20/07
           </Heading>
         </Box>
       </Box>
