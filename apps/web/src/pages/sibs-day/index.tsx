@@ -1,30 +1,7 @@
 import { Box, Heading, Flex, Spacer } from '@chakra-ui/react';
-import { ChakraNextLinkButton } from '../components/ChakraNextLinkButton';
-import { SibLogo } from '../components/home/SibLogo';
-
-// type Inset = 'top' | 'left' | 'right' | 'bottom';
-// type Insets = Partial<Record<Inset, string>>;
-const Blob = ({
-  bg,
-  borderRadius,
-  height,
-  width,
-  inset,
-}: // TODO: Resolve inset stuff with ChakraUI
-// @eslint-disable-next-line @typescript-eslint/no-explicit-any
-Record<string, string> & any) => (
-  <Box
-    position="absolute"
-    top={inset?.top}
-    left={inset?.left}
-    right={inset?.right}
-    bottom={inset?.bottom}
-    bgGradient={bg}
-    borderRadius={borderRadius}
-    height={height}
-    width={width}
-  ></Box>
-);
+import { ChakraNextLinkButton } from '../../components/ChakraNextLinkButton';
+import { SibLogo } from '../../components/home/SibLogo';
+import Blob from './blobs/index';
 
 export default function SibsDay() {
   return (
