@@ -1,16 +1,17 @@
-// type Inset = 'top' | 'left' | 'right' | 'bottom';
-// type Insets = Partial<Record<Inset, string>>;
 import { Box } from '@chakra-ui/react';
+import type { LayoutProps } from '@chakra-ui/react';
 
-const Blob = ({
-  bg,
-  borderRadius,
-  height,
-  width,
-  inset,
-}: // TODO: Resolve inset stuff with ChakraUI
-// @eslint-disable-next-line @typescript-eslint/no-explicit-any
-Record<string, string> & any) => (
+type InsetDirections = 'top' | 'right' | 'bottom' | 'left';
+type SizeResponsiveValue = LayoutProps['height'];
+
+type BlobProps = {
+  bg?: string;
+  size: SizeResponsiveValue;
+  inset: Partial<Record<InsetDirections, string>>;
+  borderRadius: string | number;
+};
+
+const Blob = ({ bg, size, inset, borderRadius }: BlobProps) => (
   <Box
     position="absolute"
     top={inset?.top}
@@ -19,9 +20,9 @@ Record<string, string> & any) => (
     bottom={inset?.bottom}
     bgGradient={bg}
     borderRadius={borderRadius}
-    height={height}
-    width={width}
-  ></Box>
+    height={size}
+    width={size}
+  />
 );
 
 export default Blob;
