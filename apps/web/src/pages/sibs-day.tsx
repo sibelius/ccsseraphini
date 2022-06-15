@@ -41,7 +41,7 @@ export default function SibsDay() {
     >
       <Box zIndex="2">
         <Heading as="h2" fontSize="2.1rem">
-          WELCOME TO THE BLEEDING-EDGE
+          WELCOME TO THE BLEEDING-EDGE 🌍
         </Heading>
         <Box py={5}>
           <Heading as="h1" lineHeight="1" fontSize="9rem">
