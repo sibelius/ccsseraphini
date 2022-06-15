@@ -2,8 +2,8 @@ import { Box, Heading, Flex, Spacer } from '@chakra-ui/react';
 import { ChakraNextLinkButton } from '../components/ChakraNextLinkButton';
 import { SibLogo } from '../components/home/SibLogo';
 
-type Inset = 'top' | 'left' | 'right' | 'bottom';
-type Insets = Partial<Record<Inset, string>>;
+// type Inset = 'top' | 'left' | 'right' | 'bottom';
+// type Insets = Partial<Record<Inset, string>>;
 const Blob = ({
   bg,
   borderRadius,
