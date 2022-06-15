@@ -32,16 +32,14 @@ export default function SibsDay() {
         inset={{ right: '0', top: '0' }}
         bg={'linear(to-br, #c27853, #e0d0d4)'}
         borderRadius={'38% 10% 56% 44% / 49% 0% 38% 51%  '}
-        height={'500px'}
-        width={'500px'}
+        size={'500px'}
       />
       <Spacer />
       <Blob
         inset={{ bottom: '0', left: '0' }}
         bg={'linear(to-tl, #c27853, #e0d0d4)'}
         borderRadius={'75% 73% 45% 31% / 50% 79% 71% 0% '}
-        height={'300px'}
-        width={'300px'}
+        size={'300px'}
       />
       <Flex
         zIndex={2}
