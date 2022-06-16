@@ -25,6 +25,7 @@ client.once('ready', async () => {
   ) as TextChannel;
 
   // send message to bot channel
+  await botChannel.send(readyMessage);
 });
 
 export const twitterBaseUrl = 'https://twitter.com/';
