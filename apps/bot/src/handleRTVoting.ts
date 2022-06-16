@@ -12,6 +12,12 @@ import { handleRT } from './handleRT';
 const isMessageFromBotChannel = (
   message: Message | PartialMessage,
 ): boolean => {
+  console.log({
+    message,
+    channelId: message.channelId,
+    bot: config.DISCORD_BOT_CHANNEL_ID,
+  });
+
   return message.channelId === config.DISCORD_BOT_CHANNEL_ID;
 };
 
@@ -46,7 +52,7 @@ const messagesAlreadyRTTweeted = [];
 export const handleRTVoting = async (
   message: MessageReaction | PartialMessageReaction,
 ) => {
-  if (!isMessageFromBotChannel(message)) {
+  if (!isMessageFromBotChannel(message.message)) {
     console.log('not bot channel');
     return;
   }
