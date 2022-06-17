@@ -45,7 +45,7 @@
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/react": "13.3.0",
     "@types/node": "18.0.0",
-    "@types/react": "18.0.12",
+    "@types/react": "18.0.14",
     "@types/react-copy-to-clipboard": "5.0.2",
     "@types/styled-components": "5.1.25",
     "@typescript-eslint/eslint-plugin": "5.28.0",
