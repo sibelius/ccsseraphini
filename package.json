@@ -17,7 +17,7 @@
     "cross-env": "7.0.3",
     "husky": "8.0.1",
     "jest-environment-jsdom": "28.1.1",
-    "lint-staged": "13.0.1",
+    "lint-staged": "13.0.2",
     "patch-package": "6.4.7",
     "prettier": "2.7.1",
     "prettier-package-json": "2.6.3",
