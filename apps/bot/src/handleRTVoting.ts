@@ -5,19 +5,13 @@ import {
   PartialMessage,
 } from 'discord.js';
 import { MIN_POINTS_TO_TWEET } from './score';
-import { EMOJIS_POINTS } from './score';
+import { EMOJIS_POINTS, emojiRetweet } from './score';
 import { config } from './config';
 import { handleRT } from './handleRT';
 
 const isMessageFromBotChannel = (
   message: Message | PartialMessage,
 ): boolean => {
-  console.log({
-    message,
-    channelId: message.channelId,
-    bot: config.DISCORD_BOT_CHANNEL_ID,
-  });
-
   return message.channelId === config.DISCORD_BOT_CHANNEL_ID;
 };
 
@@ -26,14 +20,12 @@ export const isTweet = (content: string) => {
   const tokens = content?.split('/');
 
   if (tokens.length !== 6) {
-    console.log('not a tweet');
     return false;
   }
 
   const tweetId = tokens[tokens.length - 1];
 
   if (!tweetId) {
-    console.log('not a tweet');
     return false;
   }
 
@@ -53,13 +45,8 @@ export const handleRTVoting = async (
   message: MessageReaction | PartialMessageReaction,
 ) => {
   if (!isMessageFromBotChannel(message.message)) {
-    console.log('not bot channel');
     return;
   }
-
-  console.log('handleRTVoting', {
-    message,
-  });
 
   if (!isTweet(message.message.content)) {
     return;
@@ -86,9 +73,9 @@ export const handleRTVoting = async (
     return counter;
   }, 0);
 
-  console.log({
-    message: message.message.content,
-    tweetId,
+  // eslint-disable-next-line
+  console.log('Points: ', {
+    tweet: message.message.content,
     points,
   });
 
@@ -106,4 +93,9 @@ export const handleRTVoting = async (
   messagesAlreadyRTTweeted.push(message.message.id);
 
   await handleRT(tweetId);
+
+  // eslint-disable-next-line
+  console.log('RT: ', message.message.content);
+
+  await message.message.react(emojiRetweet);
 };

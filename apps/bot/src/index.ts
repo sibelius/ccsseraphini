@@ -25,7 +25,7 @@ client.once('ready', async () => {
   ) as TextChannel;
 
   // send message to bot channel
-  await botChannel.send(readyMessage);
+  // await botChannel.send(readyMessage);
 });
 
 export const twitterBaseUrl = 'https://twitter.com/';
@@ -50,6 +50,7 @@ const processTweet = async (tweet) => {
 };
 
 const run = async () => {
+  // TODO - handle error
   for await (const tweet of tweetStream()) {
     await processTweet(tweet);
   }

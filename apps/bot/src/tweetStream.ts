@@ -63,10 +63,6 @@ export async function* tweetStream() {
 
   console.log('awaiting tweets');
 
-  // debugConsole({
-  //   tweet,
-  // })
-
   for await (const tweet of stream) {
     yield tweet;
   }

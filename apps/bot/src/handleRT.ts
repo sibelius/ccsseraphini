@@ -9,10 +9,5 @@ const client = new TwitterApi({
 });
 
 export const handleRT = async (id: string) => {
-  const result = await client.v1.post(`statuses/retweet/${id}.json`);
-
-  console.log('rt: ', {
-    id,
-    result,
-  });
+  await client.v1.post(`statuses/retweet/${id}.json`);
 };

@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "bot": "yarn workspace bot run start",
     "build": "turbo run build --parallel",
     "check-types": "turbo run check-types --parallel --continue",
     "dev": "turbo run dev --parallel",
