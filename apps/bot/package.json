@@ -23,7 +23,7 @@
     "twitter-api-v2": "1.12.2"
   },
   "devDependencies": {
-    "esbuild": "0.14.44",
+    "esbuild": "0.14.45",
     "esbuild-register": "3.3.3"
   }
 }
