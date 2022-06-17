@@ -35,7 +35,7 @@ export default function SibsDay() {
             </Heading>
           </Box>
         </Box>
-        <Show above="sm">
+        <Show breakpoint="(min-width: 1380px)">
           <Blob
             inset={{ right: '0', top: '0' }}
             bg={'linear(to-br, #c27853, #e0d0d4)'}
