@@ -8,18 +8,20 @@ export async function* tweetStream() {
   // remove old rules
   const rules = await client.tweets.getRules();
 
-  const ids = rules.data.map((rule) => rule.id);
+  if (rules.data) {
+    const ids = rules.data.map((rule) => rule.id);
 
-  await client.tweets.addOrDeleteRules(
-    {
-      delete: {
-        ids,
+    await client.tweets.addOrDeleteRules(
+      {
+        delete: {
+          ids,
+        },
       },
-    },
-    {
-      dry_run: false,
-    },
-  );
+      {
+        dry_run: false,
+      },
+    );
+  }
 
   await client.tweets.addOrDeleteRules(
     {
