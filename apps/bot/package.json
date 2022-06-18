@@ -2,8 +2,10 @@
   "name": "bot",
   "version": "0.0.1",
   "scripts": {
+    "build": "yarn esbuild ./src/index.ts --bundle --platform=node --target=node10.4 --outfile=./build/bot.js",
+    "dev": "yarn es ./src/index.ts",
     "es": "node -r esbuild-register",
-    "start": "yarn es ./src/index.ts"
+    "start": "node ./build/bot.js"
   },
   "dependencies": {
     "@digitak/esrun": "3.2.4",
