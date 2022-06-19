@@ -8,20 +8,23 @@ export const getMessageContent = async (message: Message | PartialMessage) => {
    */
   const discordUsersPattern = discordContent.match(/<\@\d{1,}>/gm) || [];
 
-  const finalContent = await discordUsersPattern.reduce(
-    async (accPromise, discordUserPattern) => {
-      const acc = await accPromise;
+  let finalContent = discordContent;
 
-      const discordUserId = discordUserPattern.replace(/[<@>]/g, '');
+  for (const discordUserPattern of discordUsersPattern) {
+    const discordUserId = discordUserPattern.replace(/[<@>]/g, '');
 
+    let replacer: string;
+
+    try {
       const discordUser = await message.client.users.fetch(discordUserId);
 
-      const replacer = discordUser?.username ? `@${discordUser.username}` : '';
+      replacer = discordUser?.username ? `@${discordUser.username}` : '';
+    } catch {
+      replacer = '';
+    }
 
-      return acc.replace(discordUserPattern, replacer);
-    },
-    Promise.resolve(discordContent),
-  );
+    finalContent = finalContent.replace(discordUserPattern, replacer);
+  }
 
   return finalContent.substring(0, 280);
 };
