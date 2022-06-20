@@ -8,7 +8,7 @@
     "start": "node ./build/bot.js"
   },
   "dependencies": {
-    "@digitak/esrun": "3.2.4",
+    "@digitak/esrun": "3.2.6",
     "@jimp/types": "0.16.1",
     "discord.js": "13.8.0",
     "dotenv": "16.0.1",
