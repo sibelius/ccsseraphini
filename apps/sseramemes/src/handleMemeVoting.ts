@@ -40,10 +40,10 @@ export const isMeme = async (
 
   const conditionsToBeAMeme: memeConditions = [
     isMessageFromChannelMemes(message),
-    message.attachments.size == 1
-  ]
-  
-  return !conditionsToBeAMeme.includes(false)
+    message.attachments.size == 1,
+  ];
+
+  return !conditionsToBeAMeme.includes(false);
 };
 
 /**
