@@ -13,6 +13,9 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+    domains: ['pbs.twimg.com'],
+  },
 };
 
 const plugins = [

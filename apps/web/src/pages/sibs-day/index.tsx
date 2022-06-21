@@ -2,6 +2,8 @@ import { Box, Heading, Flex, Spacer, Container, Show } from '@chakra-ui/react';
 import { ChakraNextLinkButton } from '../../components/ChakraNextLinkButton';
 import { SibLogo } from '../../components/home/SibLogo';
 import Blob from './blobs/index';
+import speakers from './speaker/speaker-list';
+import Speaker from './speaker';
 
 export default function SibsDay() {
   return (
@@ -11,7 +13,6 @@ export default function SibsDay() {
       px={{ md: '14', base: '7' }}
       py={{ md: '4', base: '2' }}
       color="white"
-      height="100vh"
       direction={'column'}
       justify={'space-around'}
       flexWrap="wrap"
@@ -35,7 +36,8 @@ export default function SibsDay() {
             </Heading>
           </Box>
         </Box>
-        <Show breakpoint="(min-width: 1380px)">
+      </Box>
+      <Show breakpoint="(min-width: 1380px)">
           <Blob
             inset={{ right: '0', top: '0' }}
             bg={'linear(to-br, #c27853, #e0d0d4)'}
@@ -50,35 +52,47 @@ export default function SibsDay() {
             size={'300px'}
           />
         </Show>
-        <Flex
-          zIndex={2}
-          p={4}
-          maxWidth={'90%'}
-          alignSelf={'end'}
-          direction={'column'}
-          align={'flex-end'}
-        >
-          <Box
-            bgGradient="linear(to-r, #c27853, #cb6e29)"
-            height="1rem"
-            width="5rem"
-          />
-          <Heading textAlign="end" as="h3" size="xl">
-            Open discussions and talks about the current tech ecosystem.
-            <ChakraNextLinkButton
-              href="https://docs.google.com/forms/d/1frC8SXs2SMcAreb11C0eTIkAikJ0mWk7WixKNR7pwyk/viewform?edit_requested=true"
-              //TODO: orange as the box above
-              backgroundColor="#ad5e23"
-              textColor="white"
-              _hover={{ bg: '#c27853' }}
-              leftIcon={<SibLogo width={20} height={20} />}
-              width="100%"
-              size="sm"
-            >
-              Fill the form
-            </ChakraNextLinkButton>
-          </Heading>
-        </Flex>
+      <Flex
+        zIndex={2}
+        p={4}
+        maxWidth={'90%'}
+        alignSelf={'end'}
+        direction={'column'}
+        align={'flex-end'}
+      >
+        <Box
+          bgGradient="linear(to-r, #c27853, #cb6e29)"
+          height="1rem"
+          width="5rem"
+        />
+        <Heading textAlign="end" as="h3" size="xl">
+          Open discussions and talks about the current tech ecosystem.
+          <ChakraNextLinkButton
+            href="https://docs.google.com/forms/d/1frC8SXs2SMcAreb11C0eTIkAikJ0mWk7WixKNR7pwyk/viewform?edit_requested=true"
+            backgroundColor="#ad5e23"
+            textColor="white"
+            _hover={{ bg: '#c27853' }}
+            leftIcon={<SibLogo width={20} height={20} />}
+            width="100%"
+            size="sm"
+          >
+            Fill the form
+          </ChakraNextLinkButton>
+        </Heading>
+      </Flex>
+      <Heading textAlign="center" my={5} as="h2" fontSize="2.1rem">
+        Speakers
+      </Heading>
+      {speakers.map(({ name, handler, talk, image }, index) => (
+        <Speaker
+          key={index}
+          name={name}
+          direction={index % 2 === 0 ? 'row-reverse' : 'row'}
+          handler={handler}
+          talk={talk}
+          image={image}
+        />
+      ))}
       </Container>
     </Flex>
   );
