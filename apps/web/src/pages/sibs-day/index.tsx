@@ -1,4 +1,4 @@
-import { Box, Heading, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Heading, Flex, Spacer, Container, Show } from '@chakra-ui/react';
 import { ChakraNextLinkButton } from '../../components/ChakraNextLinkButton';
 import { SibLogo } from '../../components/home/SibLogo';
 import Blob from './blobs/index';
@@ -10,40 +10,48 @@ export default function SibsDay() {
     <Flex
       bgGradient="linear(to-r, #1A04A6, #1A04A8)"
       position={'relative'}
-      px={14}
-      py={4}
+      px={{ md: '14', base: '7' }}
+      py={{ md: '4', base: '2' }}
       color="white"
       direction={'column'}
       justify={'space-around'}
       flexWrap="wrap"
     >
-      <Box zIndex="2">
-        <Heading as="h2" fontSize="2.1rem">
-          WELCOME TO THE BLEEDING-EDGE 🌍
-        </Heading>
-        <Box py={5}>
-          <Heading as="h1" lineHeight="1" fontSize="9rem">
-            SIBS
-            <br />
-            DAY
-            <br />
-            27/07
+      <Container maxW={'50rem'}>
+        <Box zIndex="2">
+          <Heading as="h2" fontSize={{ md: '2.1rem', base: '1.1rem' }}>
+            WELCOME TO THE BLEEDING-EDGE 🌍
           </Heading>
+          <Box py={5}>
+            <Heading
+              as="h1"
+              lineHeight="1"
+              fontSize={{ base: '4.5rem', md: '9rem' }}
+            >
+              SIBS
+              <br />
+              DAY
+              <br />
+              27/07
+            </Heading>
+          </Box>
         </Box>
       </Box>
-      <Blob
-        inset={{ right: '0', top: '0' }}
-        bg={'linear(to-br, #c27853, #e0d0d4)'}
-        borderRadius={'38% 10% 56% 44% / 49% 0% 38% 51%  '}
-        size={'500px'}
-      />
-      <Spacer />
-      <Blob
-        inset={{ bottom: '0', left: '0' }}
-        bg={'linear(to-tl, #c27853, #e0d0d4)'}
-        borderRadius={'75% 73% 45% 31% / 50% 79% 71% 0% '}
-        size={'300px'}
-      />
+      <Show breakpoint="(min-width: 1380px)">
+          <Blob
+            inset={{ right: '0', top: '0' }}
+            bg={'linear(to-br, #c27853, #e0d0d4)'}
+            borderRadius={'38% 10% 56% 44% / 49% 0% 38% 51%  '}
+            size={'500px'}
+          />
+          <Spacer />
+          <Blob
+            inset={{ bottom: '0', left: '0' }}
+            bg={'linear(to-tl, #c27853, #e0d0d4)'}
+            borderRadius={'75% 73% 45% 31% / 50% 79% 71% 0% '}
+            size={'300px'}
+          />
+        </Show>
       <Flex
         zIndex={2}
         p={4}
@@ -85,6 +93,7 @@ export default function SibsDay() {
           image={image}
         />
       ))}
+      </Container>
     </Flex>
   );
 }

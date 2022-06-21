@@ -1,0 +1,31 @@
+{
+  "name": "bot",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "yarn esbuild ./src/index.ts --bundle --platform=node --target=node10.4 --outfile=./build/bot.js",
+    "dev": "yarn es ./src/index.ts",
+    "es": "node -r esbuild-register",
+    "start": "node ./build/bot.js"
+  },
+  "dependencies": {
+    "@digitak/esrun": "3.2.6",
+    "@jimp/types": "0.16.1",
+    "discord.js": "13.8.0",
+    "dotenv": "16.0.1",
+    "dotenv-safe": "8.2.0",
+    "isomorphic-fetch": "3.0.0",
+    "jimp": "0.16.1",
+    "koa": "2.13.4",
+    "koa-bodyparser": "4.3.0",
+    "koa-convert": "2.0.0",
+    "koa-cors": "0.0.16",
+    "koa-router": "10.1.1",
+    "node-fetch": "3.2.6",
+    "twitter-api-sdk": "1.0.9",
+    "twitter-api-v2": "1.12.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.14.47",
+    "esbuild-register": "3.3.3"
+  }
+}

@@ -1,6 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "bot": "yarn workspace bot run dev",
+    "bot:build": "yarn workspace bot run build",
+    "bot:serve": "yarn workspace bot run start",
     "build": "turbo run build --parallel",
     "check-types": "turbo run check-types --parallel --continue",
     "dev": "turbo run dev --parallel",
@@ -13,13 +16,13 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@types/jest": "27.5.1",
+    "@types/jest": "28.1.2",
     "cross-env": "7.0.3",
     "husky": "8.0.1",
     "jest-environment-jsdom": "28.1.1",
-    "lint-staged": "13.0.1",
+    "lint-staged": "13.0.2",
     "patch-package": "6.4.7",
-    "prettier": "2.7.0",
+    "prettier": "2.7.1",
     "prettier-package-json": "2.6.3",
     "turbo": "1.2.16"
   },
