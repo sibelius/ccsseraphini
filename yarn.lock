@@ -8760,10 +8760,10 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier-package-json@2.6.3:
-  version "2.6.3"
-  resolved "https://registry.yarnpkg.com/prettier-package-json/-/prettier-package-json-2.6.3.tgz#026e91c95e604665425c9e5d90ff604e7bb74215"
-  integrity sha512-0zFMAyiSHImUb7VWJQFiORFaFJ46gtLZ05sHRkehSZ6aO9mO8pxSStkTnpIT7rIioQMJhnaF9LKcqJpmhHf6JQ==
+prettier-package-json@2.6.4:
+  version "2.6.4"
+  resolved "https://registry.yarnpkg.com/prettier-package-json/-/prettier-package-json-2.6.4.tgz#fe8274ffb8b38fe9f2a07448cd28e9ccdddd5b28"
+  integrity sha512-aNZvEf0yy0UeqLdTHsFZiYjOEM9kACO02CGUR5XIHdqj3jrpHNlLkmfTaj1V/rvB4vYHHTH0i3qMf2FZ2Qtr/g==
   dependencies:
     "@types/parse-author" "^2.0.0"
     commander "^4.0.1"
