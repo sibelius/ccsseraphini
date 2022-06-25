@@ -60,6 +60,10 @@ client.on('messageReactionAdd', handleRTVoting);
 
 client.on('messageReactionRemove', handleRTVoting);
 
+client.on('error', (e) => console.error(e));
+client.on('warn', (e) => console.warn(e));
+client.on('debug', (e) => console.info(e));
+
 client.login(config.DISCORD_BOT_TOKEN);
 
 (async () => {

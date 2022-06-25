@@ -3,6 +3,7 @@ import {
   PartialMessageReaction,
   Message,
   PartialMessage,
+  User,
 } from 'discord.js';
 import { MIN_POINTS_TO_TWEET } from './score';
 import { EMOJIS_POINTS, emojiRetweet } from './score';
@@ -43,6 +44,7 @@ const messagesAlreadyRTTweeted = [];
 
 export const handleRTVoting = async (
   message: MessageReaction | PartialMessageReaction,
+  user: User,
 ) => {
   if (!isMessageFromBotChannel(message.message)) {
     return;
@@ -78,6 +80,16 @@ export const handleRTVoting = async (
     tweet: message.message.content,
     points,
   });
+
+  // sibelius can automatically retweet the tweet
+  if (user.username === 'sibelius') {
+    if (message.emoji.name === '💯') {
+      await handleRT(tweetId);
+
+      await message.message.react(emojiRetweet);
+      return;
+    }
+  }
 
   if (points < MIN_POINTS_TO_TWEET) {
     return;

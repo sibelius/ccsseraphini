@@ -27,8 +27,7 @@ export async function* tweetStream() {
     {
       add: [
         {
-          value: '-RT cc @sseraphini -is:reply -is:retweet',
-          // value: "cc @sseraphini"
+          value: '-RT @sseraphini -is:reply -is:retweet',
         },
       ],
     },
