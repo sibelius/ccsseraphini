@@ -1,4 +1,4 @@
-import { SpeakerProps } from './index';
+import { SpeakerProps } from './pages/sibs-day/speaker';
 
 const speakers: Array<SpeakerProps> = [
   {
