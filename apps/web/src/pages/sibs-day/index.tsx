@@ -2,7 +2,7 @@ import { Box, Heading, Flex, Spacer, Container, Show } from '@chakra-ui/react';
 import { ChakraNextLinkButton } from '../../components/ChakraNextLinkButton';
 import { SibLogo } from '../../components/home/SibLogo';
 import Blob from './blobs/index';
-import speakers from './speaker/speaker-list';
+import speakers from '../../speakerList';
 import Speaker from './speaker';
 
 export default function SibsDay() {
