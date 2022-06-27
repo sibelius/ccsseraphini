@@ -27,7 +27,7 @@
     "watch": "concurrently \"rollup -c -w\" \"webpack --watch --config ./build/node-extension.webpack.config.js\""
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-typescript": "^8.3.3",
     "@tsconfig/svelte": "^3.0.0",
