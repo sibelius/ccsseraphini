@@ -6172,10 +6172,10 @@ formdata-polyfill@^4.0.10:
   dependencies:
     fetch-blob "^3.1.2"
 
-framer-motion@6.3.14, framer-motion@^6:
-  version "6.3.14"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.3.14.tgz#615e6ba8a009bdf91fa413dac782d27f68b439e8"
-  integrity sha512-CCP5mFtVz3XwCYzLZ8rjVBa9AQguu8D0JdTF/XiBaBMF5JziUZR6rNyckSOjyYv5t+D7S2urOVXZv94GZvNQqw==
+framer-motion@6.3.15, framer-motion@^6:
+  version "6.3.15"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-6.3.15.tgz#4f56fc6cab3709ba889a6536c4d32bec9d74f3a9"
+  integrity sha512-tqyEaYfr+7p3rnMcMzdVxWoHLsAfpz7bk6xZljndSEfafQ0BfwlZ/CeFZkEETRFr16w/LxfDKBVhinU66ucDYw==
   dependencies:
     framesync "6.0.1"
     hey-listen "^1.0.8"
