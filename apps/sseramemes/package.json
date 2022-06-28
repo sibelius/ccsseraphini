@@ -5,8 +5,8 @@
     "Pedro Arantes <pedro@arantespp.com> (https://arantespp.com/contact)"
   ],
   "scripts": {
-    "test": "jest",
     "start": "esrun src/index.ts",
+    "test": "jest",
     "test:addlogo": "esrun scripts/testAddLogo.ts"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "dotenv": "16.0.1",
     "jimp": "0.16.1",
     "node-fetch": "3.2.6",
+    "twitter-api-sdk": "1.0.9",
     "twitter-api-v2": "1.12.2"
   },
   "devDependencies": {

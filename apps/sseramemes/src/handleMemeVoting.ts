@@ -5,8 +5,7 @@ import {
   PartialMessage,
 } from 'discord.js';
 import { tweetMeme } from './tweetMeme';
-import { MIN_POINTS_TO_TWEET } from './config';
-import { EMOJIS_POINTS } from './config';
+import { MIN_POINTS_TO_TWEET_MEME, EMOJIS_POINTS } from './score';
 import { memeConditions } from './types';
 
 const isMessageFromChannelMemes = (
@@ -76,7 +75,7 @@ export const handleMemeVoting = async (
     return counter;
   }, 0);
 
-  if (points < MIN_POINTS_TO_TWEET) {
+  if (points < MIN_POINTS_TO_TWEET_MEME) {
     return;
   }
 
