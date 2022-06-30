@@ -8163,10 +8163,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-next-auth@4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.6.1.tgz#b5b55d9cd2ecde2887c331d3bbe3ff42a180adf1"
-  integrity sha512-Fq0+NUZ0Kp7LhT0UZzZkSBcRb0W6DYlhgTUZragSqW5HXTJ7ShgFqOhH5aFoGSpXIxsZQmfFBbt9Oun09mf+aA==
+next-auth@4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.7.0.tgz#2d42b44729fde77d9e98a88612daf0ee853b9641"
+  integrity sha512-boXSIzHvCyNq1Jthi24LLnx12iKBsqsMxUKm5qq9alkfhVMeIRUR/wKP0FPSGc1s9WcGXMS3NmKQfADCEb0wow==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@panva/hkdf" "^1.0.1"
