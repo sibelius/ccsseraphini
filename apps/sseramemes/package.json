@@ -16,7 +16,7 @@
     "dotenv": "16.0.1",
     "jimp": "0.16.1",
     "node-fetch": "3.2.6",
-    "twitter-api-v2": "1.12.2"
+    "twitter-api-v2": "1.12.3"
   },
   "devDependencies": {
     "@babel/core": "7.18.6",
