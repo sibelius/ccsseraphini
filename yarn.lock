@@ -1688,14 +1688,14 @@
   dependencies:
     react-loading-skeleton "^3.1.0"
 
-"@digitak/esrun@3.2.6":
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.6.tgz#4884681ec8ce867e782531ac3b88521088c51613"
-  integrity sha512-sRHV0D/YILEBmePv6+NUat/eEvJ/vmQaKuOVmxVLOJZwHfxxdY/G3fxodwBeTD3fZ3BktNml0RTELkM9zwqRZA==
+"@digitak/esrun@3.2.7":
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.7.tgz#30615903c184a5351dcbc9e6dec9593964c9cdc2"
+  integrity sha512-/tzTTFBWhDytS/xeBIVULeHNUkssrzeYdgprLfvPp14mM1M9RtgJcKM6oWlG6aAPMxDIH8u5IhgZvoEcUhkWUg==
   dependencies:
     "@digitak/grubber" "^3.1.1"
     chokidar "^3.5.1"
-    esbuild "^0.12.4"
+    esbuild "^0.14.47"
 
 "@digitak/grubber@^3.1.1":
   version "3.1.1"
@@ -5599,7 +5599,7 @@ esbuild-windows-arm64@0.14.47:
   resolved "https://registry.yarnpkg.com/esbuild-windows-arm64/-/esbuild-windows-arm64-0.14.47.tgz#86d9db1a22d83360f726ac5fba41c2f625db6878"
   integrity sha512-HFSW2lnp62fl86/qPQlqw6asIwCnEsEoNIL1h2uVMgakddf+vUuMcCbtUY1i8sst7KkgHrVKCJQB33YhhOweCQ==
 
-esbuild@0.14.47:
+esbuild@0.14.47, esbuild@^0.14.47:
   version "0.14.47"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.14.47.tgz#0d6415f6bd8eb9e73a58f7f9ae04c5276cda0e4d"
   integrity sha512-wI4ZiIfFxpkuxB8ju4MHrGwGLyp1+awEHAHVpx6w7a+1pmYIq8T9FGEVVwFo0iFierDoMj++Xq69GXWYn2EiwA==
@@ -5624,11 +5624,6 @@ esbuild@0.14.47:
     esbuild-windows-32 "0.14.47"
     esbuild-windows-64 "0.14.47"
     esbuild-windows-arm64 "0.14.47"
-
-esbuild@^0.12.4:
-  version "0.12.29"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.29.tgz#be602db7c4dc78944a9dbde0d1ea19d36c1f882d"
-  integrity sha512-w/XuoBCSwepyiZtIRsKsetiLDUVGPVw1E/R3VTFSecIy8UR7Cq3SOtwKHJMFoVqqVG36aGkzh4e8BvpO1Fdc7g==
 
 escalade@^3.1.1:
   version "3.1.1"
