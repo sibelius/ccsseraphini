@@ -10,7 +10,7 @@
     "test:addlogo": "esrun scripts/testAddLogo.ts"
   },
   "dependencies": {
-    "@digitak/esrun": "3.2.7",
+    "@digitak/esrun": "3.2.8",
     "@jimp/types": "0.16.1",
     "discord.js": "13.8.1",
     "dotenv": "16.0.1",
