@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/jest": "^28.1.4",
-    "@types/node": "^18.0.0",
+    "@types/node": "^18.0.1",
     "babel-jest": "28.1.2",
     "eslint": "8.18.0",
     "jest": "28.1.2",
