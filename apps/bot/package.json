@@ -8,11 +8,11 @@
     "start": "node ./build/bot.js"
   },
   "dependencies": {
-    "@digitak/esrun": "3.2.6",
+    "@digitak/esrun": "3.2.8",
     "@discordjs/builders": "0.15.0",
     "@discordjs/rest": "0.5.0",
     "@jimp/types": "0.16.1",
-    "discord-api-types": "0.35.0",
+    "discord-api-types": "0.36.0",
     "discord.js": "13.8.1",
     "dotenv": "16.0.1",
     "dotenv-safe": "8.2.0",
@@ -25,10 +25,10 @@
     "koa-router": "10.1.1",
     "node-fetch": "3.2.6",
     "twitter-api-sdk": "1.0.9",
-    "twitter-api-v2": "1.12.2"
+    "twitter-api-v2": "1.12.3"
   },
   "devDependencies": {
-    "esbuild": "0.14.47",
+    "esbuild": "0.14.48",
     "esbuild-register": "3.3.3"
   }
 }
