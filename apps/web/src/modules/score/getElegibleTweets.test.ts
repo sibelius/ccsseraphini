@@ -6,10 +6,15 @@ jest.mock('modules/twitter/twitterFollowersGet');
 
 describe('GetElegibleTweets', () => {
   test('Should return only one elegible tweet', async () => {
+    const config = {
+      TWITTER_PROFILE_ID: '1070750548608147456',
+      TWITTER_BEARER_TOKEN: 'access_token',
+    };
     const { data: tweets } = await userTweets(
-      '1070750548608147456',
-      'accessToken',
+      config.TWITTER_PROFILE_ID,
+      config.TWITTER_BEARER_TOKEN,
     ).then((data) => data);
+
     const result = getElegibleTweets({
       tweets,
       twitter_profile_id: '2313873457',
