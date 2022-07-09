@@ -1,6 +1,5 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 
-// TODO create tests for this function
 const withErrorHandler =
   (fn: NextApiHandler) => async (req: NextApiRequest, res: NextApiResponse) => {
     try {
