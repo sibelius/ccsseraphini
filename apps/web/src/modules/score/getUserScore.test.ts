@@ -50,7 +50,7 @@ describe('GetUserScore', () => {
     expect(result.statusCode).toEqual(500);
   });
 
-  test('Should return empty score when user have tweets', async () => {
+  test('Should not return empty score when user have tweets', async () => {
     Object.defineProperties(config, {
       TWITTER_BEARER_TOKEN: filledVariable,
       TWITTER_PROFILE_ID: filledVariable,
