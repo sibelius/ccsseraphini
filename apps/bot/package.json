@@ -8,9 +8,12 @@
     "start": "node ./build/bot.js"
   },
   "dependencies": {
-    "@digitak/esrun": "3.2.4",
+    "@digitak/esrun": "3.2.8",
+    "@discordjs/builders": "0.15.0",
+    "@discordjs/rest": "0.5.0",
     "@jimp/types": "0.16.1",
-    "discord.js": "13.8.0",
+    "discord-api-types": "0.36.1",
+    "discord.js": "13.8.1",
     "dotenv": "16.0.1",
     "dotenv-safe": "8.2.0",
     "isomorphic-fetch": "3.0.0",
@@ -19,13 +22,13 @@
     "koa-bodyparser": "4.3.0",
     "koa-convert": "2.0.0",
     "koa-cors": "0.0.16",
-    "koa-router": "10.1.1",
-    "node-fetch": "3.2.4",
+    "koa-router": "11.0.1",
+    "node-fetch": "3.2.6",
     "twitter-api-sdk": "1.0.9",
-    "twitter-api-v2": "1.12.2"
+    "twitter-api-v2": "1.12.3"
   },
   "devDependencies": {
-    "esbuild": "0.14.45",
+    "esbuild": "0.14.48",
     "esbuild-register": "3.3.3"
   }
 }

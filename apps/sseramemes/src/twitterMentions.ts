@@ -1,9 +1,8 @@
+import { TextChannel } from 'discord.js';
 import { Client } from 'twitter-api-sdk';
-import { config } from './config';
-import { debugConsole } from './debugConsole';
 
-export async function* tweetStream() {
-  const client = new Client(config.TWITTER_BEARER_TOKEN);
+async function* mentionsStream() {
+  const client = new Client(process.env.TWITTER_BEARER_TOKEN);
 
   // remove old rules
   const rules = await client.tweets.getRules();
@@ -27,7 +26,7 @@ export async function* tweetStream() {
     {
       add: [
         {
-          value: '-RT @sseraphini -is:reply -is:retweet',
+          value: '-RT @sseramemes -is:reply -is:retweet',
         },
       ],
     },
@@ -57,14 +56,28 @@ export async function* tweetStream() {
     ],
   });
 
-  const newRules = await client.tweets.getRules();
-  debugConsole({
-    newRules,
-  });
-
   console.log('awaiting tweets');
 
   for await (const tweet of stream) {
     yield tweet;
   }
 }
+
+const twitterBaseUrl = 'https://twitter.com/';
+
+const getTweetUrl = (tweet: any) => {
+  const author = tweet.includes.users.find(
+    (user) => user.id === tweet.data.author_id,
+  );
+
+  const tweetUrl = `${twitterBaseUrl}${author.username}/status/${tweet.data.id}`;
+
+  return tweetUrl;
+};
+
+export const listenToMentions = async (memeChannel: TextChannel) => {
+  for await (const tweet of mentionsStream()) {
+    const tweetUrl = getTweetUrl(tweet);
+    await memeChannel.send(tweetUrl);
+  }
+};

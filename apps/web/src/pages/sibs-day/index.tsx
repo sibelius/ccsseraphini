@@ -2,6 +2,8 @@ import { Box, Heading, Flex, Spacer, Container, Show } from '@chakra-ui/react';
 import { ChakraNextLinkButton } from '../../components/ChakraNextLinkButton';
 import { SibLogo } from '../../components/home/SibLogo';
 import Blob from './blobs/index';
+import speakers from '../../speakerList';
+import Speaker from './speaker';
 
 export default function SibsDay() {
   return (
@@ -11,7 +13,6 @@ export default function SibsDay() {
       px={{ md: '14', base: '7' }}
       py={{ md: '4', base: '2' }}
       color="white"
-      height="100vh"
       direction={'column'}
       justify={'space-around'}
       flexWrap="wrap"
@@ -67,7 +68,6 @@ export default function SibsDay() {
             Open discussions and talks about the current tech ecosystem.
             <ChakraNextLinkButton
               href="https://docs.google.com/forms/d/1frC8SXs2SMcAreb11C0eTIkAikJ0mWk7WixKNR7pwyk/viewform?edit_requested=true"
-              //TODO: orange as the box above
               backgroundColor="#ad5e23"
               textColor="white"
               _hover={{ bg: '#c27853' }}
@@ -79,6 +79,19 @@ export default function SibsDay() {
             </ChakraNextLinkButton>
           </Heading>
         </Flex>
+        <Heading textAlign="center" my={5} as="h2" fontSize="2.1rem">
+          Speakers
+        </Heading>
+        {speakers.map(({ name, handler, talk, image }, index) => (
+          <Speaker
+            key={index}
+            name={name}
+            direction={index % 2 === 0 ? 'row-reverse' : 'row'}
+            handler={handler}
+            talk={talk}
+            image={image}
+          />
+        ))}
       </Container>
     </Flex>
   );

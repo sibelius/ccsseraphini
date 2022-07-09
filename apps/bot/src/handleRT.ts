@@ -9,5 +9,9 @@ const client = new TwitterApi({
 });
 
 export const handleRT = async (id: string) => {
-  await client.v1.post(`statuses/retweet/${id}.json`);
+  try {
+    await client.v1.post(`statuses/retweet/${id}.json`);
+  } catch (err) {
+    console.log('handleRT err: ', err);
+  }
 };

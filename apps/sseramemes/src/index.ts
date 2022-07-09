@@ -2,7 +2,8 @@ import 'dotenv/config';
 import { Client, Intents, TextChannel } from 'discord.js';
 import { handleMemeVoting, isMeme } from './handleMemeVoting';
 import { readyMessage } from './readyMessage';
-import { EMOJIS_POINTS } from './config';
+import { EMOJIS_POINTS } from './score';
+import { listenToMentions } from './twitterMentions';
 
 export const client = new Client({
   intents: [
@@ -20,6 +21,8 @@ client.once('ready', async () => {
   ) as TextChannel;
 
   await memeChannel.send(readyMessage);
+
+  await listenToMentions(memeChannel);
 });
 
 client.on('messageCreate', async (message) => {

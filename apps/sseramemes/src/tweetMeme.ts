@@ -1,8 +1,9 @@
 import { Message, PartialMessage } from 'discord.js';
 import { TwitterApi, TweetV1 } from 'twitter-api-v2';
 import fetch from 'node-fetch';
-import { RETWEET_MEME_TIMEOUT } from './config';
+import { RETWEET_MEME_TIMEOUT } from './score';
 import { addLogoToImage } from './addLogoToImage';
+import { getMessageContent } from './getMessageContent';
 
 const client = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
@@ -60,11 +61,10 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
   const mediaId = await uploadMeme(message);
 
   const mediaIds = mediaId ? [mediaId] : undefined;
-  
-  message=message.replace(/@\\/mg,'');
-  message=message.replace(/(@[\w]{1,})#[\d]{1,}/mg,'$1');
 
-  const tweet = await client.v1.tweet(message.content, {
+  const content = await getMessageContent(message);
+
+  const tweet = await client.v1.tweet(content, {
     media_ids: mediaIds,
   });
 
