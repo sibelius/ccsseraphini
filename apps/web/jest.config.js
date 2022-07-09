@@ -11,6 +11,8 @@ const customJestConfig = {
   displayName: pkg.name,
   setupFilesAfterEnv: ['./jest.setup.js'],
   testEnvironment: 'jsdom',
+  roots: ['<rootDir>/src/'],
+  moduleDirectories: ['node_modules', 'src'],
   transformIgnorePatterns: ['node_modules/(?!use-debounce|uuid)'],
 };
 
