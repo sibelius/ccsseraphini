@@ -62,3 +62,4 @@ apps/cli/lib
 package-lock.json
 
 test.png
+apps/web/public/sw.js.map
