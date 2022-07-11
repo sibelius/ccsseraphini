@@ -52,7 +52,7 @@
     "@typescript-eslint/parser": "5.30.5",
     "babel-jest": "28.1.2",
     "eslint": "8.19.0",
-    "eslint-config-next": "12.2.1",
+    "eslint-config-next": "12.2.2",
     "jest": "28.1.2",
     "jest-fetch-mock": "3.0.3",
     "next-compose-plugins": "2.2.1",
