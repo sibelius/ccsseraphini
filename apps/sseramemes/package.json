@@ -15,7 +15,7 @@
     "discord.js": "13.8.1",
     "dotenv": "16.0.1",
     "jimp": "0.16.1",
-    "node-fetch": "3.2.6",
+    "node-fetch": "3.2.8",
     "twitter-api-sdk": "1.0.9",
     "twitter-api-v2": "1.12.3"
   },
