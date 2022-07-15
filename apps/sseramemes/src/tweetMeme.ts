@@ -40,6 +40,7 @@ export const uploadMeme = async (message: Message | PartialMessage) => {
     const mediaId = await client.v1.uploadMedia(newBuffer, { mimeType });
     return mediaId;
   } catch {
+    console.error(err);
     return undefined;
   }
 };
