@@ -1,8 +1,8 @@
 import { Message, PartialMessage } from 'discord.js';
-import { TwitterApi, TweetV1 } from 'twitter-api-v2';
+import { TweetV1, TwitterApi } from 'twitter-api-v2';
 import fetch from 'node-fetch';
 import { RETWEET_MEME_TIMEOUT } from './score';
-import { addLogoToImage } from './addLogoToImage';
+import { addLogoToImage, resizeImage } from './image-scripts';
 import { getMessageContent } from './getMessageContent';
 
 const client = new TwitterApi({
@@ -30,15 +30,15 @@ export const uploadMeme = async (message: Message | PartialMessage) => {
   const mimeType = attachment.contentType;
 
   /**
-   * If the buffer is a image, we add logo.
+   * If the buffer is an image, we resize it then add logo.
    */
   if (ALLOWED_MEME_TYPES_TO_ADD_LOGO.includes(mimeType)) {
-    newBuffer = await addLogoToImage(buffer);
+    const resizedImage = await resizeImage(buffer);
+    newBuffer = await addLogoToImage(resizedImage);
   }
 
   try {
-    const mediaId = await client.v1.uploadMedia(newBuffer, { mimeType });
-    return mediaId;
+    return await client.v1.uploadMedia(newBuffer, { mimeType });
   } catch (err) {
     console.error(err);
     return undefined;
