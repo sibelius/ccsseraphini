@@ -7,7 +7,8 @@
   "scripts": {
     "start": "esrun src/index.ts",
     "test": "jest",
-    "test:addlogo": "esrun scripts/testAddLogo.ts"
+    "test:addlogo": "esrun scripts/testAddLogo.ts",
+    "test:resize": "esrun scripts/testResizeImage.ts"
   },
   "dependencies": {
     "@digitak/esrun": "3.2.8",
