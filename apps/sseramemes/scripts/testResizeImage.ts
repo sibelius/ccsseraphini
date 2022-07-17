@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import * as fs from 'fs';
-import { addLogoToImage } from '../src/image-scripts';
+import fs from 'fs';
+import { resizeImage } from '../src/image-scripts';
 
 const testMeme = async () => {
   const image = await fetch(
@@ -8,12 +8,12 @@ const testMeme = async () => {
   );
 
   const buffer = Buffer.from(await image.arrayBuffer());
-  const bufferWithWatermark = await addLogoToImage(buffer);
+  const resizedBuffer = await resizeImage(buffer);
 
   /**
-   * Save bufferWithWatermark to file.
+   * Save resizedBuffer to file.
    */
-  await fs.promises.writeFile('test.png', bufferWithWatermark);
+  await fs.promises.writeFile('test.png', resizedBuffer);
 };
 
 testMeme().then();

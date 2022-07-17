@@ -12,7 +12,7 @@
     "@discordjs/builders": "0.15.0",
     "@discordjs/rest": "0.5.0",
     "@jimp/types": "0.16.1",
-    "discord-api-types": "0.36.1",
+    "discord-api-types": "0.36.2",
     "discord.js": "13.8.1",
     "dotenv": "16.0.1",
     "dotenv-safe": "8.2.0",
@@ -24,7 +24,7 @@
     "koa-cors": "0.0.16",
     "koa-router": "11.0.1",
     "node-fetch": "3.2.8",
-    "twitter-api-sdk": "1.0.9",
+    "twitter-api-sdk": "1.1.0",
     "twitter-api-v2": "1.12.3"
   },
   "devDependencies": {
