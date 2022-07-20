@@ -15,7 +15,7 @@ const mockOriginalImage = Buffer.from('mockOriginalImage');
 
 const mockImageWithLogo = Buffer.from('mockImageWithLogo');
 
-jest.mock('./addLogoToImage', () => ({
+jest.mock('./image-scripts/addLogoToImage', () => ({
   addLogoToImage: jest.fn().mockImplementation(() => {
     return Promise.resolve(mockImageWithLogo);
   }),
