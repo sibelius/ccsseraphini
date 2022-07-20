@@ -2,7 +2,7 @@ import { Box, Heading, Flex, Spacer, Container, Show } from '@chakra-ui/react';
 import { ChakraNextLinkButton } from '../../components/ChakraNextLinkButton';
 import { SibLogo } from '../../components/home/SibLogo';
 import Blob from './blobs/index';
-import speakers from '../../speakerList';
+import speakers from './speaker/speakerList';
 import Speaker from './speaker';
 
 export default function SibsDay() {
@@ -82,15 +82,8 @@ export default function SibsDay() {
         <Heading textAlign="center" my={5} as="h2" fontSize="2.1rem">
           Speakers
         </Heading>
-        {speakers.map(({ name, handler, talk, image }, index) => (
-          <Speaker
-            key={index}
-            name={name}
-            direction={index % 2 === 0 ? 'row-reverse' : 'row'}
-            handler={handler}
-            talk={talk}
-            image={image}
-          />
+        {speakers.map((props, index) => (
+          <Speaker key={index} {...props} />
         ))}
       </Container>
     </Flex>

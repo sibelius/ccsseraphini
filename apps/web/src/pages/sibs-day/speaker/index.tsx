@@ -7,6 +7,7 @@ export default function Speaker({
   handler,
   talk,
   image,
+  backgroundColor,
 }: SpeakerProps) {
   return (
     <Flex
@@ -15,6 +16,7 @@ export default function Speaker({
       mt="1rem"
       direction={direction}
       align={'center'}
+      bg={backgroundColor}
       style={{
         borderRadius: '20px',
         backdropFilter: 'blur(12px)',
@@ -55,4 +57,5 @@ export type SpeakerProps = {
   name: string;
   talk: string;
   handler: string;
+  backgroundColor: string;
 };
