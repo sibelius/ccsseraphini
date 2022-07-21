@@ -4,7 +4,6 @@ import { SibLogo } from '../../components/home/SibLogo';
 import Blob from './blobs/index';
 import Speaker, { SpeakerProps } from './speaker';
 
-
 export default function SibsDay() {
   return (
     <Flex
@@ -112,7 +111,7 @@ const speakers: Array<SpeakerProps> = [
   {
     direction: 'row-reverse',
     image:
-      'https://pbs.twimg.com/profile_images/1548858425555156992/Dicm8lt2_400x400.jpg',
+      'https://cdn.discordapp.com/attachments/951864774159908894/999691714556067951/Screenshot_4.png',
     name: 'Victória Rose',
     handler: 'victoriaquasar',
     backgroundColor: '#2b1123',
