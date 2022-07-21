@@ -31,7 +31,7 @@ export default function SibsDay() {
               <br />
               DAY
               <br />
-              27/07
+              27/07 19:00
             </Heading>
           </Box>
         </Box>
