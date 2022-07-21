@@ -4,6 +4,7 @@ import { SibLogo } from '../../components/home/SibLogo';
 import Blob from './blobs/index';
 import Speaker, { SpeakerProps } from './speaker';
 
+
 export default function SibsDay() {
   return (
     <Flex
