@@ -13,7 +13,7 @@
   "dependencies": {
     "@ccsseraphini/ui": "0.0.1",
     "@chakra-ui/react": "2.2.4",
-    "@dhaiwat10/react-link-preview": "1.14.1",
+    "@dhaiwat10/react-link-preview": "1.14.2",
     "@emotion/react": "11",
     "@emotion/styled": "11",
     "@sentry/nextjs": "7.7.0",
