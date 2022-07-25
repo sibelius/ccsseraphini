@@ -1724,10 +1724,10 @@
   dependencies:
     react-loading-skeleton "^3.1.0"
 
-"@digitak/esrun@3.2.8":
-  version "3.2.8"
-  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.8.tgz#3e561e03e995bd14bc03eb270d3f7d74ea8bab81"
-  integrity sha512-NUpcDW8OyUl85AqEyWEib2Rc5TSmMYOdHoH8/IcAabXNMh+3FJS+pTqxVv+2R+jZrnPTjDdBr7gTYij1E7TRLg==
+"@digitak/esrun@3.2.9":
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.9.tgz#54173b58c019f9e16da2386365bc0d3125b6e104"
+  integrity sha512-IuBjGfb5+xsOAwQ2CwMYoQrAaemRCdpEtnwULMz8Cc4hrfxeRWpFXAc5q/sTuwYDC3R6fHvVNrLdpQxKu62aOg==
   dependencies:
     "@digitak/grubber" "^3.1.1"
     chokidar "^3.5.1"
@@ -3236,10 +3236,10 @@
   dependencies:
     buffer "~6.0.3"
 
-"@solana/web3.js@1.48.0":
-  version "1.48.0"
-  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.48.0.tgz#331281b2d80640431fb3b6fdc6b704ec325917aa"
-  integrity sha512-Gb6XvdhGjGI7CdAXLmlMIEvEYvrwqc78JOtwCsSrTqzz7Ek/BhJpZ/Cv89gxRDrWxf6kHegAfaN2FxwuYMmDZQ==
+"@solana/web3.js@1.50.0":
+  version "1.50.0"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.50.0.tgz#afc01b0fdeb86b571eefd243567a7dc9a281f236"
+  integrity sha512-9KCuF3QLHd/dkYlffYPSHPbPFaBKqiwwDqWR+C/z1CZZbQybu+NCydWvwHHqrrlG50wn15L/6zYLb5Tjr6tOkA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@ethersproject/sha2" "^5.5.0"
@@ -8425,10 +8425,10 @@ node-fetch@2, node-fetch@2.6.7, node-fetch@^2.6.1, node-fetch@^2.6.7:
   dependencies:
     whatwg-url "^5.0.0"
 
-node-fetch@3.2.8:
-  version "3.2.8"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-3.2.8.tgz#0d9516dcf43a758d78d6dbe538adf0b1f6a4944e"
-  integrity sha512-KtpD1YhGszhntMpBDyp5lyagk8KIMopC1LEb7cQUAh7zcosaX5uK8HnbNb2i3NTQK3sIawCItS0uFC3QzcLHdg==
+node-fetch@3.2.9:
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-3.2.9.tgz#3f6070bf854de20f21b9fe8479f823462e615d7d"
+  integrity sha512-/2lI+DBecVvVm9tDhjziTVjo2wmTsSxSk58saUYP0P/fRJ3xxtfMDY24+CKTkfm0Dlhyn3CSXNL0SoRiCZ8Rzg==
   dependencies:
     data-uri-to-buffer "^4.0.0"
     fetch-blob "^3.1.4"
