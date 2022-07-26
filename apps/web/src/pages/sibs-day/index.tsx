@@ -66,7 +66,7 @@ export default function SibsDay() {
           <Heading textAlign="end" as="h3" size="xl">
             Open discussions and talks about the current tech ecosystem.
             <ChakraNextLinkButton
-              href="https://docs.google.com/forms/d/1frC8SXs2SMcAreb11C0eTIkAikJ0mWk7WixKNR7pwyk/viewform?edit_requested=true"
+              href="https://youtu.be/zTE6Ic_Qzlw"
               backgroundColor="#ad5e23"
               textColor="white"
               _hover={{ bg: '#c27853' }}
@@ -74,7 +74,7 @@ export default function SibsDay() {
               width="100%"
               size="sm"
             >
-              Fill the form
+              See livestream
             </ChakraNextLinkButton>
           </Heading>
         </Flex>
