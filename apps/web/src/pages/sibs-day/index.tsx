@@ -66,7 +66,7 @@ export default function SibsDay() {
           <Heading textAlign="end" as="h3" size="xl">
             Open discussions and talks about the current tech ecosystem.
             <ChakraNextLinkButton
-              href="https://youtu.be/zTE6Ic_Qzlw"
+              href="https://youtu.be/cMf2UDSS1U0"
               backgroundColor="#ad5e23"
               textColor="white"
               _hover={{ bg: '#c27853' }}
