@@ -1,5 +1,5 @@
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
-import { config } from '../config';
+import { config } from '../../config';
 
 const withValidation =
   (fn: NextApiHandler) => async (req: NextApiRequest, res: NextApiResponse) => {
