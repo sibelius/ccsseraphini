@@ -1,5 +1,5 @@
 import withErrorHandler from 'middlewares/error-handler';
-import withValidation from 'middlewares/validations';
+import withValidation from 'middlewares/validations/validations';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getHttpProtocol } from 'getHttpProtocol';
 import { TweetData } from 'types/Tweet';
