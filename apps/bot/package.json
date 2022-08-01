@@ -23,7 +23,7 @@
     "koa-convert": "2.0.0",
     "koa-cors": "0.0.16",
     "koa-router": "12.0.0",
-    "node-fetch": "3.2.9",
+    "node-fetch": "3.2.10",
     "twitter-api-sdk": "1.1.0",
     "twitter-api-v2": "1.12.3"
   },
