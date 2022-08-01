@@ -1758,18 +1758,7 @@
   resolved "https://registry.yarnpkg.com/@digitak/grubber/-/grubber-3.1.1.tgz#13c02833f5ed0c342cb1f9cfec1fd104fb9f943e"
   integrity sha512-xHpmj3Erk5AA/nKpOJzap23TJSV0MFRTgtciG8XZg0GP0CUwms0g02SQQaKEPCe2mvKVlqfzad3xV4DiHlq2jA==
 
-"@discordjs/builders@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@discordjs/builders/-/builders-1.0.0.tgz#1ddc5a7f9d20977e7414c02989169bb7f55294ba"
-  integrity sha512-8y91ZfpOHubiGJu5tVyGI9tQCEyHZDTeqUWVcJd0dq7B96xIf84S0L4fwmD1k9zTe1eqEFSk0gc7BpY+FKn7Ww==
-  dependencies:
-    "@sapphire/shapeshift" "^3.5.1"
-    discord-api-types "^0.36.2"
-    fast-deep-equal "^3.1.3"
-    ts-mixer "^6.0.1"
-    tslib "^2.4.0"
-
-"@discordjs/builders@^1.1.0":
+"@discordjs/builders@1.1.0", "@discordjs/builders@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@discordjs/builders/-/builders-1.1.0.tgz#4366a4fe069238c3e6e674b74404c79f3ba76525"
   integrity sha512-EO8TSltiIc9Z1wE854wAFvv5AccqEtvjFmao9PPoxQhRaJ0hEb7FwWRTCA1jGg4ZWI3hcp4m+RET5ufZQz3rOg==
@@ -5396,7 +5385,7 @@ discord-api-types@^0.33.3:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.33.4.tgz#c815ba8c34762167c4d9a133371188a9b3743780"
   integrity sha512-Y6RMvXsHKiBgQhm/q5MgRieXc4Tzh5p/JuDyqreI48lmy+AQfO+g9Xhz0tuGBaN1FtsrLT7mD+lbFONPo5vdwA==
 
-discord-api-types@^0.36.2, discord-api-types@^0.36.3:
+discord-api-types@^0.36.3:
   version "0.36.3"
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.36.3.tgz#a931b7e57473a5c971d6937fa5f392eb30047579"
   integrity sha512-bz/NDyG0KBo/tY14vSkrwQ/n3HKPf87a0WFW/1M9+tXYK+vp5Z5EksawfCWo2zkAc6o7CClc0eff1Pjrqznlwg==
