@@ -64,3 +64,4 @@ package-lock.json
 
 test.png
 apps/web/public/sw.js.map
+apps/bot/globalConfig.json
