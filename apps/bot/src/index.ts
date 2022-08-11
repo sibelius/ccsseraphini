@@ -1,24 +1,32 @@
 import { config } from './config';
 import { debugConsole } from './debugConsole';
 import { tweetStream } from './tweetStream';
-import { Intents, TextChannel } from 'discord.js';
+import { GatewayIntentBits, TextChannel } from 'discord.js';
 import { Client } from 'discord.js';
 import { readyMessage } from './readyMessage';
 import { EMOJIS_POINTS } from './score';
 import { handleRTVoting } from './handleRTVoting';
+import connectDB from './mongodb';
+import saveTweetData from './tweetRanking/saveTweetData';
 
 export const client = new Client({
   intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessageReactions,
   ],
 });
 
-let botChannel;
+let botChannel: TextChannel;
 
 client.once('ready', async () => {
   console.log(readyMessage);
+
+  try {
+    await connectDB();
+  } catch (error) {
+    console.error('Error connecting to MongoDB', error);
+  }
 
   botChannel = client.channels.cache.get(
     config.DISCORD_BOT_CHANNEL_ID,
@@ -31,6 +39,7 @@ client.once('ready', async () => {
 export const twitterBaseUrl = 'https://twitter.com/';
 
 const processTweet = async (tweet) => {
+  await saveTweetData(tweet);
   debugConsole(tweet);
 
   const author = tweet.includes.users.find(
