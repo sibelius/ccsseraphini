@@ -31,5 +31,7 @@ export const config = {
   GUILD_ID: process.env.GUILD_ID as string,
   WEBHOOK_DISCORD: process.env.WEBHOOK_DISCORD as string,
 
+  MONGO_URI: process.env.MONGO_URI as string,
+
   PORT: 3000,
 } as const;
