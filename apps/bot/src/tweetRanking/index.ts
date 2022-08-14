@@ -31,7 +31,7 @@ const tweetRanking = (since: Date, size: number = 3) => {
   return execute;
 };
 
-export const executeDailyTweetRanking: JobCallback = async () => {
+export const dailyTweetRanking: JobCallback = async () => {
   const date = new Date(Date.now() - 86400000); // 24 hours in milliseconds
   return tweetRanking(date);
 };
