@@ -1,36 +1,33 @@
-import getTweets from './getTweets';
-import getTweetsFromApi from './getTweetsFromApi';
-import { TweetDocument, TweetScore } from './types';
-import calculateTweetScore from './calculateTweetScore';
+import getTemporaryTweets from './getTemporaryTweets';
+import { RankedTweet, TweetData, TemporaryTweet } from './types';
+import parseToRankedTweet from './parseToRankedTweet';
+import { getTweetIdChunks } from './getTweetIdChunks';
+import { getTweetsByIdChunks } from './getTweetsByIdChunks';
+import saveRankedTweets from './saveRankedTweets';
 
-const getRankedTweets = async (created_at: Date, size: number = 3) => {
-  const persistedTweets: TweetDocument[] = await getTweets({ created_at });
+const getRankedTweets = async (created_at: Date): Promise<RankedTweet[]> => {
+  const temporaryTweets: TemporaryTweet[] = await getTemporaryTweets({
+    created_at,
+  });
 
-  const idChunks: string[][] = persistedTweets.reduce(
-    (acc, { data: { tweet_id } }, index) => {
-      const chunkIndex = Math.floor(index / 100);
-
-      if (!acc[chunkIndex]) {
-        acc[chunkIndex] = [];
-      }
-
-      acc[chunkIndex].push(tweet_id);
-
-      return acc;
-    },
-    [] as string[][],
-  );
-
-  const tweets = [];
-  for await (const ids of idChunks) {
-    const { data } = await getTweetsFromApi(ids);
-    tweets.push(...data);
+  if (!temporaryTweets?.length) {
+    console.error('No tweets found in database');
+    return [];
   }
 
-  return tweets
-    .map(calculateTweetScore)
-    .sort((a: TweetScore, b: TweetScore) => b.score - a.score)
-    .slice(0, size);
+  try {
+    const tweetIdChunks = getTweetIdChunks(temporaryTweets);
+    const tweets: TweetData[] = await getTweetsByIdChunks(tweetIdChunks);
+
+    if (!tweets.length) {
+      console.error('Not found tweets in API');
+      return [];
+    }
+
+    return tweets.map(parseToRankedTweet);
+  } catch (error) {
+    console.error('Fail to get tweets from Twitter API', error);
+  }
 };
 
 export default getRankedTweets;
