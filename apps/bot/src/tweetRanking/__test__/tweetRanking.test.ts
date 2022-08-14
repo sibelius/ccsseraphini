@@ -22,8 +22,9 @@ afterAll(disconnectMongoose);
 jest.mock('../getTwitterClient');
 
 it('should run without errors the tweetRanking execute function', async () => {
+  const created_at = new Date('2021-11-15T19:08:00.000Z');
   //Create Fake Tweets to test the ranking
-  const fakeTweets: TemporaryTweet[] = createFakeTweets();
+  const fakeTweets: TemporaryTweet[] = createFakeTweets(created_at);
 
   //Insert Fake Tweets in the DB
   const temporaryTweets: TemporaryTweet[] =
@@ -53,11 +54,14 @@ it('should run without errors the tweetRanking execute function', async () => {
     },
   });
 
+  //mock console error spy to check if there are errors
+  const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+
   //Get execute function
-  const execute = tweetRanking(new Date('2021-11-15T19:08:00.000Z'));
+  const execute = tweetRanking(created_at);
 
   //Execute the ranking creation
   await execute(new Date());
 
-  expect(getTwitterClient).toHaveBeenCalledTimes(1);
+  expect(consoleSpy).toHaveBeenCalledTimes(0);
 });

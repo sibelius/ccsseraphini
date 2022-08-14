@@ -12,7 +12,7 @@ beforeAll(connectMongoose);
 beforeEach(clearDbAndRestartCounters);
 afterAll(disconnectMongoose);
 
-it.skip('should save ranked tweet', async () => {
+it('should save ranked tweet', async () => {
   const tweetData: TweetData = {
     attachments: {},
     author_id: '1415806078600810501',

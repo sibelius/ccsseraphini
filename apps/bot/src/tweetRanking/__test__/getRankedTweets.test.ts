@@ -14,7 +14,7 @@ beforeEach(clearDbAndRestartCounters);
 afterEach(() => fetchMock.resetMocks());
 afterAll(disconnectMongoose);
 
-it.skip('should return the score of the tweet', async () => {
+it('should return the score of the tweet', async () => {
   const data: Partial<Data> = {
     created_at: '2021-11-15T19:08:05.000Z',
     id: '1460323737035677698',

@@ -8,7 +8,7 @@ beforeAll(connectMongoose);
 beforeEach(clearDbAndRestartCounters);
 afterAll(disconnectMongoose);
 
-it.skip('should save temporary tweet', async () => {
+it('should save temporary tweet', async () => {
   const data: Data = {
     attachments: {},
     author_id: '2244994945',

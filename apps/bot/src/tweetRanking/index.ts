@@ -8,26 +8,24 @@ import deleteTemporaryTweets from './deleteTemporaryTweets';
 
 const tweetRanking = (since: Date, size: number = 3) => {
   const execute: JobCallback = async () => {
-    const startDate = new Date();
-    const rankedTweets = await getRankedTweets(since);
+    try {
+      const startDate = new Date();
+      const rankedTweets = await getRankedTweets(since);
+      if (!rankedTweets?.length) {
+        console.info('Unable to calculate tweet ranking');
+        return;
+      }
 
-    if (!rankedTweets?.length) {
-      console.info('Unable to calculate tweet ranking');
-      return;
+      //Persist all ranked tweets
+      await saveRankedTweets(rankedTweets);
+      await deleteTemporaryTweets(since, startDate);
+      const topTweets = rankedTweets
+        .sort((a: RankedTweet, b: RankedTweet) => b.score - a.score)
+        .slice(0, size);
+      await publishRanking(topTweets);
+    } catch (error) {
+      console.error('Fail to calculate tweet ranking', error);
     }
-
-    //Persist all ranked tweets
-    await saveRankedTweets(rankedTweets);
-
-    await deleteTemporaryTweets(since, startDate);
-
-    const topTweets = rankedTweets
-      .sort((a: RankedTweet, b: RankedTweet) => b.score - a.score)
-      .slice(0, size);
-
-    console.info({ topTweets });
-
-    await publishRanking(topTweets);
   };
 
   return execute;
