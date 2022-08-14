@@ -19,6 +19,8 @@ export type RankedTweet = TemporaryTweet & {
     quote_count: number;
   };
   score: number;
+  last_updated?: Date;
+  changes_since_last_update?: boolean;
 };
 
 export type TweetData = {

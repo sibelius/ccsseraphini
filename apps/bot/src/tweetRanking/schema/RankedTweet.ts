@@ -26,6 +26,8 @@ const rankedTweetSchema = new Schema({
     type: Number,
     required: true,
   },
+  last_updated: Date,
+  changes_since_last_update: Boolean,
 });
 
 const RankedTweetModel = model('rankedTweet', rankedTweetSchema);
