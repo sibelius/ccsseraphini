@@ -1,15 +1,16 @@
 import fetchMock from 'jest-fetch-mock';
+import { TweetV2PostTweetResult } from 'twitter-api-v2';
 
 import { clearDbAndRestartCounters } from '../../../test/clearDbAndRestartCounters';
 import { disconnectMongoose } from '../../../test/disconnectMongoose';
 import { connectMongoose } from '../../../test/connectMongoose';
-import { createFakeTweetBatch } from '../__mocks__/createFakeTweetBatch';
-import { createFakeTweets } from '../__mocks__/createFakeTweets';
+import createFakeTweetBatch from '../__mocks__/createFakeTweetBatch';
+import createFakeTemporaryTweets from '../__mocks__/createFakeTemporaryTweets';
 import TemporaryTweetModel from '../schema/TemporaryTweet';
+import RankedTweetModel from '../schema/RankedTweet';
+import getTwitterClient from '../getTwitterClient';
 import { TemporaryTweet } from '../types';
 import tweetRanking from '..';
-import { getTwitterClient } from '../getTwitterClient';
-import { TweetV2PostTweetResult } from 'twitter-api-v2';
 
 beforeAll(async () => {
   await connectMongoose();
@@ -24,7 +25,7 @@ jest.mock('../getTwitterClient');
 it('should run without errors the tweetRanking execute function', async () => {
   const created_at = new Date('2021-11-15T19:08:00.000Z');
   //Create Fake Tweets to test the ranking
-  const fakeTweets: TemporaryTweet[] = createFakeTweets(created_at);
+  const fakeTweets: TemporaryTweet[] = createFakeTemporaryTweets(created_at);
 
   //Insert Fake Tweets in the DB
   const temporaryTweets: TemporaryTweet[] =
@@ -42,20 +43,20 @@ it('should run without errors the tweetRanking execute function', async () => {
       tweet: jest.fn().mockResolvedValue({
         data: { id: '1' },
       }),
-      reply: jest
-        .fn()
-        .mockImplementation(async (_: string, replyId: string) => {
-          const id = (parseInt(replyId) + 1).toString();
+      reply: jest.fn(async (_: string, replyId: string) => {
+        const id = (parseInt(replyId) + 1).toString();
 
-          return {
-            data: { id },
-          } as TweetV2PostTweetResult;
-        }),
+        return {
+          data: { id },
+        } as TweetV2PostTweetResult;
+      }),
     },
   });
 
   //mock console error spy to check if there are errors
-  const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+  const consoleSpy = jest
+    .spyOn(console, 'error')
+    .mockImplementation(() => console.error);
 
   //Get execute function
   const execute = tweetRanking(created_at);
@@ -63,5 +64,13 @@ it('should run without errors the tweetRanking execute function', async () => {
   //Execute the ranking creation
   await execute(new Date());
 
+  //check is was all data deleted
+  const temporaryTweetsCount = await TemporaryTweetModel.countDocuments();
+  const rankedTweetsCount = await RankedTweetModel.countDocuments();
+
   expect(consoleSpy).toHaveBeenCalledTimes(0);
+  expect(temporaryTweetsCount).toBe(0);
+  expect(rankedTweetsCount).toBe(10);
+  expect((await getTwitterClient()).v2.tweet).toHaveBeenCalledTimes(1);
+  expect((await getTwitterClient()).v2.reply).toHaveBeenCalledTimes(4);
 });

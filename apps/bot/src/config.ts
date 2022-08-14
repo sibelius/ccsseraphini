@@ -37,4 +37,6 @@ export const config = {
 
   TWEET_RANKING_CRON_STRING:
     process.env.TWEET_RANKING_CRON_STRING || '* 19 * * * *',
+  SYNC_RANKED_TWEET_CRON_STRING:
+    process.env.SYNC_RANKED_TWEET_CRON_STRING || '* 2 * * * *',
 } as const;

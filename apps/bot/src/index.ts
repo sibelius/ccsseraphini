@@ -9,7 +9,7 @@ import { EMOJIS_POINTS } from './score';
 import { handleRTVoting } from './handleRTVoting';
 import connectDB from './mongodb';
 import saveTemporaryTweet from './tweetRanking/saveTemporaryTweet';
-import rankingJob from './tweetRanking/rankingJob';
+import startJobs from './tweetRanking/jobs';
 
 export const client = new Client({
   intents: [
@@ -24,7 +24,7 @@ let botChannel: TextChannel;
 client.once('ready', async () => {
   console.log(readyMessage);
 
-  rankingJob('* 12 * * * *');
+  startJobs();
 
   try {
     await connectDB();

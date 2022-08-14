@@ -1,8 +1,7 @@
-import { Tweet, Public_metrics } from '../../tweetTypes';
 import TemporaryTweetModel from '../schema/TemporaryTweet';
-import { TemporaryTweet, TweetData } from '../types';
+import { TemporaryTweet } from '../types';
 
-export const createFakeTweets = (created_at: Date): TemporaryTweet[] => {
+const createFakeTemporaryTweets = (created_at: Date): TemporaryTweet[] => {
   const fakeTweetIds = [
     '1160323737035677698',
     '1260323737035677698',
@@ -25,3 +24,5 @@ export const createFakeTweets = (created_at: Date): TemporaryTweet[] => {
     return model;
   });
 };
+
+export default createFakeTemporaryTweets;
