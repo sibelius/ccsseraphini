@@ -34,4 +34,7 @@ export const config = {
   MONGO_URI: process.env.MONGO_URI as string,
 
   PORT: 3000,
+
+  TWEET_RANKING_CRON_STRING:
+    process.env.TWEET_RANKING_CRON_STRING || '* 19 * * * *',
 } as const;

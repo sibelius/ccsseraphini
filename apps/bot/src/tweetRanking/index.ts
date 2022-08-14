@@ -1,8 +1,8 @@
 import { JobCallback } from 'node-schedule';
 
 import { RankedTweet } from './types';
-import getRankedTweets from './getRankedTweets';
 import publishRanking from './publishRanking';
+import getRankedTweets from './getRankedTweets';
 import saveRankedTweets from './saveRankedTweets';
 import deleteTemporaryTweets from './deleteTemporaryTweets';
 
@@ -38,6 +38,4 @@ export const executeDailyTweetRanking: JobCallback = async () => {
   return tweetRanking(date);
 };
 
-export const defaultCronString = '* 19 * * * *';
-export const debugCronString = '1 * * * * *';
 export default tweetRanking;
