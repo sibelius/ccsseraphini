@@ -37,7 +37,6 @@
     "esbuild": "0.14.54",
     "esbuild-register": "3.3.3",
     "jest": "^28.1.0",
-    "jest-fetch-mock": "3.0.3",
-    "supertest": "^6.2.3"
+    "jest-fetch-mock": "3.0.3"
   }
 }
