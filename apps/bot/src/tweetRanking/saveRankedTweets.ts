@@ -1,5 +1,5 @@
+import { RankedTweet } from './types';
 import RankedTweetModel from './schema/RankedTweet';
-import { RankedTweet, TweetBatch, TweetData } from './types';
 
 const saveRankedTweets = async (tweets: RankedTweet[]): Promise<void> => {
   try {
@@ -14,7 +14,7 @@ const saveRankedTweets = async (tweets: RankedTweet[]): Promise<void> => {
       { ordered: false },
     );
   } catch (error) {
-    console.error('Fail to save ranked tweets', error, tweets);
+    console.error('Fail to save ranked tweets', error, { tweets });
   }
 };
 

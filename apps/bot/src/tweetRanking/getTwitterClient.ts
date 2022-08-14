@@ -1,4 +1,5 @@
 import { TwitterApi } from 'twitter-api-v2';
+
 import { config } from '../config';
 
 const configValidator = (keys: string[]): boolean =>
@@ -11,7 +12,7 @@ const configValidator = (keys: string[]): boolean =>
     return valid;
   }, true);
 
-export const getTwitterClient = async (): Promise<TwitterApi> => {
+const getTwitterClient = async (): Promise<TwitterApi> => {
   const neededKeys = [
     'TWITTER_API_KEY',
     'TWITTER_API_KEY_SECRET',
@@ -30,3 +31,5 @@ export const getTwitterClient = async (): Promise<TwitterApi> => {
 
   return client;
 };
+
+export default getTwitterClient;

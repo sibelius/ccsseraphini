@@ -1,10 +1,8 @@
 import { clearDbAndRestartCounters } from '../../../test/clearDbAndRestartCounters';
 import { connectMongoose } from '../../../test/connectMongoose';
 import { disconnectMongoose } from '../../../test/disconnectMongoose';
-import { Data, Tweet } from '../../tweetTypes';
 import parseToRankedTweet from '../parseToRankedTweet';
 import saveRankedTweets from '../saveRankedTweets';
-import saveTemporaryTweet from '../saveTemporaryTweet';
 import RankedTweetModel from '../schema/RankedTweet';
 import { RankedTweet, TweetData } from '../types';
 

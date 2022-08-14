@@ -1,5 +1,6 @@
 import { TweetV2PostTweetResult, TwitterApi } from 'twitter-api-v2';
-import { getTwitterClient } from './getTwitterClient';
+
+import getTwitterClient from './getTwitterClient';
 
 const hasError = (tweet: TweetV2PostTweetResult) => {
   if (!tweet?.errors?.length) return false;
@@ -79,7 +80,7 @@ const publishRanking = async (tweets: any): Promise<void> => {
 
     console.info('Tweet Ranking published');
   } catch (error) {
-    console.error('Tweet Ranking failed to publish', error);
+    console.error('Tweet Ranking failed to publish', error, { tweets });
   }
 };
 

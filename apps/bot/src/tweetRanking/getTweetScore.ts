@@ -1,6 +1,6 @@
 import { TweetData } from './types';
 
-export const getTweetScore = (tweet: Partial<TweetData>): number => {
+const getTweetScore = (tweet: Partial<TweetData>): number => {
   const {
     public_metrics: { retweet_count, reply_count, like_count, quote_count },
   } = tweet;
@@ -11,3 +11,5 @@ export const getTweetScore = (tweet: Partial<TweetData>): number => {
 
   return score;
 };
+
+export default getTweetScore;

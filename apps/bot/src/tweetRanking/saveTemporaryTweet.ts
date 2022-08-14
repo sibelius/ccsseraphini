@@ -1,6 +1,6 @@
 import { Tweet } from '../tweetTypes';
-import TemporaryTweetModel from './schema/TemporaryTweet';
 import { TemporaryTweet } from './types';
+import TemporaryTweetModel from './schema/TemporaryTweet';
 
 const saveTemporaryTweet = async ({
   data: { id: tweet_id, created_at },
@@ -15,7 +15,7 @@ const saveTemporaryTweet = async ({
 
     return tweetSaved;
   } catch (error) {
-    console.error('Fail to save tweet', error);
+    console.error('Fail to save tweet', error, { tweet_id, created_at });
   }
 };
 

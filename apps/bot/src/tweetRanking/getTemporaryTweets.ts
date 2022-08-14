@@ -17,7 +17,7 @@ const getTemporaryTweets = async ({
 
     return tweets;
   } catch (error) {
-    console.error('Fail to get tweets', error);
+    console.error('Fail to get tweets', error, { created_at });
   }
 };
 

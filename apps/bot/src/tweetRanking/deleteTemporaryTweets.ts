@@ -9,7 +9,7 @@ const deleteTemporaryTweets = async (
       created_at: { $gte: start, $lte: end },
     });
   } catch (error) {
-    console.error('Fail to delete many tweets', error);
+    console.error('Fail to delete many tweets', error, { start, end });
   }
 };
 

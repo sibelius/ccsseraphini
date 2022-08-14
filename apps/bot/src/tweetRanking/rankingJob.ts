@@ -1,4 +1,5 @@
 import { scheduleJob, JobCallback } from 'node-schedule';
+
 import { executeDailyTweetRanking } from '.';
 import { config } from '../config';
 

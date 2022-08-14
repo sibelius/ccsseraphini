@@ -1,5 +1,5 @@
+import getTweetScore from './getTweetScore';
 import { Public_metrics } from '../tweetTypes';
-import { getTweetScore } from './getTweetScore';
 import { RankedTweet, TweetData } from './types';
 
 const parseToRankedTweet = (tweet: TweetData): RankedTweet => {
