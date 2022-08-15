@@ -22,15 +22,15 @@ const createInitialTweet = async (
 
 const createRankingTweets = async (
   client: TwitterApi,
-  tweets: any[],
+  tweets: RankedTweet[],
   firstTweet: TweetV2PostTweetResult,
 ): Promise<TweetV2PostTweetResult> => {
   let position = 1;
   let replyTweet: TweetV2PostTweetResult = firstTweet;
 
   for await (const tweet of tweets) {
-    const { id: tweetId } = tweet;
-    const text = `${position}º Tweet - ${tweet.score} sserapoints\n\n\n https://twitter.com/_/status/${tweetId}`;
+    const { tweet_id } = tweet;
+    const text = `${position}º Tweet - ${tweet.score} sserapoints\n\n\n https://twitter.com/_/status/${tweet_id}`;
 
     const {
       data: { id: replyTweetId },
