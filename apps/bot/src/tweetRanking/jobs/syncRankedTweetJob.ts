@@ -1,12 +1,12 @@
-import { scheduleJob, JobCallback } from 'node-schedule';
-
-import { config } from '../../config';
+import { scheduleJob } from 'node-schedule';
 import syncRankedTweets from '../syncRankedTweets';
+import getRuleFromConfig from './getRuleFromConfig';
 
-const defaultCronString = config.SYNC_RANKED_TWEET_CRON_STRING;
+const syncRankedTweetJob = () => {
+  const rule = getRuleFromConfig('SYNC_TWEETS_RULE');
+  if (!rule) return;
 
-const syncRankedTweetJob = (cronString: string = defaultCronString) => {
-  scheduleJob(cronString, syncRankedTweets);
-  console.info('Sync ranked tweet job started, cron string: ', cronString);
+  scheduleJob(rule, syncRankedTweets);
+  console.info('Sync ranked tweet job started, with the rule: ', rule);
 };
 export default syncRankedTweetJob;
