@@ -1,6 +1,7 @@
 import { TweetV2PostTweetResult, TwitterApi } from 'twitter-api-v2';
 
 import getTwitterClient from './getTwitterClient';
+import { RankedTweet } from './types';
 
 const hasError = (tweet: TweetV2PostTweetResult) => {
   if (!tweet?.errors?.length) return false;
@@ -12,7 +13,7 @@ const hasError = (tweet: TweetV2PostTweetResult) => {
   return true;
 };
 
-const createFirstTweet = async (
+const createInitialTweet = async (
   client: TwitterApi,
 ): Promise<TweetV2PostTweetResult> =>
   await client.v2.tweet(
@@ -44,7 +45,17 @@ const createRankingTweets = async (
   return replyTweet;
 };
 
-const createLastTweet = async (
+const createInfoTweet = async (
+  client: TwitterApi,
+  { data: { id: replyTweetId } }: TweetV2PostTweetResult,
+  total: number,
+): Promise<TweetV2PostTweetResult> =>
+  await client.v2.reply(
+    `Today we had ${total} tweets tagging cc @sseraphini.`,
+    replyTweetId,
+  );
+
+const createFinalTweet = async (
   client: TwitterApi,
   { data: { id: replyTweetId } }: TweetV2PostTweetResult,
 ): Promise<TweetV2PostTweetResult> =>
@@ -53,7 +64,10 @@ const createLastTweet = async (
     replyTweetId,
   );
 
-const publishRanking = async (tweets: any): Promise<void> => {
+const publishRanking = async (
+  tweets: RankedTweet[],
+  totalTweets: number,
+): Promise<void> => {
   try {
     const client = await getTwitterClient();
 
@@ -62,19 +76,32 @@ const publishRanking = async (tweets: any): Promise<void> => {
       return;
     }
 
-    const firstTweet: TweetV2PostTweetResult = await createFirstTweet(client);
+    const initialTweet: TweetV2PostTweetResult = await createInitialTweet(
+      client,
+    );
 
-    if (hasError(firstTweet)) return;
+    if (hasError(initialTweet)) return;
 
     const lastRankedTweet: TweetV2PostTweetResult = await createRankingTweets(
       client,
       tweets,
-      firstTweet,
+      initialTweet,
     );
 
     if (hasError(lastRankedTweet)) return;
 
-    const lastTweet = await createLastTweet(client, lastRankedTweet);
+    const infoTweet: TweetV2PostTweetResult = await createInfoTweet(
+      client,
+      lastRankedTweet,
+      totalTweets,
+    );
+
+    if (hasError(infoTweet)) return;
+
+    const lastTweet: TweetV2PostTweetResult = await createFinalTweet(
+      client,
+      infoTweet,
+    );
 
     if (hasError(lastTweet)) return;
 
