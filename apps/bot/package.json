@@ -26,16 +26,17 @@
     "koa-router": "12.0.0",
     "mongoose": "6.5.1",
     "node-fetch": "3.2.10",
+    "node-schedule": "2.1.0",
     "twitter-api-sdk": "1.1.0",
     "twitter-api-v2": "1.12.3"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^2.2.2",
+    "@types/node-schedule": "2.1.0",
     "@types/supertest": "2.0.12",
     "esbuild": "0.14.54",
     "esbuild-register": "3.3.3",
     "jest": "^28.1.0",
-    "jest-fetch-mock": "3.0.3",
-    "supertest": "^6.2.3"
+    "jest-fetch-mock": "3.0.3"
   }
 }

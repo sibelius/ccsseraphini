@@ -1,14 +1,14 @@
-import { Tweet, Data } from '../tweetTypes';
-import saveTweetData from './saveTweetData';
-import { connectMongoose } from '../../test/connectMongoose';
-import { disconnectMongoose } from '../../test/disconnectMongoose';
-import { clearDbAndRestartCounters } from '../../test/clearDbAndRestartCounters';
+import { clearDbAndRestartCounters } from '../../../test/clearDbAndRestartCounters';
+import { connectMongoose } from '../../../test/connectMongoose';
+import { disconnectMongoose } from '../../../test/disconnectMongoose';
+import { Data, Tweet } from '../../tweetTypes';
+import saveTemporaryTweet from '../saveTemporaryTweet';
 
 beforeAll(connectMongoose);
 beforeEach(clearDbAndRestartCounters);
 afterAll(disconnectMongoose);
 
-it('should save tweet data', async () => {
+it('should save temporary tweet', async () => {
   const data: Data = {
     attachments: {},
     author_id: '2244994945',
@@ -26,7 +26,7 @@ it('should save tweet data', async () => {
     data,
   };
 
-  const { _id } = await saveTweetData(tweet as Tweet);
+  const { _id } = await saveTemporaryTweet(tweet as Tweet);
 
   expect(_id).toBeDefined();
 });

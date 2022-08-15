@@ -1,7 +1,9 @@
 import { Client } from 'twitter-api-sdk';
-import { config } from '../config';
 
-const getTweetsFromApi = async (ids: string[]) => {
+import { config } from '../config';
+import { TweetBatch } from './types';
+
+const getTweetBatchFromApi = async (ids: string[]): Promise<TweetBatch> => {
   const bearerToken = config.TWITTER_BEARER_TOKEN;
 
   if (!bearerToken) {
@@ -13,7 +15,7 @@ const getTweetsFromApi = async (ids: string[]) => {
     tweets: { findTweetsById },
   } = new Client(bearerToken);
 
-  const result = await findTweetsById({
+  const result: TweetBatch = await findTweetsById({
     ids,
     expansions: ['author_id'],
     'tweet.fields': ['public_metrics', 'created_at'],
@@ -22,4 +24,4 @@ const getTweetsFromApi = async (ids: string[]) => {
   return result;
 };
 
-export default getTweetsFromApi;
+export default getTweetBatchFromApi;

@@ -1,13 +1,15 @@
+import { Client } from 'discord.js';
+import { GatewayIntentBits, TextChannel } from 'discord.js';
+
 import { config } from './config';
 import { debugConsole } from './debugConsole';
 import { tweetStream } from './tweetStream';
-import { GatewayIntentBits, TextChannel } from 'discord.js';
-import { Client } from 'discord.js';
 import { readyMessage } from './readyMessage';
 import { EMOJIS_POINTS } from './score';
 import { handleRTVoting } from './handleRTVoting';
 import connectDB from './mongodb';
-import saveTweetData from './tweetRanking/saveTweetData';
+import saveTemporaryTweet from './tweetRanking/saveTemporaryTweet';
+import startJobs from './tweetRanking/jobs';
 
 export const client = new Client({
   intents: [
@@ -21,6 +23,8 @@ let botChannel: TextChannel;
 
 client.once('ready', async () => {
   console.log(readyMessage);
+
+  startJobs();
 
   try {
     await connectDB();
@@ -39,7 +43,7 @@ client.once('ready', async () => {
 export const twitterBaseUrl = 'https://twitter.com/';
 
 const processTweet = async (tweet) => {
-  await saveTweetData(tweet);
+  await saveTemporaryTweet(tweet);
   debugConsole(tweet);
 
   const author = tweet.includes.users.find(
