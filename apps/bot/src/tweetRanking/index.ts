@@ -1,10 +1,10 @@
 import { JobCallback } from 'node-schedule';
 
-import { RankedTweet } from './types';
 import publishRanking from './publishRanking';
 import getRankedTweets from './getRankedTweets';
 import saveRankedTweets from './saveRankedTweets';
 import deleteTemporaryTweets from './deleteTemporaryTweets';
+import getTopTweets from './getTopTweets';
 
 const tweetRanking = (since: Date, size: number = 3) => {
   const execute: JobCallback = async () => {
@@ -25,9 +25,7 @@ const tweetRanking = (since: Date, size: number = 3) => {
       }
 
       const totalTweets: number = rankedTweets.length;
-      const topTweets = rankedTweets
-        .sort((a: RankedTweet, b: RankedTweet) => b.score - a.score)
-        .slice(0, size);
+      const topTweets = getTopTweets(rankedTweets, size);
       await publishRanking(topTweets, totalTweets);
     } catch (error) {
       console.error('Fail to calculate tweet ranking', error);
