@@ -13,7 +13,7 @@
     "@discordjs/builders": "1.1.0",
     "@discordjs/rest": "1.0.1",
     "@jimp/types": "0.16.1",
-    "discord-api-types": "0.37.1",
+    "discord-api-types": "0.37.2",
     "discord.js": "14.1.2",
     "dotenv": "16.0.1",
     "dotenv-safe": "8.2.0",
@@ -31,10 +31,10 @@
     "twitter-api-v2": "1.12.3"
   },
   "devDependencies": {
-    "@shelf/jest-mongodb": "^2.2.2",
+    "@shelf/jest-mongodb": "^4.0.0",
     "@types/node-schedule": "2.1.0",
     "@types/supertest": "2.0.12",
-    "esbuild": "0.14.54",
+    "esbuild": "0.15.3",
     "esbuild-register": "3.3.3",
     "jest": "^28.1.0",
     "jest-fetch-mock": "3.0.3"
