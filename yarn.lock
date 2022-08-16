@@ -5729,7 +5729,6 @@ discord-api-types@0.37.2:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.2.tgz#a192c0dfd048faf26ebbcd182745e7aaae489dac"
   integrity sha512-JS4q0LGRxqY7TIsfORlIMzcmews+Qu3RmOWrxoEY+BR0g0sZlplEyY/Ltb3om6ZaBm+WNcAmAJxlsmAu4068Vw==
 
-
 discord-api-types@^0.36.3:
   version "0.36.3"
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.36.3.tgz#a931b7e57473a5c971d6937fa5f392eb30047579"
@@ -11714,10 +11713,10 @@ twitter-api-sdk@1.1.0:
     abort-controller "^3.0.0"
     node-fetch "^2.6.1"
 
-twitter-api-v2@1.12.3:
-  version "1.12.3"
-  resolved "https://registry.yarnpkg.com/twitter-api-v2/-/twitter-api-v2-1.12.3.tgz#9f05321ea83afd9de96ac18aa721aae339110302"
-  integrity sha512-FM+RmHdVbCKw/KZ99+if4JQyl2Nx5eF/Jl8CNDeV5J/NSnuFgk3bFw1cZHcNusXitxTWIQ0TQFHr1BkgWDz0wQ==
+twitter-api-v2@1.12.5:
+  version "1.12.5"
+  resolved "https://registry.yarnpkg.com/twitter-api-v2/-/twitter-api-v2-1.12.5.tgz#50b66eabb29ed89b0eb9d911cc4aef8800df65ce"
+  integrity sha512-kgsEjRfm2kdvAgqXd5druYYxykXEXamae6V/TDyYnws0MClcYBlbtOyGn/HPXEfn2NylbQrjDwkCLaD3qkRgMA==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
@@ -11775,6 +11774,7 @@ unbox-primitive@^1.0.1:
     has-bigints "^1.0.1"
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
+
 
 undici@^5.8.0, undici@^5.8.2:
   version "5.8.2"
