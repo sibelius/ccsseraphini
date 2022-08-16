@@ -35,8 +35,6 @@ export const config = {
 
   PORT: 3000,
 
-  TWEET_RANKING_CRON_STRING:
-    process.env.TWEET_RANKING_CRON_STRING || '* 19 * * * *',
-  SYNC_RANKED_TWEET_CRON_STRING:
-    process.env.SYNC_RANKED_TWEET_CRON_STRING || '* 2 * * * *',
+  TWEET_RANKING_RULE: process.env.TWEET_RANKING_RULE || '19:00',
+  SYNC_TWEETS_RULE: process.env.SYNC_TWEETS_RULE || '20:13',
 } as const;

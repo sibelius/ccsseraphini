@@ -10,6 +10,7 @@ import { handleRTVoting } from './handleRTVoting';
 import connectDB from './mongodb';
 import saveTemporaryTweet from './tweetRanking/saveTemporaryTweet';
 import startJobs from './tweetRanking/jobs';
+import createPostFromRankedTweets from './tweetRanking/createPostFromRankedTweets';
 
 export const client = new Client({
   intents: [
@@ -24,8 +25,6 @@ let botChannel: TextChannel;
 client.once('ready', async () => {
   console.log(readyMessage);
 
-  startJobs();
-
   try {
     await connectDB();
   } catch (error) {
@@ -38,6 +37,8 @@ client.once('ready', async () => {
 
   // send message to bot channel
   // await botChannel.send(readyMessage);
+
+  startJobs();
 });
 
 export const twitterBaseUrl = 'https://twitter.com/';

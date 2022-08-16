@@ -1,6 +1,7 @@
 import { TweetV2PostTweetResult, TwitterApi } from 'twitter-api-v2';
 
 import getTwitterClient from './getTwitterClient';
+import { RankedTweet } from './types';
 
 const hasError = (tweet: TweetV2PostTweetResult) => {
   if (!tweet?.errors?.length) return false;
@@ -12,24 +13,34 @@ const hasError = (tweet: TweetV2PostTweetResult) => {
   return true;
 };
 
-const createFirstTweet = async (
+const createInitialTweet = async (
   client: TwitterApi,
-): Promise<TweetV2PostTweetResult> =>
-  await client.v2.tweet(
-    '🏆 Check out here the `cc @sseraphini` top tweets from the last 24 hours 🏆\n \n \n \n \n🧵⬇️',
+  since: Date,
+): Promise<TweetV2PostTweetResult> => {
+  const date = since.toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+
+  const tweet = await client.v2.tweet(
+    `🏆 Check out here the \`cc @sseraphini\` top tweets from ${date} 🏆\r\n\r\n 🧵⬇️`,
   );
+
+  return tweet;
+};
 
 const createRankingTweets = async (
   client: TwitterApi,
-  tweets: any[],
+  tweets: RankedTweet[],
   firstTweet: TweetV2PostTweetResult,
 ): Promise<TweetV2PostTweetResult> => {
   let position = 1;
   let replyTweet: TweetV2PostTweetResult = firstTweet;
 
   for await (const tweet of tweets) {
-    const { id: tweetId } = tweet;
-    const text = `${position}º Tweet - ${tweet.score} sserapoints\n\n\n https://twitter.com/_/status/${tweetId}`;
+    const { tweet_id } = tweet;
+    const text = `${position}º Tweet - ${tweet.score} sserapoints\n\n\n https://twitter.com/_/status/${tweet_id}`;
 
     const {
       data: { id: replyTweetId },
@@ -44,7 +55,17 @@ const createRankingTweets = async (
   return replyTweet;
 };
 
-const createLastTweet = async (
+const createInfoTweet = async (
+  client: TwitterApi,
+  { data: { id: replyTweetId } }: TweetV2PostTweetResult,
+  total: number,
+): Promise<TweetV2PostTweetResult> =>
+  await client.v2.reply(
+    `Today we had ${total} tweets tagging cc @sseraphini.`,
+    replyTweetId,
+  );
+
+const createFinalTweet = async (
   client: TwitterApi,
   { data: { id: replyTweetId } }: TweetV2PostTweetResult,
 ): Promise<TweetV2PostTweetResult> =>
@@ -53,7 +74,11 @@ const createLastTweet = async (
     replyTweetId,
   );
 
-const publishRanking = async (tweets: any): Promise<void> => {
+const publishRanking = async (
+  tweets: RankedTweet[],
+  totalTweets: number,
+  since: Date,
+): Promise<void> => {
   try {
     const client = await getTwitterClient();
 
@@ -62,19 +87,33 @@ const publishRanking = async (tweets: any): Promise<void> => {
       return;
     }
 
-    const firstTweet: TweetV2PostTweetResult = await createFirstTweet(client);
+    const initialTweet: TweetV2PostTweetResult = await createInitialTweet(
+      client,
+      since,
+    );
 
-    if (hasError(firstTweet)) return;
+    if (hasError(initialTweet)) return;
 
     const lastRankedTweet: TweetV2PostTweetResult = await createRankingTweets(
       client,
       tweets,
-      firstTweet,
+      initialTweet,
     );
 
     if (hasError(lastRankedTweet)) return;
 
-    const lastTweet = await createLastTweet(client, lastRankedTweet);
+    const infoTweet: TweetV2PostTweetResult = await createInfoTweet(
+      client,
+      lastRankedTweet,
+      totalTweets,
+    );
+
+    if (hasError(infoTweet)) return;
+
+    const lastTweet: TweetV2PostTweetResult = await createFinalTweet(
+      client,
+      infoTweet,
+    );
 
     if (hasError(lastTweet)) return;
 

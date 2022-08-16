@@ -15,6 +15,7 @@ const saveRankedTweets = async (tweets: RankedTweet[]): Promise<void> => {
     );
   } catch (error) {
     console.error('Fail to save ranked tweets', error, { tweets });
+    throw error;
   }
 };
 

@@ -72,5 +72,5 @@ it('should run without errors the tweetRanking execute function', async () => {
   expect(temporaryTweetsCount).toBe(0);
   expect(rankedTweetsCount).toBe(10);
   expect((await getTwitterClient()).v2.tweet).toHaveBeenCalledTimes(1);
-  expect((await getTwitterClient()).v2.reply).toHaveBeenCalledTimes(4);
+  expect((await getTwitterClient()).v2.reply).toHaveBeenCalledTimes(5);
 });
