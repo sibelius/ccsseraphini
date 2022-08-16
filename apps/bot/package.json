@@ -11,9 +11,9 @@
   "dependencies": {
     "@digitak/esrun": "3.2.9",
     "@discordjs/builders": "1.1.0",
-    "@discordjs/rest": "0.5.0",
+    "@discordjs/rest": "1.0.1",
     "@jimp/types": "0.16.1",
-    "discord-api-types": "0.37.1",
+    "discord-api-types": "0.37.2",
     "discord.js": "14.1.2",
     "dotenv": "16.0.1",
     "dotenv-safe": "8.2.0",
@@ -24,17 +24,17 @@
     "koa-convert": "2.0.0",
     "koa-cors": "0.0.16",
     "koa-router": "12.0.0",
-    "mongoose": "6.5.1",
+    "mongoose": "6.5.2",
     "node-fetch": "3.2.10",
     "node-schedule": "2.1.0",
     "twitter-api-sdk": "1.1.0",
-    "twitter-api-v2": "1.12.3"
+    "twitter-api-v2": "1.12.5"
   },
   "devDependencies": {
-    "@shelf/jest-mongodb": "^2.2.2",
+    "@shelf/jest-mongodb": "^4.0.0",
     "@types/node-schedule": "2.1.0",
     "@types/supertest": "2.0.12",
-    "esbuild": "0.14.54",
+    "esbuild": "0.15.4",
     "esbuild-register": "3.3.3",
     "jest": "^28.1.0",
     "jest-fetch-mock": "3.0.3"
