@@ -46,3 +46,15 @@ export type TweetBatch = {
   errors?: any[];
   includes?: any;
 };
+
+export type Stats = {
+  since: Date;
+  until: Date;
+  mentions: number;
+  newAuthors: number;
+  uniqueAuthors: number;
+  likes: number;
+  replies: number;
+  retweets: number;
+  quotes: number;
+};

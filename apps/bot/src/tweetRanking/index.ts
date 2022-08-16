@@ -1,15 +1,14 @@
 import { JobCallback } from 'node-schedule';
 
-import publishRanking from './publishRanking';
 import getRankedTweets from './getRankedTweets';
 import saveRankedTweets from './saveRankedTweets';
 import deleteTemporaryTweets from './deleteTemporaryTweets';
-import getTopTweets from './getTopTweets';
+import createPostFromRankedTweets from './createPostFromRankedTweets';
 
-const tweetRanking = (since: Date, size: number = 3) => {
+const tweetRanking = (since: Date) => {
   const execute: JobCallback = async () => {
     try {
-      const startDate = new Date();
+      const until = new Date();
       const rankedTweets = await getRankedTweets(since);
       if (!rankedTweets?.length) {
         console.info('Unable to calculate tweet ranking');
@@ -18,15 +17,13 @@ const tweetRanking = (since: Date, size: number = 3) => {
 
       try {
         await saveRankedTweets(rankedTweets);
-        await deleteTemporaryTweets(since, startDate);
+        await deleteTemporaryTweets(since, until);
       } catch (error) {
         console.error('Fail to save ranked tweets', error);
         console.info("Temporary tweets wasn't deleted");
       }
 
-      const totalTweets: number = rankedTweets.length;
-      const topTweets = getTopTweets(rankedTweets, size);
-      await publishRanking(topTweets, totalTweets, since);
+      await createPostFromRankedTweets(since, until);
     } catch (error) {
       console.error('Fail to calculate tweet ranking', error);
     }

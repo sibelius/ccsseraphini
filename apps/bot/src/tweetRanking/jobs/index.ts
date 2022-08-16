@@ -1,4 +1,3 @@
-import { config } from '../../config';
 import rankingJob from './rankingJob';
 import syncRankedTweetJob from './syncRankedTweetJob';
 
