@@ -43,5 +43,5 @@ it('should have only one new author', async () => {
 
   expect(consoleSpy).toHaveBeenCalledTimes(0);
   expect((await getTwitterClient()).v2.tweet).toHaveBeenCalledTimes(1);
-  expect((await getTwitterClient()).v2.reply).toHaveBeenCalledTimes(7);
+  expect((await getTwitterClient()).v2.reply).toHaveBeenCalledTimes(6);
 });
