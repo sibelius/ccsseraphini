@@ -13,12 +13,12 @@
   "dependencies": {
     "@digitak/esrun": "3.2.9",
     "@jimp/types": "0.16.1",
-    "discord.js": "14.1.2",
+    "discord.js": "14.2.0",
     "dotenv": "16.0.1",
     "jimp": "0.16.1",
     "node-fetch": "3.2.10",
     "twitter-api-sdk": "1.1.0",
-    "twitter-api-v2": "1.12.3"
+    "twitter-api-v2": "1.12.5"
   },
   "devDependencies": {
     "@babel/core": "7.18.10",
