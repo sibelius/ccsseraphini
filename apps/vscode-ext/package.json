@@ -36,7 +36,7 @@
     "@types/node": "^18.6.5",
     "@types/polka": "^0.5.1",
     "@types/vscode": "^1.70.0",
-    "@typescript-eslint/eslint-plugin": "^5.33.0",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.0",
     "concurrently": "^7.3.0",
     "eslint": "^8.21.0",
