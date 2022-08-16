@@ -26,7 +26,7 @@ const tweetRanking = (since: Date, size: number = 3) => {
 
       const totalTweets: number = rankedTweets.length;
       const topTweets = getTopTweets(rankedTweets, size);
-      await publishRanking(topTweets, totalTweets);
+      await publishRanking(topTweets, totalTweets, since);
     } catch (error) {
       console.error('Fail to calculate tweet ranking', error);
     }

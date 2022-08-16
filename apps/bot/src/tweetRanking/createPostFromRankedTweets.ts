@@ -11,7 +11,7 @@ const createPostFromRankedTweets = async (created_at: Date): Promise<void> => {
     const totalTweets = tweets.length;
     const topTweets = getTopTweets(tweets, 3);
 
-    await publishRanking(topTweets, totalTweets);
+    await publishRanking(topTweets, totalTweets, created_at);
   } catch (error) {
     console.error('Fail to create post from ranked tweets', error, {
       created_at,

@@ -38,7 +38,7 @@ client.once('ready', async () => {
   // send message to bot channel
   // await botChannel.send(readyMessage);
 
-  await createPostFromRankedTweets(new Date(Date.now() - 86400000));
+  startJobs();
 });
 
 export const twitterBaseUrl = 'https://twitter.com/';

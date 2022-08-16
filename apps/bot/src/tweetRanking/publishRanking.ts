@@ -15,10 +15,20 @@ const hasError = (tweet: TweetV2PostTweetResult) => {
 
 const createInitialTweet = async (
   client: TwitterApi,
-): Promise<TweetV2PostTweetResult> =>
-  await client.v2.tweet(
-    '🏆 Check out here the `cc @sseraphini` top tweets from the last 24 hours 🏆\n \n \n \n \n🧵⬇️',
+  since: Date,
+): Promise<TweetV2PostTweetResult> => {
+  const date = since.toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+
+  const tweet = await client.v2.tweet(
+    `🏆 Check out here the \`cc @sseraphini\` top tweets from ${date} 🏆\r\n\r\n 🧵⬇️`,
   );
+
+  return tweet;
+};
 
 const createRankingTweets = async (
   client: TwitterApi,
@@ -67,6 +77,7 @@ const createFinalTweet = async (
 const publishRanking = async (
   tweets: RankedTweet[],
   totalTweets: number,
+  since: Date,
 ): Promise<void> => {
   try {
     const client = await getTwitterClient();
@@ -78,6 +89,7 @@ const publishRanking = async (
 
     const initialTweet: TweetV2PostTweetResult = await createInitialTweet(
       client,
+      since,
     );
 
     if (hasError(initialTweet)) return;
