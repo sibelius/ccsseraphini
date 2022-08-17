@@ -64,7 +64,6 @@ it('should run without errors the tweetRanking execute function', async () => {
   //Execute the ranking creation
   await execute(new Date());
 
-  //check is was all data deleted
   const temporaryTweetsCount = await TemporaryTweetModel.countDocuments();
   const rankedTweetsCount = await RankedTweetModel.countDocuments();
 
@@ -72,5 +71,5 @@ it('should run without errors the tweetRanking execute function', async () => {
   expect(temporaryTweetsCount).toBe(0);
   expect(rankedTweetsCount).toBe(10);
   expect((await getTwitterClient()).v2.tweet).toHaveBeenCalledTimes(1);
-  expect((await getTwitterClient()).v2.reply).toHaveBeenCalledTimes(5);
+  expect((await getTwitterClient()).v2.reply).toHaveBeenCalledTimes(7);
 });

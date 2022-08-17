@@ -1,28 +1,18 @@
 import TemporaryTweetModel from '../schema/TemporaryTweet';
 import { TemporaryTweet } from '../types';
 
-const createFakeTemporaryTweets = (created_at: Date): TemporaryTweet[] => {
-  const fakeTweetIds = [
-    '1160323737035677698',
-    '1260323737035677698',
-    '1360323737035677698',
-    '1460323737035677698',
-    '1560323737035677698',
-    '1660323737035677698',
-    '1760323737035677698',
-    '1860323737035677698',
-    '1960323737035677698',
-    '2060323737035677698',
-  ];
-
-  return fakeTweetIds.map((id) => {
-    const model = new TemporaryTweetModel({
-      tweet_id: id,
+const baseId = '11603237370356776';
+const createFakeTemporaryTweets = (
+  created_at: Date,
+  length: number = 10,
+): TemporaryTweet[] =>
+  Array.from({ length }, (_, i) => {
+    const idSufix = `${i}`.padStart(2, '0');
+    const tweet_id = `${baseId}${idSufix}`;
+    return new TemporaryTweetModel({
+      tweet_id,
       created_at,
     });
-
-    return model;
   });
-};
 
 export default createFakeTemporaryTweets;

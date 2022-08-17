@@ -22,20 +22,19 @@ jest.mock('../getTwitterClient');
 it('should sync ranked tweet without errors', async () => {
   //Populate database to test sync method
   const created_at = new Date('2022-08-11T19:08:00.000Z');
-  const rankedTweets = createFakeRankedTweets(created_at);
+  const rankedTweets = createFakeRankedTweets(created_at, 3);
   await RankedTweetModel.insertMany(rankedTweets);
 
   //Create fake TweetBatch to mock Twitter API response
-  const tweetIds: string[] = ['1960323737035677698', '2060323737035677698'];
+  const tweetIds: string[] = ['1160323737035677600', '1160323737035677601'];
   const persistedRankedTweets: RankedTweet[] = (await RankedTweetModel.find({
     tweet_id: {
       $in: tweetIds,
     },
   })) as RankedTweet[];
 
-  //Mock unchanged tweet case
   const unchagedRankedTweet: RankedTweet = (await RankedTweetModel.findOne({
-    tweet_id: '1860323737035677698',
+    tweet_id: '1160323737035677602',
   })) as RankedTweet;
 
   const unchagedTweetData: TweetData = {
@@ -52,10 +51,6 @@ it('should sync ranked tweet without errors', async () => {
   fakeTweetBatch.data.push(unchagedTweetData);
   fetchMock.mockResponse(JSON.stringify(fakeTweetBatch));
 
-  console.log({
-    apiResponse: fakeTweetBatch.data,
-    persitedTweets: [persistedRankedTweets, unchagedRankedTweet],
-  });
   //mock console error spy to check if there are errors
   const consoleSpy = jest
     .spyOn(console, 'error')
