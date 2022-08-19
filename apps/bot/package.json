@@ -13,7 +13,7 @@
     "@discordjs/builders": "1.1.0",
     "@discordjs/rest": "1.0.1",
     "@jimp/types": "0.16.1",
-    "discord-api-types": "0.37.2",
+    "discord-api-types": "0.37.3",
     "discord.js": "14.2.0",
     "dotenv": "16.0.1",
     "dotenv-safe": "8.2.0",
