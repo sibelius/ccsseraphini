@@ -10315,10 +10315,10 @@ react-style-singleton@^2.2.1:
     invariant "^2.2.4"
     tslib "^2.0.0"
 
-react-tsparticles@2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/react-tsparticles/-/react-tsparticles-2.2.2.tgz#298156bfcdb84fadc071dfeb35072cc66697b2dc"
-  integrity sha512-bjPfaLlVM9Q61ZMVBD+obewx7Ia5ZNTVcO8aVrIBSrQL4zDJfpuveyvRyka9LlEffcktIuPX0LoVFBHPypB83w==
+react-tsparticles@2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-tsparticles/-/react-tsparticles-2.2.3.tgz#03a58110b5336178b1e0014cdb5acc2628473926"
+  integrity sha512-VfBrMOGKiO32dOjFLClznBEMLyYg+5e27fAX7eyJpzI+G9U8E3zmE4s77ULd7obLnd4kaogiLbxNVVCKzQW3Bw==
   dependencies:
     fast-deep-equal "^3.1.3"
     tsparticles-engine "^2.0.6"
