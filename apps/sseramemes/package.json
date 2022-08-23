@@ -13,7 +13,7 @@
   "dependencies": {
     "@digitak/esrun": "3.2.10",
     "@jimp/types": "0.16.1",
-    "discord.js": "14.2.0",
+    "discord.js": "14.3.0",
     "dotenv": "16.0.1",
     "jimp": "0.16.1",
     "node-fetch": "3.2.10",
