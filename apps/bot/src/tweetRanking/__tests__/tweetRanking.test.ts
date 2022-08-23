@@ -56,10 +56,11 @@ it('should run without errors the tweetRanking execute function', async () => {
   //mock console error spy to check if there are errors
   const consoleSpy = jest
     .spyOn(console, 'error')
-    .mockImplementation(() => console.error);
+    .mockImplementation(console.error);
 
   //Get execute function
-  const execute = tweetRanking(created_at);
+  const until = new Date('2021-11-16T19:08:00.000Z');
+  const execute = tweetRanking(created_at, until);
 
   //Execute the ranking creation
   await execute(new Date());

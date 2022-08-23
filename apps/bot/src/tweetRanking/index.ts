@@ -3,12 +3,11 @@ import { JobCallback } from 'node-schedule';
 import getRankedTweets from './getRankedTweets';
 import saveRankedTweets from './saveRankedTweets';
 import deleteTemporaryTweets from './deleteTemporaryTweets';
-import createPostFromRankedTweets from './createPostFromRankedTweets';
+import postTweetRanking from './postTweetRanking';
 
-const tweetRanking = (since: Date) => {
+const tweetRanking = (since: Date, until: Date = new Date()) => {
   const execute: JobCallback = async () => {
     try {
-      const until = new Date();
       const rankedTweets = await getRankedTweets(since);
       if (!rankedTweets?.length) {
         console.info('Unable to calculate tweet ranking');
@@ -22,17 +21,18 @@ const tweetRanking = (since: Date) => {
         console.error('Fail to save ranked tweets', error);
         console.info("Temporary tweets wasn't deleted");
       }
-
-      await createPostFromRankedTweets(since, until);
     } catch (error) {
       console.error('Fail to calculate tweet ranking', error);
+    }
+
+    try {
+      await postTweetRanking(until);
+    } catch (error) {
+      console.error('Fail to handle ranking', error);
     }
   };
 
   return execute;
 };
-
-export const dailyTweetRanking = () =>
-  tweetRanking(new Date(Date.now() - 86400000));
 
 export default tweetRanking;
