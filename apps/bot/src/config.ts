@@ -35,6 +35,6 @@ export const config = {
 
   PORT: 3000,
 
-  TWEET_RANKING_RULE: process.env.TWEET_RANKING_RULE || '19:00',
-  SYNC_TWEETS_RULE: process.env.SYNC_TWEETS_RULE || '20:13',
+  TWEET_RANKING_RULE: process.env.TWEET_RANKING_RULE || '10:00',
+  SYNC_TWEETS_RULE: process.env.SYNC_TWEETS_RULE || '01:00',
 } as const;
