@@ -10,7 +10,6 @@ import { handleRTVoting } from './handleRTVoting';
 import connectDB from './mongodb';
 import saveTemporaryTweet from './tweetRanking/saveTemporaryTweet';
 import startJobs from './tweetRanking/jobs';
-import createPostFromRankedTweets from './tweetRanking/createPostFromRankedTweets';
 
 export const client = new Client({
   intents: [
@@ -44,22 +43,23 @@ client.once('ready', async () => {
 export const twitterBaseUrl = 'https://twitter.com/';
 
 const processTweet = async (tweet) => {
-  await saveTemporaryTweet(tweet);
-  debugConsole(tweet);
+  try {
+    debugConsole(tweet);
 
-  const author = tweet.includes.users.find(
-    (user) => user.id === tweet.data.author_id,
-  );
+    const tweetUrl = `${twitterBaseUrl}_/status/${tweet.data.id}`;
 
-  const tweetUrl = `${twitterBaseUrl}${author.username}/status/${tweet.data.id}`;
+    // send to discord
+    if (botChannel) {
+      const message = await botChannel.send(tweetUrl);
 
-  // send to discord
-  if (botChannel) {
-    const message = await botChannel.send(tweetUrl);
+      await Promise.all(
+        Object.keys(EMOJIS_POINTS).map((emoji) => message.react(emoji)),
+      );
+    }
 
-    await Promise.all(
-      Object.keys(EMOJIS_POINTS).map((emoji) => message.react(emoji)),
-    );
+    await saveTemporaryTweet(tweet);
+  } catch (error) {
+    console.error('Failed to process tweet', { error, tweet });
   }
 };
 
