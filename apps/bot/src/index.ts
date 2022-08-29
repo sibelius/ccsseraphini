@@ -56,7 +56,9 @@ const processTweet = async (tweet) => {
     );
   }
 
-  await saveTemporaryTweet(tweet);
+  if (config.MONGO_URI) {
+    await saveTemporaryTweet(tweet);
+  }
 };
 
 const run = async (retryCount = 5) => {
