@@ -43,30 +43,39 @@ client.once('ready', async () => {
 export const twitterBaseUrl = 'https://twitter.com/';
 
 const processTweet = async (tweet) => {
-  try {
-    debugConsole(tweet);
+  debugConsole(tweet);
 
-    const tweetUrl = `${twitterBaseUrl}_/status/${tweet.data.id}`;
+  const tweetUrl = `${twitterBaseUrl}_/status/${tweet.data.id}`;
 
-    // send to discord
-    if (botChannel) {
-      const message = await botChannel.send(tweetUrl);
+  // send to discord
+  if (botChannel) {
+    const message = await botChannel.send(tweetUrl);
 
-      await Promise.all(
-        Object.keys(EMOJIS_POINTS).map((emoji) => message.react(emoji)),
-      );
-    }
-
-    await saveTemporaryTweet(tweet);
-  } catch (error) {
-    console.error('Failed to process tweet', { error, tweet });
+    await Promise.all(
+      Object.keys(EMOJIS_POINTS).map((emoji) => message.react(emoji)),
+    );
   }
+
+  await saveTemporaryTweet(tweet);
 };
 
-const run = async () => {
-  // TODO - handle error
-  for await (const tweet of tweetStream()) {
-    await processTweet(tweet);
+const run = async (retryCount = 5) => {
+  try {
+    for await (const tweet of tweetStream()) {
+      await processTweet(tweet);
+    }
+  } catch (error) {
+    if (retryCount < 1) throw error;
+
+    const retryText = retryCount == 1 ? 'retry' : 'retries';
+    const retryMessage = `${retryCount} ${retryText} left`;
+    const delay = 20000;
+    console.error(
+      { error },
+      `Error processing tweet. ${retryMessage}. Retrying in ${delay} seconds...`,
+    );
+    await new Promise((resolve) => setTimeout(resolve, delay));
+    await run(retryCount - 1);
   }
 };
 
