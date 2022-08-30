@@ -45,7 +45,11 @@ export const twitterBaseUrl = 'https://twitter.com/';
 const processTweet = async (tweet) => {
   debugConsole(tweet);
 
-  const tweetUrl = `${twitterBaseUrl}_/status/${tweet.data.id}`;
+  const author = tweet.includes.users.find(
+    (user) => user.id === tweet.data.author_id,
+  );
+
+  const tweetUrl = `${twitterBaseUrl}${author.username}/status/${tweet.data.id}`;
 
   // send to discord
   if (botChannel) {
