@@ -11,7 +11,7 @@
     "test:resize": "esrun scripts/testResizeImage.ts"
   },
   "dependencies": {
-    "@digitak/esrun": "3.2.10",
+    "@digitak/esrun": "3.2.11",
     "@jimp/types": "0.16.1",
     "discord.js": "14.3.0",
     "dotenv": "16.0.1",
