@@ -15,7 +15,7 @@
     "@jimp/types": "0.16.1",
     "discord-api-types": "0.37.5",
     "discord.js": "14.3.0",
-    "dotenv": "16.0.1",
+    "dotenv": "16.0.2",
     "dotenv-safe": "8.2.0",
     "isomorphic-fetch": "3.0.0",
     "jimp": "0.16.1",
