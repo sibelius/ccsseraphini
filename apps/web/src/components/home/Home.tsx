@@ -10,6 +10,7 @@ import { bgPalette } from '../ColorPalette';
 import { ParticleSibAvatar } from './ParticleSibAvatar';
 import { ScoreButton } from './ScoreButton';
 import { useRandom } from './useRandom';
+import { SponsorButton } from './SponsorButton';
 
 type Props = {
   particles?: boolean;
@@ -91,6 +92,7 @@ export const Home = ({ particles = false }: Props) => {
           <DonateEth />
           <DonateSol />
           <DonatePix />
+          <SponsorButton />
           <Flex mt="10px" gap={2}>
             <ScoreButton />
             <SessionProvider>
