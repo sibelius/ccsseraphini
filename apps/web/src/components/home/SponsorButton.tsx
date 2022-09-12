@@ -1,8 +1,5 @@
 import { Button, Stack } from '@chakra-ui/react';
-import { FaTwitter, FaPatreon } from 'react-icons/fa';
-import { SiGooglechrome, SiSubstack, SiVisualstudiocode } from 'react-icons/si';
 
-import { BsMailbox } from 'react-icons/bs';
 import { SponsorLogo } from './SponsorLogo';
 
 export const SponsorButton = () => {
