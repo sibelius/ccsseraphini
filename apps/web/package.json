@@ -25,7 +25,7 @@
     "fork-me-corner": "1.0.1",
     "framer-motion": "7.3.2",
     "html2canvas": "1.4.1",
-    "next": "12.2.5",
+    "next": "12.3.0",
     "next-auth": "4.10.3",
     "next-pwa": "5.6.0",
     "qrcode.react": "3.1.0",
