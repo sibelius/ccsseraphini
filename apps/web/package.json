@@ -23,7 +23,7 @@
     "entities": "4.4.0",
     "ethers": "5.7.0",
     "fork-me-corner": "1.0.1",
-    "framer-motion": "7.3.2",
+    "framer-motion": "7.3.4",
     "html2canvas": "1.4.1",
     "next": "12.3.0",
     "next-auth": "4.10.3",
