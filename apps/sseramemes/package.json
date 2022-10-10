@@ -18,7 +18,7 @@
     "jimp": "0.16.1",
     "node-fetch": "3.2.10",
     "twitter-api-sdk": "1.1.0",
-    "twitter-api-v2": "1.12.6"
+    "twitter-api-v2": "1.12.8"
   },
   "devDependencies": {
     "@babel/core": "7.19.0",
