@@ -1,5 +1,5 @@
 import Jimp from 'jimp';
-const TWITTER_IMAGE_SIZE = 504;
+import { TWITTER_IMAGE_SIZE } from './index';
 
 export const resizeImage = async (buffer: Buffer): Promise<Buffer> => {
   const image: Jimp = await Jimp.read(buffer);

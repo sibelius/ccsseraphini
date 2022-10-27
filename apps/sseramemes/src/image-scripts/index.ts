@@ -1,4 +1,4 @@
 import { addLogoToImage } from './addLogoToImage';
 import { resizeImage } from './resizeImage';
-
-export { addLogoToImage, resizeImage };
+const TWITTER_IMAGE_SIZE = 504;
+export { addLogoToImage, resizeImage, TWITTER_IMAGE_SIZE };
