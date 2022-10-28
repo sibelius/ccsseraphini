@@ -50,5 +50,5 @@ pm2 status
 As we're running on an EC2 instance, our deployment is a PM2 watch plus a cronjob to pull git changes. On crontab (`crontab -e`), we have:
 
 ```bash
-*/1 * * * * cd ~/ccsseraphini && git pull >/dev/null 2>&1
+*/5 * * * * cd ~/ccsseraphini && git pull && yarn >/dev/null 2>&1
 ```
