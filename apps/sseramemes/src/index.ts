@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { Client, IntentsBitField, TextChannel } from 'discord.js';
+import { Client, GatewayIntentBits, Events, TextChannel } from 'discord.js';
 import { handleMemeVoting, isMeme } from './handleMemeVoting';
 import { readyMessage } from './readyMessage';
 import { EMOJIS_POINTS } from './score';
@@ -7,13 +7,17 @@ import { listenToMentions } from './twitterMentions';
 
 export const client = new Client({
   intents: [
-    IntentsBitField.Flags.Guilds,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.GuildMessageReactions,
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessageReactions,
+    /**
+     * https://stackoverflow.com/a/73249884/8786986
+     */
+    GatewayIntentBits.MessageContent,
   ],
 });
 
-client.once('ready', async () => {
+client.once(Events.ClientReady, async () => {
   console.log(readyMessage);
 
   const memeChannel = client.channels.cache.get(
@@ -22,10 +26,15 @@ client.once('ready', async () => {
 
   await memeChannel.send(readyMessage);
 
-  await listenToMentions(memeChannel);
+  try {
+    await listenToMentions(memeChannel);
+  } catch (err) {
+    const msg = `☹️ Error listening to Twitter mentions: ${err}`;
+    await memeChannel.send(msg);
+  }
 });
 
-client.on('messageCreate', async (message) => {
+client.on(Events.MessageCreate, async (message) => {
   /**
    * Add all emojis to the message to make easy the voting.
    */
@@ -36,8 +45,8 @@ client.on('messageCreate', async (message) => {
   }
 });
 
-client.on('messageReactionAdd', handleMemeVoting);
+client.on(Events.MessageReactionAdd, handleMemeVoting);
 
-client.on('messageReactionRemove', handleMemeVoting);
+client.on(Events.MessageReactionAdd, handleMemeVoting);
 
 client.login(process.env.DISCORD_TOKEN);
