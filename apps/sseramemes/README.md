@@ -38,3 +38,17 @@ If you want to check only error logs, run:
 ```bash
 yarn server:logs --err
 ```
+
+To check PM2 status, run:
+
+```bash
+pm2 status
+```
+
+## CI/CD
+
+As we're running on a EC2 instance, our deploy is a PM2 watch plus a cronjob to pull git changes. On crontab, we have:
+
+```bash
+*/1 * * * * cd ~/ccsseraphini && git pull >/dev/null 2>&1
+```
