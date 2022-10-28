@@ -5,6 +5,8 @@
     "Pedro Arantes <pedro@arantespp.com> (https://arantespp.com/contact)"
   ],
   "scripts": {
+    "server:logs": "pm2 logs sseramemes --lines 200",
+    "server:start": "pm2 start ecosystem.config.js",
     "start": "esrun src/index.ts",
     "test": "jest",
     "test:addlogo": "esrun scripts/testAddLogo.ts",
@@ -25,6 +27,7 @@
     "@babel/preset-env": "7.19.0",
     "@babel/preset-typescript": "7.18.6",
     "babel-jest": "29.0.3",
-    "jest": "28.1.3"
+    "jest": "28.1.3",
+    "pm2": "5.2.2"
   }
 }
