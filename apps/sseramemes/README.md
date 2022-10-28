@@ -39,8 +39,6 @@ If you want to check only error logs, run:
 yarn server:logs --err
 ```
 
-# <<<<<<< Updated upstream
-
 To check PM2 status, run:
 
 ```bash
@@ -54,5 +52,3 @@ As we're running on an EC2 instance, our deployment is a PM2 watch plus a cronjo
 ```bash
 */5 * * * * cd ~/ccsseraphini && git pull && yarn >/dev/null 2>&1
 ```
-
-> > > > > > > Stashed changes
