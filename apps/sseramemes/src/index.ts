@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { Client, Intents, TextChannel } from 'discord.js';
+import { Client, IntentsBitField, TextChannel } from 'discord.js';
 import { handleMemeVoting, isMeme } from './handleMemeVoting';
 import { readyMessage } from './readyMessage';
 import { EMOJIS_POINTS } from './score';
@@ -7,9 +7,9 @@ import { listenToMentions } from './twitterMentions';
 
 export const client = new Client({
   intents: [
-    Intents.FLAGS.GUILDS,
-    Intents.FLAGS.GUILD_MESSAGES,
-    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    IntentsBitField.Flags.Guilds,
+    IntentsBitField.Flags.GuildMessages,
+    IntentsBitField.Flags.GuildMessageReactions,
   ],
 });
 

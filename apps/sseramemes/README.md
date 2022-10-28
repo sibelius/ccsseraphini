@@ -16,3 +16,25 @@
    - `TWITTER_ACCESS_TOKEN_SECRET`
    - `TWITTER_API_KEY`
    - `TWITTER_API_KEY_SECRET`
+
+Once you have all the tokens, you can run the bot with `yarn start`.
+
+## Server
+
+We use PM2 to run and keep sseramemes online. To start the server, run:
+
+```bash
+yarn server:start
+```
+
+To check the logs, run:
+
+```bash
+yarn server:logs
+```
+
+If you want to check only error logs, run:
+
+```bash
+yarn server:logs --err
+```
