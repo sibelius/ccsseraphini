@@ -90,5 +90,5 @@ export const handleMemeVoting = async (
 
   const { tweetUrl } = await tweetMeme(message.message);
 
-  await message.message.channel.send(`${tweetUrl} 🚀`);
+  await message.message.channel.send(`🚀 ${tweetUrl}`);
 };

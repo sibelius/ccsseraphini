@@ -1,10 +1,9 @@
 import { TextChannel } from 'discord.js';
 import { Client } from 'twitter-api-sdk';
 
-async function* mentionsStream() {
-  const client = new Client(process.env.TWITTER_BEARER_TOKEN);
+const client = new Client(process.env.TWITTER_BEARER_TOKEN);
 
-  // remove old rules
+async function* mentionsStream() {
   const rules = await client.tweets.getRules();
 
   if (rules.data) {
@@ -56,8 +55,6 @@ async function* mentionsStream() {
     ],
   });
 
-  console.log('awaiting tweets');
-
   for await (const tweet of stream) {
     yield tweet;
   }
@@ -78,6 +75,6 @@ const getTweetUrl = (tweet: any) => {
 export const listenToMentions = async (memeChannel: TextChannel) => {
   for await (const tweet of mentionsStream()) {
     const tweetUrl = getTweetUrl(tweet);
-    await memeChannel.send(tweetUrl);
+    await memeChannel.send(`🔁 ${tweetUrl}`);
   }
 };
