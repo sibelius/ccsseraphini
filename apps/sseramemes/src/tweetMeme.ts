@@ -4,6 +4,7 @@ import fetch from 'node-fetch';
 import { RETWEET_MEME_TIMEOUT } from './score';
 import { addLogoToImage } from './image-scripts';
 import { getMessageContent } from './getMessageContent';
+import { addLogoToVideo } from './image-scripts/addLogoToVideo';
 
 const client = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
@@ -16,6 +17,12 @@ export const ALLOWED_MEME_TYPES_TO_ADD_LOGO = [
   'image/jpg',
   'image/jpeg',
   'image/png',
+];
+
+export const ALLOWED_MEME_TYPES_TO_ADD_VIDEO_LOGO = [
+  'video/mp4',
+  'video/quicktime',
+  'video/avi',
 ];
 
 export const uploadMeme = async (message: Message | PartialMessage) => {
@@ -34,6 +41,10 @@ export const uploadMeme = async (message: Message | PartialMessage) => {
    */
   if (ALLOWED_MEME_TYPES_TO_ADD_LOGO.includes(mimeType)) {
     newBuffer = await addLogoToImage(buffer);
+  }
+
+  if (ALLOWED_MEME_TYPES_TO_ADD_VIDEO_LOGO.includes(mimeType)) {
+    newBuffer = await addLogoToVideo(buffer);
   }
 
   try {
