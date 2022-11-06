@@ -16,6 +16,7 @@ export const addLogoToVideo = async (
   const logoBuffer = await logo.getBufferAsync(logo.getMIME());
 
   await fs.promises.writeFile('temp-logo.png', logoBuffer);
+
   try {
     await videoEditor.fnAddWatermark(
       path.join(process.cwd(), './temp-logo.png'),
