@@ -3,13 +3,17 @@ import ffmpeg from 'ffmpeg';
 import path from 'path';
 import Jimp from 'jimp';
 
-export const addLogoToVideo = async (video: Buffer): Promise<Buffer> => {
+export const addLogoToVideo = async (
+  video: Buffer,
+  mimeType: string,
+): Promise<Buffer> => {
   // save buffer in a temp file
   console.time('save video');
   console.time('create temp file & get buffer');
   console.log('creating temp file');
-  await fs.promises.writeFile('temp.mp4', video);
-  const videoEditor = await new ffmpeg('temp.mp4');
+  const tempFilePath = `temp.${mimeType.split('/')[1]}`;
+  await fs.promises.writeFile(tempFilePath, video);
+  const videoEditor = await new ffmpeg(tempFilePath);
   console.timeEnd('create temp file & get buffer');
   console.log('got temp file buffer');
   console.log('creating logo');
@@ -42,7 +46,7 @@ export const addLogoToVideo = async (video: Buffer): Promise<Buffer> => {
     );
     // remove files
     console.time('remove temp files');
-    await fs.promises.unlink('temp.mp4');
+    await fs.promises.unlink(tempFilePath);
     await fs.promises.unlink('temp-logo.png');
     await fs.promises.unlink('temp-video-with-logo.mp4');
     console.timeEnd('remove temp files');

@@ -45,7 +45,7 @@ export const uploadMeme = async (message: Message | PartialMessage) => {
 
   if (ALLOWED_MEME_TYPES_TO_ADD_VIDEO_LOGO.includes(mimeType)) {
     console.log('is video');
-    newBuffer = await addLogoToVideo(buffer);
+    newBuffer = await addLogoToVideo(buffer, mimeType);
   }
 
   try {

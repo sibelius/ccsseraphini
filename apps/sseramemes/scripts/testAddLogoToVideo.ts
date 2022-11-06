@@ -6,7 +6,7 @@ import { addLogoToVideo } from '../src/image-scripts/addLogoToVideo';
 const testAddLogoToVideo = async () => {
   const video = await fs.promises.readFile('raw.mp4');
 
-  const bufferWithWatermark = await addLogoToVideo(video);
+  const bufferWithWatermark = await addLogoToVideo(video, 'video/mp4');
 
   /**
    * Save bufferWithWatermark to file.
