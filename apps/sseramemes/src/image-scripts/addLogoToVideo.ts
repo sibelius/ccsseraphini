@@ -31,6 +31,7 @@ export const addLogoToVideo = async (
     await fs.promises.unlink(tempFilePath);
     await fs.promises.unlink('temp-logo.png');
     await fs.promises.unlink('temp-video-with-logo.mp4');
+
     return videoWithLogo;
   } catch (e) {
     console.log(e);
