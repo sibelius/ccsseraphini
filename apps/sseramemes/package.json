@@ -9,6 +9,7 @@
     "server:start": "pm2 start ecosystem.config.js",
     "start": "esrun src/index.ts",
     "test": "jest",
+    "test:addLogoGif": "esrun scripts/testAddLogoToGif.ts",
     "test:addLogoVideo": "esrun scripts/testAddLogoToVideo.ts",
     "test:addlogo": "esrun scripts/testAddLogo.ts",
     "test:resize": "esrun scripts/testResizeImage.ts"
@@ -19,6 +20,7 @@
     "discord.js": "14.6.0",
     "dotenv": "16.0.2",
     "ffmpeg": "0.0.4",
+    "gifwrap": "0.10.1",
     "jimp": "0.16.1",
     "node-fetch": "3.2.10",
     "twitter-api-sdk": "1.1.0",
