@@ -1,6 +1,4 @@
-import { Client } from 'discord.js';
-import { GatewayIntentBits, TextChannel } from 'discord.js';
-
+import { Client, GatewayIntentBits, TextChannel, Events } from 'discord.js';
 import { config } from './config';
 import { debugConsole } from './debugConsole';
 import { tweetStream } from './tweetStream';
@@ -21,7 +19,7 @@ export const client = new Client({
 
 let botChannel: TextChannel;
 
-client.once('ready', async () => {
+client.once(Events.ClientReady, async () => {
   console.log(readyMessage);
 
   try {
@@ -85,7 +83,9 @@ const run = async (retryCount = 5) => {
   }
 };
 
-client.on('messageReactionAdd', handleRTVoting);
+client.on(Events.MessageReactionAdd, handleRTVoting);
+
+client.on(Events.MessageReactionRemove, handleRTVoting);
 
 client.on('messageReactionRemove', handleRTVoting);
 
