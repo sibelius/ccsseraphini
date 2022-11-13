@@ -8,13 +8,18 @@ import { handleRTVoting } from './handleRTVoting';
 import connectDB from './mongodb';
 import saveTemporaryTweet from './tweetRanking/saveTemporaryTweet';
 import startJobs from './tweetRanking/jobs';
+import { handleThreadCreation } from './handleThreadCreation';
 
 export const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.MessageContent,
   ],
+  allowedMentions: {
+    parse: ['users'],
+  },
 });
 
 let botChannel: TextChannel;
@@ -87,7 +92,9 @@ client.on(Events.MessageReactionAdd, handleRTVoting);
 
 client.on(Events.MessageReactionRemove, handleRTVoting);
 
-client.on('messageReactionRemove', handleRTVoting);
+client.on(Events.ThreadCreate, async (thread) =>
+  handleThreadCreation({ thread, client }),
+);
 
 client.on('error', (e) => console.error(e));
 client.on('warn', (e) => console.warn(e));
