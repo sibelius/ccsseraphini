@@ -1,6 +1,4 @@
-import { Client } from 'discord.js';
-import { GatewayIntentBits, TextChannel } from 'discord.js';
-
+import { Client, GatewayIntentBits, TextChannel, Events } from 'discord.js';
 import { config } from './config';
 import { debugConsole } from './debugConsole';
 import { tweetStream } from './tweetStream';
@@ -10,18 +8,23 @@ import { handleRTVoting } from './handleRTVoting';
 import connectDB from './mongodb';
 import saveTemporaryTweet from './tweetRanking/saveTemporaryTweet';
 import startJobs from './tweetRanking/jobs';
+import { handleThreadCreation } from './handleThreadCreation';
 
 export const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.MessageContent,
   ],
+  allowedMentions: {
+    parse: ['users'],
+  },
 });
 
 let botChannel: TextChannel;
 
-client.once('ready', async () => {
+client.once(Events.ClientReady, async () => {
   console.log(readyMessage);
 
   try {
@@ -85,9 +88,13 @@ const run = async (retryCount = 5) => {
   }
 };
 
-client.on('messageReactionAdd', handleRTVoting);
+client.on(Events.MessageReactionAdd, handleRTVoting);
 
-client.on('messageReactionRemove', handleRTVoting);
+client.on(Events.MessageReactionRemove, handleRTVoting);
+
+client.on(Events.ThreadCreate, async (thread) =>
+  handleThreadCreation({ thread, client }),
+);
 
 client.on('error', (e) => console.error(e));
 client.on('warn', (e) => console.warn(e));
