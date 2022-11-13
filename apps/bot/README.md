@@ -11,6 +11,8 @@
 
 1. Get channel id from Discord and add it to `.env` file with name `DISCORD_CHANNEL_ID`.
 
+1. Get general channel id from Discord and add it to `.env` file with name `DISCORD_GENERAL_CHANNEL_ID`.
+
 1. Go to Twitter developer portal and retrieve the tokens and save them to `.env`:
    - `TWITTER_ACCESS_TOKEN`
    - `TWITTER_ACCESS_TOKEN_SECRET`
