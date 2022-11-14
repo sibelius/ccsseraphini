@@ -16,15 +16,15 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@types/jest": "28.1.8",
+    "@types/jest": "29.2.2",
     "cross-env": "7.0.3",
-    "husky": "8.0.1",
-    "jest-environment-jsdom": "29.0.3",
+    "husky": "8.0.2",
+    "jest-environment-jsdom": "29.3.1",
     "lint-staged": "13.0.3",
-    "patch-package": "6.4.7",
+    "patch-package": "6.5.0",
     "prettier": "2.7.1",
-    "prettier-package-json": "2.6.4",
-    "turbo": "1.4.6"
+    "prettier-package-json": "2.7.0",
+    "turbo": "1.6.3"
   },
   "lint-staged": {
     "*.{js,ts,tsx,css,md}": "prettier --write",
