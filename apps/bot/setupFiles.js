@@ -13,6 +13,7 @@ fetchMock.enableFetchMocks();
   'TWITTER_API_KEY',
   'TWITTER_API_KEY_SECRET',
   'MONGO_URI',
+  'DISCORD_GENERAL_CHANNEL_ID',
 ].forEach((key) => {
   process.env[key] = key;
 });
