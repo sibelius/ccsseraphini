@@ -1,8 +1,8 @@
-import { AnyThreadChannel, TextChannel, Client } from 'discord.js';
+import { AnyThreadChannel, TextChannel, Client, ChannelType } from 'discord.js';
 import { config } from './config';
 
 const isForumPost = (thread: AnyThreadChannel<boolean>) => {
-  return thread.appliedTags?.length >= 1;
+  return thread.parent.type === ChannelType.GuildForum;
 };
 
 type ThreadCreationArgs = {
