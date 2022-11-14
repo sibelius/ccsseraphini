@@ -19,7 +19,7 @@ afterAll(disconnectMongoose);
 
 jest.mock('../getTwitterClient');
 
-it('should sync ranked tweet without errors', async () => {
+it.skip('should sync ranked tweet without errors', async () => {
   //Populate database to test sync method
   const created_at = new Date('2022-08-11T19:08:00.000Z');
   const rankedTweets = createFakeRankedTweets(created_at, 3);
