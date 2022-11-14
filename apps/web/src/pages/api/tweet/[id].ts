@@ -28,6 +28,7 @@ const retweetHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       Authorization: getTwitterAuthorization(session.access_token),
     },
   };
+  // @ts-ignore
   const url = `https://api.twitter.com/2/users/${session.id}/retweets`;
 
   const response = await fetch(url, options);

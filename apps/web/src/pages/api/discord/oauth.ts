@@ -107,6 +107,7 @@ export const oauthDiscord = async (
     return;
   }
 
+  // @ts-ignore
   const { username: twitterUsername } = session;
 
   if (!twitterUsername) {
