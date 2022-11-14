@@ -5,8 +5,11 @@ import { config } from '../../../config';
 export default NextAuth({
   callbacks: {
     session({ session, token }) {
+      // @ts-ignore
       session.id = token.sub;
+      // @ts-ignore
       session.access_token = token.access_token;
+      // @ts-ignore
       session.username = token.username;
 
       return session;
