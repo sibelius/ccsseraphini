@@ -16,7 +16,7 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@types/jest": "29.2.2",
+    "@types/jest": "29.2.3",
     "cross-env": "7.0.3",
     "husky": "8.0.2",
     "jest-environment-jsdom": "29.3.1",
