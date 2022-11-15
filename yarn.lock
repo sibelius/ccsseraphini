@@ -6567,10 +6567,10 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-discord-api-types@0.37.17, discord-api-types@^0.37.12:
-  version "0.37.17"
-  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.17.tgz#314e4225fdff31b08b83ba5104d46564bc02303c"
-  integrity sha512-5ZIw1VtkmToBy8ziketjHkZnW1FoLevyXdK/TslNFLozijug2RnB3MyBNtSGzML1c72koU3neeGkvFZ8OiU0tQ==
+discord-api-types@0.37.18, discord-api-types@^0.37.12:
+  version "0.37.18"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.18.tgz#1f0ca95cea4b2380ba77623a62b1d285f1237d7a"
+  integrity sha512-mJ+9C8gmG5csssVZPH06Y8IGiJykljFyZc6n6F+T3vKo6yNBI5TtLIbwt6t9hJzsR5f1ITzRZ6cuPrTvRCUxqA==
 
 discord.js@14.6.0:
   version "14.6.0"
@@ -13269,7 +13269,7 @@ yargs-parser@^20.2.2:
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-20.2.9.tgz"
   integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
 
-yargs-parser@^21.0.0, yargs-parser@^21.0.1, yargs-parser@^21.1.1:
+yargs-parser@^21.0.1, yargs-parser@^21.1.1:
   version "21.1.1"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
   integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
