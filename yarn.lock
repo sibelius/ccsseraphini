@@ -4479,10 +4479,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@*", "@types/jest@29.2.2", "@types/jest@^29.2.2":
-  version "29.2.2"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.2.2.tgz#874e7dc6702fa6a3fe6107792aa98636dcc480b4"
-  integrity sha512-og1wAmdxKoS71K2ZwSVqWPX6OVn3ihZ6ZT2qvZvZQm90lJVDyXIjYcu4Khx2CNIeaFv12rOU/YObOsI3VOkzog==
+"@types/jest@*", "@types/jest@29.2.3", "@types/jest@^29.2.3":
+  version "29.2.3"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.2.3.tgz#f5fd88e43e5a9e4221ca361e23790d48fcf0a211"
+  integrity sha512-6XwoEbmatfyoCjWRX7z0fKMmgYKe9+/HrviJ5k0X/tjJWHGAezZOfYaxqQKuzG/TvQyr+ktjm4jgbk0s4/oF2w==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
@@ -13269,7 +13269,7 @@ yargs-parser@^20.2.2:
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-20.2.9.tgz"
   integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
 
-yargs-parser@^21.0.0, yargs-parser@^21.0.1, yargs-parser@^21.1.1:
+yargs-parser@^21.0.1, yargs-parser@^21.1.1:
   version "21.1.1"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
   integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
