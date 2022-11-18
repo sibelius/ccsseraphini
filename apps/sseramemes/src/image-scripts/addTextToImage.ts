@@ -82,6 +82,7 @@ export const addTextToImage = async (
   message: Message | PartialMessage,
   buffer: Buffer,
 ): Promise<Buffer> => {
+  if (!message.content) return buffer;
   if (message.content.length > 280) {
     console.log('Text is too long');
     return buffer;
