@@ -2,7 +2,11 @@ import { Message, PartialMessage } from 'discord.js';
 import { TweetV1, TwitterApi } from 'twitter-api-v2';
 import fetch from 'node-fetch';
 import { RETWEET_MEME_TIMEOUT } from './score';
-import { addLogoToImage } from './image-scripts';
+import {
+  addLogoToImage,
+  addTextToImage,
+  removeMemeCommands,
+} from './image-scripts';
 import { getMessageContent } from './getMessageContent';
 import { addLogoToVideo } from './image-scripts/addLogoToVideo';
 
@@ -40,7 +44,8 @@ export const uploadMeme = async (message: Message | PartialMessage) => {
    * If the buffer is an image, we resize it then add logo.
    */
   if (ALLOWED_MEME_TYPES_TO_ADD_LOGO.includes(mimeType)) {
-    newBuffer = await addLogoToImage(buffer);
+    const bufferWithText = await addTextToImage(message, buffer);
+    newBuffer = await addLogoToImage(bufferWithText);
   }
 
   if (ALLOWED_MEME_TYPES_TO_ADD_VIDEO_LOGO.includes(mimeType)) {
@@ -74,8 +79,8 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
   const mediaIds = mediaId ? [mediaId] : undefined;
 
   const content = await getMessageContent(message);
-
-  const tweet = await client.v1.tweet(content, {
+  const contentCleaned = removeMemeCommands(content);
+  const tweet = await client.v1.tweet(contentCleaned, {
     media_ids: mediaIds,
   });
 

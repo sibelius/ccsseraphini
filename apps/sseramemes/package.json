@@ -11,6 +11,7 @@
     "test": "jest",
     "test:addLogoGif": "esrun scripts/testAddLogoToGif.ts",
     "test:addLogoVideo": "esrun scripts/testAddLogoToVideo.ts",
+    "test:addText": "esrun scripts/testAddTextToImage.ts",
     "test:addlogo": "esrun scripts/testAddLogo.ts",
     "test:resize": "esrun scripts/testResizeImage.ts"
   },
