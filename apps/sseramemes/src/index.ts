@@ -4,6 +4,7 @@ import { handleMemeVoting, isMeme } from './handleMemeVoting';
 import { readyMessage } from './readyMessage';
 import { EMOJIS_POINTS } from './score';
 import { listenToMentions } from './twitterMentions';
+import { addMemeTextManual } from './image-scripts';
 
 export const client = new Client({
   intents: [
@@ -25,7 +26,7 @@ client.once(Events.ClientReady, async () => {
   ) as TextChannel;
 
   await memeChannel.send(readyMessage);
-
+  await memeChannel.send(addMemeTextManual);
   try {
     await listenToMentions(memeChannel);
   } catch (err) {

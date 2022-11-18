@@ -78,6 +78,13 @@ export const removeMemeCommands = (message: string) => {
     .replace(`color="${color}"`, '')
     .trim();
 };
+/**
+ * Add text to image.
+ * @param message
+ * @param buffer
+ * @example you will send a message in discord like this: ;meme text="eai jeff" position="top-left" color="xlarge-black"
+ * what this function will do is add the text "eai jeff" to the top-left of the image with the color xlarge-black
+ */
 export const addTextToImage = async (
   message: Message | PartialMessage,
   buffer: Buffer,
@@ -107,3 +114,20 @@ export const addTextToImage = async (
   );
   return await meme.getBufferAsync(meme.getMIME());
 };
+
+export const addMemeTextManual = `
+
+Como usar a funcionalidade de adicionar texto a imagem? 
+Basta enviar uma mensagem no discord junto a imagem com o seguinte formato:
+
+  \`\`;meme text="eai jeff" position="top-left" color="xlarge-black"\`\`
+  sendo que:
+  \`\`;meme text="eai jeff"\`\` é o texto(eai jeff) que será adicionado a imagem é obrigatório como primeiro argumento
+
+  \`\`position="top-left"\`\` é a posição que o texto será adicionado a imagem, sendo que as posições são:
+  \`\`top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right\`\`
+  sendo que a posição padrão é \`\`top-left\`\`
+  \`\`color="xlarge-black"\`\` é a cor do texto, sendo que as cores são:
+  \`\`small-white, medium-white, large-white, xlarge-white, small-black, medium-black, large-black, xlarge-black\`\`
+  sendo que a cor padrão é \`\`medium-white\`\` 
+  `;
