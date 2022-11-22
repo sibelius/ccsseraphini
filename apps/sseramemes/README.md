@@ -52,3 +52,5 @@ As we're running on an EC2 instance, our deployment is a PM2 watch plus a cronjo
 ```bash
 */5 * * * * cd ~/ccsseraphini && git pull && yarn >/dev/null 2>&1
 ```
+
+_Note: don't forget to add temp files to `ignore_watch` on `ecosystem.config.js` to avoid restarting the server._

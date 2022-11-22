@@ -8,6 +8,7 @@ module.exports = {
       name: 'sseramemes',
       script: 'npm',
       args: 'start',
+      ignore_watch: ['temp*'],
       /**
        * Add time to the logs
        */
