@@ -18,6 +18,7 @@
   "dependencies": {
     "@digitak/esrun": "3.2.14",
     "@jimp/types": "0.16.2",
+    "cuid": "2.1.8",
     "discord.js": "14.6.0",
     "dotenv": "16.0.3",
     "ffmpeg": "0.0.4",
