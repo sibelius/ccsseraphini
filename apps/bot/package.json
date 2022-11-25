@@ -11,7 +11,7 @@
   "dependencies": {
     "@digitak/esrun": "3.2.14",
     "@jimp/types": "0.16.2",
-    "discord-api-types": "0.37.19",
+    "discord-api-types": "0.37.20",
     "discord.js": "14.6.0",
     "dotenv": "16.0.3",
     "dotenv-safe": "8.2.0",
