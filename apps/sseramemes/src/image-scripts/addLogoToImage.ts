@@ -9,7 +9,7 @@ import { resizeImage, TWITTER_IMAGE_SIZE } from './index';
  * @param width
  */
 const getLogoWithOpacity = (height: number, width: number): string => {
-  if (height < TWITTER_IMAGE_SIZE && width < TWITTER_IMAGE_SIZE)
+  if (height < TWITTER_IMAGE_SIZE || width < TWITTER_IMAGE_SIZE)
     return './static/logo-opacity.png';
 
   return './static/logo.png';
