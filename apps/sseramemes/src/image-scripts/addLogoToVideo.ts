@@ -1,7 +1,7 @@
 import fs from 'fs';
 import ffmpeg from 'ffmpeg';
 import path from 'path';
-import Jimp from 'jimp';
+import { getLogoBuffer } from './addLogoToImage';
 
 export const addLogoToVideo = async (
   video: Buffer,
@@ -11,9 +11,7 @@ export const addLogoToVideo = async (
   const tempFilePath = `temp.${mimeType.split('/')[1]}`;
   await fs.promises.writeFile(tempFilePath, video);
   const videoEditor = await new ffmpeg(tempFilePath);
-  const logo = await Jimp.read(path.join(process.cwd(), './static/logo.png'));
-  logo.resize(40, 40);
-  const logoBuffer = await logo.getBufferAsync(logo.getMIME());
+  const logoBuffer = await getLogoBuffer();
 
   await fs.promises.writeFile('temp-logo.png', logoBuffer);
 

@@ -1,20 +1,51 @@
-import Jimp from 'jimp';
+import sharp from 'sharp';
 import * as path from 'path';
 import { resizeImage, TWITTER_IMAGE_SIZE } from './index';
 
-export const addLogoToImage = async (buffer: Buffer): Promise<Buffer> => {
-  const logo: Jimp = await Jimp.read(
-    path.join(process.cwd(), './static/logo.png'),
-  );
-  logo.resize(40, 40);
-  const meme: Jimp = await Jimp.read(buffer);
-  if (
-    meme.getHeight() < TWITTER_IMAGE_SIZE &&
-    meme.getWidth() < TWITTER_IMAGE_SIZE
-  ) {
-    logo.opacity(0.5);
+/**
+ * This is a workaround
+ * @deprecated
+ * @param height
+ * @param width
+ */
+const getLogoWithOpacity = (height: number, width: number): string => {
+  if (height < TWITTER_IMAGE_SIZE && width < TWITTER_IMAGE_SIZE)
+    return './static/logo-opacity.png';
+
+  return './static/logo.png';
+};
+const compositionOptions = (height: number, width: number, isGif: boolean) => {
+  if (isGif) {
+    return {
+      gravity: 'southeast',
+    };
   }
-  meme.composite(logo, meme.getWidth() - 50, meme.getHeight() - 50);
-  const memeBuffer = await meme.getBufferAsync(meme.getMIME());
-  return await resizeImage(memeBuffer);
+  return {
+    top: height - 40,
+    left: width - 40,
+  };
+};
+export const getLogoBuffer = async (defaultURL = './static/logo.png') => {
+  const logo = await sharp(path.join(process.cwd(), defaultURL)).resize(40, 40);
+  return logo.toBuffer();
+};
+export const addLogoToImage = async (
+  buffer: Buffer,
+  animated = false,
+): Promise<Buffer> => {
+  const { width, height } = await sharp(buffer, { animated }).metadata();
+
+  // TODO: Make add opacity to logo when is smaller than TWITTER_IMAGE_SIZE
+  const logoURL = getLogoWithOpacity(height, width);
+  const logo = await getLogoBuffer(logoURL);
+  const options = compositionOptions(height, width, animated);
+  const meme = await sharp(buffer)
+    .composite([
+      {
+        input: logo,
+        ...options,
+      },
+    ])
+    .toBuffer();
+  return await resizeImage(meme);
 };
