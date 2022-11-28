@@ -11,7 +11,8 @@ const testMeme = async () => {
   const buffer = Buffer.from(await image.arrayBuffer());
   const bufferWithText = await addTextToImage(
     {
-      content: ';meme text="eai jeff" position="top-left" color="xlarge-black"',
+      content:
+        ';meme text="eai jeff" position="top-center" location="north" color="xlarge-black"',
     } as Message,
     buffer,
   );

@@ -1,68 +1,27 @@
 import { Message, PartialMessage } from 'discord.js';
-import Jimp from 'jimp';
-
-const POSITIONS = {
-  'top-left': {
-    x: 0.05,
-    y: 0.05,
-  },
-  'top-center': {
-    x: 0.3,
-    y: 0.05,
-  },
-  'top-right': {
-    x: 0.7,
-    y: 0.05,
-  },
-  'middle-left': {
-    x: 0.05,
-    y: 0.3,
-  },
-  'middle-center': {
-    x: 0.4,
-    y: 0.4,
-  },
-  'middle-right': {
-    x: 0.7,
-    y: 0.3,
-  },
-  'bottom-left': {
-    x: 0.05,
-    y: 0.7,
-  },
-  'bottom-center': {
-    x: 0.3,
-    y: 0.7,
-  },
-  'bottom-right': {
-    x: 0.7,
-    y: 0.7,
-  },
-} as const;
-const TEXT_COLORS = {
-  'small-white': Jimp.FONT_SANS_16_WHITE,
-  'medium-white': Jimp.FONT_SANS_32_WHITE,
-  'large-white': Jimp.FONT_SANS_64_WHITE,
-  'xlarge-white': Jimp.FONT_SANS_128_WHITE,
-
-  'small-black': Jimp.FONT_SANS_16_BLACK,
-  'medium-black': Jimp.FONT_SANS_32_BLACK,
-  'large-black': Jimp.FONT_SANS_64_BLACK,
-  'xlarge-black': Jimp.FONT_SANS_128_BLACK,
-} as const;
-type Positions = typeof POSITIONS;
-type TextColors = typeof TEXT_COLORS;
+import path from 'path';
+import sharp from 'sharp';
+import {
+  POSITIONS,
+  TEXT_COLORS,
+  LOCATIONS,
+  Positions,
+  TextColors,
+  Locations,
+} from './constants';
 
 const parseMessageContent = (message: Message | PartialMessage) => {
   const content = message.content;
   const text = content.match(/text="([^"]+)"/)?.[1];
   const position = content.match(/position="([^ ]+)"/)?.[1] as keyof Positions;
   const color = content.match(/color="([^ ]+)"/)?.[1] as keyof TextColors;
+  const location = content.match(/location="([^ ]+)"/)?.[1] as keyof Locations;
   return {
     text,
     position:
       position in POSITIONS ? position : ('top-left' as keyof Positions),
     color: color in TEXT_COLORS ? color : ('medium-white' as keyof TextColors),
+    location: location in LOCATIONS ? location : ('nil' as keyof Locations),
   };
 };
 export const removeMemeCommands = (message: string) => {
@@ -71,12 +30,31 @@ export const removeMemeCommands = (message: string) => {
   const text = message.match(/text="([^"]+)"/)?.[1];
   const position = message.match(/position="([^ ]+)"/)?.[1];
   const color = message.match(/color="([^ ]+)"/)?.[1];
+  const location = message.match(/location="([^ ]+)"/)?.[1];
 
   return message
     .replace(`;meme text="${text}"`, '')
     .replace(`position="${position}"`, '')
     .replace(`color="${color}"`, '')
+    .replace(`location="${location}"`, '')
     .trim();
+};
+
+const getPositionConfig = (
+  position: keyof Positions,
+  location: keyof Locations,
+  width: number,
+  height: number,
+) => {
+  if (location === 'nil') {
+    return {
+      top: Math.round(height * POSITIONS[position].y),
+      left: Math.round(width * POSITIONS[position].x),
+    };
+  }
+  return {
+    gravity: LOCATIONS[location],
+  };
 };
 /**
  * Add text to image.
@@ -100,19 +78,27 @@ export const addTextToImage = async (
   }
 
   if (!message.content.includes(';meme text="')) return buffer;
-  const { text, position, color } = parseMessageContent(message);
+  const { text, position, color, location } = parseMessageContent(message);
   if (!text) return buffer;
-  const meme: Jimp = await Jimp.read(buffer);
-  const font = await Jimp.loadFont(TEXT_COLORS[color]);
-  await meme.print(
-    font,
-    meme.getWidth() * POSITIONS[position].x,
-    meme.getHeight() * POSITIONS[position].y,
-    text,
-    meme.getWidth() - 10,
-    meme.getHeight() - 10,
-  );
-  return await meme.getBufferAsync(meme.getMIME());
+  const fontURl = path.join(process.cwd(), './static/Montserrat/fonts.conf');
+  const { width, height } = await sharp(buffer).metadata();
+  const positionConfig = getPositionConfig(position, location, width, height);
+  return await sharp(buffer)
+    .composite([
+      {
+        input: {
+          text: {
+            text,
+            fontfile: fontURl,
+            font: 'Montserrat',
+            rgba: true,
+            dpi: Math.round(200 * TEXT_COLORS[color].size),
+          },
+        },
+        ...positionConfig,
+      },
+    ])
+    .toBuffer();
 };
 
 export const addMemeTextManual = `
@@ -130,4 +116,11 @@ Basta enviar uma mensagem no discord junto a imagem com o seguinte formato:
   \`\`color="xlarge-black"\`\` é a cor do texto, sendo que as cores são:
   \`\`small-white, medium-white, large-white, xlarge-white, small-black, medium-black, large-black, xlarge-black\`\`
   sendo que a cor padrão é \`\`medium-white\`\` 
+  
+  caso queira adicionar o texto alinhado em uma parte da imagem, basta adicionar o argumento \`\`location\`\` com o seguinte formato:
+  \`\`;meme text="eai jeff" color="xlarge-black" location="north"\`\`
+  sendo que as localizações são:
+  \`\`north, northeast, east, southeast, south, southwest, west, northwest, center\`\`
+  sendo que a localização padrão é \`\`nil\`\` que não adiciona a localização e deixa o posicionamento padrão
+ 
   `;
