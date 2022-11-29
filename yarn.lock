@@ -4200,10 +4200,10 @@
   dependencies:
     buffer "~6.0.3"
 
-"@solana/web3.js@1.66.2":
-  version "1.66.2"
-  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.66.2.tgz#80b43c5868b846124fe3ebac7d3943930c3fa60c"
-  integrity sha512-RyaHMR2jGmaesnYP045VLeBGfR/gAW3cvZHzMFGg7bkO+WOYOYp1nEllf0/la4U4qsYGKCsO9eEevR5fhHiVHg==
+"@solana/web3.js@1.66.4":
+  version "1.66.4"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.66.4.tgz#a991139435629edcc662413a7f2438c5daeed580"
+  integrity sha512-/hQtRmJ8p1Dxpe666ewAPD1SUi+pOTWKtxcAMJ+eLECubf5nxjClrPQ/1ddWImu9kWt+Hhbvvzy+jVhiuY65nA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@noble/ed25519" "^1.7.0"
