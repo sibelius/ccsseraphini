@@ -11,14 +11,12 @@ const getRuleFromConfig = (varName: string) => {
 
   const [hour, minute] = hourTimeString.split(':');
 
-  return new RecurrenceRule(
-    null,
-    null,
-    null,
-    null,
-    parseInt(hour),
-    parseInt(minute),
-  );
+  const rule = new RecurrenceRule();
+  rule.hour = parseInt(hour, 10);
+  rule.minute = parseInt(minute, 10);
+  rule.tz = 'America/Sao_Paulo';
+
+  return rule;
 };
 
 export default getRuleFromConfig;
