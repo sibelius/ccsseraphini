@@ -19,9 +19,9 @@ afterAll(disconnectMongoose);
 
 jest.mock('../getTwitterClient');
 
-it.skip('should sync ranked tweet without errors', async () => {
+it('should sync ranked tweet without errors', async () => {
   //Populate database to test sync method
-  const created_at = new Date('2022-08-11T19:08:00.000Z');
+  const created_at = new Date('2022-11-22T19:08:00.000Z');
   const rankedTweets = createFakeRankedTweets(created_at, 3);
   await RankedTweetModel.insertMany(rankedTweets);
 
@@ -56,7 +56,7 @@ it.skip('should sync ranked tweet without errors', async () => {
     .spyOn(console, 'error')
     .mockImplementation(console.error);
 
-  await syncRankedTweets(new Date());
+  await syncRankedTweets(new Date('2022-11-24T19:08:00.000Z'));
   const rankedTweetsLeft = await RankedTweetModel.countDocuments();
   const tweetsWithoutChanges = await RankedTweetModel.find({
     changes_since_last_update: false,
