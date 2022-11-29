@@ -12919,10 +12919,10 @@ use-callback-ref@^1.3.0:
   dependencies:
     tslib "^2.0.0"
 
-use-debounce@8.0.4:
-  version "8.0.4"
-  resolved "https://registry.npmjs.org/use-debounce/-/use-debounce-8.0.4.tgz"
-  integrity sha512-fGqsYQzl8kLHF2QpQSgIwgOgJmnh6j5L6SIzQiHdLfwp3q1egUL3btq5Bg2SJysH6A0ILLgT2IqXZKoNJr0nFw==
+use-debounce@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-9.0.0.tgz#edf390e3ffd9c7e9f890cd1e66a7c1e3cee78926"
+  integrity sha512-SoyHcbz8NINdmGqHf9u7FXg7JoGsRyKdae5jbQBXswJH0yVHvicscVRQrsKoMsSImzMgnsfccPw9YhLQt/bSFg==
 
 use-sidecar@^1.1.2:
   version "1.1.2"
