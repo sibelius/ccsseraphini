@@ -38,7 +38,7 @@
     "react-particle-image": "1.0.2",
     "react-tsparticles": "2.5.3",
     "twitter-api-sdk": "1.2.1",
-    "use-debounce": "8.0.4"
+    "use-debounce": "9.0.2"
   },
   "devDependencies": {
     "@babel/core": "7.20.5",
