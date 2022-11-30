@@ -14,10 +14,10 @@ const configValidator = (keys: string[]): boolean =>
 
 const getTwitterClient = async (): Promise<TwitterApi> => {
   const neededKeys = [
-    'TWITTER_API_KEY',
-    'TWITTER_API_KEY_SECRET',
-    'TWITTER_ACCESS_TOKEN',
-    'TWITTER_ACCESS_TOKEN_SECRET',
+    'TWITTER_RANKING_API_KEY',
+    'TWITTER_RANKING_API_KEY_SECRET',
+    'TWITTER_RANKING_ACCESS_TOKEN',
+    'TWITTER_RANKING_ACCESS_TOKEN_SECRET',
   ];
 
   if (!configValidator(neededKeys)) return;
