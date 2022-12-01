@@ -7,7 +7,7 @@ const rankingJob = () => {
   const rule = getRuleFromConfig('TWEET_RANKING_RULE');
   if (!rule) return;
 
-  const since = new Date(Date.now() - 86400000);
+  const since = new Date(new Date().setHours(0, 0, 0, 0));
   const executeTweetRanking: JobCallback = tweetRanking(since);
 
   scheduleJob(rule, executeTweetRanking);

@@ -1,7 +1,7 @@
 import { RecurrenceRule } from 'node-schedule';
 import { config } from '../../config';
 
-const getRuleFromConfig = (varName: string) => {
+const getRuleFromConfig = (varName: string): RecurrenceRule => {
   const hourTimeString = config[varName];
 
   if (!hourTimeString) {
@@ -9,12 +9,17 @@ const getRuleFromConfig = (varName: string) => {
     return;
   }
 
-  const [hour, minute] = hourTimeString.split(':');
-
   const rule = new RecurrenceRule();
-  rule.hour = parseInt(hour, 10);
-  rule.minute = parseInt(minute, 10);
   rule.tz = 'America/Sao_Paulo';
+
+  try {
+    const [hour, minute] = hourTimeString.split(':');
+    rule.hour = parseInt(hour, 10);
+    rule.minute = parseInt(minute, 10);
+  } catch (error) {
+    console.error(`Error parsing ${varName} from config`);
+    return;
+  }
 
   return rule;
 };
