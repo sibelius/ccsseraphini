@@ -4,8 +4,11 @@ import getRankedTweets from './getRankedTweets';
 import saveRankedTweets from './saveRankedTweets';
 import deleteTemporaryTweets from './deleteTemporaryTweets';
 import postTweetRanking from './postTweetRanking';
+import { getDayBeforeDate } from '../date/getDayBeforeDate';
 
 const tweetRanking = (since: Date, until: Date = new Date()) => {
+  const endDate = getDayBeforeDate(until);
+  
   const execute: JobCallback = async () => {
     try {
       const rankedTweets = await getRankedTweets(since);
@@ -16,7 +19,7 @@ const tweetRanking = (since: Date, until: Date = new Date()) => {
 
       try {
         await saveRankedTweets(rankedTweets);
-        await deleteTemporaryTweets(since, until);
+        await deleteTemporaryTweets(since, endDate);
       } catch (error) {
         console.error('Fail to save ranked tweets', error);
         console.info("Temporary tweets wasn't deleted");
@@ -26,7 +29,7 @@ const tweetRanking = (since: Date, until: Date = new Date()) => {
     }
 
     try {
-      await postTweetRanking(until);
+      await postTweetRanking(endDate);
     } catch (error) {
       console.error('Fail to handle ranking', error);
     }
