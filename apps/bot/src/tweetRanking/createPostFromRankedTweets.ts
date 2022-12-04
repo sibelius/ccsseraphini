@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { getStats } from './getStats';
 import getTopTweets from './getTopTweets';
 import publishRanking from './publishRanking';
@@ -5,10 +6,14 @@ import RankedTweetModel from './schema/RankedTweet';
 import { RankedTweet, Stats } from './types';
 
 const createPostFromRankedTweets = async (
-  since: Date,
-  until: Date = new Date(),
+  startDate: DateTime,
+  endDate: DateTime = startDate.endOf('day'),
+  rankingSize: number = 5,
 ): Promise<void> => {
   try {
+    const since = startDate.toJSDate();
+    const until = endDate.toJSDate();
+
     const tweets: RankedTweet[] = await RankedTweetModel.find({
       created_at: {
         $gte: since,
@@ -22,12 +27,13 @@ const createPostFromRankedTweets = async (
     }
 
     const stats: Stats = await getStats(since, until);
-    const topTweets = getTopTweets(tweets, 5);
+    const topTweets = getTopTweets(tweets, rankingSize);
 
     await publishRanking(topTweets, stats);
   } catch (error) {
     console.error('Fail to create post from ranked tweets', error, {
-      created_at: since,
+      startDate,
+      endDate,
     });
   }
 };

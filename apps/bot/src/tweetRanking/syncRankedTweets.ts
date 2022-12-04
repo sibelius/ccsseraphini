@@ -6,6 +6,7 @@ import deleteRankedTweetsById from './deleteRankedTweetsById';
 import getRankedTweetsFromApi from './getRankedTweetsFromApi';
 import isPublicMetricsChanged from './isPublicMetricsChanged';
 import findRankedTweetsForSync from './findRankedTweetsForSync';
+import { DateTime } from 'luxon';
 
 const syncRankedTweets: JobCallback = async (): Promise<void> => {
   try {
@@ -45,7 +46,7 @@ const syncRankedTweets: JobCallback = async (): Promise<void> => {
           currentMetrics,
           newMetrics,
         );
-        rankedTweet.last_updated = new Date();
+        rankedTweet.last_updated = DateTime.now().toJSDate();
 
         delete tweetsMap[rankedTweet.tweet_id];
 

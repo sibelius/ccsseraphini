@@ -1,11 +1,13 @@
 import { RankedTweet } from './types';
 import RankedTweetModel from './schema/RankedTweet';
+import { DateTime } from 'luxon';
 
 const findRankedTweetsForSync = async (
-  date: Date = new Date(),
+  date: DateTime = DateTime.now(),
 ): Promise<RankedTweet[]> => {
-  const twoDaysAgo = new Date(date.setDate(date.getDate() - 2));
-  const oneMonthAgo = new Date(date.setMonth(date.getMonth() - 1));
+  const twoDaysAgo = date.startOf('day').minus({ days: 2 }).toJSDate();
+
+  const oneMonthAgo = date.endOf('day').minus({ months: 1 }).toJSDate();
 
   const tweets: RankedTweet[] = await RankedTweetModel.find({
     changes_since_last_update: {
