@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@digitak/esrun": "3.2.14",
+    "@digitak/esrun": "3.2.15",
     "@jimp/types": "0.16.2",
     "discord-api-types": "0.37.20",
     "discord.js": "14.7.1",

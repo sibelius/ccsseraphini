@@ -2537,13 +2537,14 @@
   dependencies:
     react-loading-skeleton "^3.1.0"
 
-"@digitak/esrun@3.2.14":
-  version "3.2.14"
-  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.14.tgz#3927b5818df10d1a14d6d1494198f45a806314b7"
-  integrity sha512-jlgo/eJeQQR7j90SGLM0xwIukn7lW9zWsh8HL8StW2aN6K7rg2z/E8zNZbH/XBz/IKcL1dGXijv0JTvxnifayQ==
+"@digitak/esrun@3.2.15":
+  version "3.2.15"
+  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.15.tgz#cf2a43725e16f094a46addaa7491aa5b1f1dc335"
+  integrity sha512-lVWOG3+1Fd9/hZgaKaf/E4w5llt4Zh2k84+owRdqXBv3oZq9soCQg1ALoWmzBtGpIsdtdOgCrMzLiCAN6wykQA==
   dependencies:
     "@digitak/grubber" "^3.1.3"
     chokidar "^3.5.1"
+    cuid "^2.1.8"
     esbuild "^0.14.47"
 
 "@digitak/grubber@^3.1.3":
@@ -6404,7 +6405,7 @@ csstype@^3.0.11, csstype@^3.0.2:
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.1.0.tgz"
   integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
 
-cuid@2.1.8:
+cuid@2.1.8, cuid@^2.1.8:
   version "2.1.8"
   resolved "https://registry.yarnpkg.com/cuid/-/cuid-2.1.8.tgz#cbb88f954171e0d5747606c0139fb65c5101eac0"
   integrity sha512-xiEMER6E7TlTPnDxrM4eRiC6TRgjNX9xzEZ5U/Se2YJKr7Mq4pJn/2XEHjl3STcSh96GmkHPcBXLES8M29wyyg==
