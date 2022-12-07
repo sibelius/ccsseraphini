@@ -31,10 +31,10 @@
     "yargs": "17.6.2"
   },
   "devDependencies": {
-    "@types/jest": "^29.2.3",
-    "@types/node": "^18.11.10",
+    "@types/jest": "^29.2.4",
+    "@types/node": "^18.11.11",
     "babel-jest": "29.3.1",
-    "eslint": "8.28.0",
+    "eslint": "8.29.0",
     "jest": "29.3.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
