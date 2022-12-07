@@ -1,20 +1,33 @@
-import { getStartDateFunctionMap } from './getStartDateFunctionMap';
-import { getRankingMonthlyOrBiweeklyPeriod } from './getRankingMonthlyOrBiweeklyPeriod';
-import { getRankingWeeklyPeriod } from './getRankingWeeklyPeriod';
-import { getRankingDailyPeriod } from './getRankingDailyPeriod';
+import { getStartDate } from './getStartDate';
+import { DateTime } from 'luxon';
+import { RankingPeriod } from './types';
 
-const isSunday = (date: Date): boolean => date.getDay() === 0;
+export const getRankingPeriod = (until: DateTime): RankingPeriod => {
+  const since = getStartDate(until);
 
-export const getRankingPeriod = (until: Date): Record<string, Date> => {
-  const startDateFunctionMap: Record<number, Function> = getStartDateFunctionMap(until);
-  const untilDateOfMonth: number = until.getDate();
-  const getStartDate: Function = startDateFunctionMap[untilDateOfMonth];
+  if (!!since) {
+    const endOfMonth = until.endOf('month').day;
 
-  if (!!getStartDate)
-    return getRankingMonthlyOrBiweeklyPeriod(getStartDate, until, startDateFunctionMap, untilDateOfMonth);
+    const label = until.day === endOfMonth ? 'monthly' : 'biweekly';
 
-  if (isSunday(until))
-    return getRankingWeeklyPeriod(until);
+    return {
+      label,
+      since,
+      until,
+    };
+  }
 
-  return getRankingDailyPeriod(until);
+  if (until.weekday === 7) {
+    return {
+      label: 'weekly',
+      since: until.minus({ days: 6 }),
+      until,
+    };
+  }
+
+  return {
+    label: 'daily',
+    since: until,
+    until,
+  };
 };

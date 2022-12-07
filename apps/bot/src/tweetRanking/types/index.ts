@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { Types } from 'mongoose';
 
 export type TemporaryTweet = {
@@ -57,4 +58,20 @@ export type Stats = {
   replies: number;
   retweets: number;
   quotes: number;
+};
+
+export type GetStartDateFunction = (endDate: Date) => Date;
+export type StartDateFunctionMap = Record<number, GetStartDateFunction>;
+export type StartDateFunction = (endDate: DateTime) => DateTime | undefined;
+type RelativeDates = {
+  firstBiweeklyDay: number;
+  endOfMonth: number;
+  lastBiweeklyDay: number;
+};
+
+export type GetRelativeDates = (date: DateTime) => RelativeDates;
+export type RankingPeriod = {
+  label: string;
+  since: DateTime;
+  until: DateTime;
 };

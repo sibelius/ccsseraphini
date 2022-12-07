@@ -5,6 +5,7 @@ import getRankedTweets from '../getRankedTweets';
 import { connectMongoose } from '../../../test/connectMongoose';
 import { disconnectMongoose } from '../../../test/disconnectMongoose';
 import { clearDbAndRestartCounters } from '../../../test/clearDbAndRestartCounters';
+import { DateTime } from 'luxon';
 
 beforeAll(async () => {
   await connectMongoose();
@@ -45,7 +46,8 @@ it('should return the score of the tweet', async () => {
   );
 
   const expectedScore = 1 + 123 + 752 + 525 + 358;
-  const rankedTweets = await getRankedTweets(tweetSaved.created_at);
+  const date = DateTime.fromJSDate(tweetSaved.created_at);
+  const rankedTweets = await getRankedTweets(date);
 
   expect(rankedTweets).toHaveLength(1);
   expect(rankedTweets[0].score).toBe(expectedScore);

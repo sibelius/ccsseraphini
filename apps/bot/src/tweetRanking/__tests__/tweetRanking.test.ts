@@ -11,6 +11,7 @@ import RankedTweetModel from '../schema/RankedTweet';
 import getTwitterClient from '../getTwitterClient';
 import { TemporaryTweet } from '../types';
 import tweetRanking from '..';
+import { DateTime } from 'luxon';
 
 beforeAll(async () => {
   await connectMongoose();
@@ -23,9 +24,11 @@ afterAll(disconnectMongoose);
 jest.mock('../getTwitterClient');
 
 it('should run without errors the tweetRanking execute function', async () => {
-  const created_at = new Date('2021-11-15T19:08:00.000Z');
+  const created_at = DateTime.fromISO('2021-11-15T19:08:00.000Z');
   //Create Fake Tweets to test the ranking
-  const fakeTweets: TemporaryTweet[] = createFakeTemporaryTweets(created_at);
+  const fakeTweets: TemporaryTweet[] = createFakeTemporaryTweets(
+    created_at.toJSDate(),
+  );
 
   //Insert Fake Tweets in the DB
   const temporaryTweets: TemporaryTweet[] =
@@ -59,7 +62,7 @@ it('should run without errors the tweetRanking execute function', async () => {
     .mockImplementation(console.error);
 
   //Get execute function
-  const until = new Date('2021-11-16T19:08:00.000Z');
+  const until = DateTime.fromISO('2021-11-16T19:08:00.000Z');
   const execute = tweetRanking(created_at, until);
 
   //Execute the ranking creation

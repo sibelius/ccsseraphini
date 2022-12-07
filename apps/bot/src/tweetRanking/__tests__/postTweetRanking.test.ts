@@ -1,59 +1,62 @@
-import postTweetRanking from "../postTweetRanking";
-import createPostFromRankedTweets from "../createPostFromRankedTweets";
-import { getDayBeforeDate } from "../../date/getDayBeforeDate";
+import postTweetRanking from '../postTweetRanking';
+import createPostFromRankedTweets from '../createPostFromRankedTweets';
+import { DateTime } from 'luxon';
 
 jest.mock('../createPostFromRankedTweets');
 
+//refactor it to use Luxon instead of Date
 it.each([
   {
-    num: 1,
-    name: "daily",
-    date: new Date(2022, 7, 2, 19, 8, 0, 0),
+    name: 'daily',
+    date: DateTime.fromJSDate(new Date(2022, 7, 2, 19, 8, 0, 0)),
     expected: {
-      since: new Date(2022, 7, 1, 0, 0, 0, 0),
-      until: new Date(2022, 7, 1, 23, 59, 59, 999),
-    }
+      since: DateTime.fromJSDate(new Date(2022, 7, 1, 0, 0, 0, 0)),
+      until: DateTime.fromJSDate(new Date(2022, 7, 1, 23, 59, 59, 999)),
+    },
   },
   {
-    num: 2,
-    name: "weekly",
-    date: new Date(2022, 11, 5, 19, 0, 0, 0),
+    name: 'weekly',
+    date: DateTime.fromJSDate(new Date(2022, 11, 5, 19, 0, 0, 0)),
     expected: {
-      since: new Date(2022, 10, 28, 0, 0, 0, 0),
-      until: new Date(2022, 11, 4, 23, 59, 59, 999),
-    }
+      since: DateTime.fromJSDate(new Date(2022, 10, 28, 0, 0, 0, 0)),
+      until: DateTime.fromJSDate(new Date(2022, 11, 4, 23, 59, 59, 999)),
+    },
   },
   {
-    num: 3,
-    name: "biweekly 1",
-    date: new Date(2022, 1, 14, 19, 8, 0, 0),
+    name: 'biweekly 1',
+    date: DateTime.fromJSDate(new Date(2022, 1, 14, 19, 8, 0, 0)),
     expected: {
-      since: new Date(2022, 1, 1, 0, 0, 0, 0),
-      until: new Date(2022, 1, 13, 23, 59, 59, 999),
-    }
+      since: DateTime.fromJSDate(new Date(2022, 1, 1, 0, 0, 0, 0)),
+      until: DateTime.fromJSDate(new Date(2022, 1, 13, 23, 59, 59, 999)),
+    },
   },
   {
-    num: 4,
-    name: "biweekly 2",
-    date: new Date(2022, 1, 28, 19, 8, 0, 0),
+    name: 'biweekly 2',
+    date: DateTime.fromJSDate(new Date(2022, 1, 28, 19, 8, 0, 0)),
     expected: {
-      since: new Date(2022, 1, 14, 0, 0, 0, 0),
-      until: new Date(2022, 1, 27, 23, 59, 59, 999),
-    }
+      since: DateTime.fromJSDate(new Date(2022, 1, 14, 0, 0, 0, 0)),
+      until: DateTime.fromJSDate(new Date(2022, 1, 27, 23, 59, 59, 999)),
+    },
   },
   {
-    num: 5,
-    name: "monthly",
-    date: new Date(2022, 2, 1, 19, 8, 0, 0),
+    name: 'monthly',
+    date: DateTime.fromJSDate(new Date(2022, 2, 1, 19, 8, 0, 0)),
     expected: {
-      since: new Date(2022, 1, 1, 0, 0, 0, 0),
-      until: new Date(2022, 1, 28, 23, 59, 59, 999),
-    }
+      since: DateTime.fromJSDate(new Date(2022, 1, 1, 0, 0, 0, 0)),
+      until: DateTime.fromJSDate(new Date(2022, 1, 28, 23, 59, 59, 999)),
+    },
   },
-])("should post ranking", async ({ num, date, expected }) => {
-  (createPostFromRankedTweets as jest.Mock).mockImplementation(async () => Promise.resolve());
+])('should post ranking', async ({ date, expected }) => {
+  (createPostFromRankedTweets as jest.Mock).mockImplementation(async () =>
+    Promise.resolve(),
+  );
 
-  await postTweetRanking(getDayBeforeDate(date));
+  const endDate = date.minus({ days: 1 });
 
-  expect(createPostFromRankedTweets).toHaveBeenCalledWith(expected.since, expected.until);
-})
+  await postTweetRanking(endDate);
+
+  expect(createPostFromRankedTweets).toHaveBeenCalledWith(
+    expected.since,
+    expected.until,
+  );
+});

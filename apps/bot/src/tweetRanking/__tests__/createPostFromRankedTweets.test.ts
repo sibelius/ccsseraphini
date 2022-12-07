@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { TweetV2PostTweetResult } from 'twitter-api-v2';
 import { clearDbAndRestartCounters } from '../../../test/clearDbAndRestartCounters';
 import { connectMongoose } from '../../../test/connectMongoose';
@@ -14,16 +15,14 @@ beforeEach(clearDbAndRestartCounters);
 afterAll(disconnectMongoose);
 
 it('should have only one new author', async () => {
-  const created_at = new Date('2022-08-11T19:08:00.000Z');
-  const rankedTweets = createFakeRankedTweets(created_at, 4);
+  const created_at = DateTime.fromISO('2022-08-11T19:08:00.000Z');
+  const rankedTweets = createFakeRankedTweets(created_at.toJSDate(), 4);
   await RankedTweetModel.insertMany(rankedTweets);
 
-  //mock console error spy to check if there are errors
   const consoleSpy = jest
     .spyOn(console, 'error')
     .mockImplementation(() => console.error);
 
-  //Mock getTwitterClient to publish ranking
   (getTwitterClient as jest.Mock).mockReturnValue({
     v2: {
       tweet: jest.fn().mockResolvedValue({

@@ -1,8 +1,11 @@
 import { RankedTweet, TemporaryTweet } from './types';
 import getTemporaryTweets from './getTemporaryTweets';
 import getRankedTweetsFromApi from './getRankedTweetsFromApi';
+import { DateTime } from 'luxon';
 
-const getRankedTweets = async (created_at: Date): Promise<RankedTweet[]> => {
+const getRankedTweets = async (date: DateTime): Promise<RankedTweet[]> => {
+  const created_at = date.toJSDate();
+
   try {
     const temporaryTweets: TemporaryTweet[] = await getTemporaryTweets({
       created_at,
