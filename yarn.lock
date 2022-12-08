@@ -10161,10 +10161,10 @@ new-find-package-json@^2.0.0:
   dependencies:
     debug "^4.3.4"
 
-next-auth@4.18.0:
-  version "4.18.0"
-  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.18.0.tgz#f6fb4d2a1bfd6e90650755c13324e24d1f44b0d4"
-  integrity sha512-lqJtusYqUwDiwzO4+B+lx/vKCuf/akcdhxT5R47JmS5gvI9O6Y4CZYc8coysY7XaMGHCxfttvTSEw76RA8gNTg==
+next-auth@4.18.1:
+  version "4.18.1"
+  resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.18.1.tgz#139df845bae0c9e0fc1401d28e016b50ea51688a"
+  integrity sha512-9EP53GD+rh+yi73jjFj2Lz3iq42LeHRuL/0QTNL/qguaGWkrCHbIXn+L8q+x82r4havkseQSuoVZ5niHJHhGuw==
   dependencies:
     "@babel/runtime" "^7.16.3"
     "@panva/hkdf" "^1.0.1"
