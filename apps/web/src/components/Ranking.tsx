@@ -21,7 +21,6 @@ import { useState } from 'react';
 import {
   FaHeart,
   FaQuoteLeft,
-  FaQuoteRight,
   FaReply,
   FaRetweet,
   FaTrophy,
@@ -38,7 +37,7 @@ export const Ranking = ({ users }: PublicMetricsRankingProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<UserRanking | null>(null);
 
-  const { base, details, primary, secondary, secondaryVar } = bgPalette;
+  const { base, secondary, secondaryVar } = bgPalette;
   const {
     base: baseTxt,
     primary: primaryTxt,
@@ -165,7 +164,7 @@ export const Ranking = ({ users }: PublicMetricsRankingProps) => {
               border={`1px solid ${secondaryTxt}`}
             >
               <ModalHeader borderRadius="md" textAlign={'center'}>
-                @{selectedUser.username}'s metrics
+                @{selectedUser.username}&apos;s metrics
               </ModalHeader>
               <ModalCloseButton />
               <ModalBody>
