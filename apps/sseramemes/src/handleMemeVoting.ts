@@ -5,8 +5,7 @@ import {
   PartialMessage,
 } from 'discord.js';
 import { tweetMeme } from './tweetMeme';
-import { MIN_POINTS_TO_TWEET } from './config';
-import { EMOJIS_POINTS } from './config';
+import { MIN_POINTS_TO_TWEET_MEME, EMOJIS_POINTS } from './score';
 import { memeConditions } from './types';
 
 const isMessageFromChannelMemes = (
@@ -40,10 +39,10 @@ export const isMeme = async (
 
   const conditionsToBeAMeme: memeConditions = [
     isMessageFromChannelMemes(message),
-    message.attachments.size == 1
-  ]
-  
-  return !conditionsToBeAMeme.includes(false)
+    message.attachments.size == 1,
+  ];
+
+  return !conditionsToBeAMeme.includes(false);
 };
 
 /**
@@ -76,7 +75,7 @@ export const handleMemeVoting = async (
     return counter;
   }, 0);
 
-  if (points < MIN_POINTS_TO_TWEET) {
+  if (points < MIN_POINTS_TO_TWEET_MEME) {
     return;
   }
 
@@ -91,5 +90,5 @@ export const handleMemeVoting = async (
 
   const { tweetUrl } = await tweetMeme(message.message);
 
-  await message.message.channel.send(`${tweetUrl} 🚀`);
+  await message.message.channel.send(`🚀 ${tweetUrl}`);
 };

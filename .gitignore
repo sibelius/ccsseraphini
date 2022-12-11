@@ -1,3 +1,4 @@
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -62,3 +63,6 @@ apps/cli/lib
 package-lock.json
 
 test.png
+apps/web/public/sw.js.map
+globalConfig.json
+.vscode

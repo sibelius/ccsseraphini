@@ -14,13 +14,17 @@ interface Props {
   initialNextToken?: string;
   query?: string;
   isSearch?: boolean;
+  title?: string;
 }
-export const Timeline = ({
-  initialTweets,
-  initialNextToken,
-  query,
-  isSearch = false,
-}: Props) => {
+export const Timeline = (props: Props) => {
+  const {
+    initialTweets,
+    initialNextToken,
+    query,
+    isSearch = false,
+    title = 'Latest tweets',
+  } = props;
+
   const [tweets, setTweets] = useState(initialTweets);
   const [nextToken, setNextToken] = useState(initialNextToken);
   const [refresh, setRefresh] = useState(false);
@@ -58,6 +62,8 @@ export const Timeline = ({
   if (!tweets) {
     return null;
   }
+
+  const currentTitle = isSearch ? 'Search Results' : title;
 
   const renderTweets = () => {
     if (tweets.length === 0) {
@@ -99,8 +105,9 @@ export const Timeline = ({
       color={txtPalette.base}
       bgColor={bgPalette.secondary}
     >
-      <Text fontWeight="medium" fontSize={24} mb="5px">
-        Latest tweets
+      <Text fontWeight="medium" fontSize={24} mb={4}>
+        {currentTitle}
+
         <button
           style={{ fontSize: '.8rem', marginLeft: '.3rem' }}
           onClick={() => setRefresh(true)}

@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import * as fs from 'fs';
-import { addWatermark } from '../src/tweetMeme';
+import { addLogoToImage, addTextToImage } from '../src/image-scripts';
+import { Message } from 'discord.js';
 
 const testMeme = async () => {
   const image = await fetch(
@@ -8,8 +9,14 @@ const testMeme = async () => {
   );
 
   const buffer = Buffer.from(await image.arrayBuffer());
-  const bufferWithWatermark = await addWatermark(buffer);
-
+  const bufferWithText = await addTextToImage(
+    {
+      content:
+        ';meme text="eai jeff" position="top-center" location="north" color="xlarge-black"',
+    } as Message,
+    buffer,
+  );
+  const bufferWithWatermark = await addLogoToImage(bufferWithText);
   /**
    * Save bufferWithWatermark to file.
    */

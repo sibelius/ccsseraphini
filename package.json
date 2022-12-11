@@ -1,9 +1,13 @@
 {
   "private": true,
   "scripts": {
+    "bot": "yarn workspace bot run dev",
+    "bot:build": "yarn workspace bot run build",
+    "bot:serve": "yarn workspace bot run start",
     "build": "turbo run build --parallel",
     "check-types": "turbo run check-types --parallel --continue",
     "dev": "turbo run dev --parallel",
+    "postinstall": "patch-package",
     "lint": "turbo run lint --parallel --continue",
     "prepare": "husky install",
     "test": "turbo run test --parallel"
@@ -12,13 +16,15 @@
     "apps/*"
   ],
   "devDependencies": {
-    "@types/jest": "27.5.1",
+    "@types/jest": "29.2.4",
     "cross-env": "7.0.3",
-    "husky": "8.0.1",
-    "lint-staged": "12.4.1",
-    "prettier": "2.6.2",
-    "prettier-package-json": "2.6.3",
-    "turbo": "1.2.9"
+    "husky": "8.0.2",
+    "jest-environment-jsdom": "29.3.1",
+    "lint-staged": "13.1.0",
+    "patch-package": "6.5.0",
+    "prettier": "2.8.1",
+    "prettier-package-json": "2.7.0",
+    "turbo": "1.6.3"
   },
   "lint-staged": {
     "*.{js,ts,tsx,css,md}": "prettier --write",
