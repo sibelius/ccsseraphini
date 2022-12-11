@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Schema, model } from 'mongoose';
 
 const rankedTweetSchema = new Schema({
   tweet_id: {
@@ -30,4 +30,5 @@ const rankedTweetSchema = new Schema({
   changes_since_last_update: Boolean,
 });
 
-export const RankedTweetModel = model('rankedTweet', rankedTweetSchema);
+export const RankedTweetModel =
+  mongoose.models.rankedTweet || model('rankedTweet', rankedTweetSchema);

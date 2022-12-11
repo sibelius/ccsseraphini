@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import mongoose, { model, Schema } from 'mongoose';
 
 const temporaryTweetSchema = new Schema({
   tweet_id: {
@@ -11,4 +11,5 @@ const temporaryTweetSchema = new Schema({
   },
 });
 
-export const TemporaryTweetModel = model('tweet', temporaryTweetSchema);
+export const TemporaryTweetModel =
+  mongoose.models.tweet || model('tweet', temporaryTweetSchema);

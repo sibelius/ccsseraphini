@@ -13,4 +13,5 @@ export const config = {
   CRONJOB_HEADER_KEY: process.env.CRONJOB_HEADER_KEY as string,
   CRONJOB_HEADER_VALUE: process.env.CRONJOB_HEADER_VALUE as string,
   DISCORD_SCORE_THRESHOLD: 100,
+  MONGO_URI: process.env.MONGO_URI as string,
 } as const;
