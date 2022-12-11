@@ -1,16 +1,16 @@
 import fetchMock from 'jest-fetch-mock';
 import { TweetV2PostTweetResult } from 'twitter-api-v2';
 
-import { clearDbAndRestartCounters } from '../../../test/clearDbAndRestartCounters';
-import { disconnectMongoose } from '../../../test/disconnectMongoose';
-import { connectMongoose } from '../../../test/connectMongoose';
-import createFakeTweetBatch from '../__mocks__/createFakeTweetBatch';
-import createFakeTemporaryTweets from '../__mocks__/createFakeTemporaryTweets';
-import TemporaryTweetModel from '../schema/TemporaryTweet';
-import RankedTweetModel from '../schema/RankedTweet';
-import getTwitterClient from '../getTwitterClient';
-import { TemporaryTweet } from '../types';
-import tweetRanking from '..';
+import { clearDbAndRestartCounters } from '@ccsseraphini/ranking/test/clearDbAndRestartCounters';
+import { disconnectMongoose } from '@ccsseraphini/ranking/test/disconnectMongoose';
+import { connectMongoose } from '@ccsseraphini/ranking/test/connectMongoose';
+import createFakeTweetBatch from '@ccsseraphini/ranking/src/__mocks__/createFakeTweetBatch';
+import createFakeTemporaryTweets from '@ccsseraphini/ranking/src/__mocks__/createFakeTemporaryTweets';
+import { TemporaryTweetModel } from '@ccsseraphini/ranking/src/schema/TemporaryTweet';
+import { RankedTweetModel } from '@ccsseraphini/ranking/src/schema/RankedTweet';
+import getTwitterClient from '@ccsseraphini/ranking/src/getTwitterClient';
+import { TemporaryTweet } from '@ccsseraphini/ranking/src/types';
+import { tweetRanking } from '../jobs/tweetRanking';
 import { DateTime } from 'luxon';
 
 beforeAll(async () => {
@@ -74,6 +74,6 @@ it('should run without errors the tweetRanking execute function', async () => {
   expect(consoleSpy).toHaveBeenCalledTimes(0);
   expect(temporaryTweetsCount).toBe(0);
   expect(rankedTweetsCount).toBe(10);
-  expect((await getTwitterClient()).v2.tweet).toHaveBeenCalledTimes(1);
-  expect((await getTwitterClient()).v2.reply).toHaveBeenCalledTimes(7);
+  expect((await getTwitterClient({}))?.v2.tweet).toHaveBeenCalledTimes(1);
+  expect((await getTwitterClient({}))?.v2.reply).toHaveBeenCalledTimes(7);
 });
