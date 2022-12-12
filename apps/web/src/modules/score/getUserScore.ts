@@ -1,11 +1,8 @@
 import { User } from 'types/User';
 import { config } from 'config';
-import { userTweets } from 'modules/twitter/twitterFollowersGet';
 import { userProfile } from 'modules/twitter/twitterUserGet';
 import { UserScore } from 'types/Score';
-import { getElegibleTweets } from './getElegibleTweets';
-import { getEmptyScore } from './getEmptyScore';
-import { calculateUserScore } from './calculateUserScore';
+import { getRankingScore } from './getRankingScore';
 
 interface Result {
   user: User;
@@ -49,24 +46,17 @@ export async function getUserScore(username: string): Promise<Result> {
     });
   }
 
-  const { data: tweets } = await userTweets(
-    user.id as string,
-    access_token as string,
-  );
+  const { score, tweets, likes, retweets, replies, quotes } =
+    await getRankingScore(user.id);
 
-  if (!tweets) {
-    return Promise.resolve({
-      user,
-      userScore: getEmptyScore(),
-    });
-  }
-
-  const elegibleTweets = getElegibleTweets({
-    tweets,
-    twitter_profile_id,
-    twitter_profile_user,
-  });
-  const userScore = calculateUserScore(elegibleTweets);
+  const userScore: UserScore = {
+    like_count: likes,
+    quote_count: quotes,
+    reply_count: replies,
+    retweet_count: retweets,
+    tweet_count: tweets,
+    total: score,
+  };
 
   return {
     user,
