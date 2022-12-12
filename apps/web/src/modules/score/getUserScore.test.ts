@@ -1,6 +1,5 @@
 import { getUserScore } from './getUserScore';
 import { config } from 'config';
-import { getRankingScore } from './getRankingScore';
 
 jest.mock('modules/twitter/twitterUserGet');
 jest.mock('modules/twitter/twitterFollowersGet');

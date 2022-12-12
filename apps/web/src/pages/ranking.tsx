@@ -17,7 +17,7 @@ const RankingPage: NextPage = (props: Props) => {
     }
 
     setUsers(props.users);
-  }, [users]);
+  }, [users, props.users]);
 
   return <Ranking users={users as UserRanking[]} />;
 };
