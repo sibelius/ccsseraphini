@@ -39,7 +39,7 @@ export async function getUserScore(username: string): Promise<Result> {
 
   const { data: user } = await userProfile(username, access_token);
 
-  if (!user) {
+  if (!user.id) {
     return Promise.reject({
       message: 'User not found',
       statusCode: 404,
