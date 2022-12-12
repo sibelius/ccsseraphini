@@ -1,6 +1,7 @@
 import mongoose, { Schema, model } from 'mongoose';
+import { RankedTweet } from '../types';
 
-const rankedTweetSchema = new Schema({
+const rankedTweetSchema = new Schema<RankedTweet>({
   tweet_id: {
     type: String,
     required: true,
@@ -31,4 +32,5 @@ const rankedTweetSchema = new Schema({
 });
 
 export const RankedTweetModel =
-  mongoose.models.rankedTweet || model('rankedTweet', rankedTweetSchema);
+  (mongoose.models.rankedTweet as mongoose.Model<RankedTweet>) ||
+  model('rankedTweet', rankedTweetSchema);

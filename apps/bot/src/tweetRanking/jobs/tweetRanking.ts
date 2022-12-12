@@ -35,7 +35,7 @@ export const tweetRanking = (
     }
 
     try {
-      await postTweetRanking(endDate);
+      await postTweetRanking(endDate, config);
     } catch (error) {
       console.error('Fail to handle ranking', error);
     }

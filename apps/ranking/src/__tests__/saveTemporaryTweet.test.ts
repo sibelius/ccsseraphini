@@ -1,4 +1,4 @@
-import { TemporaryTweet } from 'types/index';
+import { TemporaryTweet } from '../types';
 import { clearDbAndRestartCounters } from '../../test/clearDbAndRestartCounters';
 import { connectMongoose } from '../../test/connectMongoose';
 import { disconnectMongoose } from '../../test/disconnectMongoose';

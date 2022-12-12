@@ -1,6 +1,7 @@
 import mongoose, { model, Schema } from 'mongoose';
+import { TemporaryTweet } from '../types';
 
-const temporaryTweetSchema = new Schema({
+const temporaryTweetSchema = new Schema<TemporaryTweet>({
   tweet_id: {
     type: String,
     required: true,
@@ -12,4 +13,5 @@ const temporaryTweetSchema = new Schema({
 });
 
 export const TemporaryTweetModel =
-  mongoose.models.tweet || model('tweet', temporaryTweetSchema);
+  (mongoose.models.tweet as mongoose.Model<TemporaryTweet>) ||
+  model('tweet', temporaryTweetSchema);

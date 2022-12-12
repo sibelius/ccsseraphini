@@ -1,4 +1,4 @@
-import TemporaryTweetModel from '../schema/TemporaryTweet';
+import { TemporaryTweetModel } from '../schema/TemporaryTweet';
 import { TemporaryTweet } from '../types/index';
 
 const baseId = '11603237370356776';

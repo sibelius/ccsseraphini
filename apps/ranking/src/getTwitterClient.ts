@@ -1,7 +1,7 @@
 import { TwitterApi } from 'twitter-api-v2';
 
 const configValidator = (
-  config: Record<string, string>,
+  config: Record<string, string | number>,
   keys: string[],
 ): boolean =>
   keys.reduce((valid, key, index) => {

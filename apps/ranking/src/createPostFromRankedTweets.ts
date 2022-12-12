@@ -8,7 +8,7 @@ import { RankedTweetModel } from './schema/RankedTweet';
 
 const createPostFromRankedTweets = async (
   startDate: DateTime,
-  config: Record<string, string> = {},
+  config: Record<string, any> = {},
   endDate: DateTime = startDate.endOf('day'),
   rankingSize: number = 5,
 ): Promise<void> => {
