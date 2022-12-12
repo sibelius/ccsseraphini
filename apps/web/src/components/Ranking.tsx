@@ -162,7 +162,8 @@ export const Ranking = ({ users }: PublicMetricsRankingProps) => {
                     _hover={{
                       bg: secondaryVar,
                     }}
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
                       setIsOpen(true);
                       setSelectedUser(user);
                     }}
