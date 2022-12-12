@@ -1,5 +1,8 @@
 import { DateTime } from 'luxon';
-import { Types } from 'mongoose';
+import mongoose, { Types } from 'mongoose';
+
+export type RankedType = mongoose.Model<RankedTweet>;
+export type TemporaryType = mongoose.Model<TemporaryTweet>;
 
 export type TemporaryTweet = {
   _id?: Types.ObjectId;

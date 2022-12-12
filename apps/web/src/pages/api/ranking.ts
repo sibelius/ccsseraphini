@@ -25,7 +25,7 @@ const rankingHandler = async (_: NextApiRequest, res: NextApiResponse) => {
         };
       })
       .sort((a, b) => {
-        if (a.score !== b.score) return b.score - a.score; // Higher scores come first
+        if (a.score !== b.score) return b.score - a.score;
 
         return b.lastTweetRanked.getTime() - a.lastTweetRanked.getTime();
       });

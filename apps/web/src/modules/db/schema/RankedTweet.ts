@@ -1,5 +1,5 @@
 import mongoose, { Schema, model } from 'mongoose';
-import type { RankedTweet, RankedType } from '../types';
+import type { RankedTweet, RankedType } from '@ccsseraphini/ranking/src/types';
 
 const rankedTweetSchema = new Schema<RankedTweet>({
   tweet_id: {

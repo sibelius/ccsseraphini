@@ -1,4 +1,4 @@
-import { Public_metrics } from './types/index';
+import { Public_metrics } from './types';
 
 const isPublicMetricsChanged = (
   publicMetrics: Public_metrics,

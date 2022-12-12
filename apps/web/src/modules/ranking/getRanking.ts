@@ -1,10 +1,13 @@
-import { RankedTweetModel } from '@ccsseraphini/ranking';
+import { config } from 'config';
 import connectDB from 'modules/db/mongob';
+import { RankedTweetModel } from 'modules/db/schema/RankedTweet';
 import { UserRanking } from 'types/Ranking';
 
 export type GetRankingError = Error | string;
 
 export async function getRanking(): Promise<UserRanking[]> {
+  const rankingSize = config.TWITTER_RANKING_SIZE || 100;
+
   try {
     await connectDB();
   } catch (error) {
@@ -26,7 +29,7 @@ export async function getRanking(): Promise<UserRanking[]> {
       },
     },
     { $sort: { score: -1 } },
-    { $limit: 100 },
+    { $limit: rankingSize },
   ]);
 
   const ranking = await query.exec();

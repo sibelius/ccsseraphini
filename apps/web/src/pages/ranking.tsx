@@ -1,13 +1,24 @@
 import { Ranking } from 'components/Ranking';
 import { getHttpProtocol } from 'getHttpProtocol';
 import type { GetServerSideProps, NextPage } from 'next';
+import { useEffect, useState } from 'react';
 import { UserRanking } from 'types/Ranking';
 
 interface Props {
   users?: UserRanking[];
 }
 
-const RankingPage: NextPage = ({ users }: Props) => {
+const RankingPage: NextPage = (props: Props) => {
+  const [users, setUsers] = useState<UserRanking[]>([]);
+
+  useEffect(() => {
+    if (!props.users) {
+      return;
+    }
+
+    setUsers(props.users);
+  }, [users]);
+
   return <Ranking users={users as UserRanking[]} />;
 };
 export default RankingPage;
