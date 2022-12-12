@@ -1,7 +1,8 @@
 import { JobCallback, scheduleJob } from 'node-schedule';
 import { DateTime } from 'luxon';
-import tweetRanking from '..';
-import getRuleFromConfig from './getRuleFromConfig';
+
+import { tweetRanking } from './tweetRanking';
+import { getRuleFromConfig } from './getRuleFromConfig';
 
 const rankingJob = () => {
   const rule = getRuleFromConfig('TWEET_RANKING_RULE');
