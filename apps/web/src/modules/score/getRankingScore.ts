@@ -1,13 +1,8 @@
-import { config } from 'config';
 import connectDB from 'modules/db/mongob';
 import { RankedTweetModel } from 'modules/db/schema/RankedTweet';
 import { UserRanking } from 'types/Ranking';
 
-export type GetRankingError = Error | string;
-
-export async function getRanking(): Promise<UserRanking[]> {
-  const rankingSize = config.TWITTER_RANKING_SIZE || 100;
-
+export async function getRankingScore(author_id: string): Promise<UserRanking> {
   const result = await connectDB();
 
   if (!result) {
@@ -15,6 +10,9 @@ export async function getRanking(): Promise<UserRanking[]> {
   }
 
   const query = RankedTweetModel.aggregate<UserRanking>([
+    {
+      $match: { author_id: author_id },
+    },
     {
       $group: {
         _id: '$author_id',
@@ -27,10 +25,21 @@ export async function getRanking(): Promise<UserRanking[]> {
         tweets: { $sum: 1 },
       },
     },
-    { $sort: { score: -1 } },
-    { $limit: rankingSize },
+    { $limit: 1 },
   ]);
 
   const ranking = await query.exec();
-  return ranking;
+
+  if (ranking?.length === 0)
+    return {
+      _id: author_id,
+      score: 0,
+      retweets: 0,
+      replies: 0,
+      likes: 0,
+      quotes: 0,
+      tweets: 0,
+    } as UserRanking;
+
+  return ranking[0];
 }
