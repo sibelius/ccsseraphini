@@ -87,6 +87,7 @@ export const Ranking = ({ users }: PublicMetricsRankingProps) => {
         <Grid column={1} gap={2}>
           {users.map((user, index) => (
             <Link
+              key={user._id}
               href={`https://twitter.com/${user.username}`}
               isExternal
               _hover={{
@@ -95,7 +96,6 @@ export const Ranking = ({ users }: PublicMetricsRankingProps) => {
             >
               <Flex
                 align="center"
-                key={user._id}
                 data-testid="user-card"
                 borderRadius="md"
                 p={'2'}
