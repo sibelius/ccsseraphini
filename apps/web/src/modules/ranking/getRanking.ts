@@ -8,10 +8,9 @@ export type GetRankingError = Error | string;
 export async function getRanking(): Promise<UserRanking[]> {
   const rankingSize = config.TWITTER_RANKING_SIZE || 100;
 
-  try {
-    await connectDB();
-  } catch (error) {
-    console.error('Error connecting to database:', error);
+  const result = await connectDB();
+
+  if (!result) {
     throw new Error('Error connecting to database');
   }
 

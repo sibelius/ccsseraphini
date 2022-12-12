@@ -3,10 +3,9 @@ import { RankedTweetModel } from 'modules/db/schema/RankedTweet';
 import { UserRanking } from 'types/Ranking';
 
 export async function getRankingScore(author_id: string): Promise<UserRanking> {
-  try {
-    await connectDB();
-  } catch (error) {
-    console.error('Error connecting to database:', error);
+  const result = await connectDB();
+
+  if (!result) {
     throw new Error('Error connecting to database');
   }
 

@@ -3,12 +3,12 @@ import { getHttpProtocol } from 'getHttpProtocol';
 import type { GetServerSideProps, NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { UserRanking } from 'types/Ranking';
-
+import { Error } from 'components/Error';
 interface Props {
   users?: UserRanking[];
 }
 
-const RankingPage: NextPage = (props: Props) => {
+const RankingPage: NextPage<Props> = (props: Props) => {
   const [users, setUsers] = useState<UserRanking[]>([]);
 
   useEffect(() => {
@@ -18,6 +18,10 @@ const RankingPage: NextPage = (props: Props) => {
 
     setUsers(props.users);
   }, [users, props.users]);
+
+  if (!users?.length) {
+    return <Error message="something went wrong" errorCode="500"></Error>;
+  }
 
   return <Ranking users={users as UserRanking[]} />;
 };
