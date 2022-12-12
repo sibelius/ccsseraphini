@@ -53,6 +53,12 @@ export const Ranking = ({ users }: PublicMetricsRankingProps) => {
     { name: 'Score', key: 'score', icon: FaTrophy },
   ];
 
+  const trophyColor: Record<number, string> = {
+    0: 'yellow.400',
+    1: 'gray.400',
+    2: 'orange.400',
+  };
+
   return (
     <Flex
       direction="column"
@@ -72,7 +78,7 @@ export const Ranking = ({ users }: PublicMetricsRankingProps) => {
       </Box>
       <Box
         p={1}
-        w={['95%', '80%']}
+        w={['95%', '80%', '80%', '50%']}
         borderRadius="md"
         boxShadow="base"
         bg={secondary}
@@ -80,78 +86,92 @@ export const Ranking = ({ users }: PublicMetricsRankingProps) => {
       >
         <Grid column={1} gap={2}>
           {users.map((user, index) => (
-            <Flex
-              align="center"
+            <Link
               key={user._id}
-              data-testid="user-card"
-              borderRadius="md"
-              p={'2'}
-              bg={secondaryVar}
-              gap={1}
-              flexWrap="nowrap"
-              border={'1px solid transparent'}
+              href={`https://twitter.com/${user.username}`}
+              isExternal
               _hover={{
-                bg: base,
-                color: primaryTxt,
-                border: `1px solid ${secondaryTxt}`,
+                textDecoration: 'none',
               }}
             >
-              <Avatar name={user.name} src={user.profileImageUrl} size="md">
-                <AvatarBadge
-                  borderColor={secondaryVar}
-                  bg={secondary}
-                  boxSize="1.25em"
+              <Flex
+                align="center"
+                data-testid="user-card"
+                borderRadius="md"
+                p={'2'}
+                bg={secondaryVar}
+                gap={1}
+                flexWrap="nowrap"
+                border={'1px solid transparent'}
+                flex={'1 1 50%'}
+                _hover={{
+                  bg: base,
+                  color: primaryTxt,
+                  border: `1px solid ${secondaryTxt}`,
+                }}
+              >
+                <Avatar name={user.name} src={user.profileImageUrl} size="md">
+                  <AvatarBadge
+                    borderColor={secondaryVar}
+                    bg={secondary}
+                    boxSize="1.25em"
+                  >
+                    <Text
+                      fontSize={'xs'}
+                      fontFamily="monospace"
+                      fontWeight="bold"
+                      color={baseTxt}
+                    >
+                      {index + 1}
+                    </Text>
+                  </AvatarBadge>
+                </Avatar>
+                <Flex
+                  direction="column"
+                  whiteSpace={'nowrap'}
+                  flex={'1 1 100%'}
+                  w={'25px'}
                 >
                   <Text
-                    fontSize={'xs'}
-                    fontFamily="monospace"
+                    textOverflow={'ellipsis'}
                     fontWeight="bold"
-                    color={baseTxt}
+                    overflow={'hidden'}
                   >
-                    {index + 1}
+                    {user.name}
                   </Text>
-                </AvatarBadge>
-              </Avatar>
-              <Flex
-                direction="column"
-                whiteSpace={'nowrap'}
-                flex={'1 1 100%'}
-                w={'25px'}
-              >
-                <Text
-                  textOverflow={'ellipsis'}
-                  fontWeight="bold"
-                  overflow={'hidden'}
-                >
-                  {user.name}
-                </Text>
-                <Text textOverflow={'ellipsis'} overflow={'hidden'} ml={2}>
-                  <Link
-                    href={`https://twitter.com/${user.username}`}
-                    isExternal
-                  >
-                    {' '}
+                  <Text textOverflow={'ellipsis'} overflow={'hidden'} ml={2}>
                     @{user.username}
-                  </Link>
-                </Text>
+                  </Text>
+                </Flex>
+                <Flex justifyContent={'space-between'}>
+                  {index <= 2 && (
+                    <Icon
+                      as={FaTrophy}
+                      w={5}
+                      h={5}
+                      mx={1}
+                      color={trophyColor[index]}
+                    />
+                  )}
+                </Flex>
+                <Box>
+                  <Button
+                    px={1}
+                    bgColor={secondary}
+                    color={baseTxt}
+                    _hover={{
+                      bg: secondaryVar,
+                    }}
+                    onClick={() => {
+                      setIsOpen(true);
+                      setSelectedUser(user);
+                    }}
+                  >
+                    {user.score}
+                  </Button>
+                </Box>
               </Flex>
-              <Box>
-                <Button
-                  px={1}
-                  bgColor={secondary}
-                  color={baseTxt}
-                  _hover={{
-                    bg: secondaryVar,
-                  }}
-                  onClick={() => {
-                    setIsOpen(true);
-                    setSelectedUser(user);
-                  }}
-                >
-                  {user.score}
-                </Button>
-              </Box>
-            </Flex>
+            </Link>
           ))}
         </Grid>
         <Modal isOpen={isOpen} size={'xl'} onClose={() => setIsOpen(false)}>
