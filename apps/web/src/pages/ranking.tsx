@@ -43,9 +43,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   }
 
+  const users = await response.json();
+
   return {
     props: {
-      users: await response.json(),
+      users,
     },
   };
 };
