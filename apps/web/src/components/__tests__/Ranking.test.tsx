@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { UserRanking } from 'types/Ranking';
-import { Ranking } from '../Ranking';
+import { Ranking } from '../ranking/Ranking';
 
 interface PublicMetricsRankingProps {
   users: UserRanking[];
