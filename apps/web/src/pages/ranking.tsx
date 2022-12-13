@@ -1,4 +1,4 @@
-import { Ranking } from 'components/Ranking';
+import { Ranking } from 'components/ranking/Ranking';
 import { getHttpProtocol } from 'getHttpProtocol';
 import type { GetServerSideProps, NextPage } from 'next';
 import { useEffect, useState } from 'react';
@@ -6,6 +6,7 @@ import { UserRanking } from 'types/Ranking';
 import { Error } from 'components/Error';
 interface Props {
   users?: UserRanking[];
+  hasError: boolean;
 }
 
 const RankingPage: NextPage<Props> = (props: Props) => {
@@ -19,7 +20,7 @@ const RankingPage: NextPage<Props> = (props: Props) => {
     setUsers(props.users);
   }, [users, props.users]);
 
-  if (!users?.length) {
+  if (props.hasError) {
     return <Error message="something went wrong" errorCode="500"></Error>;
   }
 
@@ -37,6 +38,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       props: {
         users: [],
+        hasError: true,
       },
     };
   }
