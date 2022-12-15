@@ -56,7 +56,7 @@ export const TweetComposer = () => {
           Tweet
         </Button>
 
-        <ChakraNextLinkButton
+        <Button
           leftIcon={<BsSearch />}
           backgroundColor="green.200"
           as={'a'}
@@ -64,7 +64,7 @@ export const TweetComposer = () => {
           width={'49%'}
         >
           Search
-        </ChakraNextLinkButton>
+        </Button>
       </Flex>
     </>
   );
