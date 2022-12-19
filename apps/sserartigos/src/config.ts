@@ -16,7 +16,7 @@ export const config = {
   DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID as string,
   DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN as string,
   GUILD_ID: process.env.GUILD_ID as string,
-  LISTENED_USER_ID: process.env.LISTENED_USER_ID as string,
+  LISTENED_USERS_ID: process.env.LISTENED_USERS_ID.split(',') as string[],
 
   PORT: 3000,
 } as const;
