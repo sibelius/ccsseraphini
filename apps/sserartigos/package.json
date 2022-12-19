@@ -1,0 +1,22 @@
+{
+  "name": "sserartigos",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build_n_run": "tsc; node build/index.js",
+    "compile": "tsc",
+    "start": "node build/index.js"
+  },
+  "dependencies": {
+    "discord.js": "14.7.1",
+    "dotenv": "16.0.3",
+    "dotenv-safe": "8.2.0"
+  },
+  "keywords": []
+}

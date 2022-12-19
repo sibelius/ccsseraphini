@@ -1,9 +1,18 @@
 import { getUserScore } from './getUserScore';
 import { config } from 'config';
-import { getEmptyScore } from './getEmptyScore';
 
 jest.mock('modules/twitter/twitterUserGet');
 jest.mock('modules/twitter/twitterFollowersGet');
+jest.mock('./getRankingScore', () => ({
+  getRankingScore: jest.fn().mockResolvedValue({
+    score: 2,
+    tweets: 1,
+    likes: 1,
+    retweets: 0,
+    replies: 0,
+    quotes: 0,
+  }),
+}));
 
 describe('GetUserScore', () => {
   const filledVariable = {
@@ -56,7 +65,6 @@ describe('GetUserScore', () => {
       TWITTER_PROFILE_ID: filledVariable,
       TWITTER_PROFILE_USER: filledVariable,
     });
-
     const { userScore } = await getUserScore('pjonatansr').then((data) => data);
 
     expect(userScore).toEqual({
@@ -69,17 +77,17 @@ describe('GetUserScore', () => {
     });
   });
 
-  test('Should return empty score when user not exists', async () => {
+  test('Should return 404 when user not exists', async () => {
     Object.defineProperties(config, {
       TWITTER_BEARER_TOKEN: filledVariable,
       TWITTER_PROFILE_ID: filledVariable,
       TWITTER_PROFILE_USER: filledVariable,
     });
 
-    const { userScore } = await getUserScore('pjon#at@ansr').catch(
+    const { statusCode } = await getUserScore('pjon#at@ansr').catch(
       (error) => error,
     );
 
-    expect(userScore).toEqual(getEmptyScore());
+    expect(statusCode).toEqual(404);
   });
 });

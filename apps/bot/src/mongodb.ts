@@ -11,6 +11,7 @@ export default async function connectDB(): Promise<typeof mongoose> {
     return;
   }
 
+  mongoose.set('strictQuery', false);
   await mongoose.connect(config.MONGO_URI);
   console.log('Connected to MongoDB');
 }

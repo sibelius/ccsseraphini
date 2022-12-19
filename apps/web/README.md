@@ -52,3 +52,16 @@ This is the Twitter API Bearer Token. You can get a new one with the following s
 - Create a Discord Application
 - Get the Client ID and Client Secret
 - Add the Client ID and Client Secret to the .env (DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET)
+
+### Mongo DB - MongoDB Atlas (Cloud) or MongoDB Compass (Local)
+
+- Atlas:
+  - Create a MongoDB Atlas account
+  - Create a new cluster
+  - Get the connection string
+  - Add the connection string to the .env (MONGODB_URI)
+- Compass:
+  - Install MongoDB Compass
+  - Create a new connection
+  - Get the connection string
+  - Add the connection string to the .env (MONGODB_URI)

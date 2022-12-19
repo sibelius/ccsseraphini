@@ -1,7 +1,8 @@
+import { Settings } from 'luxon';
+
+import { config } from '../../config';
 import rankingJob from './rankingJob';
 import syncRankedTweetJob from './syncRankedTweetJob';
-import { config } from '../../config';
-import { Settings } from 'luxon';
 
 const startJobs = () => {
   if (!config.MONGO_URI) {

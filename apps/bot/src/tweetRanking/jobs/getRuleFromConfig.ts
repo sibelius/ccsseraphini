@@ -1,7 +1,8 @@
 import { RecurrenceRule } from 'node-schedule';
+
 import { config } from '../../config';
 
-const getRuleFromConfig = (varName: string): RecurrenceRule => {
+export const getRuleFromConfig = (varName: string): RecurrenceRule => {
   const hourTimeString = config[varName];
 
   if (!hourTimeString) {
@@ -23,5 +24,3 @@ const getRuleFromConfig = (varName: string): RecurrenceRule => {
 
   return rule;
 };
-
-export default getRuleFromConfig;

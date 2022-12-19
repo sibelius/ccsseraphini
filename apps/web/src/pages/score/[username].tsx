@@ -1,5 +1,5 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import { Button, Heading, Stack, VStack } from '@chakra-ui/react';
+import { Button, Stack } from '@chakra-ui/react';
 import { Session, UserScore } from 'types/Score';
 import { TwitterLogin } from 'components/home/TwitterLogin';
 import { User } from 'types/User';
@@ -11,6 +11,7 @@ import exportAsImage from '../../canvasUtil';
 import { getHttpProtocol } from 'getHttpProtocol';
 import html2canvas from 'html2canvas';
 import { DiscordClaimButton } from 'components/score/DiscordClaimButton';
+import { Error } from 'components/Error';
 
 interface Props {
   session?: Session;
@@ -27,10 +28,12 @@ const ScorePage: NextPage<Props> = (props: Props) => {
 
   if (hasError) {
     return (
-      <VStack h={'100vh'} justifyContent={'center'}>
-        <Heading>{error?.message}</Heading>
-        {error?.isUnauthorized && <TwitterLogin />}
-      </VStack>
+      <Error
+        message={error?.message as string}
+        errorCode={(error?.statusCode as string) ?? '500'}
+      >
+        {error?.statusCode === '401' ? <TwitterLogin /> : undefined}
+      </Error>
     );
   }
 
@@ -108,6 +111,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
         hasError: true,
         error: {
           message: 'Bad Request',
+          statusCode: '400',
         },
       },
     };
@@ -125,8 +129,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (ctx) => {
       props: {
         hasError: true,
         error: {
-          message,
-          isUnauthorized: response.status === 401,
+          message: message ?? 'Something Went Wrong',
+          statusCode: response.status.toString(),
         },
       },
     };
