@@ -6,7 +6,7 @@ import { readyMessage } from './readyMessage';
 import { EMOJIS_POINTS } from './score';
 import { handleRTVoting } from './handleRTVoting';
 import connectDB from './mongodb';
-import saveTemporaryTweet from './tweetRanking/saveTemporaryTweet';
+import saveTemporaryTweet from '@ccsseraphini/ranking/src/saveTemporaryTweet';
 import startJobs from './tweetRanking/jobs';
 import { handleThreadCreation } from './handleThreadCreation';
 
