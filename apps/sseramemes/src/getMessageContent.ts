@@ -1,4 +1,5 @@
 import { Message, PartialMessage } from 'discord.js';
+import { removeAltText, removeMemeCommands } from './image-scripts';
 
 export const getMessageContent = async (message: Message | PartialMessage) => {
   const discordContent = message.content;
@@ -27,4 +28,8 @@ export const getMessageContent = async (message: Message | PartialMessage) => {
   }
 
   return finalContent.substring(0, 280);
+};
+
+export const getAltText = (message: string) => {
+  return message.match(/\(alt:(.*)\)/g)?.[1];
 };
