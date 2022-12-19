@@ -1,9 +1,9 @@
-import { Message } from 'discord.js';
+import { Message, PartialMessage } from 'discord.js';
 import { config } from './config';
 
-export const shouldBeVoted = (message: Message): boolean => {
+export const shouldBeVoted = (message: Message | PartialMessage): boolean => {
   return (
-    message.author.id == config.LISTENED_USER_ID &&
+    config.LISTENED_USERS_ID.some((value) => value === message.author.id) &&
     getArticles(message.content).length >= 1
   );
 };
