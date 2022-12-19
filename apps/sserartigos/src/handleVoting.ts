@@ -6,7 +6,7 @@ import {
   User,
 } from 'discord.js';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
-import { getArticles, shouldBeVoted } from './utils';
+import { shouldBeVoted } from './utils';
 
 /**
  * Messages that already have been tweeted since the last time the bot was
@@ -18,9 +18,6 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
   if (dontShouldPushToGithub(user, reaction.message)) return;
 
   messagesAlreadyVoted.push(reaction.message.id);
-
-  const links = getArticles(reaction.message.content);
-  console.log(links);
 };
 
 export const createPoll = (message: Message) => {
