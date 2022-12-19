@@ -1,6 +1,6 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { config } from './config';
-import { addVoting, handleVoting } from './handleVoting';
+import { createPoll, handleVoting } from './handleVoting';
 
 const client = new Client({
   intents: [
@@ -15,5 +15,7 @@ client.once(Events.ClientReady, () => {
   console.log('opa 🚀');
 });
 
-client.on(Events.MessageCreate, addVoting);
+client.on(Events.MessageCreate, createPoll);
+client.on(Events.MessageReactionAdd, handleVoting);
+
 client.login(config.DISCORD_BOT_TOKEN);
