@@ -109,6 +109,7 @@ export const Timeline = (props: Props) => {
       </Text>
 
       {refresh ? <Spinner position="absolute" top="15%" right="50%" /> : null}
+
       {renderTweets()}
     </Flex>
   );
