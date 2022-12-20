@@ -5,8 +5,9 @@ import {
   PartialMessage,
   User,
 } from 'discord.js';
+import { getArticles, shouldBeVoted } from './common/utils/utils';
+import { createCommitToZettelkastenFile } from './github';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
-import { shouldBeVoted } from './utils';
 
 /**
  * Messages that already have been tweeted since the last time the bot was
@@ -18,6 +19,9 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
   if (dontShouldPushToGithub(user, reaction.message)) return;
 
   messagesAlreadyVoted.push(reaction.message.id);
+
+  const links = getArticles(reaction.message.content);
+  createCommitToZettelkastenFile('adding more article links', links);
 };
 
 export const createPoll = (message: Message) => {
