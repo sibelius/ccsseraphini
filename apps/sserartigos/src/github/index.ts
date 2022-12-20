@@ -24,7 +24,7 @@ export const createCommitToFile = async (
   const newFile = appendLinesToFile(file.content, linesToAppend);
   const commitInfo = {
     newFile,
-    commitMessage: commitMessage,
+    commitMessage,
     commitSha: file.sha,
   };
 
@@ -32,5 +32,3 @@ export const createCommitToFile = async (
     .then((_) => console.log('commited'))
     .catch((e) => console.error(e));
 };
-
-createCommitToFile('blue pen', ['blue pen', 'linha nova']);
