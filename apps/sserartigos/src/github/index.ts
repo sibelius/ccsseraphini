@@ -16,7 +16,7 @@ const commitChangedFile = async (commit: {
   });
 };
 
-export const createCommitToFile = async (
+export const createCommitToZettelkastenFile = async (
   commitMessage: string,
   linesToAppend: string[],
 ) => {
