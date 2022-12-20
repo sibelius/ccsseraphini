@@ -17,6 +17,11 @@ export const config = {
   DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN as string,
   GUILD_ID: process.env.GUILD_ID as string,
   LISTENED_USERS_ID: process.env.LISTENED_USERS_ID.split(',') as string[],
+  GITHUB_TOKEN: process.env.GITHUB_TOKEN as string,
+  GIT_REPO_OWNER: process.env.GIT_REPO_OWNER as string,
+  GIT_REPO_NAME: process.env.GIT_REPO_NAME as string,
+  ZETTELKASTEN_FILE_PATH: process.env.ZETTELKASTEN_FILE_PATH as string,
+  GIT_REPO_BRANCH: process.env.GIT_REPO_BRANCH as string,
 
   PORT: 3000,
 } as const;
