@@ -6,4 +6,7 @@ module.exports = {
     '<rootDir>/apps/sseramemes/jest.config.js',
   ],
   transformIgnorePatterns: ['node_modules/(?!use-debounce|uuid)'],
+  coverageProvider: 'v8',
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
 };
