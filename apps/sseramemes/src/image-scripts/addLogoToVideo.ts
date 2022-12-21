@@ -31,14 +31,14 @@ export const addLogoToVideo = async (
       'temp-video-with-logo.mp4',
       { position: 'SW' },
     );
-    await removeAudioFromVideo('temp-video-with-logo.mp4', 'final.mp4');
-    const videoWithLogo = await fs.promises.readFile('final.mp4');
+    await removeAudioFromVideo('temp-video-with-logo.mp4', 'temp-final.mp4');
+    const videoWithLogo = await fs.promises.readFile('temp-final.mp4');
 
     // remove files
     await fs.promises.unlink(tempFilePath);
     await fs.promises.unlink('temp-logo.png');
     await fs.promises.unlink('temp-video-with-logo.mp4');
-    await fs.promises.unlink('final.mp4');
+    await fs.promises.unlink('temp-final.mp4');
 
     return videoWithLogo;
   } catch (e) {
