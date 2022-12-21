@@ -7,8 +7,10 @@ import {
   addTextToImage,
   removeMemeCommands,
 } from './image-scripts';
-import { getMessageContent } from './getMessageContent';
+import { getAltText, getMessageContent } from './getMessageContent';
 import { addLogoToVideo } from './image-scripts/addLogoToVideo';
+import { removeMetadata } from './removeData';
+import { addMetadata } from './addMetadata';
 
 const client = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
@@ -29,7 +31,10 @@ export const ALLOWED_MEME_TYPES_TO_ADD_VIDEO_LOGO = [
   'video/avi',
 ];
 
-export const uploadMeme = async (message: Message | PartialMessage) => {
+export const uploadMeme = async (
+  message: Message | PartialMessage,
+  alt?: string,
+) => {
   const attachment = message.attachments.first();
 
   const image = await fetch(attachment.attachment.toString());
@@ -53,7 +58,11 @@ export const uploadMeme = async (message: Message | PartialMessage) => {
   }
 
   try {
-    return await client.v1.uploadMedia(newBuffer, { mimeType });
+    const media = await client.v1.uploadMedia(newBuffer, { mimeType });
+
+    addMetadata(client, { mediaId: media, mimeType, alt });
+
+    return media;
   } catch (err) {
     console.error(err);
     return undefined;
@@ -74,12 +83,14 @@ const scheduleRetweet = (tweet: TweetV1) => {
 };
 
 export const tweetMeme = async (message: Message | PartialMessage) => {
-  const mediaId = await uploadMeme(message);
+  const content = await getMessageContent(message);
+  const altText = getAltText(content);
+
+  const mediaId = await uploadMeme(message, altText);
 
   const mediaIds = mediaId ? [mediaId] : undefined;
 
-  const content = await getMessageContent(message);
-  const contentCleaned = removeMemeCommands(content);
+  const contentCleaned = removeMetadata(content);
   const tweet = await client.v1.tweet(contentCleaned, {
     media_ids: mediaIds,
   });
