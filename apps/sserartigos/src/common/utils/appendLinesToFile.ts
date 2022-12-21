@@ -1,3 +1,6 @@
+/**
+ * gets the file content and returns a base64 string with the appended lines
+ */
 export const appendLinesToFile = (
   oldFileContent: string,
   contentToAppend: string[],
