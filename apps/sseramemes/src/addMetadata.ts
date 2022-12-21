@@ -12,7 +12,7 @@ export const addMetadata = async (
 ) => {
   const { mediaId, alt, mimeType } = params;
 
-  if (mimeType.includes('image')) {
+  if (mimeType.includes('image') && alt) {
     await client.v1.createMediaMetadata(mediaId, {
       alt_text: {
         text: alt,
