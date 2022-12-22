@@ -9,7 +9,7 @@
 
 1. Add token to `.env` file with name `DISCORD_TOKEN`.
 
-1. Get memes channel id from Discord and add it to `.env` file with name `DISCORD_CHANNEL_ID`.
+1. Get memes channel id from Discord and add it to `.env` file with name `DISCORD_MEMES_CHANNEL_ID`.
 
 1. Go to Twitter developer portal and retrieve the tokens and save them to `.env`:
    - `TWITTER_ACCESS_TOKEN`
