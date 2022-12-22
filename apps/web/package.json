@@ -24,7 +24,7 @@
     "entities": "4.4.0",
     "ethers": "5.7.2",
     "fork-me-corner": "1.0.1",
-    "framer-motion": "7.10.3",
+    "framer-motion": "8.0.1",
     "html2canvas": "1.4.1",
     "mongoose": "6.8.1",
     "next": "13.0.7",
