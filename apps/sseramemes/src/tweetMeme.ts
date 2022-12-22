@@ -60,7 +60,7 @@ export const uploadMeme = async (
   try {
     const media = await client.v1.uploadMedia(newBuffer, { mimeType });
 
-    addMetadata(client, { mediaId: media, mimeType, alt });
+    await addMetadata(client, { mediaId: media, mimeType, alt });
 
     return media;
   } catch (err) {
@@ -91,6 +91,7 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
   const mediaIds = mediaId ? [mediaId] : undefined;
 
   const contentCleaned = removeMetadata(content);
+
   const tweet = await client.v1.tweet(contentCleaned, {
     media_ids: mediaIds,
   });
