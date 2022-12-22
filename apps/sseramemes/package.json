@@ -24,7 +24,7 @@
     "ffmpeg": "0.0.4",
     "gifwrap": "0.10.1",
     "node-fetch": "3.3.0",
-    "sharp": "0.31.2",
+    "sharp": "0.31.3",
     "twitter-api-sdk": "1.2.1",
     "twitter-api-v2": "1.12.10"
   },
