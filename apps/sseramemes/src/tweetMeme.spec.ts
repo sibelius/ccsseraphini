@@ -7,6 +7,7 @@ jest.mock('twitter-api-v2', () => ({
   TwitterApi: jest.fn().mockReturnValue({
     v1: {
       uploadMedia: jest.fn(),
+      createMediaMetadata: jest.fn(),
     },
   }),
 }));

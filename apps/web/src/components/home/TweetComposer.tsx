@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Flex, Box, Button, Textarea, Badge } from '@chakra-ui/react';
 import { FaTwitter } from 'react-icons/fa';
 import { BsSearch } from 'react-icons/bs';
-import { ChakraNextLinkButton } from '../ChakraNextLinkButton';
 import { bgPalette, txtPalette } from '../ColorPalette';
 
 export const TweetComposer = () => {
