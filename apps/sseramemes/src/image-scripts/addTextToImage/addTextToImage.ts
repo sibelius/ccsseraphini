@@ -41,8 +41,6 @@ export const removeMemeCommands = (message: string) => {
 };
 
 export const removeAltText = (message: string) => {
-  if (!message.includes('(alt:')) return message;
-
   return message.replace(/\(alt:.*\)/g, '').trim();
 };
 

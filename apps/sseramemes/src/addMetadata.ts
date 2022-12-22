@@ -1,6 +1,6 @@
 import { TwitterApi } from 'twitter-api-v2';
 
-type addMetadataParams = {
+type AddMetadataParams = {
   mediaId: string;
   alt: string;
   mimeType: string;
@@ -8,11 +8,11 @@ type addMetadataParams = {
 
 export const addMetadata = async (
   client: TwitterApi,
-  params: addMetadataParams,
+  params: AddMetadataParams,
 ) => {
   const { mediaId, alt, mimeType } = params;
 
-  if (mimeType.includes('image')) {
+  if (mimeType.includes('image') && alt?.trim().length > 0) {
     await client.v1.createMediaMetadata(mediaId, {
       alt_text: {
         text: alt,
