@@ -14,6 +14,8 @@ declare global {
 
 export async function connectMongoose() {
   jest.setTimeout(20000);
+
+  mongoose.set('strictQuery', false);
   return mongoose.connect(global.__MONGO_URI__, {
     dbName: global.__MONGO_DB_NAME__,
     autoIndex: true,
