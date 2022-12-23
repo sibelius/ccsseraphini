@@ -1,4 +1,4 @@
-import { getMessageContent } from './getMessageContent';
+import { getMessageContent } from '../getMessageContent';
 
 const users = {
   '749641174410854402': 'user1',

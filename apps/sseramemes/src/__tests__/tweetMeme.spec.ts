@@ -14,17 +14,20 @@ jest.mock('twitter-api-v2', () => ({
 
 jest.mock('ffmpeg');
 
+jest.mock('sharp');
+
 const mockOriginalImage = Buffer.from('mockOriginalImage');
 
 const mockImageWithLogo = Buffer.from('mockImageWithLogo');
 
-jest.mock('./image-scripts/addLogoToImage', () => ({
+// do not mock internal paths
+jest.mock('../image-scripts/addLogoToImage', () => ({
   addLogoToImage: jest.fn().mockImplementation(() => {
     return Promise.resolve(mockImageWithLogo);
   }),
 }));
 
-import { uploadMeme } from './tweetMeme';
+import { uploadMeme } from '../tweetMeme';
 import fetch from 'node-fetch';
 import { TwitterApi } from 'twitter-api-v2';
 
