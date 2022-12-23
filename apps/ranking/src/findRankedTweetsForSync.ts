@@ -6,8 +6,7 @@ import { RankedTweetModel } from './schema/RankedTweet';
 const findRankedTweetsForSync = async (
   date: DateTime = DateTime.now(),
 ): Promise<RankedTweet[]> => {
-  const twoDaysAgo = date.startOf('day').minus({ days: 2 }).toJSDate();
-
+  const twoDaysAgo = date.endOf('day').minus({ days: 2 }).toJSDate();
   const oneMonthAgo = date.endOf('day').minus({ months: 1 }).toJSDate();
 
   const tweets: RankedTweet[] = await RankedTweetModel.find({

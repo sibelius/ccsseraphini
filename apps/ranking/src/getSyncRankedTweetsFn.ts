@@ -9,10 +9,13 @@ import isPublicMetricsChanged from './isPublicMetricsChanged';
 import findRankedTweetsForSync from './findRankedTweetsForSync';
 
 export const getSyncRankedTweetsFn = (bearerToken: string): JobCallback => {
-  const syncRankedTweets: JobCallback = async (): Promise<void> => {
+  const syncRankedTweets: JobCallback = async (
+    fireDate: Date,
+  ): Promise<void> => {
     try {
-      const currentRankedTweets: RankedTweet[] =
-        await findRankedTweetsForSync();
+      const currentRankedTweets: RankedTweet[] = await findRankedTweetsForSync(
+        DateTime.fromJSDate(fireDate),
+      );
 
       if (!currentRankedTweets.length) {
         console.info('No ranked tweets found in database');
