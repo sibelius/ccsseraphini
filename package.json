@@ -23,7 +23,7 @@
     "lint-staged": "13.1.0",
     "patch-package": "6.5.0",
     "prettier": "2.8.1",
-    "prettier-package-json": "2.7.0",
+    "prettier-package-json": "2.8.0",
     "turbo": "1.6.3"
   },
   "lint-staged": {
