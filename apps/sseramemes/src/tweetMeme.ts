@@ -91,6 +91,7 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
   const mediaIds = mediaId ? [mediaId] : undefined;
 
   const contentCleaned = removeMetadata(content);
+
   const tweet = await client.v1.tweet(contentCleaned, {
     media_ids: mediaIds,
   });
