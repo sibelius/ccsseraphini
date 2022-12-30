@@ -6918,10 +6918,10 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-discord-api-types@0.37.24, discord-api-types@^0.37.20:
-  version "0.37.24"
-  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.24.tgz#f3ee0ad6b2b70925b5225f9beac6e24bc4de6e46"
-  integrity sha512-1+Fb4huJCihdbkJLcq2p7nBmtlmAryNwjefT8wwJnL8c7bc7WA87Oaa5mbLe96QvZyfwnwRCDX40H0HhcVV50g==
+discord-api-types@0.37.25, discord-api-types@^0.37.20:
+  version "0.37.25"
+  resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.25.tgz#bee7fd09bd4afb9d0e2983ef837ca1cad5df0e5c"
+  integrity sha512-aCwA2sWnL1zPQgTELkkMzQneuWyCXXUjZCUKswesiE6RDCfOfxAPXOHg6ZTlBA5layPSikGCBBRjyh8S3Wzd+A==
 
 discord.js@14.7.1:
   version "14.7.1"
