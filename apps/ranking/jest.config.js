@@ -6,6 +6,7 @@ const customJestConfig = {
     '^.+\\.(setupFiles.js|ts)?$': 'ts-jest',
   },
   setupFiles: ['<rootDir>/setupFiles.js'],
+  watchPathIgnorePatterns: ['globalConfig'],
 };
 
 module.exports = customJestConfig;
