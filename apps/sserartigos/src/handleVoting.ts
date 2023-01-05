@@ -5,7 +5,8 @@ import {
   PartialMessage,
   User,
 } from 'discord.js';
-import { getArticles, shouldBeVoted } from './common/utils/utils';
+import { shouldBeVoted } from './common/utils/utils';
+import { getArticles } from './common/utils/getArticles';
 import { postAllArticles } from './fansfy';
 import { notifySuccess, handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
@@ -42,7 +43,7 @@ const isVotingDone = (message: Message | PartialMessage): boolean => {
 
 export const calculateScore = (
   reactions: Collection<string, MessageReaction>,
-): number => {
+) => {
   return reactions.reduce((acc, value, key) => {
     const points = EMOJIS_POINTS[key] ?? 0;
     return (value.count - 1) * points + acc;
