@@ -23,5 +23,7 @@ export const config = {
   ZETTELKASTEN_FILE_PATH: process.env.ZETTELKASTEN_FILE_PATH as string,
   GIT_REPO_BRANCH: process.env.GIT_REPO_BRANCH as string,
 
+  FANSFY_API_KEY: process.env.FANSFY_API_KEY as string,
+
   PORT: 3000,
 } as const;
