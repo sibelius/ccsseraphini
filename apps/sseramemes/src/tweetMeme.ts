@@ -11,6 +11,7 @@ import { getAltText, getMessageContent } from './getMessageContent';
 import { addLogoToVideo } from './image-scripts/addLogoToVideo';
 import { removeMetadata } from './removeData';
 import { addMetadata } from './addMetadata';
+import { publishMemes } from './modules/Publish/publishMemes';
 
 const client = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
@@ -58,11 +59,11 @@ export const uploadMeme = async (
   }
 
   try {
-    const media = await client.v1.uploadMedia(newBuffer, { mimeType });
+    const mediaId = await client.v1.uploadMedia(newBuffer, { mimeType });
 
-    await addMetadata(client, { mediaId: media, mimeType, alt });
+    await addMetadata(client, { mediaId: mediaId, mimeType, alt });
 
-    return media;
+    return { mediaId, mimeType, alt, buffer: newBuffer };
   } catch (err) {
     console.error(err);
     return undefined;
@@ -86,7 +87,7 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
   const content = await getMessageContent(message);
   const altText = getAltText(content);
 
-  const mediaId = await uploadMeme(message, altText);
+  const { mediaId, buffer, mimeType, alt } = await uploadMeme(message, altText);
 
   const mediaIds = mediaId ? [mediaId] : undefined;
 
@@ -99,6 +100,18 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
   scheduleRetweet(tweet);
 
   const tweetUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+
+  await publishMemes({
+    id: message.id,
+    description: contentCleaned,
+    medias: [
+      {
+        mimeType,
+        alt,
+        buffer,
+      },
+    ],
+  });
 
   return { tweetUrl };
 };
