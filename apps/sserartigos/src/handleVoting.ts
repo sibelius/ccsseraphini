@@ -21,7 +21,12 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
   messagesAlreadyVoted.push(reaction.message.id);
 
   const links = getArticles(reaction.message.content);
-  createCommitToZettelkastenFile('adding more article links', links);
+  // createCommitToZettelkastenFile('adding more article links', links);
+  const notification = reaction.message.reply('Postando artigos...');
+
+  postAllArticles(links)
+    .then(() => notifySucess(notification))
+    .catch((e) => handleError(e, notification));
 };
 
 export const createPoll = (message: Message) => {
