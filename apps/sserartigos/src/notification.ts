@@ -7,7 +7,7 @@ export function handleError(e: any, notification: Promise<Message<boolean>>) {
   );
 }
 
-export async function notifySucess(reply: Promise<Message<boolean>>) {
+export async function notifySuccess(reply: Promise<Message<boolean>>) {
   const message = await reply;
   return await message.edit('Links postados com sucesso 👍');
 }
