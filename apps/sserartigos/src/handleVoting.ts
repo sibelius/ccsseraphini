@@ -6,7 +6,9 @@ import {
   User,
 } from 'discord.js';
 import { getArticles, shouldBeVoted } from './common/utils/utils';
+import { postAllArticles } from './fansfy';
 import { createCommitToZettelkastenFile } from './github';
+import { notifySucess, handleError } from './notifySucess';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
 
 /**
@@ -48,6 +50,7 @@ export const calculateScore = (
     return (value.count - 1) * points + acc;
   }, 0);
 };
+
 const dontShouldPushToGithub = (
   user: User,
   message: Message | PartialMessage,
