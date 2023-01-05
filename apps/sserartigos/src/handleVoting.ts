@@ -17,7 +17,7 @@ import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
 const messagesAlreadyVoted = [];
 
 export const handleVoting = (reaction: MessageReaction, user: User) => {
-  if (dontShouldPushToGithub(user, reaction.message)) return;
+  if (shouldNotFinishVoting(user, reaction.message)) return;
 
   messagesAlreadyVoted.push(reaction.message.id);
 
@@ -49,7 +49,7 @@ export const calculateScore = (
   }, 0);
 };
 
-const dontShouldPushToGithub = (
+const shouldNotFinishVoting = (
   user: User,
   message: Message | PartialMessage,
 ) => {
