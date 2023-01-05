@@ -6,7 +6,8 @@ import {
   User,
 } from 'discord.js';
 import { getArticles, shouldBeVoted } from './common/utils/utils';
-import { createCommitToZettelkastenFile } from './github';
+import { postAllArticles } from './fansfy';
+import { notifySuccess, handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
 
 /**
@@ -21,7 +22,11 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
   messagesAlreadyVoted.push(reaction.message.id);
 
   const links = getArticles(reaction.message.content);
-  createCommitToZettelkastenFile('adding more article links', links);
+  const notification = reaction.message.reply('Postando artigos...');
+
+  postAllArticles(links)
+    .then(() => notifySuccess(notification))
+    .catch((e) => handleError(e, notification));
 };
 
 export const createPoll = (message: Message) => {
@@ -43,6 +48,7 @@ export const calculateScore = (
     return (value.count - 1) * points + acc;
   }, 0);
 };
+
 const dontShouldPushToGithub = (
   user: User,
   message: Message | PartialMessage,
