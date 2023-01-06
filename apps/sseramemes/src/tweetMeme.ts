@@ -101,17 +101,21 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
 
   const tweetUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
 
-  await publishMemes({
-    id: message.id,
-    description: contentCleaned,
-    medias: [
-      {
-        mimeType,
-        alt,
-        buffer,
-      },
-    ],
-  });
+  try {
+    await publishMemes({
+      id: message.id,
+      description: contentCleaned,
+      medias: [
+        {
+          mimeType,
+          alt,
+          buffer,
+        },
+      ],
+    });
+  } catch (error) {
+    await message.channel.send(`🚨 Error: ${error.message}`);
+  }
 
   return { tweetUrl };
 };
