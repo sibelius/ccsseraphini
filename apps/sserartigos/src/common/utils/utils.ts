@@ -4,7 +4,8 @@ import { config } from '../../config';
 export const shouldBeVoted = (message: Message | PartialMessage): boolean => {
   return (
     config.LISTENED_USERS_ID.some((value) => value === message.author.id) &&
-    getArticles(message.content).length >= 1
+    getArticles(message.content).length >= 1 &&
+    message.attachments.size === 0
   );
 };
 
