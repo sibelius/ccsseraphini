@@ -1,5 +1,6 @@
 import { Message, PartialMessage } from 'discord.js';
 import { config } from '../../config';
+import { getArticles } from './getArticles';
 
 export const shouldBeVoted = (message: Message | PartialMessage): boolean => {
   return (
@@ -7,9 +8,4 @@ export const shouldBeVoted = (message: Message | PartialMessage): boolean => {
     getArticles(message.content).length >= 1 &&
     message.attachments.size === 0
   );
-};
-
-export const getArticles = (messageContent: string): string[] => {
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  return messageContent.match(urlRegex) ?? [];
 };
