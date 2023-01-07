@@ -1,6 +1,7 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { config } from './config';
-import { createPoll, handleVoting } from './handleVoting';
+import { handleVoting } from './handleVoting';
+import { createPoll } from './pollHandler';
 
 const client = new Client({
   intents: [
