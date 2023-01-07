@@ -10,6 +10,8 @@ import { getArticles } from './common/utils/getArticles';
 import { postAllArticles } from './fansfy';
 import { handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
+import { createPoll } from './pollHandler';
+import { DiscordMessage } from './types';
 
 /**
  * Messages that already have been tweeted since the last time the bot was
@@ -36,7 +38,7 @@ export const createPoll = (message: Message) => {
   message.react('👎');
 };
 
-const isVotingDone = (message: Message | PartialMessage): boolean => {
+const isVotingDone = (message: DiscordMessage): boolean => {
   return calculateScore(message.reactions.cache) >= MIN_POINTS_TO_PUSH;
 };
 
@@ -49,10 +51,7 @@ export const calculateScore = (
   }, 0);
 };
 
-const shouldNotFinishVoting = (
-  user: User,
-  message: Message | PartialMessage,
-) => {
+const shouldNotFinishVoting = (user: User, message: DiscordMessage) => {
   return (
     user.bot ||
     !shouldBeVoted(message) ||
