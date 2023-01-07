@@ -7,7 +7,7 @@ import {
 } from 'discord.js';
 import { getArticles, shouldBeVoted } from './common/utils/utils';
 import { postAllArticles } from './fansfy';
-import { notifySuccess, handleError } from './notification';
+import { handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
 
 /**
@@ -22,11 +22,10 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
   messagesAlreadyVoted.push(reaction.message.id);
 
   const links = getArticles(reaction.message.content);
-  const notification = reaction.message.reply('Postando artigos...');
 
   postAllArticles(links)
-    .then(() => notifySuccess(notification))
-    .catch((e) => handleError(e, notification));
+    .then(() => reaction.message.react('🚀'))
+    .catch((e) => handleError(e, reaction.message));
 };
 
 export const createPoll = (message: Message) => {
