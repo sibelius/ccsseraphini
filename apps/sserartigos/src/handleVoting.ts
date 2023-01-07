@@ -20,22 +20,23 @@ import { DiscordMessage } from './types';
 const messagesAlreadyVoted = [];
 
 export const handleVoting = (reaction: MessageReaction, user: User) => {
-  if (shouldNotFinishVoting(user, reaction.message)) return;
+  const message = reaction.message;
 
-  messagesAlreadyVoted.push(reaction.message.id);
+  if (shouldBeVoted(message)) {
+    createPoll(message);
+  }
 
-  const links = getArticles(reaction.message.content);
+  if (shouldNotFinishVoting(user, message)) {
+    return;
+  }
+
+  messagesAlreadyVoted.push(message.id);
+
+  const links = getArticles(message.content);
 
   postAllArticles(links)
-    .then(() => reaction.message.react('🚀'))
-    .catch((e) => handleError(e, reaction.message));
-};
-
-export const createPoll = (message: Message) => {
-  if (!shouldBeVoted(message)) return;
-
-  message.react('💯');
-  message.react('👎');
+    .then(() => message.react('🚀'))
+    .catch((e) => handleError(e, message));
 };
 
 const isVotingDone = (message: DiscordMessage): boolean => {
