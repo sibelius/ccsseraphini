@@ -30,7 +30,6 @@ export const uploadMediasOnS3 = async ({
           Key: key,
           Metadata: {
             alt,
-            description,
           },
         }),
       );
@@ -51,12 +50,8 @@ export const publishMemes = async ({
 }: PublishMemesInput) => {
   const mediasOnS3 = await uploadMediasOnS3({ id, description, medias });
 
-  try {
-    await publishOnInstagram({
-      description,
-      medias: mediasOnS3,
-    });
-  } catch (error) {
-    console.error(error);
-  }
+  await publishOnInstagram({
+    description,
+    medias: mediasOnS3,
+  });
 };

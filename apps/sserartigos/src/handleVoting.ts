@@ -5,7 +5,8 @@ import {
   PartialMessage,
   User,
 } from 'discord.js';
-import { getArticles, shouldBeVoted } from './common/utils/utils';
+import { shouldBeVoted } from './common/utils/utils';
+import { getArticles } from './common/utils/getArticles';
 import { postAllArticles } from './fansfy';
 import { handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
@@ -17,7 +18,7 @@ import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
 const messagesAlreadyVoted = [];
 
 export const handleVoting = (reaction: MessageReaction, user: User) => {
-  if (dontShouldPushToGithub(user, reaction.message)) return;
+  if (shouldNotFinishVoting(user, reaction.message)) return;
 
   messagesAlreadyVoted.push(reaction.message.id);
 
@@ -41,14 +42,14 @@ const isVotingDone = (message: Message | PartialMessage): boolean => {
 
 export const calculateScore = (
   reactions: Collection<string, MessageReaction>,
-): number => {
+) => {
   return reactions.reduce((acc, value, key) => {
     const points = EMOJIS_POINTS[key] ?? 0;
     return (value.count - 1) * points + acc;
   }, 0);
 };
 
-const dontShouldPushToGithub = (
+const shouldNotFinishVoting = (
   user: User,
   message: Message | PartialMessage,
 ) => {

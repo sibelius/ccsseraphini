@@ -12,7 +12,7 @@
     "@ccsseraphini/ranking": "1.0.0",
     "@digitak/esrun": "3.2.15",
     "@jimp/types": "0.16.2",
-    "discord-api-types": "0.37.25",
+    "discord-api-types": "0.37.26",
     "discord.js": "14.7.1",
     "dotenv": "16.0.3",
     "dotenv-safe": "8.2.0",
@@ -35,7 +35,7 @@
     "@types/luxon": "3.2.0",
     "@types/node-schedule": "2.1.0",
     "@types/supertest": "2.0.12",
-    "esbuild": "0.16.12",
+    "esbuild": "0.16.14",
     "esbuild-register": "3.4.2",
     "jest": "^29.3.1",
     "jest-fetch-mock": "3.0.3"
