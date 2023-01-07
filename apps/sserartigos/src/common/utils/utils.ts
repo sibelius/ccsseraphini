@@ -16,7 +16,6 @@ function shouldCreatePoll(message: DiscordMessage) {
     (item) => item.emoji.toString() === '🔗',
   );
 
-  console.log('oi', shouldForcePoll, reactions.size);
   if (shouldForcePoll) return true;
   return config.LISTENED_USERS_ID.some((value) => value === message.author.id);
 }
