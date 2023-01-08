@@ -1,13 +1,6 @@
-import { Message } from 'discord.js';
+import { DiscordMessage } from './types';
 
-export function handleError(e: any, notification: Promise<Message<boolean>>) {
+export function handleError(e: any, notification: DiscordMessage) {
   console.error(e);
-  notification.then((message) =>
-    message.edit('Alguns links não puderam ser postados ☹️'),
-  );
-}
-
-export async function notifySuccess(reply: Promise<Message<boolean>>) {
-  const message = await reply;
-  return await message.edit('Links postados com sucesso 👍');
+  notification.react('😭');
 }
