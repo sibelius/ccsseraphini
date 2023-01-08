@@ -1,4 +1,4 @@
-import { shouldBeVoted } from './common/utils/utils';
+import { checkVotingAbility } from './common/utils/utils';
 import { DiscordMessage } from './types';
 
 /**
@@ -7,7 +7,7 @@ import { DiscordMessage } from './types';
 const messagesWithPoll = [];
 
 export const createPoll = (message: DiscordMessage) => {
-  if (messagesWithPoll.indexOf(message.id) !== -1 || !shouldBeVoted(message))
+  if (messagesWithPoll.includes(message.id) || !checkVotingAbility(message))
     return;
 
   messagesWithPoll.push(message.id);

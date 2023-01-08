@@ -2,7 +2,7 @@ import { config } from '../../config';
 import { DiscordMessage } from '../../types';
 import { getArticles } from './getArticles';
 
-export const shouldBeVoted = (message: DiscordMessage): boolean => {
+export const checkVotingAbility = (message: DiscordMessage): boolean => {
   return (
     shouldCreatePoll(message) &&
     getArticles(message.content).length >= 1 &&

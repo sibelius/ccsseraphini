@@ -1,11 +1,5 @@
-import {
-  Collection,
-  Message,
-  MessageReaction,
-  PartialMessage,
-  User,
-} from 'discord.js';
-import { shouldBeVoted } from './common/utils/utils';
+import { Collection, MessageReaction, User } from 'discord.js';
+import { checkVotingAbility } from './common/utils/utils';
 import { getArticles } from './common/utils/getArticles';
 import { postAllArticles } from './fansfy';
 import { handleError } from './notification';
@@ -22,11 +16,11 @@ const messagesAlreadyVoted = [];
 export const handleVoting = (reaction: MessageReaction, user: User) => {
   const message = reaction.message;
 
-  if (shouldBeVoted(message)) {
+  if (checkVotingAbility(message)) {
     createPoll(message);
   }
 
-  if (shouldNotFinishVoting(user, message)) {
+  if (checkNotFinishVoting(user, message)) {
     return;
   }
 
@@ -52,10 +46,10 @@ export const calculateScore = (
   }, 0);
 };
 
-const shouldNotFinishVoting = (user: User, message: DiscordMessage) => {
+const checkNotFinishVoting = (user: User, message: DiscordMessage) => {
   return (
     user.bot ||
-    !shouldBeVoted(message) ||
+    !checkVotingAbility(message) ||
     !isVotingDone(message) ||
     messagesAlreadyVoted.includes(message.id)
   );
