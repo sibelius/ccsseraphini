@@ -4,6 +4,8 @@ import { getArticles } from './common/utils/getArticles';
 import { postAllArticles } from './fansfy';
 import { handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
+import { createPoll } from './pollHandler';
+import { DiscordMessage } from './types';
 
 import { tweetArticles } from './tweet';
 import { createPoll } from './pollHandler';
