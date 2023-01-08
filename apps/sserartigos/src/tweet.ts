@@ -9,13 +9,10 @@ const client = new TwitterApi({
 
 const tweet = async (url: string) => {
   try {
-    const tweet = await client.v1.tweet(url, {});
-
-    const tweetUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+    await client.v1.tweet(url, {});
 
     return {
       ok: true,
-      url: tweetUrl,
     };
   } catch (error) {
     return error;
