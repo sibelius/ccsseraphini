@@ -10,6 +10,7 @@ import { getArticles } from './common/utils/getArticles';
 import { postAllArticles } from './fansfy';
 import { notifySuccess, handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
+import { tweetArticles } from './tweet';
 
 /**
  * Messages that already have been tweeted since the last time the bot was
@@ -28,6 +29,8 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
   postAllArticles(links)
     .then(() => notifySuccess(notification))
     .catch((e) => handleError(e, notification));
+
+  tweetArticles(links);
 };
 
 export const createPoll = (message: Message) => {
