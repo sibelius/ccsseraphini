@@ -15,12 +15,12 @@ const messagesAlreadyVoted = [];
 
 export const handleVoting = (reaction: MessageReaction, user: User) => {
   const message = reaction.message;
+  const shouldBeVoted = checkVotingAbility(message);
+  const shouldNotFinishVoting = checkNotFinishVoting(user, message);
 
-  if (checkVotingAbility(message)) {
-    createPoll(message);
-  }
+  shouldBeVoted ? createPoll(message) : {};
 
-  if (checkNotFinishVoting(user, message)) {
+  if (shouldNotFinishVoting) {
     return;
   }
 
