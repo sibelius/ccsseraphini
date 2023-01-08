@@ -37,7 +37,6 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
 
   tweetArticles(links)
     .then(() => message.react('🐦'))
-    .catch((e) => handleError(e, message))
     .catch((e) => handleError(e, message));
 };
 

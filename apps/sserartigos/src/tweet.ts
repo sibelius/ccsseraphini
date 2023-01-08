@@ -1,4 +1,4 @@
-import { TweetV1, TwitterApi } from 'twitter-api-v2';
+import { TwitterApi } from 'twitter-api-v2';
 
 const client = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
@@ -13,7 +13,10 @@ const tweet = async (url: string) => {
 
     const tweetUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
 
-    return tweetUrl;
+    return {
+      ok: true,
+      url: tweetUrl,
+    };
   } catch (error) {
     return error;
   }

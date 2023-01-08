@@ -1,4 +1,3 @@
-import { tweet } from '../tweet';
 import { postArticle } from './postArticle';
 
 export const ENDPOINT_URL = 'https://api.fansfy.io/v1/publish';
