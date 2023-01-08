@@ -63,18 +63,26 @@ async function* mentionsStream() {
 const twitterBaseUrl = 'https://twitter.com/';
 
 const getTweetUrl = (tweet: any) => {
-  const author = tweet.includes.users.find(
-    (user) => user.id === tweet.data.author_id,
-  );
+  try {
+    const author = tweet.includes?.users?.find(
+      (user) => user.id === tweet.data.author_id,
+    );
 
-  const tweetUrl = `${twitterBaseUrl}${author.username}/status/${tweet.data.id}`;
+    const tweetUrl = `${twitterBaseUrl}${author.username}/status/${tweet.data.id}`;
 
-  return tweetUrl;
+    return tweetUrl;
+  } catch (err) {
+    console.error(err);
+    return undefined;
+  }
 };
 
 export const listenToMentions = async (memeChannel: TextChannel) => {
   for await (const tweet of mentionsStream()) {
     const tweetUrl = getTweetUrl(tweet);
-    await memeChannel.send(`🔁 ${tweetUrl}`);
+
+    if (tweetUrl) {
+      await memeChannel.send(`🔁 ${tweetUrl}`);
+    }
   }
 };
