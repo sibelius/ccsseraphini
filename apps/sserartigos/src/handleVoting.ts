@@ -1,15 +1,11 @@
-import {
-  Collection,
-  Message,
-  MessageReaction,
-  PartialMessage,
-  User,
-} from 'discord.js';
-import { shouldBeVoted } from './common/utils/utils';
+import { Collection, MessageReaction, User } from 'discord.js';
+import { checkVotingAbility } from './common/utils/utils';
 import { getArticles } from './common/utils/getArticles';
 import { postAllArticles } from './fansfy';
-import { notifySuccess, handleError } from './notification';
+import { handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
+import { createPoll } from './pollHandler';
+import { DiscordMessage } from './types';
 
 /**
  * Messages that already have been tweeted since the last time the bot was
@@ -18,26 +14,26 @@ import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
 const messagesAlreadyVoted = [];
 
 export const handleVoting = (reaction: MessageReaction, user: User) => {
-  if (shouldNotFinishVoting(user, reaction.message)) return;
+  const message = reaction.message;
+  const shouldBeVoted = checkVotingAbility(message);
+  const shouldNotFinishVoting = checkNotFinishVoting(user, message);
 
-  messagesAlreadyVoted.push(reaction.message.id);
+  shouldBeVoted ? createPoll(message) : {};
 
-  const links = getArticles(reaction.message.content);
-  const notification = reaction.message.reply('Postando artigos...');
+  if (shouldNotFinishVoting) {
+    return;
+  }
+
+  messagesAlreadyVoted.push(message.id);
+
+  const links = getArticles(message.content);
 
   postAllArticles(links)
-    .then(() => notifySuccess(notification))
-    .catch((e) => handleError(e, notification));
+    .then(() => message.react('🚀'))
+    .catch((e) => handleError(e, message));
 };
 
-export const createPoll = (message: Message) => {
-  if (!shouldBeVoted(message)) return;
-
-  message.react('💯');
-  message.react('👎');
-};
-
-const isVotingDone = (message: Message | PartialMessage): boolean => {
+const isVotingDone = (message: DiscordMessage): boolean => {
   return calculateScore(message.reactions.cache) >= MIN_POINTS_TO_PUSH;
 };
 
@@ -50,13 +46,10 @@ export const calculateScore = (
   }, 0);
 };
 
-const shouldNotFinishVoting = (
-  user: User,
-  message: Message | PartialMessage,
-) => {
+const checkNotFinishVoting = (user: User, message: DiscordMessage) => {
   return (
     user.bot ||
-    !shouldBeVoted(message) ||
+    !checkVotingAbility(message) ||
     !isVotingDone(message) ||
     messagesAlreadyVoted.includes(message.id)
   );

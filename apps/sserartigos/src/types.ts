@@ -1,3 +1,5 @@
+import { Message, PartialMessage } from 'discord.js';
+
 export type GitRepoInfo = {
   owner: string;
   repo: string;
@@ -17,3 +19,5 @@ export type GitHubResponseData = {
   html_url: string;
   download_url: string;
 };
+
+export type DiscordMessage = Message<boolean> | PartialMessage;
