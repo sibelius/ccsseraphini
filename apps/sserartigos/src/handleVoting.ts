@@ -7,6 +7,11 @@ import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
 import { createPoll } from './pollHandler';
 import { DiscordMessage } from './types';
 
+import { tweetArticles } from './tweet';
+import { createPoll } from './pollHandler';
+
+import { DiscordMessage } from './types';
+
 /**
  * Messages that already have been tweeted since the last time the bot was
  * restarted.
@@ -30,6 +35,10 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
 
   postAllArticles(links)
     .then(() => message.react('🚀'))
+    .catch((e) => handleError(e, message));
+
+  tweetArticles(links)
+    .then(() => message.react('🐦'))
     .catch((e) => handleError(e, message));
 };
 
