@@ -1,4 +1,4 @@
-import { Collection, MessageReaction, User } from 'discord.js';
+import { Collection, MessageReaction, TextChannel, User } from 'discord.js';
 import { checkVotingAbility } from './common/utils/utils';
 import { getArticles } from './common/utils/getArticles';
 import { postAllArticles } from './fansfy';
@@ -6,11 +6,8 @@ import { handleError } from './notification';
 import { EMOJIS_POINTS, MIN_POINTS_TO_PUSH } from './score';
 import { createPoll } from './pollHandler';
 import { DiscordMessage } from './types';
-
 import { tweetArticles } from './tweet';
-import { createPoll } from './pollHandler';
-
-import { DiscordMessage } from './types';
+import { config } from './config';
 
 /**
  * Messages that already have been tweeted since the last time the bot was
@@ -37,7 +34,7 @@ export const handleVoting = (reaction: MessageReaction, user: User) => {
     .then(() => message.react('🚀'))
     .catch((e) => handleError(e, message));
 
-  tweetArticles(links)
+  tweetArticles(links, getChannel(message))
     .then(() => message.react('🐦'))
     .catch((e) => handleError(e, message));
 };
@@ -62,4 +59,10 @@ const checkNotFinishVoting = (user: User, message: DiscordMessage) => {
     !isVotingDone(message) ||
     messagesAlreadyVoted.includes(message.id)
   );
+};
+
+const getChannel = (message: DiscordMessage) => {
+  return message.client.channels.cache.get(
+    config.DISCORD_SSERARTICLES_CHANNEL_ID,
+  ) as TextChannel;
 };
