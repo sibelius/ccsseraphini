@@ -18,7 +18,7 @@
     "discord.js": "14.7.1",
     "dotenv": "16.0.3",
     "dotenv-safe": "8.2.0",
-    "twitter-api-v2": "1.13.0"
+    "twitter-api-v2": "1.14.0"
   },
   "keywords": []
 }
