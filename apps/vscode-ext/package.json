@@ -40,7 +40,7 @@
     "@typescript-eslint/parser": "^5.48.1",
     "concurrently": "^7.6.0",
     "eslint": "^8.31.0",
-    "glob": "^8.0.3",
+    "glob": "^8.1.0",
     "mocha": "^10.2.0",
     "rollup": "^3.10.0",
     "rollup-plugin-svelte": "^7.1.0",
