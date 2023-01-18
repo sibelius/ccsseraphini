@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.252.0",
-    "@digitak/esrun": "3.2.15",
+    "@digitak/esrun": "3.2.16",
     "@types/sharp": "0.31.1",
     "cuid": "2.1.8",
     "discord.js": "14.7.1",
