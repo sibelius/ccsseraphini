@@ -38,7 +38,7 @@
     "react-infinite-scroll-component": "6.1.0",
     "react-is": "18.2.0",
     "react-particle-image": "1.0.2",
-    "react-tsparticles": "2.7.1",
+    "react-tsparticles": "2.8.0",
     "twitter-api-sdk": "1.2.1",
     "use-debounce": "9.0.3"
   },
