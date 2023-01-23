@@ -5237,10 +5237,10 @@
     "@sentry/cli" "^1.74.6"
     webpack-sources "^2.0.0 || ^3.0.0"
 
-"@shelf/jest-mongodb@^4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@shelf/jest-mongodb/-/jest-mongodb-4.1.5.tgz#94021d7de6234511fb1e8067dc8bfd1f2d2b32cd"
-  integrity sha512-KOd5CSgpxKW9QNnz8gMflkSgO4NWZ4HEWtxBoEnCnCN6nFgq9wcLjjdGMQ32nbCdF0DKDqS8NKZyBhebIJjTJA==
+"@shelf/jest-mongodb@^4.1.6":
+  version "4.1.6"
+  resolved "https://registry.yarnpkg.com/@shelf/jest-mongodb/-/jest-mongodb-4.1.6.tgz#76c69c9306cb924372cc4b9ab312b716c79106ed"
+  integrity sha512-p9QccBqr9dgch50nWmJJpGue+zmJtkhuRcbCeS+CHhqmVQP74CZy7K96MTB2QtaA8y+0jgjWuM2QKvKiMlMxBg==
   dependencies:
     debug "4.3.4"
     mongodb-memory-server "8.11.2"
