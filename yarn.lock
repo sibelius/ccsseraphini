@@ -3473,10 +3473,10 @@
   dependencies:
     react-loading-skeleton "^3.1.0"
 
-"@digitak/esrun@3.2.18":
-  version "3.2.18"
-  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.18.tgz#45c186c9646040627e591e588e87e6e284459592"
-  integrity sha512-Vmg6ljr8z4neYNPsmTlUvxmXbneWQxwpUZC5T/CzNL1VxPoKdezDfhc4/tNGy/7VBxvpMWGZOwzGefx9UJ/KOw==
+"@digitak/esrun@3.2.19":
+  version "3.2.19"
+  resolved "https://registry.yarnpkg.com/@digitak/esrun/-/esrun-3.2.19.tgz#d32db7d040397873b96a2f07b18a161ae1c318ad"
+  integrity sha512-09SDCqQnAVIAya4+bDdNpR/3GO29Fp5FFi9Tlrk1RAG26Wd2fNCYqU9XKx8IpTQUsYlqgO83xT4rwYGyjv1/zA==
   dependencies:
     "@digitak/grubber" "^3.1.4"
     chokidar "^3.5.1"
