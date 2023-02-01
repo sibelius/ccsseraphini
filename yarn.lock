@@ -227,15 +227,15 @@
     "@aws-sdk/util-utf8-node" "3.208.0"
     tslib "^2.3.1"
 
-"@aws-sdk/client-s3@3.261.0":
-  version "3.261.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.261.0.tgz#e951f0e2470e2a316cf36adc764bc7ab9c20ec25"
-  integrity sha512-bnce0xULwcTFhm6HDaFBaXTBbAJ33NnuRxnKeevbHfjTSXBeHFc02dfG9Csk+h3087oxYm/434RlHGHRq0UtMw==
+"@aws-sdk/client-s3@3.262.0":
+  version "3.262.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.262.0.tgz#3cf6d150526a37862d23d951bd564ba78ef41d92"
+  integrity sha512-2Guc9jr0AQDlw6AW/cKzhjw/hWgB3ce9HASJ2gXWIsImrTYj84sCEeLitfcPwymygh30VaNVC3TnLnSflBz9dQ==
   dependencies:
     "@aws-crypto/sha1-browser" "3.0.0"
     "@aws-crypto/sha256-browser" "3.0.0"
     "@aws-crypto/sha256-js" "3.0.0"
-    "@aws-sdk/client-sts" "3.261.0"
+    "@aws-sdk/client-sts" "3.262.0"
     "@aws-sdk/config-resolver" "3.259.0"
     "@aws-sdk/credential-provider-node" "3.261.0"
     "@aws-sdk/eventstream-serde-browser" "3.258.0"
@@ -481,10 +481,10 @@
     fast-xml-parser "4.0.11"
     tslib "^2.3.1"
 
-"@aws-sdk/client-sts@3.261.0":
-  version "3.261.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-sts/-/client-sts-3.261.0.tgz#0ff6709b1b4a4db42584f9eef1ea58c19e38765f"
-  integrity sha512-jnCKBjuHEMgwCmR9bXDVpl/WzpUQyU9DL3Mk65XYyZwRxgHSaw5D90zRouoZMUneNA2OnKZQnjk6oyL47mb7oA==
+"@aws-sdk/client-sts@3.262.0":
+  version "3.262.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-sts/-/client-sts-3.262.0.tgz#aad4263147676877a754b909030b101c2437e7b7"
+  integrity sha512-4Exb/tj3h6/4JsMza0ZpKVIE6N/bY2bS2T96LMB63v5T+yLmpQWUQu/fSZ56x+nuqmN1fz6PZLe0BIp96v4vDg==
   dependencies:
     "@aws-crypto/sha256-browser" "3.0.0"
     "@aws-crypto/sha256-js" "3.0.0"
