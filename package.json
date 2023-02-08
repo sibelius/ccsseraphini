@@ -24,7 +24,7 @@
     "patch-package": "6.5.1",
     "prettier": "2.8.3",
     "prettier-package-json": "2.8.0",
-    "turbo": "1.7.3"
+    "turbo": "1.7.4"
   },
   "lint-staged": {
     "*.{js,ts,tsx,css,md}": "prettier --write",
