@@ -27,7 +27,7 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "open": "8.4.0",
+    "open": "8.4.1",
     "yargs": "17.6.2"
   },
   "devDependencies": {
