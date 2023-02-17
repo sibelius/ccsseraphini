@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "luxon": "3.2.1",
-    "mongoose": "6.9.1",
+    "mongoose": "6.9.2",
     "twitter-api-v2": "1.14.1"
   },
   "devDependencies": {
