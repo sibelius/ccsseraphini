@@ -16,7 +16,7 @@
     "@chakra-ui/react": "2.5.1",
     "@dhaiwat10/react-link-preview": "1.15.0",
     "@emotion/react": "11.10.6",
-    "@emotion/styled": "11.10.5",
+    "@emotion/styled": "11.10.6",
     "@sentry/nextjs": "7.36.0",
     "@solana/web3.js": "1.73.2",
     "@types/qrcode.react": "1.0.2",
