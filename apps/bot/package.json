@@ -12,7 +12,7 @@
     "@ccsseraphini/ranking": "1.0.0",
     "@digitak/esrun": "3.2.19",
     "@jimp/types": "0.22.4",
-    "discord-api-types": "0.37.34",
+    "discord-api-types": "0.37.35",
     "discord.js": "14.7.1",
     "dotenv": "16.0.3",
     "dotenv-safe": "8.2.0",
