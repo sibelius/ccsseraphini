@@ -13816,10 +13816,10 @@ twitter-api-sdk@1.2.1:
     abort-controller "^3.0.0"
     node-fetch "^2.6.1"
 
-twitter-api-v2@1.14.1:
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/twitter-api-v2/-/twitter-api-v2-1.14.1.tgz#fe93b430413706ee102b3b1781cd6c45a313b493"
-  integrity sha512-RTegtBS6FIjUW87gOgTAQG9zF9OvzY8ObkyUgW99tA45Scwro3ToJrdNd1Itn1SW4KIds5N5LQuy2JbUZdNbkA==
+twitter-api-v2@1.14.2:
+  version "1.14.2"
+  resolved "https://registry.yarnpkg.com/twitter-api-v2/-/twitter-api-v2-1.14.2.tgz#d928eeb588f3a195a1db8059f0654b75d4278d3a"
+  integrity sha512-389e/rWaN8zWkmD5z2IpKVb5+ojPxVtrexQoGBI1Xfib1mE/9M7k7zbnZ3Q/WLwthwcWkQIlB25ecT64AL8LvQ==
 
 tx2@~1.0.4:
   version "1.0.5"

@@ -28,7 +28,7 @@
     "node-fetch": "3.3.0",
     "node-schedule": "2.1.1",
     "twitter-api-sdk": "1.2.1",
-    "twitter-api-v2": "1.14.1"
+    "twitter-api-v2": "1.14.2"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^4.1.6",

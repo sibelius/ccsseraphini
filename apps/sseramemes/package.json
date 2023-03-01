@@ -27,7 +27,7 @@
     "node-fetch": "3.3.0",
     "sharp": "0.31.3",
     "twitter-api-sdk": "1.2.1",
-    "twitter-api-v2": "1.14.1"
+    "twitter-api-v2": "1.14.2"
   },
   "devDependencies": {
     "@babel/core": "7.21.0",
