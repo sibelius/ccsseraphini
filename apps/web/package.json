@@ -50,7 +50,7 @@
     "@types/react": "18.0.28",
     "@types/react-copy-to-clipboard": "5.0.4",
     "@types/styled-components": "5.1.26",
-    "@typescript-eslint/eslint-plugin": "5.51.0",
+    "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.53.0",
     "babel-jest": "29.4.3",
     "eslint": "8.34.0",
