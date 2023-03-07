@@ -17,7 +17,7 @@
     "@dhaiwat10/react-link-preview": "1.15.0",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
-    "@sentry/nextjs": "7.40.0",
+    "@sentry/nextjs": "7.41.0",
     "@solana/web3.js": "1.73.3",
     "@types/qrcode.react": "1.0.2",
     "babel-preset-next": "1.4.0",
