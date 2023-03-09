@@ -4410,14 +4410,6 @@
     "@types/yargs" "^17.0.8"
     chalk "^4.0.0"
 
-"@jimp/bmp@^0.22.4":
-  version "0.22.4"
-  resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.22.4.tgz#108a68a2ce86bc0999a869734c898894e391462e"
-  integrity sha512-ZDwQ/tLihpZuTCFGGa0zcyZIWHfhvHkrdbsoHUY0GG/JpH/y2xzlm2I48/TicCpoujN8oGKLHIJje0HmVX3xaA==
-  dependencies:
-    "@jimp/utils" "^0.22.4"
-    bmp-js "^0.1.0"
-
 "@jimp/bmp@^0.22.7":
   version "0.22.7"
   resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.22.7.tgz#354ecedb4cbe66587cd06d3cb713d7e0740d768e"
@@ -4448,15 +4440,6 @@
   dependencies:
     "@jimp/core" "^0.22.7"
 
-"@jimp/gif@^0.22.4":
-  version "0.22.4"
-  resolved "https://registry.yarnpkg.com/@jimp/gif/-/gif-0.22.4.tgz#36b8f12ffacc1365d1ff31958beafd64ceb9d912"
-  integrity sha512-KmN7GoaQTzLAX4JXLBRkIiZAXthgQdKe+Y7BOw4n6CMe6LAS/XCQqrYCG3Av/GqIO7UAKems6D7kIGAUuhpNlQ==
-  dependencies:
-    "@jimp/utils" "^0.22.4"
-    gifwrap "^0.9.2"
-    omggif "^1.0.9"
-
 "@jimp/gif@^0.22.7":
   version "0.22.7"
   resolved "https://registry.yarnpkg.com/@jimp/gif/-/gif-0.22.7.tgz#7194e9ae3ce86534918d356e5d31d44c6a3e3730"
@@ -4465,14 +4448,6 @@
     "@jimp/utils" "^0.22.7"
     gifwrap "^0.9.2"
     omggif "^1.0.9"
-
-"@jimp/jpeg@^0.22.4":
-  version "0.22.4"
-  resolved "https://registry.yarnpkg.com/@jimp/jpeg/-/jpeg-0.22.4.tgz#137bbe2a994b5a026ed01816161ef4a26d3ad85c"
-  integrity sha512-mMJNhEtJpne65mxpIXEvT0VIzmsKiZWmaFT/c2eQ2tBLEtWAFpkvoP+F7jEaU+F3Ur4fXKFkJ/xOSXtRr/gGNw==
-  dependencies:
-    "@jimp/utils" "^0.22.4"
-    jpeg-js "^0.4.4"
 
 "@jimp/jpeg@^0.22.7":
   version "0.22.7"
@@ -4659,14 +4634,6 @@
     "@jimp/plugin-threshold" "^0.22.7"
     timm "^1.6.1"
 
-"@jimp/png@^0.22.4":
-  version "0.22.4"
-  resolved "https://registry.yarnpkg.com/@jimp/png/-/png-0.22.4.tgz#a973bf733dddee729dabd9185367a90efc38242e"
-  integrity sha512-kDovx9dTyV/TSR40HQHdRyVgNNb7Cny4/0PPEa+xeR7snuDC3dV5hu9s/QJwY0RMGiAkiuKDpiaBuSZuz8dwRQ==
-  dependencies:
-    "@jimp/utils" "^0.22.4"
-    pngjs "^6.0.0"
-
 "@jimp/png@^0.22.7":
   version "0.22.7"
   resolved "https://registry.yarnpkg.com/@jimp/png/-/png-0.22.7.tgz#4f2b641a99192419e3eef8e50e229115fa2df3cc"
@@ -4675,13 +4642,6 @@
     "@jimp/utils" "^0.22.7"
     pngjs "^6.0.0"
 
-"@jimp/tiff@^0.22.4":
-  version "0.22.4"
-  resolved "https://registry.yarnpkg.com/@jimp/tiff/-/tiff-0.22.4.tgz#04f66c481c92a7698713677ef8a720f8dcd729fd"
-  integrity sha512-RStUATRnb+unYzzuGxU+SPZALqh5NxYdcS6UGTBvhCMlijopGiY/iL01wstIOst0ypKIjwbcSVj7mAHn6B7Qbw==
-  dependencies:
-    utif2 "^4.0.1"
-
 "@jimp/tiff@^0.22.7":
   version "0.22.7"
   resolved "https://registry.yarnpkg.com/@jimp/tiff/-/tiff-0.22.7.tgz#2f1c6d0ab71ab5b64d73e7b328a61a70c27f3c88"
@@ -4689,19 +4649,7 @@
   dependencies:
     utif2 "^4.0.1"
 
-"@jimp/types@0.22.4":
-  version "0.22.4"
-  resolved "https://registry.yarnpkg.com/@jimp/types/-/types-0.22.4.tgz#4e1f2028f5760d01508766cf1e615db9cf0d9ef0"
-  integrity sha512-v3hm8LGc3we6P6ML0ticiLX7wtdvywrKthYxqVrJVIu3vRL0Z4q3ngFjwzqDmaIF8wC0neq98s/t7ODWfeIiRQ==
-  dependencies:
-    "@jimp/bmp" "^0.22.4"
-    "@jimp/gif" "^0.22.4"
-    "@jimp/jpeg" "^0.22.4"
-    "@jimp/png" "^0.22.4"
-    "@jimp/tiff" "^0.22.4"
-    timm "^1.6.1"
-
-"@jimp/types@^0.22.7":
+"@jimp/types@0.22.7", "@jimp/types@^0.22.7":
   version "0.22.7"
   resolved "https://registry.yarnpkg.com/@jimp/types/-/types-0.22.7.tgz#388ea61d08a0449eabc94d9b14737db66e83b276"
   integrity sha512-1T8BxwDh5HJvBh3tt6HUd8r7ir5Ge3JWATXC8O3Y9QYwOaERjA2+FVhGSjtoo5xCeJvLRjSzEtfZ8heowMBL4w==
@@ -4712,13 +4660,6 @@
     "@jimp/png" "^0.22.7"
     "@jimp/tiff" "^0.22.7"
     timm "^1.6.1"
-
-"@jimp/utils@^0.22.4":
-  version "0.22.4"
-  resolved "https://registry.yarnpkg.com/@jimp/utils/-/utils-0.22.4.tgz#3d420178f628c732805297a29eb6e64c6896e6ad"
-  integrity sha512-EPaBMNg4NvVXnMpSFJEsdCQqdSVU2ACreAL+Ipkq19C/FkDEj9Q10t6Mjx8zOe/AAjBQj1vTALS/DykcHOn4bQ==
-  dependencies:
-    regenerator-runtime "^0.13.3"
 
 "@jimp/utils@^0.22.7":
   version "0.22.7"
