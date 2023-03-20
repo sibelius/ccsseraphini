@@ -47,7 +47,7 @@
     "rollup-plugin-terser": "^7.0.2",
     "svelte": "^3.57.0",
     "svelte-check": "^3.0.4",
-    "svelte-preprocess": "^5.0.1",
+    "svelte-preprocess": "^5.0.3",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.5",
     "vscode-test": "^1.4.1",
