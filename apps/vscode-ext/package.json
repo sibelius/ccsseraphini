@@ -49,7 +49,7 @@
     "svelte-check": "^3.1.4",
     "svelte-preprocess": "^5.0.3",
     "ts-loader": "^9.4.2",
-    "typescript": "^4.9.5",
+    "typescript": "^5.0.2",
     "vscode-test": "^1.4.1",
     "webpack": "^5.76.3",
     "webpack-cli": "^5.0.1"
