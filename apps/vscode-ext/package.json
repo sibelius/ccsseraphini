@@ -37,7 +37,7 @@
     "@types/polka": "^0.5.1",
     "@types/vscode": "^1.76.0",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
-    "@typescript-eslint/parser": "^5.56.0",
+    "@typescript-eslint/parser": "^5.57.0",
     "concurrently": "^7.6.0",
     "eslint": "^8.36.0",
     "glob": "^9.3.2",
