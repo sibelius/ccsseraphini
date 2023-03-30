@@ -5233,10 +5233,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/chrome@0.0.226":
-  version "0.0.226"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.226.tgz#db6fc9a0476718156f97917a3b25e3f876f5bc7e"
-  integrity sha512-cyl2Bt/P3xPH4arxHctNbzksO20hirQCL3Jcqz6mOZKgad7SkhqRqc7BL9EWVRvocs6hyo8bwkzKidTlM8WGUw==
+"@types/chrome@0.0.227":
+  version "0.0.227"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.227.tgz#06ac653adb4cb8a192f6e42d3a2079ef884cdf34"
+  integrity sha512-l1sVnf/1wZ/oNPw5X7OJMZjQlqVf3tPO50aE/aETHQRbrYhlHZkwv7lcuOWCimRSkFdHvAW4M+RIBAZACblXng==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
