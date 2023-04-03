@@ -30,7 +30,7 @@
     "twitter-api-v2": "1.14.2"
   },
   "devDependencies": {
-    "@babel/core": "7.21.3",
+    "@babel/core": "7.21.4",
     "@babel/preset-env": "7.20.2",
     "@babel/preset-typescript": "7.21.0",
     "babel-jest": "29.5.0",
