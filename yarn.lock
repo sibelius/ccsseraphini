@@ -225,10 +225,10 @@
     "@aws-sdk/util-utf8-node" "3.208.0"
     tslib "^2.3.1"
 
-"@aws-sdk/client-s3@3.303.0":
-  version "3.303.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.303.0.tgz#b93906d8d45b775ea8f018b11c84c5616c153517"
-  integrity sha512-Wk/O9ZSk/53nxRh/1IRJ21JQs6ycxkjh+/MpN/nkJyBWdSt9yEiwRUHM1hWqfkyATga4rVWZZZzh3UP+rww5mg==
+"@aws-sdk/client-s3@3.304.0":
+  version "3.304.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.304.0.tgz#946a8f3c074f3f0a70dc1ae6be094cd6ea910a09"
+  integrity sha512-KBtkcFR47AQj8cqEhVsuJZaYRRox8e97H6cF2fnzGZLSwL9eW2tLaXKhwHmM5JPoNdye3f8ZFFFX/cySJ9COnA==
   dependencies:
     "@aws-crypto/sha1-browser" "3.0.0"
     "@aws-crypto/sha256-browser" "3.0.0"
