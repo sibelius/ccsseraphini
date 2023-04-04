@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^4.1.7",
-    "@types/luxon": "3.2.0",
+    "@types/luxon": "3.2.2",
     "@types/node-schedule": "2.1.0",
     "@types/supertest": "2.0.12",
     "esbuild": "0.17.15",
