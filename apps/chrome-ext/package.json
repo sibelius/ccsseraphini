@@ -22,7 +22,7 @@
   "devDependencies": {
     "@babel/core": "7.21.4",
     "@babel/preset-env": "7.21.4",
-    "@babel/preset-typescript": "7.21.0",
+    "@babel/preset-typescript": "7.21.4",
     "@types/chrome": "0.0.228",
     "@types/react-dom": "18.0.11",
     "babel-loader": "9.1.2",
