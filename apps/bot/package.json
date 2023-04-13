@@ -18,7 +18,7 @@
     "dotenv-safe": "8.2.0",
     "isomorphic-fetch": "3.0.0",
     "jimp": "0.22.7",
-    "koa": "2.14.1",
+    "koa": "2.14.2",
     "koa-bodyparser": "4.4.0",
     "koa-convert": "2.0.0",
     "koa-cors": "0.0.16",
