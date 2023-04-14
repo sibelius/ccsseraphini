@@ -13,7 +13,7 @@
     "@chakra-ui/react": "2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "core-js": "3.30.0",
+    "core-js": "3.30.1",
     "framer-motion": "^10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
