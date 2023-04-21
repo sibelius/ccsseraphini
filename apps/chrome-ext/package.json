@@ -23,7 +23,7 @@
     "@babel/core": "7.21.4",
     "@babel/preset-env": "7.21.4",
     "@babel/preset-typescript": "7.21.4",
-    "@types/chrome": "0.0.232",
+    "@types/chrome": "0.0.233",
     "@types/react-dom": "18.0.11",
     "babel-loader": "9.1.2",
     "css-loader": "6.7.3",
