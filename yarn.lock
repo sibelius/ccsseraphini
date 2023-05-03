@@ -5551,12 +5551,12 @@
     "@types/mime" "^1"
     "@types/node" "*"
 
-"@types/sharp@0.31.1":
-  version "0.31.1"
-  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.31.1.tgz#db768461455dbcf9ff11d69277fd70564483c4df"
-  integrity sha512-5nWwamN9ZFHXaYEincMSuza8nNfOof8nmO+mcI+Agx1uMUk4/pQnNIcix+9rLPXzKrm1pS34+6WRDbDV0Jn7ag==
+"@types/sharp@0.32.0":
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.32.0.tgz#fc3ac6df6b456319bae807c3d24efdc6631cdd6f"
+  integrity sha512-OOi3kL+FZDnPhVzsfD37J88FNeZh6gQsGcLc95NbeURRGvmSjeXiDcyWzF2o3yh/gQAUn2uhh/e+CPCa5nwAxw==
   dependencies:
-    "@types/node" "*"
+    sharp "*"
 
 "@types/stack-utils@^2.0.0":
   version "2.0.1"
@@ -12395,7 +12395,7 @@ shallowequal@^1.1.0:
   resolved "https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz"
   integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
 
-sharp@0.32.0:
+sharp@*, sharp@0.32.0:
   version "0.32.0"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.32.0.tgz#146b3e1930d56518699908d9116d8a03be1f5cf6"
   integrity sha512-yLAypVcqj1toSAqRSwbs86nEzfyZVDYqjuUX8grhFpeij0DDNagKJXELS/auegDBRDg1XBtELdOGfo2X1cCpeA==
