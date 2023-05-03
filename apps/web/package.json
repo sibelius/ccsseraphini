@@ -13,7 +13,7 @@
   "dependencies": {
     "@ccsseraphini/ranking": "1.0.0",
     "@ccsseraphini/ui": "0.0.1",
-    "@chakra-ui/react": "2.5.5",
+    "@chakra-ui/react": "2.6.0",
     "@dhaiwat10/react-link-preview": "1.15.0",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
