@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "open": "8.4.2",
-    "yargs": "17.7.1"
+    "yargs": "17.7.2"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",
