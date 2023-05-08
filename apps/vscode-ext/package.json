@@ -52,7 +52,7 @@
     "typescript": "^5.0.4",
     "vscode-test": "^1.4.1",
     "webpack": "^5.81.0",
-    "webpack-cli": "^5.0.2"
+    "webpack-cli": "^5.1.0"
   },
   "engines": {
     "vscode": "^1.52.0"
