@@ -1,3 +1,4 @@
+import { Collection, MessageReaction } from 'discord.js';
 import { config } from '../../config';
 import { DiscordMessage } from '../../types';
 import { getArticles } from './getArticles';
@@ -12,10 +13,15 @@ export const checkVotingAbility = (message: DiscordMessage): boolean => {
 
 function shouldCreatePoll(message: DiscordMessage) {
   const reactions = message.reactions.valueOf();
-  const shouldForcePoll = reactions.some(
-    (item) => item.emoji.toString() === '🔗',
-  );
+  const shouldForcePoll = countEmojis(reactions, '🔗') > 1;
 
   if (shouldForcePoll) return true;
   return config.LISTENED_USERS_ID.some((value) => value === message.author.id);
+}
+
+function countEmojis(
+  reactions: Collection<string, MessageReaction>,
+  emoji: string,
+): number {
+  return reactions.find((r) => r.emoji.toString() === emoji)?.count;
 }
