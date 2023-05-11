@@ -15,7 +15,7 @@
     "@ccsseraphini/ui": "0.0.1",
     "@chakra-ui/react": "2.6.1",
     "@dhaiwat10/react-link-preview": "1.15.0",
-    "@emotion/react": "11.10.8",
+    "@emotion/react": "11.11.0",
     "@emotion/styled": "11.11.0",
     "@sentry/nextjs": "7.51.2",
     "@solana/web3.js": "1.76.0",
