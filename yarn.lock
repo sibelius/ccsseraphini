@@ -8116,10 +8116,10 @@ esutils@^2.0.2:
   resolved "https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-ethers@6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.4.0.tgz#82c230a3a018a2627593d24ec4b9c20e9681c341"
-  integrity sha512-nksaMCwX+BOdV2NQ1/57OehSD2JtujbhrdC2+Fb9VpvBO0WO6h+WWwu3oMMw7aUiTa5lvQcWX1vl4aOy7Q3CTg==
+ethers@6.4.1:
+  version "6.4.1"
+  resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.4.1.tgz#fdfb5b987f239980a416879930e89d1817ff22ca"
+  integrity sha512-dBY7rBmoqI7ndCOsaafWEk1Snh2ilSRrLcRghb1FwY51Jze0NKGgn4ZjYAqDcji1lvUzFPEG0/u6w/nH6xJ6pw==
   dependencies:
     "@adraffy/ens-normalize" "git+https://github.com/ricmoo/ens-normalize.js.git"
     "@noble/hashes" "1.1.2"
