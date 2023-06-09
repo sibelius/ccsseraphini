@@ -11067,10 +11067,10 @@ mongodb@^4.13.0:
     "@aws-sdk/credential-providers" "^3.186.0"
     saslprep "^1.0.3"
 
-mongoose@7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-7.2.0.tgz#87913b226c29fd8af92fa0354914d7b629c73743"
-  integrity sha512-sNNsPinfwBiqEZx24kBWZamebORFJ89wr0szw8SFzdy8OZLMxSDKwGUpfa8cLPsCV57z/beGUnaa0ZUGktNmcQ==
+mongoose@7.2.2:
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-7.2.2.tgz#5e4c9b87f20b0ef74382706da810bad292fa0f03"
+  integrity sha512-JPBMTF+oYfLGVFWbHSZ/H+f1GajNanGLYH6c/P0nE3bNJfwGhX573vieGR0kNlNhj3cZk8WCPrnVsTNeUmFUag==
   dependencies:
     bson "^5.3.0"
     kareem "2.5.1"
