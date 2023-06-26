@@ -8337,10 +8337,10 @@ esutils@^2.0.2:
   resolved "https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-ethers@6.6.0:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.6.0.tgz#596e512cd91ef86b04f95f2e6be58a22ec4f2ce6"
-  integrity sha512-7D2U+n8eZYmh592VZqap9vBu50jN7YUDHqAmwBYTMntmUKC9RVgcqcFbd+3DTCOQ1jMyK6QHv1usbcfgiGaHOA==
+ethers@6.6.1:
+  version "6.6.1"
+  resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.6.1.tgz#c3c80cdc10190fa5457d5eced25aa16940e73f6b"
+  integrity sha512-bjNPf/EU4l1jQlAslOmOlyHqjOnM0W7LRPuSf0Kt0tYV4RpUEZsdGWDhvFXfogIhfzXJ/v2tPz4HqXwBt5T8mA==
   dependencies:
     "@adraffy/ens-normalize" "1.9.2"
     "@noble/hashes" "1.1.2"
