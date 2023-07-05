@@ -28,7 +28,7 @@
     "babel-loader": "9.1.2",
     "css-loader": "6.8.1",
     "style-loader": "3.3.3",
-    "ts-loader": "9.4.3",
+    "ts-loader": "9.4.4",
     "webextension-polyfill-ts": "0.26.0",
     "webpack": "5.88.1",
     "webpack-cli": "5.1.4",
