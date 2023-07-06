@@ -27,12 +27,12 @@ client.once(Events.ClientReady, async () => {
 
   await memeChannel.send(readyMessage);
   await memeChannel.send(addMemeTextManual);
-  try {
-    await listenToMentions(memeChannel);
-  } catch (err) {
-    const msg = `☹️ Error listening to Twitter mentions: ${err}`;
-    await memeChannel.send(msg);
-  }
+  // try {
+  //   await listenToMentions(memeChannel);
+  // } catch (err) {
+  //   const msg = `☹️ Error listening to Twitter mentions: ${err}`;
+  //   await memeChannel.send(msg);
+  // }
 });
 
 client.on(Events.MessageCreate, async (message) => {
