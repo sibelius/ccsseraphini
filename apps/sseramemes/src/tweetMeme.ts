@@ -1,5 +1,5 @@
 import { Message, PartialMessage } from 'discord.js';
-import { TweetV1, TwitterApi } from 'twitter-api-v2';
+import { TweetV2PostTweetResult, TwitterApi } from 'twitter-api-v2';
 import fetch from 'node-fetch';
 import { RETWEET_MEME_TIMEOUT } from './score';
 import {
@@ -73,10 +73,10 @@ export const uploadMeme = async (
 /**
  * Retweet the tweet after timeout.
  */
-const scheduleRetweet = (tweet: TweetV1) => {
+const scheduleRetweet = (tweet: TweetV2PostTweetResult) => {
   setTimeout(async () => {
     try {
-      await client.v1.post(`statuses/retweet/${tweet.id_str}.json`);
+      await client.v2.retweet('sseramemes', tweet.data.id);
     } catch (err) {
       console.error(err);
     }
@@ -93,13 +93,18 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
 
   const contentCleaned = removeMetadata(content);
 
-  const tweet = await client.v1.tweet(contentCleaned, {
-    media_ids: mediaIds,
+  const tweet = await client.v2.tweet(contentCleaned, {
+    media: {
+      media_ids: mediaIds,
+    },
   });
 
-  scheduleRetweet(tweet);
+  /**
+   * Retweet not working for now on v2.
+   */
+  // scheduleRetweet(tweet);
 
-  const tweetUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+  const tweetUrl = `https://twitter.com/sseramemes/status/${tweet.data.id}`;
 
   try {
     await publishMemes({
@@ -114,7 +119,8 @@ export const tweetMeme = async (message: Message | PartialMessage) => {
       ],
     });
   } catch (error) {
-    await message.channel.send(`🚨 Error: ${error.message}`);
+    console.error(JSON.stringify(error, null, 2));
+    await message.channel.send(`🚨 Instagram error: ${error.message}`);
   }
 
   return { tweetUrl };

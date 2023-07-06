@@ -92,6 +92,7 @@ export const handleMemeVoting = async (
     const { tweetUrl } = await tweetMeme(message.message);
     await message.message.channel.send(`🚀 ${tweetUrl}`);
   } catch (error) {
+    console.error(JSON.stringify(error, null, 2));
     await message.message.channel.send(`🚨 Error: ${error.message}`);
   }
 };
