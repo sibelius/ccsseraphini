@@ -38,7 +38,7 @@
     "@types/vscode": "^1.79.1",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.61.0",
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.2.0",
     "eslint": "^8.43.0",
     "glob": "^10.3.1",
     "mocha": "^10.2.0",
