@@ -169,6 +169,14 @@
     "@aws-sdk/types" "3.208.0"
     tslib "^2.3.1"
 
+"@aws-sdk/chunked-blob-reader-native@3.310.0":
+  version "3.310.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/chunked-blob-reader-native/-/chunked-blob-reader-native-3.310.0.tgz#98d43a6213557835b3bbb0cd2ee0a4e2088e916a"
+  integrity sha512-RuhyUY9hCd6KWA2DMF/U6rilYLLRYrDY6e0lq3Of1yzSRFxi4bk9ZMCF0mxf/9ppsB5eudUjrOypYgm6Axt3zw==
+  dependencies:
+    "@aws-sdk/util-base64" "3.310.0"
+    tslib "^2.5.0"
+
 "@aws-sdk/chunked-blob-reader@3.310.0":
   version "3.310.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/chunked-blob-reader/-/chunked-blob-reader-3.310.0.tgz#2ada1b024a2745c2fe7e869606fab781325f981e"
@@ -217,17 +225,17 @@
     "@aws-sdk/util-utf8-node" "3.208.0"
     tslib "^2.3.1"
 
-"@aws-sdk/client-s3@3.363.0":
-  version "3.363.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.363.0.tgz#757384d92c32a407ab0aaecf6f54d47cd9053514"
-  integrity sha512-LNnfg/t8wG5Fqj6l+PSV/t+IXDq9r3Kj9jEHn84513+p7bewXYSSreSpmLjG8OcKuMfHc9EJGNQ3DkMyFaLoWg==
+"@aws-sdk/client-s3@3.367.0":
+  version "3.367.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.367.0.tgz#924e45ee358bf1449c07473d98a7e11057c9d76e"
+  integrity sha512-E9onOs03zHDo/ytjEooCbSbYNUvvvOc5dK7oNEQ9s5cpGjiY2ojQieMg7x+Uz7FbAslIEsABXliYe2Xib+N7Ug==
   dependencies:
     "@aws-crypto/sha1-browser" "3.0.0"
     "@aws-crypto/sha256-browser" "3.0.0"
     "@aws-crypto/sha256-js" "3.0.0"
     "@aws-sdk/client-sts" "3.363.0"
     "@aws-sdk/credential-provider-node" "3.363.0"
-    "@aws-sdk/hash-blob-browser" "3.357.0"
+    "@aws-sdk/hash-blob-browser" "3.367.0"
     "@aws-sdk/hash-stream-node" "3.357.0"
     "@aws-sdk/md5-js" "3.357.0"
     "@aws-sdk/middleware-bucket-endpoint" "3.363.0"
@@ -727,12 +735,13 @@
     "@aws-sdk/util-base64" "3.208.0"
     tslib "^2.3.1"
 
-"@aws-sdk/hash-blob-browser@3.357.0":
-  version "3.357.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/hash-blob-browser/-/hash-blob-browser-3.357.0.tgz#e507929499fe0fe128664b67cd26f63f16ed4d25"
-  integrity sha512-RDd6UgrGHDmleTnXM9LRSSVa69euSAG2mlNhZMEDWk3OFseXVYqBDaqroVbQ01rM2UAe8MeBFchlV9OmxuVgvw==
+"@aws-sdk/hash-blob-browser@3.367.0":
+  version "3.367.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/hash-blob-browser/-/hash-blob-browser-3.367.0.tgz#1ec6732eb849c83ab96049edcd6479ddec17c4c8"
+  integrity sha512-RhkpXceqQP5UF0eGvLVRSM/gJI8rUdgThAFLPlM5cYRPtIoeDddTTNk0BEf8GzetXTyzx3TEe1Z5tEjbb0pMuA==
   dependencies:
     "@aws-sdk/chunked-blob-reader" "3.310.0"
+    "@aws-sdk/chunked-blob-reader-native" "3.310.0"
     "@aws-sdk/types" "3.357.0"
     tslib "^2.5.0"
 
@@ -1179,6 +1188,14 @@
   dependencies:
     "@aws-sdk/util-buffer-from" "3.208.0"
     tslib "^2.3.1"
+
+"@aws-sdk/util-base64@3.310.0":
+  version "3.310.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-base64/-/util-base64-3.310.0.tgz#d0fd49aff358c5a6e771d0001c63b1f97acbe34c"
+  integrity sha512-v3+HBKQvqgdzcbL+pFswlx5HQsd9L6ZTlyPVL2LS9nNXnCcR3XgGz9jRskikRUuUvUXtkSG1J88GAOnJ/apTPg==
+  dependencies:
+    "@aws-sdk/util-buffer-from" "3.310.0"
+    tslib "^2.5.0"
 
 "@aws-sdk/util-body-length-browser@3.188.0":
   version "3.188.0"
