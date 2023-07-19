@@ -5513,10 +5513,10 @@
   resolved "https://registry.npmjs.org/@tsconfig/node16/-/node16-1.0.2.tgz"
   integrity sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==
 
-"@tsconfig/svelte@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/@tsconfig/svelte/-/svelte-3.0.0.tgz"
-  integrity sha512-pYrtLtOwku/7r1i9AMONsJMVYAtk3hzOfiGNekhtq5tYBGA7unMve8RvUclKLMT3PrihvJqUmzsRGh0RP84hKg==
+"@tsconfig/svelte@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@tsconfig/svelte/-/svelte-5.0.0.tgz#0f99038516336a43c953e7b3f8a28dc511a51d9b"
+  integrity sha512-iu5BqFjU0+OcLTNQp7fHe6Bf6zdNeJ9IZjLZMqWLuGzVFm/xx+lm//Tf6koPyRmxo55/Snm6RRQ990n89cRKFw==
 
 "@types/aria-query@^5.0.1":
   version "5.0.1"

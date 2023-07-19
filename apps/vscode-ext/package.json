@@ -30,7 +30,7 @@
     "@rollup/plugin-commonjs": "^24.1.0",
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-typescript": "^11.1.2",
-    "@tsconfig/svelte": "^3.0.0",
+    "@tsconfig/svelte": "^5.0.0",
     "@types/glob": "^8.1.0",
     "@types/mocha": "^10.0.1",
     "@types/node": "^20.4.2",
