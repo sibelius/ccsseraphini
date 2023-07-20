@@ -14,7 +14,7 @@
     "start": "node build/index.js"
   },
   "dependencies": {
-    "@octokit/rest": "19.0.13",
+    "@octokit/rest": "20.0.1",
     "discord.js": "14.11.0",
     "dotenv": "16.3.1",
     "dotenv-safe": "8.2.0",
