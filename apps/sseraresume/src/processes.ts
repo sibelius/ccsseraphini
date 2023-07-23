@@ -11,16 +11,25 @@ import { config } from './config';
 
 export const processSummaryJob = async (job, done) => {
   // Replace with your actual Discord channel IDs.
-  const channelIds = [
-    config.GENERAL_CHANNEL_ID,
-    config.OPEN_SOURCE_CHANNEL_ID,
-    config.STARTUPS_CHANNEL_ID,
+  const channels = [
+    {
+      name: 'General',
+      id: config.GENERAL_CHANNEL_ID,
+    },
+    {
+      name: 'Open Source',
+      id: config.OPEN_SOURCE_CHANNEL_ID,
+    },
+    {
+      name: 'Business and Startups',
+      id: config.STARTUPS_CHANNEL_ID,
+    },
   ];
 
-  let messagesToday: Message[] = [];
+  for (let c of channels) {
+    let messagesToday: Message[] = [];
 
-  for (let channelId of channelIds) {
-    const channel = (await client.channels.fetch(channelId)) as TextChannel;
+    const channel = (await client.channels.fetch(c.id)) as TextChannel;
 
     const oneDayAgo = new Date();
     oneDayAgo.setHours(oneDayAgo.getHours() - 24);
@@ -42,7 +51,7 @@ export const processSummaryJob = async (job, done) => {
 
     const linkMap = generateLinkMap(messagesToday);
 
-    let output = '# Content from the day \n\n';
+    let output = `# Content of the day - ${c.name} \n\n`;
     for (const base in linkMap) {
       output += formatMessageLinks(base, linkMap[base]) + '\n\n';
     }

@@ -27,7 +27,12 @@ export const client = new Client({
 
 client.once(Events.ClientReady, () => {
   console.log('Bot is ready 🚀');
-  summaryQueue.add({}, { repeat: { cron: '*/2 * * * *' } });
+
+  // summary queue every 24 hours
+  summaryQueue.add({}, { repeat: { cron: '0 0 * * *' } });
+
+  // >> tests purposes
+  // summaryQueue.add({}, { delay: 10});
 });
 
 summaryQueue.process(processSummaryJob);
