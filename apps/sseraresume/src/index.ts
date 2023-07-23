@@ -6,7 +6,7 @@ import {
   Snowflake,
 } from 'discord.js';
 
-import { config } from './config';
+import { config, summaryQueue } from './config';
 
 import {
   fetchMessages,
@@ -25,6 +25,12 @@ export const client = new Client({
 
 client.once(Events.ClientReady, () => {
   console.log('Bot is ready 🚀');
+
+  // summary queue run every 2 minutes
+
+  summaryQueue.add({}, { repeat: { cron: '*/2 * * * *' } });
+
+  // summaryQueue.add({}, { repeat: { cron: '0 0 * * *' } });
 });
 
 client.on(Events.MessageCreate, async (msg: any) => {
