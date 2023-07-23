@@ -1,5 +1,7 @@
 import dotenvSafe from 'dotenv-safe';
 import path from 'path';
+import Queue from 'bull';
+import { queuesNames } from './constants';
 
 const cwd = process.cwd();
 
@@ -11,6 +13,7 @@ dotenvSafe.config({
 });
 
 export const config = {
+  REDIS_URL: process.env.REDIS_URL as string,
   APP_URI: process.env.APP_URI || 'http://localhost:3000',
   DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID as string,
   DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN as string,
@@ -30,3 +33,5 @@ export const config = {
   STARTUPS_CHANNEL_ID:
     (process.env.STARTUPS_CHANNEL_ID as string) || '970690997392650260',
 } as const;
+
+export const summaryQueue = Queue(queuesNames.SUMMARY, config.REDIS_URL);
