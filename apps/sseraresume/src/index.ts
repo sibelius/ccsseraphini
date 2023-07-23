@@ -14,6 +14,8 @@ import {
   generateLinkMap,
 } from './functions';
 
+import { processSummaryJob } from './processes';
+
 export const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -25,13 +27,10 @@ export const client = new Client({
 
 client.once(Events.ClientReady, () => {
   console.log('Bot is ready 🚀');
-
-  // summary queue run every 2 minutes
-
   summaryQueue.add({}, { repeat: { cron: '*/2 * * * *' } });
-
-  // summaryQueue.add({}, { repeat: { cron: '0 0 * * *' } });
 });
+
+summaryQueue.process(processSummaryJob);
 
 client.on(Events.MessageCreate, async (msg: any) => {
   if (msg.content === '!getMessages') {
