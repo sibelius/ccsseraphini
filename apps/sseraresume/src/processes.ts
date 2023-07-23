@@ -7,10 +7,15 @@ import {
   formatMessageLinks,
   generateLinkMap,
 } from './functions';
+import { config } from './config';
 
 export const processSummaryJob = async (job, done) => {
   // Replace with your actual Discord channel IDs.
-  const channelIds = ['CHANNEL_ID_1', 'CHANNEL_ID_2', 'CHANNEL_ID_3'];
+  const channelIds = [
+    config.GENERAL_CHANNEL_ID,
+    config.OPEN_SOURCE_CHANNEL_ID,
+    config.STARTUPS_CHANNEL_ID,
+  ];
 
   let messagesToday: Message[] = [];
 
