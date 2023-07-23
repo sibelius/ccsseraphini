@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@octokit/rest": "19.0.13",
+    "bull": "4.10.4",
     "discord.js": "14.11.0",
     "dotenv": "16.3.1",
     "dotenv-safe": "8.2.0",
