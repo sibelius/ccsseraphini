@@ -29,7 +29,10 @@ client.once(Events.ClientReady, () => {
   console.log('Bot is ready 🚀');
 
   // Repeat job every day at 23:00 (11pm) UTC
-  summaryQueue.add({}, { repeat: { cron: '0 23 * * * ' } });
+  if (process.env.NODE_ENV === 'production') {
+    console.log('Starting summary job');
+    summaryQueue.add({}, { repeat: { cron: '0 23 * * * ' } });
+  }
 });
 
 summaryQueue.process(processSummaryJob);
@@ -71,7 +74,6 @@ client.on(Events.MessageCreate, async (msg: any) => {
         channel.createdAt > oneDayAgo &&
         client.user.id !== channel.ownerId
       ) {
-        console.log(channel);
         lastThreads.push(`${channel.name} - <#${channel.id}>`);
       }
     });
