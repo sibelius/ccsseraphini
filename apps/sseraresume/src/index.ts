@@ -28,11 +28,8 @@ export const client = new Client({
 client.once(Events.ClientReady, () => {
   console.log('Bot is ready 🚀');
 
-  // summary queue every 24 hours
-  summaryQueue.add({}, { repeat: { cron: '0 0 * * *' } });
-
-  // >> tests purposes
-  // summaryQueue.add({}, { delay: 10});
+  // Repeat job every day at 23:00 (11pm) UTC
+  summaryQueue.add({}, { repeat: { cron: '0 23 * * * ' } });
 });
 
 summaryQueue.process(processSummaryJob);
@@ -65,11 +62,30 @@ client.on(Events.MessageCreate, async (msg: any) => {
       output += formatMessageLinks(base, linkMap[base]) + '\n\n';
     }
 
+    const lastThreads = [];
+
+    msg.guild.channels.cache.forEach(async (channel) => {
+      // get all threads channel in the last 24 hours with the link
+      if (
+        channel.isThread() &&
+        channel.createdAt > oneDayAgo &&
+        client.user.id !== channel.ownerId
+      ) {
+        console.log(channel);
+        lastThreads.push(`${channel.name} - <#${channel.id}>`);
+      }
+    });
+
+    let outputThreads = `# Threads from the day \n\n`;
+    outputThreads += lastThreads.join('\n');
+
     const truncatedContent = output.slice(0, 2000);
+    const truncatedContentThreads = outputThreads.slice(0, 2000);
 
     if (truncatedContent.trim() !== '') {
       // Send the message in the same channel.
       thread.send(truncatedContent);
+      thread.send(truncatedContentThreads);
       // Uncomment the line below if you want to tweet the resume.
       // tweetResume(truncatedContent);
     } else {
