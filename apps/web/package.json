@@ -18,7 +18,7 @@
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
     "@sentry/nextjs": "7.57.0",
-    "@solana/web3.js": "1.77.3",
+    "@solana/web3.js": "1.78.2",
     "@types/qrcode.react": "1.0.2",
     "babel-preset-next": "1.4.0",
     "entities": "4.5.0",
