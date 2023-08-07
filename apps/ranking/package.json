@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^4.1.7",
-    "@types/luxon": "3.3.0",
+    "@types/luxon": "3.3.1",
     "@types/node-schedule": "2.1.0",
     "jest": "^29.6.2",
     "jest-fetch-mock": "3.0.3",
