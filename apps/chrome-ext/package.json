@@ -20,7 +20,7 @@
     "regenerator-runtime": "0.13.11"
   },
   "devDependencies": {
-    "@babel/core": "7.22.8",
+    "@babel/core": "7.22.10",
     "@babel/preset-env": "7.22.9",
     "@babel/preset-typescript": "7.22.5",
     "@types/chrome": "0.0.239",
