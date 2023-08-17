@@ -25,7 +25,7 @@
     "@babel/preset-typescript": "7.22.5",
     "@types/chrome": "0.0.239",
     "@types/react-dom": "18.2.7",
-    "babel-loader": "9.1.2",
+    "babel-loader": "9.1.3",
     "css-loader": "6.8.1",
     "style-loader": "3.3.3",
     "ts-loader": "9.4.4",
