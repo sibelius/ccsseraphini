@@ -3951,14 +3951,6 @@
     "@jimp/utils" "^0.22.10"
     bmp-js "^0.1.0"
 
-"@jimp/bmp@^0.22.8":
-  version "0.22.8"
-  resolved "https://registry.yarnpkg.com/@jimp/bmp/-/bmp-0.22.8.tgz#19ce17bfef7f3d34a0dbe220d640f384d28178bc"
-  integrity sha512-JEMKgM1AEvvWfn9ZCHn62nK+QCE3Pb/ZhPdL3NF0ZgKNww6pqOmo6KqXzqY18JLB7c0epuTp4GPDPDhOh/ou1g==
-  dependencies:
-    "@jimp/utils" "^0.22.8"
-    bmp-js "^0.1.0"
-
 "@jimp/core@^0.22.10":
   version "0.22.10"
   resolved "https://registry.yarnpkg.com/@jimp/core/-/core-0.22.10.tgz#a106e719a9e1bc668c9595065a0872767cda3934"
@@ -3989,29 +3981,12 @@
     gifwrap "^0.10.1"
     omggif "^1.0.9"
 
-"@jimp/gif@^0.22.8":
-  version "0.22.8"
-  resolved "https://registry.yarnpkg.com/@jimp/gif/-/gif-0.22.8.tgz#6692a9117fb4b25620d92327fa305dd95cd57334"
-  integrity sha512-I0l6koS67IPU40RPxCJTD1NvePEd8vUIHTejx1ly0jrjGnumbqdarAlBUkDrKfPPc+Fnqp84hBbSN1w5hNPT6w==
-  dependencies:
-    "@jimp/utils" "^0.22.8"
-    gifwrap "^0.9.2"
-    omggif "^1.0.9"
-
 "@jimp/jpeg@^0.22.10":
   version "0.22.10"
   resolved "https://registry.yarnpkg.com/@jimp/jpeg/-/jpeg-0.22.10.tgz#b4aba85d607d598d5a4ce0c66cefe69a8fc45c26"
   integrity sha512-6bu98pAcVN4DY2oiDLC4TOgieX/lZrLd1tombWZOFCN5PBmqaHQxm7IUmT+Wj4faEvh8QSHgVLSA+2JQQRJWVA==
   dependencies:
     "@jimp/utils" "^0.22.10"
-    jpeg-js "^0.4.4"
-
-"@jimp/jpeg@^0.22.8":
-  version "0.22.8"
-  resolved "https://registry.yarnpkg.com/@jimp/jpeg/-/jpeg-0.22.8.tgz#182c41108833bdc8c88598ef4c11bf4f197228eb"
-  integrity sha512-hLXrQ7/0QiUhAVAF10dfGCSq3hvyqjKltlpu/87b3wqMDKe9KdvhX1AJHiUUrAbJv1fAcnOmQGTyXGuySa1D6A==
-  dependencies:
-    "@jimp/utils" "^0.22.8"
     jpeg-js "^0.4.4"
 
 "@jimp/plugin-blit@^0.22.10":
@@ -4199,14 +4174,6 @@
     "@jimp/utils" "^0.22.10"
     pngjs "^6.0.0"
 
-"@jimp/png@^0.22.8":
-  version "0.22.8"
-  resolved "https://registry.yarnpkg.com/@jimp/png/-/png-0.22.8.tgz#3fd5e546087aede4011ceb1f75e912dbc8ff696e"
-  integrity sha512-XOj11kcCr8zKg24QSwlRfH9k4hbV6rkMGUVxMS3puRzzB0FBSQy42NBYEfYf2XlY2QJSAByPl4AYerOtKb805w==
-  dependencies:
-    "@jimp/utils" "^0.22.8"
-    pngjs "^6.0.0"
-
 "@jimp/tiff@^0.22.10":
   version "0.22.10"
   resolved "https://registry.yarnpkg.com/@jimp/tiff/-/tiff-0.22.10.tgz#e5511e21c73719a308545732f1ec050f52a8e0ad"
@@ -4214,26 +4181,7 @@
   dependencies:
     utif2 "^4.0.1"
 
-"@jimp/tiff@^0.22.8":
-  version "0.22.8"
-  resolved "https://registry.yarnpkg.com/@jimp/tiff/-/tiff-0.22.8.tgz#e584e087633cbfad90fcca82439fabcba4b6786e"
-  integrity sha512-K0hYUVW5MLgwq3jiHVHa6LvP05J1rXOlRCC+5dMTUnAXVwi45+MKsqA/8lzzwhHYJ65CNhZwy6D3+ZNzM9SIBQ==
-  dependencies:
-    utif2 "^4.0.1"
-
-"@jimp/types@0.22.8":
-  version "0.22.8"
-  resolved "https://registry.yarnpkg.com/@jimp/types/-/types-0.22.8.tgz#4dedda51186a1d950108ed9856f5d17a9f003597"
-  integrity sha512-9+xc+mzuYwu0i+6dsnhXiUgfcS+Ktqn5q2jczoKyyBT0cOKgsk+57EIeFLgpTfVGRKRR0y/UIdHByeCzGguF3A==
-  dependencies:
-    "@jimp/bmp" "^0.22.8"
-    "@jimp/gif" "^0.22.8"
-    "@jimp/jpeg" "^0.22.8"
-    "@jimp/png" "^0.22.8"
-    "@jimp/tiff" "^0.22.8"
-    timm "^1.6.1"
-
-"@jimp/types@^0.22.10":
+"@jimp/types@0.22.10", "@jimp/types@^0.22.10":
   version "0.22.10"
   resolved "https://registry.yarnpkg.com/@jimp/types/-/types-0.22.10.tgz#1ae01dfea9f36ba9751e63a1eedecb4c4da9ef16"
   integrity sha512-u/r+XYzbCx4zZukDmxx8S0er3Yq3iDPI6+31WKX0N18i2qPPJYcn8qwIFurfupRumGvJ8SlGLCgt/T+Y8zzUIw==
@@ -4249,13 +4197,6 @@
   version "0.22.10"
   resolved "https://registry.yarnpkg.com/@jimp/utils/-/utils-0.22.10.tgz#d05934fae1c4bd988205d3decc2a649df0724a26"
   integrity sha512-ztlOK9Mm2iLG2AMoabzM4i3WZ/FtshcgsJCbZCRUs/DKoeS2tySRJTnQZ1b7Roq0M4Ce+FUAxnCAcBV0q7PH9w==
-  dependencies:
-    regenerator-runtime "^0.13.3"
-
-"@jimp/utils@^0.22.8":
-  version "0.22.8"
-  resolved "https://registry.yarnpkg.com/@jimp/utils/-/utils-0.22.8.tgz#04039431a00f62e0c630b376aab848f8718fb9a1"
-  integrity sha512-AaqjfqDeLzSFzrbGRKHMXg/ntiWKvoG9tpVgWzgOx5/gPWj/IyGfztojLTTvY8HqZCr25z8z91u2lAQD2v46Jw==
   dependencies:
     regenerator-runtime "^0.13.3"
 
@@ -8997,14 +8938,6 @@ gifwrap@0.10.1, gifwrap@^0.10.1:
   version "0.10.1"
   resolved "https://registry.npmjs.org/gifwrap/-/gifwrap-0.10.1.tgz"
   integrity sha512-2760b1vpJHNmLzZ/ubTtNnEx5WApN/PYWJvXvgS+tL1egTTthayFYIQQNi136FLEDcN/IyEY2EcGpIITD6eYUw==
-  dependencies:
-    image-q "^4.0.0"
-    omggif "^1.0.10"
-
-gifwrap@^0.9.2:
-  version "0.9.4"
-  resolved "https://registry.npmjs.org/gifwrap/-/gifwrap-0.9.4.tgz"
-  integrity sha512-MDMwbhASQuVeD4JKd1fKgNgCRL3fGqMM4WaqpNhWO0JiMOAjbQdumbs4BbBZEy9/M00EHEjKN3HieVhCUlwjeQ==
   dependencies:
     image-q "^4.0.0"
     omggif "^1.0.10"
