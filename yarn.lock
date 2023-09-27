@@ -5644,10 +5644,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/chrome@0.0.245":
-  version "0.0.245"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.245.tgz#2a63378baaf23941ecb5e2f43378ccbad06e47c0"
-  integrity sha512-bBdONkLO8wMbJK6iG0Q8ShFuh67Grnod+5OpClJaa8MuKJXP/Kjl3f8wRYeMOnQ0Q8HDgpUlopu8bvl9siR8/A==
+"@types/chrome@0.0.246":
+  version "0.0.246"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.246.tgz#412ee1b162a67d1cfebe413887b9aa0c28998ef1"
+  integrity sha512-MxGxEomGxsJiL9xe/7ZwVgwdn8XVKWbPvxpVQl3nWOjrS0Ce63JsfzxUc4aU3GvRcUPYsfufHmJ17BFyKxeA4g==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
