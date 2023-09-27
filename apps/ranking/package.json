@@ -8,13 +8,13 @@
     "test": "jest"
   },
   "dependencies": {
-    "luxon": "3.4.0",
+    "luxon": "3.4.3",
     "mongoose": "7.5.3",
     "twitter-api-v2": "1.15.1"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^4.1.7",
-    "@types/luxon": "3.3.1",
+    "@types/luxon": "3.3.2",
     "@types/node-schedule": "2.1.0",
     "jest": "^29.6.2",
     "jest-fetch-mock": "3.0.3",
