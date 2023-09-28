@@ -16,7 +16,7 @@
     "test:resize": "esrun scripts/testResizeImage.ts"
   },
   "dependencies": {
-    "@aws-sdk/client-s3": "3.417.0",
+    "@aws-sdk/client-s3": "3.421.0",
     "@digitak/esrun": "3.2.24",
     "@types/sharp": "0.32.0",
     "cuid": "3.0.0",
