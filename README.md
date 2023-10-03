@@ -8,6 +8,7 @@ This project uses [classic Yarn 1.x Workspaces](https://classic.yarnpkg.com/en/d
 
 To setup a local development, you can clone and run Yarn in the root of the project:
 
+
 ```bash
 git clone https://github.com/sibelius/ccsseraphini
 cd ccsseraphini
