@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@ccsseraphini/ranking": "1.0.0",
-    "@digitak/esrun": "3.2.24",
+    "@digitak/esrun": "3.2.25",
     "@jimp/types": "0.22.10",
     "discord-api-types": "0.37.58",
     "discord.js": "14.13.0",
