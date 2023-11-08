@@ -24,7 +24,7 @@
     "@babel/preset-env": "7.22.10",
     "@babel/preset-typescript": "7.23.0",
     "@types/chrome": "0.0.246",
-    "@types/react-dom": "18.2.7",
+    "@types/react-dom": "18.2.14",
     "babel-loader": "9.1.3",
     "css-loader": "6.8.1",
     "style-loader": "3.3.3",
