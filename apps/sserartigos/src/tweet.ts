@@ -1,3 +1,4 @@
+import { TextChannel } from 'discord.js';
 import { TwitterApi } from 'twitter-api-v2';
 
 const client = new TwitterApi({
@@ -8,27 +9,24 @@ const client = new TwitterApi({
 });
 
 const tweet = async (url: string) => {
-  try {
-    await client.v1.tweet(url, {});
-
-    return {
-      ok: true,
-    };
-  } catch (error) {
-    return error;
-  }
+  const tweet = await client.v1.tweet(url, {});
+  const tweetUrl = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
+  return tweetUrl;
 };
 
-export const tweetArticles = async (urls: string[]) => {
-  const promisses = urls.map((url) => tweet(url));
+const postOnChannel = (tweetUrl: string, channel: TextChannel) => {
+  if (!channel) {
+    return;
+  }
 
-  await Promise.all(promisses).then((responses) => {
-    responses.forEach(verifyIfHasError);
-  });
+  return channel.send(tweetUrl);
+};
 
+export const tweetArticles = async (urls: string[], channel: TextChannel) => {
+  const promisses = urls.map((url) =>
+    tweet(url).then((tweetUrl) => postOnChannel(tweetUrl, channel)),
+  );
+
+  await Promise.all(promisses);
   return;
 };
-
-function verifyIfHasError(res: Response) {
-  if (!res.ok) throw new Error(`response from API was: ${res.status}`);
-}

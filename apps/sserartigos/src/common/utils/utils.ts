@@ -10,12 +10,6 @@ export const checkVotingAbility = (message: DiscordMessage): boolean => {
   );
 };
 
-function shouldCreatePoll(message: DiscordMessage) {
-  const reactions = message.reactions.valueOf();
-  const shouldForcePoll = reactions.some(
-    (item) => item.emoji.toString() === '🔗',
-  );
-
-  if (shouldForcePoll) return true;
-  return config.LISTENED_USERS_ID.some((value) => value === message.author.id);
+function shouldCreatePoll(message: DiscordMessage): boolean {
+  return config.IGNORED_CHANNELS.every((value) => value !== message.channelId);
 }
