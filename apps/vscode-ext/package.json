@@ -39,7 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.62.0",
     "concurrently": "^7.6.0",
-    "eslint": "^8.51.0",
+    "eslint": "^8.54.0",
     "glob": "^10.3.10",
     "mocha": "^10.2.0",
     "rollup": "^3.29.2",
