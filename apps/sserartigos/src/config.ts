@@ -22,6 +22,8 @@ export const config = {
   GIT_REPO_NAME: process.env.GIT_REPO_NAME as string,
   ZETTELKASTEN_FILE_PATH: process.env.ZETTELKASTEN_FILE_PATH as string,
   GIT_REPO_BRANCH: process.env.GIT_REPO_BRANCH as string,
+  DISCORD_SSERARTICLES_CHANNEL_ID: process.env
+    .DISCORD_SSERARTICLES_CHANNEL_ID as string,
 
   FANSFY_API_KEY: process.env.FANSFY_API_KEY as string,
 
