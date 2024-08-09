@@ -29,26 +29,26 @@
    - `AWS_REGION`
    - `AWS_BUCKET_NAME`
 
-Once you have all the tokens, you can run the bot locally with `yarn start`.
+Once you have all the tokens, you can run the bot locally with `pnpm start`.
 
 ## Server
 
 We use PM2 to run and keep sseramemes online. To start the server, run:
 
 ```bash
-yarn server:start
+pnpm server:start
 ```
 
 To check the logs, run:
 
 ```bash
-yarn server:logs
+pnpm server:logs
 ```
 
 If you want to check only error logs, run:
 
 ```bash
-yarn server:logs --err
+pnpm server:logs --err
 ```
 
 To check PM2 status, run:
@@ -62,7 +62,7 @@ pm2 status
 As we're running on an EC2 instance, our deployment is a PM2 watch plus a cronjob to pull git changes. On crontab (`crontab -e`), we have:
 
 ```bash
-*/5 * * * * cd ~/ccsseraphini && git pull && yarn >/dev/null 2>&1
+*/5 * * * * cd ~/ccsseraphini && git pull && pnpm >/dev/null 2>&1
 ```
 
 _Note: don't forget to add temp files to `ignore_watch` on `ecosystem.config.js` to avoid restarting the server._

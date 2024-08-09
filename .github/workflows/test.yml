@@ -19,6 +19,6 @@ jobs:
         with:
           node-version: "16"
       - run: yarn
-      - run: yarn lint
-      - run: yarn test
-      - run: yarn check-types
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm check-types

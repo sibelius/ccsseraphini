@@ -5,8 +5,8 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "check-types": "tsc --noEmit",
-    "start": "webpack -w --config webpack.dev.js",
-    "prettier": "prettier --write --single-quote true --trailing-comma all --print-width 120"
+    "prettier": "prettier --write --single-quote true --trailing-comma all --print-width 120",
+    "start": "webpack -w --config webpack.dev.js"
   },
   "dependencies": {
     "@ccsseraphini/ui": "0.0.1",
@@ -20,18 +20,18 @@
     "regenerator-runtime": "0.14.0"
   },
   "devDependencies": {
-    "@babel/core": "7.22.19",
-    "@babel/preset-env": "7.22.10",
-    "@babel/preset-typescript": "7.23.0",
-    "@types/chrome": "0.0.246",
-    "@types/react-dom": "18.2.14",
+    "@babel/core": "7.25.2",
+    "@babel/preset-env": "7.25.3",
+    "@babel/preset-typescript": "7.24.7",
+    "@types/chrome": "0.0.269",
+    "@types/react-dom": "18.3.0",
     "babel-loader": "9.1.3",
-    "css-loader": "6.8.1",
-    "style-loader": "3.3.3",
-    "ts-loader": "9.4.4",
+    "css-loader": "7.1.2",
+    "style-loader": "4.0.0",
+    "ts-loader": "9.5.1",
     "webextension-polyfill-ts": "0.26.0",
-    "webpack": "5.88.2",
+    "webpack": "5.93.0",
     "webpack-cli": "5.1.4",
-    "webpack-merge": "5.9.0"
+    "webpack-merge": "6.0.1"
   }
 }

@@ -35,7 +35,7 @@ jobs:
         run: yarn
 
       - name: Test
-        run: yarn test
+        run: pnpm test
 
   publish-npm:
     needs: test-on-all-os
@@ -54,7 +54,7 @@ jobs:
         run: yarn
       
       - name: Compile
-        run: yarn build
+        run: pnpm build
       
       - name: Publish 
         run: npm publish --access public
