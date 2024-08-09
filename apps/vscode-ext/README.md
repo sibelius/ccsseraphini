@@ -7,11 +7,11 @@ Base code for VSCode Extension
 First, install the dependencies. Then run the debug server:
 
 ```bash
-$ yarn install
+$ pnpm install
 
 # then
 
-$ yarn watch
+$ pnpm watch
 ```
 
 ## VSCode Commands

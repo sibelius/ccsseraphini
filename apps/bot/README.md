@@ -29,5 +29,5 @@
 ## How to run
 
 ```
-yarn start
+pnpm start
 ```

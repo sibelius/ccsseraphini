@@ -2,8 +2,8 @@
   "name": "bot",
   "version": "0.0.1",
   "scripts": {
-    "build": "yarn esbuild ./src/index.ts --bundle --platform=node --target=node10.4 --outfile=./build/bot.js",
-    "dev": "yarn es ./src/index.ts",
+    "build": "pnpm esbuild ./src/index.ts --bundle --platform=node --target=node10.4 --outfile=./build/bot.js",
+    "dev": "pnpm es ./src/index.ts",
     "es": "node -r esbuild-register",
     "start": "node ./build/bot.js",
     "test": "jest"
@@ -32,12 +32,12 @@
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^4.1.7",
-    "@types/luxon": "3.3.1",
-    "@types/node-schedule": "2.1.0",
-    "@types/supertest": "2.0.12",
-    "esbuild": "0.19.2",
-    "esbuild-register": "3.5.0",
-    "jest": "^29.6.2",
+    "@types/luxon": "3.4.2",
+    "@types/node-schedule": "2.1.7",
+    "@types/supertest": "6.0.2",
+    "esbuild": "0.23.0",
+    "esbuild-register": "3.6.0",
+    "jest": "^29.7.0",
     "jest-fetch-mock": "3.0.3"
   }
 }
