@@ -67,3 +67,5 @@ apps/web/public/sw.js.map
 globalConfig.json
 .vscode
 yarn.lock
+
+node-compile-cache/
